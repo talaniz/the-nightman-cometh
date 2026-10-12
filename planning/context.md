@@ -33,3 +33,21 @@ Reproduction preserves approved bytes; no further tune approval needed if hashes
 remain identical. M2 expanded to three phases (original gap/boss compositions now
 explicit). See music-cue-map.md. Existing worktree/branch/PR reused. No game exists yet.
 No new review sign-off is implied; integrate and review this head before M1 readiness.
+
+
+## Current resumption — M2 original-cue auditions
+
+M1 is accepted at `001cc40559b9e4b0e9b9a99b738a79c22a0693d1`: all four code
+reviewers and separate workflow reviewer signed off, PR #10 verified non-draft.
+No merge performed. M1's commit-time pending status above is superseded.
+Main owns `/home/palpatine/projects/the-nightman-cometh-m2`, branch
+`milestone/m2-audio-production`, based on that exact M1 head. This is an intentional
+stacked successor because merge remains unauthorized. M2 PR targets M1 branch.
+Latest build authorization applies; no renewed implementation permission needed.
+Original-cue auditions (phase 2.2) are brought forward before full production loop
+work to collect human feedback. Contract: M2-original-preview-contract.md.
+Six original cues rendered; 19 observed failures, then 69 audio tests pass; actual
+CLI rerender/failure/recovery and WAV checks pass. M1 assets remain unchanged.
+Human approval of six new cues is pending. Next: distinct per-commit review and
+private Drive audition delivery; then remaining 2.1/2.2/2.3 work and final separate
+M2 E2E/browser acceptance. No UI screenshots apply to this increment.

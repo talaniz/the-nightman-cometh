@@ -1,0 +1,136 @@
+{
+  "status": "auditions pending human listening; M2 incomplete",
+  "cues": [
+    {
+      "id": "cricket-boss-v1",
+      "title": "Paint Dog Pursuit",
+      "scene": "cricket-boss",
+      "bpm": 172,
+      "file": "cricket-boss-v1.wav",
+      "score": "cricket-boss-v1.json",
+      "approval": "pending human listening",
+      "frames": 984558,
+      "duration_seconds": 22.325578231292518,
+      "peak": 18547,
+      "sha256": "84cd90d1b44f611ad95fc0990f407e6058f24e38696c44e7966680a301247094",
+      "rerender_identical": true,
+      "overwrite_refused": true,
+      "endpoint_samples": [
+        0,
+        0
+      ],
+      "note_count": 384
+    },
+    {
+      "id": "frank-boss-v1",
+      "title": "Hoagie Barrage",
+      "scene": "frank-boss",
+      "bpm": 152,
+      "file": "frank-boss-v1.wav",
+      "score": "frank-boss-v1.json",
+      "approval": "pending human listening",
+      "frames": 1114105,
+      "duration_seconds": 25.26315192743764,
+      "peak": 18723,
+      "sha256": "815c6c04957be6f85b5b270d7326b9b66cc9c0e7f192e2c0152bc7defb74a73c",
+      "rerender_identical": true,
+      "overwrite_refused": true,
+      "endpoint_samples": [
+        0,
+        0
+      ],
+      "note_count": 362
+    },
+    {
+      "id": "frank-kidnap-v1",
+      "title": "Toll Collector Entrance",
+      "scene": "frank-kidnap",
+      "bpm": 140,
+      "file": "frank-kidnap-v1.wav",
+      "score": "frank-kidnap-v1.json",
+      "approval": "pending human listening",
+      "frames": 151200,
+      "duration_seconds": 3.4285714285714284,
+      "peak": 16779,
+      "sha256": "e5684ddcfae3054c3f53950f2cf85a0010d1efab77c61376298abf43ed8b7d16",
+      "rerender_identical": true,
+      "overwrite_refused": true,
+      "endpoint_samples": [
+        0,
+        0
+      ],
+      "note_count": 31
+    },
+    {
+      "id": "nightman-boss-v1",
+      "title": "Curtain of Night",
+      "scene": "nightman-boss",
+      "bpm": 184,
+      "file": "nightman-boss-v1.wav",
+      "score": "nightman-boss-v1.json",
+      "approval": "pending human listening",
+      "frames": 920348,
+      "duration_seconds": 20.86956916099773,
+      "peak": 17756,
+      "sha256": "690d0880d7d3ca6449e7e76ee02dabe41fa18233edcf859311ada63dc65a80da",
+      "rerender_identical": true,
+      "overwrite_refused": true,
+      "endpoint_samples": [
+        0,
+        0
+      ],
+      "note_count": 390
+    },
+    {
+      "id": "nightman-kidnap-v1",
+      "title": "Not Again",
+      "scene": "nightman-kidnap",
+      "bpm": 128,
+      "file": "nightman-kidnap-v1.wav",
+      "score": "nightman-kidnap-v1.json",
+      "approval": "pending human listening",
+      "frames": 165375,
+      "duration_seconds": 3.75,
+      "peak": 17239,
+      "sha256": "1db2d6ad9000c2598bc69b8c54d27e7f59a8d764aae6f657a262131c01384288",
+      "rerender_identical": true,
+      "overwrite_refused": true,
+      "endpoint_samples": [
+        0,
+        0
+      ],
+      "note_count": 31
+    },
+    {
+      "id": "rooftop-v1",
+      "title": "Painted Moon Rooftops",
+      "scene": "rooftop",
+      "bpm": 116,
+      "file": "rooftop-v1.wav",
+      "score": "rooftop-v1.json",
+      "approval": "pending human listening",
+      "frames": 1459862,
+      "duration_seconds": 33.10344671201814,
+      "peak": 17736,
+      "sha256": "58df1ed991e5bdf8f018ddeae97692c6ddd60ad6f231592f05ae79e756c9f3b0",
+      "rerender_identical": true,
+      "overwrite_refused": true,
+      "endpoint_samples": [
+        0,
+        0
+      ],
+      "note_count": 336
+    }
+  ],
+  "cli_checks": {
+    "malformed_json": true,
+    "corrected_input_recovers": true,
+    "dangling_symlink_refused": true,
+    "oversize_refused": true
+  },
+  "limitations": [
+    "No agent hearing claim",
+    "Not production loop acceptance",
+    "No browser playback yet"
+  ]
+}
