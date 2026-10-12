@@ -32,3 +32,25 @@ git diff --check
 ```
 
 No UI is introduced; screenshot evidence is not applicable. Technical audio checks and independent CLI review cannot substitute for user listening acceptance.
+
+## Approved four-track baseline
+
+Dayman v1 is rejected historical evidence. The approved score IDs are dayman-v2,
+proposal-v1, little-boy-v1 and troll-toll-v2. From the repository root:
+
+```sh
+python -m tools.audio.approved assets/audio/previews/dayman-v2.json /tmp/dayman-approved.wav
+```
+
+Use a fresh output name; existing files/symlinks are refused. Install the pinned
+`tools/audio/requirements-preview.txt` in a development venv. Lead and duet use
+the original standard-library renderer; Troll Toll uses the frozen NumPy recipe.
+The static game consumes exported audio, not these dependencies. Different hardware
+or numerical library versions may change PCM rounding; compare against the committed
+approved WAV hashes before accepting regenerated output. Do not silently replace an
+approved file if its bytes change. Run the four exact PCM preservation tests.
+
+Normalized scores encode the short approved phrases after source tempo-map conversion,
+ties and swing interpretation. Reproduction needs no private source files, credentials,
+network or pretrained models. Provenance/limitations: ../../docs/evidence/M1/approved-previews.md.
+Full game loops and original gap music are M2 work, not yet delivered.

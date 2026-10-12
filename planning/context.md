@@ -19,3 +19,17 @@
 User approved local transcription, synthesis and human listening iteration. Source was corrected to FX Dayman highlight VCvr6tzZPTU. Local Basic Pitch/ONNX, Demucs and CREPE run on the Pi; extraction is still musically uncertain. Dayman v1 is an explicitly unapproved 16-second probe (plain sine and chip lead, score and editable MIDI). See ../docs/evidence/M1/dayman-v1.md and ../assets/audio/manifest.json. No source audio/stems are committed.
 
 39 tests pass; actual preview WAV checks pass. Await user recognition/correction and timbre feedback, not further implementation permission. Do not expand to other songs or mark M1 complete. PR #10 remains draft; all prior code reviewers must revalidate final head, a distinct reviewer handles this commit, and separate E2E review must check actual rendering/artifacts without claiming to have listened.
+
+
+## Current resumption — approved preview integration
+
+Latest user instruction: "Let’s build this sucker" after approving all four preview
+melodies and the complete music cue map/finale. This explicitly authorizes continued
+implementation of documented milestones in order; merge and deployment remain gated.
+Dayman v1 was rejected. Dayman v2, Proposal v1, Little Baby Boy v1 and Troll Toll v2
+have explicit human listening approval. Prior "await Dayman approval" paragraphs
+are historical, superseded here. M1 integration contract: M1-integration-contract.md.
+Reproduction preserves approved bytes; no further tune approval needed if hashes
+remain identical. M2 expanded to three phases (original gap/boss compositions now
+explicit). See music-cue-map.md. Existing worktree/branch/PR reused. No game exists yet.
+No new review sign-off is implied; integrate and review this head before M1 readiness.

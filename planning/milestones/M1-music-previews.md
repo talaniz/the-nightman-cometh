@@ -1,6 +1,6 @@
 # M1 — Music recognition previews
 
-Status: authorized and in progress; phase 1.1 has validation tooling and an unapproved Dayman listening probe; recognition/correction and music acceptance pending. See ../M1-phase-1.1-contract.md and ../context.md.
+Status: all four musical previews approved by the user; preservation/integration and independent reviews in progress. See ../M1-integration-contract.md and ../context.md.
 
 - Branch/worktree: `milestone/m1-music-previews`; actual worktree/base recorded in context. One PR across these phases.
 - Allowed paths: assets/audio/previews/, assets/audio/manifest.json, tools/audio/, tools/check_audio.py, tools/audition.py, tests/audio/, docs/evidence/M1/, planning/
@@ -18,7 +18,7 @@ Status: authorized and in progress; phase 1.1 has validation tooling and an unap
 
 **Evidence:** Source log, preview files/hashes, waveform checks and actual user listening decision. Screenshot evidence N/A unless an audition UI is introduced, then capture controls/loading/error at specified viewports.
 
-**Execution record (pending):** exact commands and versions; observed red assertion/exit; green and regression results; refactor rationale; commit SHA; assigned independent code reviewer; findings and main triage; final-head revalidation; E2E reviewer/result; evidence URLs. None run yet. Refactor only where it clarifies this phase's responsibilities, then rerun affected checks.
+**Execution record:** See ../../docs/evidence/M1/approved-previews.md for actual approvals, preservation tests and limits. Exact-head independent reviews are recorded in PR #10; they remain required before readiness.
 
 ## Phase 1.2 — Approve the remaining three motifs
 
@@ -30,7 +30,7 @@ Status: authorized and in progress; phase 1.1 has validation tooling and an unap
 
 **Evidence:** Four named approved preview versions and source/cue references. Independent reviewer checks traceability and listens when capable; disclose unavailable playback.
 
-**Execution record (pending):** exact commands and versions; observed red assertion/exit; green and regression results; refactor rationale; commit SHA; assigned independent code reviewer; findings and main triage; final-head revalidation; E2E reviewer/result; evidence URLs. None run yet. Refactor only where it clarifies this phase's responsibilities, then rerun affected checks.
+**Execution record:** See ../../docs/evidence/M1/approved-previews.md for actual approvals, preservation tests and limits. Exact-head independent reviews are recorded in PR #10; they remain required before readiness.
 
 ## Milestone gate
 

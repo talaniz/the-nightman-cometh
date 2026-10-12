@@ -4,7 +4,7 @@
 
 A short three-level single-player side-scrolling browser game, Python with pygame-ce packaged by pygbag. Runs on desktop keyboard; a separately planned USB-controller milestone completes supported input. Philadelphia rendered as homemade stage scenery, retro Capcom NES gameplay readability with richer pixel portraits from the supplied title reference. No strict NES hardware restriction. Initial target play length 10–15 minutes is provisional and must be measured.
 
-The user authorized proceeding with the plan on 2026-10-11. M1 audio validation tooling is in progress; no executable game exists. The title image and generated mockups are concepts, not production sprites, collision geometry, frame budgets or evidence of a functioning game.
+The user authorized proceeding with the plan on 2026-10-11. All four M1 preview melodies have user listening approval; integration/review is in progress and no executable game exists. The title image and generated mockups are concepts, not production sprites, collision geometry, frame budgets or evidence of a functioning game.
 
 ## Cast and visual contract
 
@@ -66,16 +66,36 @@ Still pixel-art scenes with speech bubbles, player-advanced and skippable with a
 10. Dennis watches them flee: "Alright bird—I mean, Waitress. I'll save you!" Smaller whisper: "If I have to…"
 11. Level 1, Frank kidnapping, Level 2, Nightman abduction, Level 3.
 12. After final rescue Charlie interrupts for his proposal song.
-13. ACTUAL Waitress: "I'm not going to marry you, Charlie".
-14. Dee breaks character: "I told you no one writes a musical for no reason!"
-15. Charlie, hand low: "I was down here before"; hand high, yelling: "Now I'm about to be up here!"
-16. Cut to ending/title with familiar Dayman music.
+13. ACTUAL Waitress: "I'm not going to marry you, Charlie."
+14. Charlie: "Well, see you tomorrow."
+15. Dee: "I told you no one writes a musical for no reason!"
+16. Charlie, hand low: "Dee, I'm right here right now"; hand high: "but I'm about to go here!"
+17. End, then credits with Dayman. Proposal music ducks/stops for the final exchange;
+    exact fade timing is an M2 listening decision. Do not omit the see-you-tomorrow beat.
 
 ## Audio contract
 
-Recognizable instrumental chiptune arrangements, not generic similar-mood melodies. Four references: Tiny Boy (Dee/Dennis duet); Troll Toll; familiar Dayman; I Was That Little Boy / Marry Me (Charlie's proposal). Episode performances are the primary reference, not unverified tribute rerecordings. Exact source audio must be heard/analyzed before claiming fidelity; previous research only established song identities.
+Four user-approved short instrumental previews establish the melodic baseline:
+Dayman v2, Proposal v1, Little Baby Boy v1 and Troll Toll v2. Preserve their approved
+notes/timing/timbres when making production arrangements; deliberate changes need
+new listening approval. Automated checks establish preservation, not hearing.
+The uploaded MIDI and approved Online Sequencer/Songsterr arrangements supplied
+explicit notes after the first audio-extraction probe failed recognition.
 
-M1 is an isolated recognition-preview sprint starting with Dayman; user listening approval is mandatory before expanding. M2 produces approved game-ready loops/cues and separate SFX phase. NES DuckTales pogo-impact reference informs original springy stomp sound; do not claim an isolated sample was auditioned yet. Distinct jump/stomp/bat hit/player damage/meal/cat food/checkpoint/sunbeam/sandwich/defeat cues. Music and effects volumes separate; browser user gesture unlock; play remains possible muted or if audio fails.
+See [music cue map](music-cue-map.md) for every approved placement and original-cue
+assignment. M2 adds original Cricket, Frank and Nightman boss tracks, a rooftop
+level track, and two kidnapping transitions. Broad high-energy retro arcade/NES
+inspiration is allowed; compose new melodies for these tracks. Boss themes should
+be faster and more urgent than approach music, with distinct identities.
+
+Dayman transformation briefly overrides current music, then restores the current
+scene's appropriate cue when it expires. User requested a slightly faster version;
+1.10x tempo with unchanged pitch is a proposed first audition, not an approved value.
+M1 establishes recognition; M2 creates full cues/loops/transitions and original SFX.
+NES DuckTales informs an original springy stomp effect. Distinct jump/stomp/bat
+hit/player damage/meal/cat food/checkpoint/sunbeam/sandwich/defeat sounds. Music and
+SFX volumes separate; browser user gesture unlock; play remains possible muted or
+if audio fails. User listening approval and actual browser audio evidence remain gates.
 
 ## Boundaries and acceptance
 

@@ -1,16 +1,16 @@
 # M2 — Soundtrack arrangements and separate SFX phase
 
-Status: planned, not started. Dependency: M1 previews individually approved; explicit M2 authorization.
+Status: authorized by the user's build request; awaiting M1 integration/review closeout. All four preview motifs have listening approval.
 
 - Branch/worktree: reserve `milestone/m2-audio-production` at authorization; record actual base/head in context/PR. One PR across these phases.
-- Allowed paths: assets/audio/, tools/audio/, tools/audition.py, tools/check_audio.py, tests/audio/, docs/evidence/M2/
+- Allowed paths: assets/audio/, tools/audio/, tools/audition.py, tools/check_audio.py, tests/audio/, docs/evidence/M2/, planning/
 - Non-goals: everything outside specification and this milestone; no merge/deployment. Fixes to shared systems need an explicit in-scope rationale and regression contract.
 - Review: a distinct code-review agent PER COMMIT (including fixes), complete combined-diff context and final-head revalidation; separate independent E2E reviewer per PR AFTER code sign-off. Main triages all recommendations against AGENTS.md and records acceptance/rejection/defer rationale on PR.
-- Authority: plan only today; execute after explicit milestone authorization. Record user authorization and environment capability before phase 1.
+- Authority: user explicitly requested the full build after approving the cue map and finale. Proceed within the documented dependencies; no repeated permission request.
 
 ## Phase 2.1 — Turn approved motifs into game cues
 
-**Deliverable:** Build Tiny Boy/bridge loops and Dayman transformation/victory/title variants as needed; proposal is a finite ending cue. Establish loop points, transitions, relative mix levels and versioned source notation. No voice cloning or episode recording ripped into build.
+**Deliverable:** Build Tiny Boy/bridge loops and Dayman transformation/victory/title variants as needed; proposal accompanies the opening narration and finite ending proposal. Use ../music-cue-map.md. Dayman transformation first audition is 1.10x tempo without pitch change; user requested a slight speedup, not that exact ratio. Establish loop points, transitions, relative mix levels and versioned source notation. No voice cloning or episode recording ripped into build.
 
 **Acceptance and failure/recovery contract:** AUDIO-LOOPS: repeated loop has no click/gap or unintended silence, recognizable lead remains clear, fades do not click, proposal reaches complete cadence. Audition in desktop and minimal actual browser playback harness after user gesture. Audio-unavailable behavior remains visible/recoverable.
 
@@ -20,7 +20,25 @@ Status: planned, not started. Dependency: M1 previews individually approved; exp
 
 **Execution record (pending):** exact commands and versions; observed red assertion/exit; green and regression results; refactor rationale; commit SHA; assigned independent code reviewer; findings and main triage; final-head revalidation; E2E reviewer/result; evidence URLs. None run yet. Refactor only where it clarifies this phase's responsibilities, then rerun affected checks.
 
-## Phase 2.2 — Create distinct gameplay sound effects
+## Phase 2.2 — Compose original gap and boss music
+
+**Deliverable:** Original Cricket/Frank/Nightman boss themes, rooftop level music,
+Frank kidnapping sting and Nightman kidnapping sting. New melodies with energetic
+retro arcade/NES instrumentation. Preserve the approved map; no additional scenes.
+
+**Acceptance and failure/recovery contract:** Each cue identifiable by mood/scene,
+boss themes faster/more urgent, clear leads at combat volume, no copied game audio.
+User approves listening previews before full cue finalization. Loops are seamless;
+short stings terminate safely on skip/retry. Record tempo, instrumentation, source
+notation, exports, hashes and transition assignments for each.
+
+**Verification:** Same numerical audio and loop checks as 2.1, plus human listening.
+Any new synthesis/mixer behavior follows an observed red/green contract. Technical
+success alone cannot approve composition. No screenshots unless an audition UI changes.
+
+**Execution record:** pending; no original cues composed yet.
+
+## Phase 2.3 — Create distinct gameplay sound effects
 
 **Deliverable:** Separate phase for original NES-style jump, springy DuckTales-informed stomp, bat swing/hit, damage, cat food, Dayman meal/beam, checkpoint, hoagie, boss defeat and menu sounds. Actually audition reference before claiming match. Tune sounds against music and simultaneous combat.
 
