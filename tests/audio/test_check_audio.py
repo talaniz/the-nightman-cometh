@@ -114,3 +114,22 @@ def test_cli_selected_sample_rate(tmp_path):
     path = write_wav(tmp_path / "48000.wav", rate=48000)
     result, report = run_cli("--sample-rate", "48000", path)
     assert result.returncode == 0 and report["ok"]
+
+
+def test_invalid_riff_chunk_is_a_validation_error(tmp_path):
+    path = tmp_path / "invalid-container.wav"
+    path.write_bytes(b"RIFF" + struct.pack("<I", 12) + b"WAVEJUNK" + struct.pack("<I", 100))
+    with pytest.raises(audio.AudioValidationError, match="cannot read WAV"):
+        audio.inspect_wav(path)
+
+
+def test_cli_invalid_riff_keeps_valid_batch_report(tmp_path):
+    write_wav(tmp_path / "valid.wav")
+    (tmp_path / "invalid-container.wav").write_bytes(
+        b"RIFF" + struct.pack("<I", 12) + b"WAVEJUNK" + struct.pack("<I", 100))
+    result = subprocess.run([sys.executable, str(TOOL), str(tmp_path)],
+                            text=True, capture_output=True)
+    assert result.stderr == "", "malformed input must not crash with a traceback"
+    report = json.loads(result.stdout)
+    assert result.returncode == 1 and report["ok"] is False
+    assert len(report["files"]) == 1 and len(report["errors"]) == 1

@@ -58,6 +58,9 @@ def inspect_wav(path: Path, sample_rate: int = 44100) -> dict:
                     consumed += count
                 if not peak:
                     raise AudioValidationError("silent preview")
+    except RuntimeError as exc:
+        # Python wave raises RuntimeError for RIFF chunks that seek past a boundary.
+        raise AudioValidationError("cannot read WAV: invalid RIFF chunk boundary") from exc
     except (OSError, EOFError, wave.Error) as exc:
         raise AudioValidationError(f"cannot read WAV: {exc}") from exc
     return {

@@ -27,3 +27,12 @@ Full-scale detection is a conservative digital-rail check; it cannot detect all 
 No audition player, synthesizer, score, melody preview or approved audio has been delivered yet. No game/browser/controller test has run.
 Screenshot evidence is not applicable: no UI or game interaction changes.
 Independent reviewers post their exact-head verdicts on the draft milestone PR. Review of this increment cannot approve unfinished M1.
+
+## Independent review correction
+
+Reviewer /root/review_m1_15c1dad reported a RIFF container with a JUNK chunk extending beyond the declared boundary. Python wave raises RuntimeError for that case; it escaped the validation error conversion and crashed a mixed-batch CLI run. Main accepted this P2 finding as directly inside the malformed-input contract.
+
+Added direct API and mixed-batch CLI regressions before fixing:
+PYTHONDONTWRITEBYTECODE=1 /tmp/nightman-m1-tools/bin/python -m pytest tests/audio -q -k invalid_riff --tb=short.
+Observed red: 2 failed / 17 deselected, including the explicit no-traceback assertion.
+Converted that parser exception into an actionable validation error; valid batch members still appear in the JSON report. Final suite: 19 passed. New fix commit requires its own independent reviewer and original reviewer final-head revalidation.
