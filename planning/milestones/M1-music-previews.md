@@ -1,12 +1,12 @@
 # M1 — Music recognition previews
 
-Status: planned, not started. Dependency: M0 planning accepted; explicit M1 authorization.
+Status: all four musical previews approved by the user; preservation/integration and independent reviews in progress. See ../M1-integration-contract.md and ../context.md.
 
-- Branch/worktree: reserve `milestone/m1-music-previews` at authorization; record actual base/head in context/PR. One PR across these phases.
+- Branch/worktree: `milestone/m1-music-previews`; actual worktree/base recorded in context. One PR across these phases.
 - Allowed paths: assets/audio/previews/, assets/audio/manifest.json, tools/audio/, tools/check_audio.py, tools/audition.py, tests/audio/, docs/evidence/M1/, planning/
 - Non-goals: everything outside specification and this milestone; no merge/deployment. Fixes to shared systems need an explicit in-scope rationale and regression contract.
 - Review: a distinct code-review agent PER COMMIT (including fixes), complete combined-diff context and final-head revalidation; separate independent E2E reviewer per PR AFTER code sign-off. Main triages all recommendations against AGENTS.md and records acceptance/rejection/defer rationale on PR.
-- Authority: plan only today; execute after explicit milestone authorization. Record user authorization and environment capability before phase 1.
+- Authority: user authorized proceeding with the plan on 2026-10-11. Environment and remaining listening gap are recorded in context.
 
 ## Phase 1.1 — Hear the reference and prove Dayman
 
@@ -18,7 +18,7 @@ Status: planned, not started. Dependency: M0 planning accepted; explicit M1 auth
 
 **Evidence:** Source log, preview files/hashes, waveform checks and actual user listening decision. Screenshot evidence N/A unless an audition UI is introduced, then capture controls/loading/error at specified viewports.
 
-**Execution record (pending):** exact commands and versions; observed red assertion/exit; green and regression results; refactor rationale; commit SHA; assigned independent code reviewer; findings and main triage; final-head revalidation; E2E reviewer/result; evidence URLs. None run yet. Refactor only where it clarifies this phase's responsibilities, then rerun affected checks.
+**Execution record:** See ../../docs/evidence/M1/approved-previews.md for actual approvals, preservation tests and limits. Exact-head independent reviews are recorded in PR #10; they remain required before readiness.
 
 ## Phase 1.2 — Approve the remaining three motifs
 
@@ -30,7 +30,7 @@ Status: planned, not started. Dependency: M0 planning accepted; explicit M1 auth
 
 **Evidence:** Four named approved preview versions and source/cue references. Independent reviewer checks traceability and listens when capable; disclose unavailable playback.
 
-**Execution record (pending):** exact commands and versions; observed red assertion/exit; green and regression results; refactor rationale; commit SHA; assigned independent code reviewer; findings and main triage; final-head revalidation; E2E reviewer/result; evidence URLs. None run yet. Refactor only where it clarifies this phase's responsibilities, then rerun affected checks.
+**Execution record:** See ../../docs/evidence/M1/approved-previews.md for actual approvals, preservation tests and limits. Exact-head independent reviews are recorded in PR #10; they remain required before readiness.
 
 ## Milestone gate
 

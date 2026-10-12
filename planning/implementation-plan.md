@@ -1,12 +1,12 @@
 # Full implementation plan
 
-Status: authorized planning, not implementation. All milestones below are pending. One branch/worktree and draft PR per milestone, phases committed separately when each provides a coherent reviewable result. EACH commit receives a distinct code reviewer; each PR receives a separate E2E reviewer after code sign-off. Do not merge automatically.
+Status: user authorized proceeding with the plan on 2026-10-11. M1 is in progress; later milestones remain pending their dependencies. One branch/worktree and draft PR per milestone, phases committed separately when each provides a coherent reviewable result. EACH commit receives a distinct code reviewer; each PR receives a separate E2E reviewer after code sign-off. Do not merge automatically.
 
 | Milestone | User-visible result | Build phases | Dependencies |
 | --- | --- | --- | --- |
 | M0 — Planning baseline | Agreed scope, phase contracts, repository and review gates | Specification; milestone plans; independent documentary reviews | Current task |
 | [M1 — Music recognition previews](milestones/M1-music-previews.md) | Four recognizable short chiptune previews, Dayman first | 1.1 reference and Dayman proof; 1.2 other three previews and listening decisions | Approved M0 and explicit M1 authorization |
-| [M2 — Music and sound production](milestones/M2-audio-production.md) | Approved loops/cues and coherent original effects | 2.1 soundtrack arrangements; 2.2 SFX and browser audio audition | User-approved M1 |
+| [M2 — Music and sound production](milestones/M2-audio-production.md) | Approved loops/cues and coherent original effects | 2.1 approved-motif arrangements; 2.2 original gap/boss cues; 2.3 SFX and browser audition | User-approved M1 |
 | [M3 — Browser foundation](milestones/M3-browser-foundation.md) | Playable keyboard training slice and complete shell | 3.1 reproducible build/real-browser harness; 3.2 movement/combat/health/flags; 3.3 menus/dialogue/audio/save/QA | M1 accepted; M2 artifacts before 3.3 audio sign-off |
 | [M4 — Coffee-shop act](milestones/M4-coffee-shop.md) | Full first act, intro and Cricket | 4.1 production art + opening + approach; 4.2 boss and Frank transition | M2, M3 |
 | [M5 — Underbridge act](milestones/M5-underbridge.md) | Crew, walking guns, Frank and Nightman abduction | 5.1 approach; 5.2 Frank battle and transition | M4 |

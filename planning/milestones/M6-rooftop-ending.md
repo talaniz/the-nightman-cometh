@@ -22,7 +22,7 @@ Status: planned, not started. Dependency: M5; explicit M6 authorization.
 
 ## Phase 6.2 — Finish complete narrative and progression
 
-**Deliverable:** Implement Charlie proposal cue and stills, ACTUAL Waitress rejection, Dee callback, Charlie low/high hand rant, hard cut ending/title with Dayman music. All three acts chain correctly; credits/replay return clear; narrative timing supports readable bubbles and full song cue. Resolve campaign-ad typography and visual consistency across game.
+**Deliverable:** Implement Charlie proposal cue and stills, ACTUAL Waitress rejection, Charlie's "Well, see you tomorrow", Dee callback, Charlie's "Dee, I'm right here right now" (hand low) / "but I'm about to go here!" (hand high), then end and Dayman credits. All three acts chain correctly; credits/replay return clear; narrative timing supports readable bubbles and full song cue. Resolve campaign-ad typography and visual consistency across game.
 
 **Acceptance and failure/recovery contract:** FULL-KEYBOARD: title to credits all acts, no duplicate transition or trapped dialogue, skip/replay coherent, ending differentiates Dee vs actual Waitress, clocks paused during scene transitions, save/restart choices clear. User checks tune/context and story fidelity.
 
