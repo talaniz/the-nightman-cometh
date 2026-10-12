@@ -1,6 +1,6 @@
 # M1 — Music recognition previews
 
-Status: authorized and in progress; phase 1.1 technical validation increment implemented, music acceptance pending. See ../M1-phase-1.1-contract.md and ../context.md.
+Status: authorized and in progress; phase 1.1 has validation tooling and an unapproved Dayman listening probe; recognition/correction and music acceptance pending. See ../M1-phase-1.1-contract.md and ../context.md.
 
 - Branch/worktree: `milestone/m1-music-previews`; actual worktree/base recorded in context. One PR across these phases.
 - Allowed paths: assets/audio/previews/, assets/audio/manifest.json, tools/audio/, tools/check_audio.py, tools/audition.py, tests/audio/, docs/evidence/M1/, planning/

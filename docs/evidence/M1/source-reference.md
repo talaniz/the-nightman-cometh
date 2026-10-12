@@ -11,3 +11,7 @@ These facts establish access and technical format, not listening or transcriptio
 Actual source listening: NOT DONE. Dayman cue start/end and notes: NOT VERIFIED.
 This session has no audio-listening/perception capability. Do not substitute a guessed melody or claim source audition from successful decoding. M1 phase 1.1 musical work needs an audio-capable session/tool or a musician-verified transcription plus a documented human listening comparison. User approval of the preview remains mandatory.
 Do not request the user upload the same source just to solve this: the source has already been retrieved; the missing capability is listening/transcription.
+
+## Superseded on 2026-10-12
+
+The prior scene does not contain the Dayman chorus. See dayman-v1.md for the correct FX source, successful local analysis and unapproved synthesized probe. User authorized automatic transcription plus human listening; agent auditory perception is not claimed.

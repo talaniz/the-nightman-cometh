@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "unapproved-transcription-probe",
+  "human_listening_approval": null,
+  "previews": [
+    {
+      "id": "dayman-v1-chip",
+      "file": "previews/dayman-v1-chip.wav",
+      "sha256": "f092f26c2645ce9562353460971fa3e63dd7abfdf40841db8c4e2f62af3587bc",
+      "duration_seconds": 16,
+      "sample_rate": 44100,
+      "approval": "pending",
+      "score": "previews/dayman-v1.json",
+      "source": "https://www.youtube.com/watch?v=VCvr6tzZPTU",
+      "source_range_seconds": [
+        0,
+        15.22
+      ]
+    },
+    {
+      "id": "dayman-v1-melody",
+      "file": "previews/dayman-v1-melody.wav",
+      "sha256": "6736ca64e06abb07b79fbad1721c1c81a72b386e8ca540d71c2dec6010ced0d9",
+      "duration_seconds": 16,
+      "sample_rate": 44100,
+      "approval": "pending",
+      "score": "previews/dayman-v1.json",
+      "source": "https://www.youtube.com/watch?v=VCvr6tzZPTU",
+      "source_range_seconds": [
+        0,
+        15.22
+      ]
+    }
+  ]
+}

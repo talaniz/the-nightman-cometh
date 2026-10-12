@@ -10,6 +10,12 @@
 - Current contract: M1-phase-1.1-contract.md. Evidence: ../docs/evidence/M1/validation.md and ../docs/evidence/M1/source-reference.md.
 - Python 3.11.2 / aarch64; FFmpeg available. Isolated temporary test/reference tools under /tmp/nightman-m1-tools. Runtime validator needs no third-party dependencies.
 - Technical verification: 9 meaningful red cases, then 17 tests passed; review reproduced two RIFF regressions, followed by 19 tests passing after the fix; diff check passes. Independent review status and exact SHAs live in the milestone PR comments.
-- Remaining phase work: actual source listening/transcription, 15–30 second Dayman previews and user listening approval. Source file is available locally, but this session lacks audio-listening capability. No melody/composition or audition player delivered. Do not mark M1 complete, close its issue, or make its PR ready.
-- Next resumption: resolve listening/transcription capability, then finish phase 1.1. Do not expand to the other three motifs before Dayman approval or later game milestones before the documented music dependency.
+- Historical status before the 2026-10-12 workflow authorization: actual source listening/transcription, 15–30 second Dayman previews and user listening approval. Source file is available locally, but this session lacks audio-listening capability. No melody/composition or audition player delivered. Do not mark M1 complete, close its issue, or make its PR ready.
+- Prior resumption point (superseded below): resolve listening/transcription capability, then finish phase 1.1. Do not expand to the other three motifs before Dayman approval or later game milestones before the documented music dependency.
 - No production UI screenshots apply to this command-line increment. No game tests, physical USB tests or final playthroughs have run.
+
+## Current resumption — 2026-10-12
+
+User approved local transcription, synthesis and human listening iteration. Source was corrected to FX Dayman highlight VCvr6tzZPTU. Local Basic Pitch/ONNX, Demucs and CREPE run on the Pi; extraction is still musically uncertain. Dayman v1 is an explicitly unapproved 16-second probe (plain sine and chip lead, score and editable MIDI). See ../docs/evidence/M1/dayman-v1.md and ../assets/audio/manifest.json. No source audio/stems are committed.
+
+39 tests pass; actual preview WAV checks pass. Await user recognition/correction and timbre feedback, not further implementation permission. Do not expand to other songs or mark M1 complete. PR #10 remains draft; all prior code reviewers must revalidate final head, a distinct reviewer handles this commit, and separate E2E review must check actual rendering/artifacts without claiming to have listened.
