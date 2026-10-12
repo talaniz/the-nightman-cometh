@@ -1,6 +1,6 @@
 # Full implementation plan
 
-Status: authorized planning, not implementation. All milestones below are pending. One branch/worktree and draft PR per milestone, phases committed separately when each provides a coherent reviewable result. EACH commit receives a distinct code reviewer; each PR receives a separate E2E reviewer after code sign-off. Do not merge automatically.
+Status: user authorized proceeding with the plan on 2026-10-11. M1 is in progress; later milestones remain pending their dependencies. One branch/worktree and draft PR per milestone, phases committed separately when each provides a coherent reviewable result. EACH commit receives a distinct code reviewer; each PR receives a separate E2E reviewer after code sign-off. Do not merge automatically.
 
 | Milestone | User-visible result | Build phases | Dependencies |
 | --- | --- | --- | --- |

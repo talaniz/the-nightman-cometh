@@ -4,7 +4,7 @@
 
 A short three-level single-player side-scrolling browser game, Python with pygame-ce packaged by pygbag. Runs on desktop keyboard; a separately planned USB-controller milestone completes supported input. Philadelphia rendered as homemade stage scenery, retro Capcom NES gameplay readability with richer pixel portraits from the supplied title reference. No strict NES hardware restriction. Initial target play length 10–15 minutes is provisional and must be measured.
 
-Current request is planning and repository setup only. No executable behavior exists. The title image and generated mockups are concepts, not production sprites, collision geometry, frame budgets or evidence of a functioning game.
+The user authorized proceeding with the plan on 2026-10-11. M1 audio validation tooling is in progress; no executable game exists. The title image and generated mockups are concepts, not production sprites, collision geometry, frame budgets or evidence of a functioning game.
 
 ## Cast and visual contract
 

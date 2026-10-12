@@ -1,12 +1,12 @@
 # M1 — Music recognition previews
 
-Status: planned, not started. Dependency: M0 planning accepted; explicit M1 authorization.
+Status: authorized and in progress; phase 1.1 technical validation increment implemented, music acceptance pending. See ../M1-phase-1.1-contract.md and ../context.md.
 
-- Branch/worktree: reserve `milestone/m1-music-previews` at authorization; record actual base/head in context/PR. One PR across these phases.
+- Branch/worktree: `milestone/m1-music-previews`; actual worktree/base recorded in context. One PR across these phases.
 - Allowed paths: assets/audio/previews/, assets/audio/manifest.json, tools/audio/, tools/check_audio.py, tools/audition.py, tests/audio/, docs/evidence/M1/, planning/
 - Non-goals: everything outside specification and this milestone; no merge/deployment. Fixes to shared systems need an explicit in-scope rationale and regression contract.
 - Review: a distinct code-review agent PER COMMIT (including fixes), complete combined-diff context and final-head revalidation; separate independent E2E reviewer per PR AFTER code sign-off. Main triages all recommendations against AGENTS.md and records acceptance/rejection/defer rationale on PR.
-- Authority: plan only today; execute after explicit milestone authorization. Record user authorization and environment capability before phase 1.
+- Authority: user authorized proceeding with the plan on 2026-10-11. Environment and remaining listening gap are recorded in context.
 
 ## Phase 1.1 — Hear the reference and prove Dayman
 
