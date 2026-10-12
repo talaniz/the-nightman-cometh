@@ -46,3 +46,21 @@ production loops/fades, faster Dayman audition, SFX and actual browser playback
 remain M2 work. No executable game or UI changed, so screenshots are N/A.
 Per-commit review follows publication; milestone E2E happens after complete code
 review. PR remains draft even if this increment receives scoped code sign-off.
+
+
+## Accepted review finding: boundary-ending percussion
+
+Independent reviewer /root/review_m2_3273338 identified that a noise snap at the
+exact end of the cue could violate the promised zero endpoint. Main accepted it
+as a valid in-scope correctness issue; no extra features or M1 timbre changes.
+Reproduction: 120 BPM, one beat, only a snap from beat 0.96 to 1.0. New regression
+`test_noise_snap_at_cue_end_has_safe_zero_endpoint` failed with `130 == 0` before
+the fix (1 observed failure). The M2-only render wrapper now applies a 5 ms end
+ramp; the frozen approved M1 synthesis function is untouched.
+
+The full audio suite then passed **70 tests (22.80 seconds)**. Actual CLI rerender
+of all six audition scores preserved every complete WAV SHA-256, so the existing
+Drive auditions remain current. No new user audition needed for this technical
+fix because those bytes did not change. Original composition approval remains
+pending. A distinct fix-commit reviewer and original-reviewer final-head
+revalidation are required before scoped workflow review.

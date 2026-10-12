@@ -69,3 +69,12 @@ def test_event_count_time_order_and_duration_limits():
     score.update(bpm=40, beats=128)
     with pytest.raises(ValueError):
         render_score(score)
+
+
+def test_noise_snap_at_cue_end_has_safe_zero_endpoint():
+    score = fixture()
+    score['beats'] = 1
+    score['parts'] = [[], [], [{'start': .96, 'end': 1, 'midi': 60}]]
+    pcm = np.frombuffer(render_score(score), dtype='<i2')
+    assert np.max(abs(pcm.astype(np.int32))) > 0
+    assert pcm[-1] == 0

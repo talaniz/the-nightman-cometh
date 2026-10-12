@@ -49,7 +49,13 @@ def compile_score(score):
 
 def render_score(score):
     duration, parts = compile_score(score)
-    return render_ensemble(parts, duration)
+    # The frozen recipe's noise snaps can finish above zero if cut by the cue
+    # boundary. Only this new arrangement path applies a 5 ms export end ramp.
+    import numpy as np
+    samples = np.frombuffer(render_ensemble(parts, duration), dtype='<i2').copy()
+    count = min(len(samples), round(.005 * RATE))
+    samples[-count:] = np.rint(samples[-count:] * np.linspace(1, 0, count))
+    return samples.tobytes()
 
 
 def main(argv=None):

@@ -51,3 +51,12 @@ CLI rerender/failure/recovery and WAV checks pass. M1 assets remain unchanged.
 Human approval of six new cues is pending. Next: distinct per-commit review and
 private Drive audition delivery; then remaining 2.1/2.2/2.3 work and final separate
 M2 E2E/browser acceptance. No UI screenshots apply to this increment.
+
+
+M2 PR: https://github.com/talaniz/the-nightman-cometh/pull/11 (draft). Six auditions
+uploaded privately to Drive and metadata verified; human feedback requested.
+First code review found a valid cue-end noise-snap boundary issue. Main accepted;
+observed regression failed 130 != 0, then M2-only 5 ms end ramp fixed it. 70 audio
+tests pass and all six actual CLI WAV hashes remain unchanged. New fix reviewer,
+original reviewer revalidation and separate workflow review pending. Full M2
+music production/browser/SFX/listening gates still outstanding.

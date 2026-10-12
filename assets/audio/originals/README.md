@@ -32,6 +32,8 @@ The output must be new; the CLI refuses existing files or symlinks. PCM16 mono,
 44100 Hz, deterministic using the recorded NumPy recipe. Beat timing preserves
 pitch when BPM changes. Bounds: 40–240 BPM, 1–128 beats, at most 60 seconds and
 1000 events; input at most 1 MiB. Rendered note length must be at least 10 ms.
+A 5 ms end ramp applies only to these new arrangements, ensuring a noise snap
+cut by the cue boundary ends at zero. The frozen M1 renderer is unchanged.
 M1's `tools/check_audio.py` still intentionally enforces its 15–30 second preview
 contract, so it is not the validator for these short stings/longer audition reels.
 Use the M2 evidence report and tests; expanded production validation is pending.
