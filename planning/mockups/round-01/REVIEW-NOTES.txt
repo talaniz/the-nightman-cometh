@@ -1,0 +1,5 @@
+Planning concepts only. Generated with built-in image generation. No game implementation.
+A/B: opening and kidnapping storyboard; music cue is text only.
+C: replace HUD hoagie with milksteak; preserve held Rat Bat in normal movement; remove invented Shadynasty subtitle; bridge crew likeness needs refinement.
+D: generator-added quotes are not approved script; crew likeness and bat continuity need refinement.
+Proposed QA passwords: PAINTDOG level 1; TROLLTOLL level 2; NIGHTMAN level 3. Start with full health and Rat Bat. Separate QA toggles for Dayman, invincibility, boss checkpoints; do not overwrite ordinary progress.

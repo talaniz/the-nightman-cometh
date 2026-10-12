@@ -1,0 +1,4 @@
+Planning concept art only, generated with built-in image tool.
+E separates normal approach sections from boss arenas; no regular enemies in boss panels.
+F curtain transitions are opening/end only. F2 bat points down and could imply pogo attack: intended mechanic remains foot stomp, bat carried. F3 golden hit flash is visually too similar to Dayman transformation; reduce to brief neutral flash in final assets.
+Bridge crew likenesses remain approximate. F4 demonstrates curtain closure, not a replacement for the scripted Frank kidnapping transition.
