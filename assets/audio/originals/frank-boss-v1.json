@@ -6,7 +6,7 @@
   "beats": 64,
   "loop_beats": 32,
   "audition_cycles": 2,
-  "approval": "pending human listening",
+  "approval": "approved by user: all six sound fine",
   "mood": "Heavy C-minor comic stomp; syncopated repeated-note hook",
   "provenance": "Original composition for this project; no game or episode audio imported.",
   "parts": [

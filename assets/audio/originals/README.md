@@ -40,3 +40,9 @@ Use the M2 evidence report and tests; expanded production validation is pending.
 
 No UI or browser audio player is included in this increment. Drive delivery is
 private; no private sharing links are published here.
+
+
+## Later listening decision
+The user approved all six original compositions: "those all sound fine". Prior
+pending-listening text above is historical. Production loop/codec and whole-game
+acceptance remain separate. No approved original WAV bytes changed.

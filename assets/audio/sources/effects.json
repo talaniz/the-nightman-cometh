@@ -1,0 +1,86 @@
+{
+  "jump": {
+    "duration": 0.16,
+    "start_hz": 240,
+    "end_hz": 880,
+    "noise": 0.03,
+    "seed": 1
+  },
+  "stomp": {
+    "duration": 0.22,
+    "start_hz": 1300,
+    "end_hz": 120,
+    "noise": 0.08,
+    "seed": 2
+  },
+  "bat-swing": {
+    "duration": 0.12,
+    "start_hz": 900,
+    "end_hz": 220,
+    "noise": 0.6,
+    "seed": 3
+  },
+  "bat-hit": {
+    "duration": 0.1,
+    "start_hz": 230,
+    "end_hz": 80,
+    "noise": 0.7,
+    "seed": 4
+  },
+  "hurt": {
+    "duration": 0.32,
+    "start_hz": 420,
+    "end_hz": 90,
+    "noise": 0.3,
+    "seed": 5
+  },
+  "cat-food": {
+    "duration": 0.22,
+    "start_hz": 520,
+    "end_hz": 1040,
+    "noise": 0.02,
+    "seed": 6
+  },
+  "meal": {
+    "duration": 0.6,
+    "start_hz": 260,
+    "end_hz": 1560,
+    "noise": 0.04,
+    "seed": 7
+  },
+  "beam": {
+    "duration": 0.13,
+    "start_hz": 1800,
+    "end_hz": 440,
+    "noise": 0.07,
+    "seed": 8
+  },
+  "checkpoint": {
+    "duration": 0.48,
+    "start_hz": 392,
+    "end_hz": 1176,
+    "noise": 0.02,
+    "seed": 9
+  },
+  "hoagie": {
+    "duration": 0.18,
+    "start_hz": 160,
+    "end_hz": 320,
+    "noise": 0.25,
+    "seed": 10
+  },
+  "boss-defeat": {
+    "duration": 1.2,
+    "start_hz": 440,
+    "end_hz": 55,
+    "noise": 0.35,
+    "seed": 11
+  },
+  "menu": {
+    "duration": 0.06,
+    "start_hz": 660,
+    "end_hz": 880,
+    "noise": 0,
+    "seed": 12
+  }
+}

@@ -60,3 +60,21 @@ observed regression failed 130 != 0, then M2-only 5 ms end ramp fixed it. 70 aud
 tests pass and all six actual CLI WAV hashes remain unchanged. New fix reviewer,
 original reviewer revalidation and separate workflow review pending. Full M2
 music production/browser/SFX/listening gates still outstanding.
+
+
+## Current M2 production work
+User approved all six original compositions and authorized the remaining M2 work.
+Previous pending approval paragraphs are superseded. PR #11 remains on the same
+branch/worktree; prior scoped code/workflow reviews passed at 82fbfd8. New contract:
+M2-production-contract.md. Preserve approved WAV bytes; expanded phrases, faster
+Dayman and SFX require new listening. Main implements; new per-commit review and
+prior final-head revalidation follow. No merge/deploy authorization.
+
+
+Production candidates and twelve effects now exist in assets/audio/production/.
+Actual pygbag sound-check app and repeatable Chromium runner are implemented.
+Native tools /tmp/nightman-m2-tools; actual browser candidate /tmp/nightman-audition-final.
+New listening samples delivered privately through Drive; no private links in Git.
+Current screenshots/manifest at docs/evidence/M2/browser; evidence includes source
+fingerprint. Review gates must be renewed for the production commit. M2 remains
+draft until new-audio human listening and browser-hearing gates are satisfied.

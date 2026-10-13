@@ -64,3 +64,9 @@ Drive auditions remain current. No new user audition needed for this technical
 fix because those bytes did not change. Original composition approval remains
 pending. A distinct fix-commit reviewer and original-reviewer final-head
 revalidation are required before scoped workflow review.
+
+
+## Later listening decision
+The user approved all six original compositions: "those all sound fine". Prior
+pending-listening text above is historical. Production loop/codec and whole-game
+acceptance remain separate. No approved original WAV bytes changed.

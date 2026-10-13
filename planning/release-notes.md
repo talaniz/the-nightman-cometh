@@ -27,3 +27,14 @@ WAV auditions and a bounded deterministic renderer using the approved ensemble
 palette. Includes pitch-preserving tempo and invalid-input checks. Approved M1
 assets are unchanged. All new compositions await listening approval; full game
 cues, runtime playback and SFX remain in progress. No UI changed.
+
+
+# M2 production audio and actual browser audition
+
+Records approval of all six original cues. Adds full Dayman/proposal source
+phrases, two level loops, a pitch-preserving faster Dayman variant, twelve original
+effects and WAV/Ogg exports. A pygame/pygbag sound-check app verifies gesture
+unlock, independent volume/mute, crossfades, pause/blur, scene restoration and
+missing-file retry in actual Chromium. Approved source previews and original
+masters remain unchanged. New arrangements/effects await listening; this is
+not a playable game or full M2/final-game acceptance.

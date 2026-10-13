@@ -75,6 +75,11 @@ def validate_score(notes, duration, style):
 def render(notes, duration, style="sine"):
     """Return deterministic little-endian PCM16 mono with 10/20ms edge ramps."""
     validate_score(notes, duration, style)
+    return synthesize_lead(notes, duration, style)
+
+
+def synthesize_lead(notes, duration, style="chip"):
+    """Internal oscillator for already validated notes; shared by production."""
     samples = array.array("h", [0]) * round(duration * RATE)
     for note in notes:
         start, stop = round(note["start"] * RATE), round(note["end"] * RATE)
