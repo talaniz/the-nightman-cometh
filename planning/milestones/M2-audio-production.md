@@ -1,8 +1,8 @@
 # M2 — Soundtrack arrangements and separate SFX phase
 
-Status: authorized by the user's build request; awaiting M1 integration/review closeout. All four preview motifs have listening approval.
+Status: in progress. M1 accepted at 001cc40559b9e4b0e9b9a99b738a79c22a0693d1; PR #10 non-draft, unmerged. Six original compositions approved by user. Production exports/SFX and actual browser sound-check delivered; final new-audio listening and current review pending.
 
-- Branch/worktree: reserve `milestone/m2-audio-production` at authorization; record actual base/head in context/PR. One PR across these phases.
+- Branch/worktree: `milestone/m2-audio-production` at `/home/palpatine/projects/the-nightman-cometh-m2`, stacked on the exact accepted M1 head; see context/PR. One PR across these phases.
 - Allowed paths: assets/audio/, tools/audio/, tools/audition.py, tools/check_audio.py, tests/audio/, docs/evidence/M2/, planning/
 - Non-goals: everything outside specification and this milestone; no merge/deployment. Fixes to shared systems need an explicit in-scope rationale and regression contract.
 - Review: a distinct code-review agent PER COMMIT (including fixes), complete combined-diff context and final-head revalidation; separate independent E2E reviewer per PR AFTER code sign-off. Main triages all recommendations against AGENTS.md and records acceptance/rejection/defer rationale on PR.
@@ -36,7 +36,7 @@ notation, exports, hashes and transition assignments for each.
 Any new synthesis/mixer behavior follows an observed red/green contract. Technical
 success alone cannot approve composition. No screenshots unless an audition UI changes.
 
-**Execution record:** pending; no original cues composed yet.
+**Execution record:** first audition increment delivered; see ../M2-original-preview-contract.md and ../../docs/evidence/M2/original-auditions.md. Six original scores/WAVs, 19 observed red cases followed by 69 passing audio tests and actual CLI recovery/reproduction. This audition step is brought forward to gather feedback before production arrangements/loops. Human listening, production finalization and milestone E2E remain pending.
 
 ## Phase 2.3 — Create distinct gameplay sound effects
 
@@ -53,3 +53,12 @@ success alone cannot approve composition. No screenshots unless an audition UI c
 ## Milestone gate
 
 Attach required evidence and release notes before final review. Test actual user workflows; unit tests/source inspection alone do not satisfy E2E. Missing environment/hardware/audio access is explicit blocked evidence. Follow planning/verification.md for screenshot dimensions, artifact fingerprints and final-candidate rules. Mark PR ready only after exact-final-head review gates; no automatic merge. Next milestone starts only with applicable authorization and dependencies satisfied.
+
+
+## Production increment
+See ../M2-production-contract.md, ../../tools/audio/PRODUCTION.md and
+../../docs/evidence/M2/production.md. Phases 2.1–2.3 have implemented audition
+artifacts and runtime checks. Human approval of expanded/faster/looped audio and
+SFX, plus actual human browser hearing, remain open. Do not mark M2 complete from
+headless tests or the prior six-composition approval. Final whole-game sign-off
+remains reserved by the user.

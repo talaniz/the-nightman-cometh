@@ -3,6 +3,7 @@ import argparse
 import array
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import sys
@@ -13,8 +14,12 @@ class AudioValidationError(ValueError):
     """A preview does not meet the documented PCM contract."""
 
 
-def inspect_wav(path: Path, sample_rate: int = 44100) -> dict:
-    """Inspect a 15–30 second PCM16 mono/stereo preview without playing it."""
+def inspect_wav(path: Path, sample_rate: int = 44100, min_duration: float = 15, max_duration: float = 30) -> dict:
+    """Inspect bounded PCM16 audio; default remains the M1 15–30 second window."""
+    if (type(min_duration) not in (int, float) or type(max_duration) not in (int, float)
+            or not math.isfinite(min_duration) or not math.isfinite(max_duration)
+            or not .02 <= min_duration <= max_duration <= 120):
+        raise AudioValidationError("invalid duration bounds (0.02–120 seconds)")
     path = Path(path)
     if path.is_symlink():
         raise AudioValidationError("symlink inputs are not supported")
@@ -25,8 +30,8 @@ def inspect_wav(path: Path, sample_rate: int = 44100) -> dict:
     try:
         with path.open("rb") as stream:
             # Bound file size, including ancillary chunks, before parsing or hashing.
-            if os.fstat(stream.fileno()).st_size > 8 * 1024 * 1024:
-                raise AudioValidationError("file exceeds 8 MiB preview limit")
+            if os.fstat(stream.fileno()).st_size > max(8 * 1024 * 1024, max_duration * sample_rate * 4 + 1024 * 1024):
+                raise AudioValidationError("file exceeds bounded PCM size limit")
             digest = hashlib.file_digest(stream, "sha256").hexdigest()
             stream.seek(0)
             with wave.open(stream, "rb") as reader:
@@ -39,8 +44,8 @@ def inspect_wav(path: Path, sample_rate: int = 44100) -> dict:
                     raise AudioValidationError("expected mono or stereo")
                 if rate != sample_rate:
                     raise AudioValidationError(f"sample rate {rate}; expected {sample_rate}")
-                if not 15 * rate <= frames <= 30 * rate:
-                    raise AudioValidationError("duration must be 15–30 seconds")
+                if not min_duration * rate <= frames <= max_duration * rate:
+                    raise AudioValidationError(f"duration must be {min_duration:g}–{max_duration:g} seconds")
                 peak = 0
                 consumed = 0
                 while consumed < frames:
@@ -97,13 +102,15 @@ def collect_files(inputs):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sample-rate", type=int, choices=(44100, 48000), default=44100)
+    parser.add_argument("--min-duration", type=float, default=15)
+    parser.add_argument("--max-duration", type=float, default=30)
     parser.add_argument("paths", nargs="+", help="WAV files or directories to inspect")
     args = parser.parse_args(argv)
     files, errors = collect_files(args.paths)
     reports = []
     for path in files:
         try:
-            reports.append(inspect_wav(path, args.sample_rate))
+            reports.append(inspect_wav(path, args.sample_rate, args.min_duration, args.max_duration))
         except AudioValidationError as exc:
             errors.append({"path": str(path), "error": str(exc)})
     print(json.dumps({"ok": not errors, "files": reports, "errors": errors}, indent=2))

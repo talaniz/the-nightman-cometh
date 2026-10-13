@@ -1,0 +1,174 @@
+{
+  "schema": "ensemble-beats-v1",
+  "title": "Not Again",
+  "scene": "nightman-kidnap",
+  "bpm": 128,
+  "beats": 8,
+  "approval": "approved by user: all six sound fine",
+  "mood": "Rising diminished alarm followed by a dark D-minor landing",
+  "finite": true,
+  "provenance": "Original composition for this project; no game or episode audio imported.",
+  "parts": [
+    [
+      {
+        "start": 0,
+        "end": 0.45,
+        "midi": 69
+      },
+      {
+        "start": 0.5,
+        "end": 0.95,
+        "midi": 73
+      },
+      {
+        "start": 1,
+        "end": 1.45,
+        "midi": 76
+      },
+      {
+        "start": 1.5,
+        "end": 1.95,
+        "midi": 79
+      },
+      {
+        "start": 2,
+        "end": 2.8,
+        "midi": 85
+      },
+      {
+        "start": 3,
+        "end": 3.8,
+        "midi": 81
+      },
+      {
+        "start": 4,
+        "end": 4.4,
+        "midi": 79
+      },
+      {
+        "start": 4.5,
+        "end": 4.9,
+        "midi": 76
+      },
+      {
+        "start": 5,
+        "end": 5.4,
+        "midi": 73
+      },
+      {
+        "start": 5.5,
+        "end": 5.9,
+        "midi": 69
+      },
+      {
+        "start": 6,
+        "end": 7.6,
+        "midi": 74
+      }
+    ],
+    [
+      {
+        "start": 0,
+        "end": 1.8,
+        "midi": 33
+      },
+      {
+        "start": 0,
+        "end": 1.8,
+        "midi": 57
+      },
+      {
+        "start": 0,
+        "end": 1.8,
+        "midi": 61
+      },
+      {
+        "start": 0,
+        "end": 1.8,
+        "midi": 64
+      },
+      {
+        "start": 2,
+        "end": 3.8,
+        "midi": 37
+      },
+      {
+        "start": 2,
+        "end": 3.8,
+        "midi": 61
+      },
+      {
+        "start": 2,
+        "end": 3.8,
+        "midi": 64
+      },
+      {
+        "start": 2,
+        "end": 3.8,
+        "midi": 67
+      },
+      {
+        "start": 4,
+        "end": 5.8,
+        "midi": 33
+      },
+      {
+        "start": 4,
+        "end": 5.8,
+        "midi": 57
+      },
+      {
+        "start": 4,
+        "end": 5.8,
+        "midi": 61
+      },
+      {
+        "start": 4,
+        "end": 5.8,
+        "midi": 64
+      },
+      {
+        "start": 6,
+        "end": 7.7,
+        "midi": 38
+      },
+      {
+        "start": 6,
+        "end": 7.7,
+        "midi": 62
+      },
+      {
+        "start": 6,
+        "end": 7.7,
+        "midi": 65
+      },
+      {
+        "start": 6,
+        "end": 7.7,
+        "midi": 69
+      }
+    ],
+    [
+      {
+        "start": 0,
+        "end": 0.15,
+        "midi": 42
+      },
+      {
+        "start": 2,
+        "end": 2.15,
+        "midi": 42
+      },
+      {
+        "start": 4,
+        "end": 4.15,
+        "midi": 42
+      },
+      {
+        "start": 6,
+        "end": 6.15,
+        "midi": 42
+      }
+    ]
+  ]
+}
