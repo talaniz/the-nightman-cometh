@@ -1,0 +1,1 @@
+{"name":"nightman-browser-verification","private":true,"version":"0.1.0","scripts":{"test:loader":"node --test tests/browser/boot-state.test.cjs"},"devDependencies":{"@playwright/test":"1.64.1"}}

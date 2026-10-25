@@ -1,0 +1,9 @@
+# Native build/test environment. Browser SDK versions are recorded separately.
+iniconfig==2.3.1
+numpy==1.26.4
+packaging==26.3
+pluggy==1.6.0
+pygame-ce==2.5.8
+pygbag==0.9.3
+Pygments==2.21.0
+pytest==9.1.1

@@ -1,0 +1,97 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "AUTOMATED FIXTURE",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 0,
+    "world": {
+      "player": {
+        "x": 675.9999999999993,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 7.549999999999903,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "x": 520,
+          "y": 398,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "x": 750,
+          "y": 308,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "x": 930,
+          "y": 248,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "x": 1520,
+          "y": 398,
+          "alive": true
+        }
+      ],
+      "beams": [
+        {
+          "x": 1275.9999999999993,
+          "y": 405,
+          "dx": 600,
+          "dy": 0,
+          "life": 0.8500000000000024
+        }
+      ],
+      "shots": [
+        {
+          "x": 1444,
+          "y": 410,
+          "life": 4.533333333333335
+        }
+      ],
+      "steps": 148
+    },
+    "audio": {
+      "playing": "dayman-fast",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "loops": 1,
+    "frames": 314,
+    "frame_ms_mean": 52.1141666583333,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

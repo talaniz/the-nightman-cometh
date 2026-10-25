@@ -86,3 +86,38 @@ listening statements are superseded. Ending now uses approved Dayman; credits
 are silent. Original Sunny-style credits music deferred to GitHub issue #12.
 No audio bytes changed. New routing regression failed before map correction.
 Final exact-head reviews and refreshed browser evidence pending; no merge/deploy.
+
+## M3 authorized execution
+User approved the issue #4 foundation plan. Base main is
+65a05abec308e9d7b263a713c14daafa3cc8ee68. Main owns branch
+milestone/m3-browser-foundation in /home/palpatine/projects/the-nightman-cometh-m3.
+All three phases authorized; one PR, independent per-commit reviews and separate
+E2E required. No merge/deploy authority. No game implementation existed at start.
+Phase 3.1 starts with loader/build/preview and training-room behavior tests; later
+phases retain the accepted CORE/SHELL fixture contracts. Integrated human listening
+and feel check remains a final M3 gate. M2 approvals and bytes are preserved.
+
+M3 phase red evidence: actual shared JavaScript loader state failed two recovery
+assertions before implementation; five CORE tests failed on repeat flags, paused
+Dayman, repeated contact damage, spread beams and side/stomp confusion; four save
+adapter tests failed on malformed/storage failure, QA writes, settings and schema.
+The actual first pygbag boot failed: main wrapper lacked explicit pygame import,
+so dependency scanning did not install pygame. Explicit entrypoint dependency fixed
+it and Chromium boot/movement passed. No missing-module test counts as semantic red;
+the packaging failure is separately recorded as browser integration evidence.
+Node loader tests supplement, not replace, actual-browser failure tests.
+.gitignore is included as necessary build hygiene for scoped generated outputs.
+
+M3 candidate: 114 native tests and 2 loader tests pass; eight actual Chromium workflow groups pass. Ordinary build removes synthetic mutation support and serves loopback 8765. Evidence in docs/evidence/M3. Browser smoke reruns, CI, distinct per-commit review, independent E2E and integrated human hearing/feel remain pending. User was offered the existing SSH tunnel workflow. No merge/deployment authorized.
+
+M3 delivery PR: https://github.com/talaniz/the-nightman-cometh/pull/13 (draft).
+Initial commit f7aa558997e7b818b6c61afd97f4067dd49c52d2 reviewed by
+/root/review_m3_f7aa558; one accepted in-scope audio retry finding, no other material
+findings. Fix preserves game-owned Dayman/pause state and corrects clipped browser
+controls. Native115 tests pass. Refresh/review results are recorded in
+ docs/evidence/M3/execution.md and exact-head PR comments, which are the live review
+ledger after this commit. Require a distinct fix-commit reviewer, original reviewer's
+final-head revalidation, then separate E2E reviewer. Human hearing/feel pending.
+Preview now uses /tmp/nightman-m3-fix-normal on loopback8765, explicitly stopped/
+started with tools/serve_preview.py; existing SSH workflow applies. No merge or
+public deployment authority; do not begin M4 from M3 approval.
