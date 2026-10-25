@@ -46,3 +46,13 @@ listening statements are superseded. Ending now uses approved Dayman; credits
 are silent. Original Sunny-style credits music deferred to GitHub issue #12.
 No audio bytes changed. New routing regression failed before map correction.
 Final exact-head reviews and refreshed browser evidence pending; no merge/deploy.
+
+# M3 browser foundation (candidate)
+
+Adds a staged-Philadelphia rehearsal room with Dennis/Dayman, Rat Bat/stomp/beam
+combat, controlled targets/projectiles, three hearts, combined meal, cat food,
+one-time healing checkpoints and deterministic retry. Adds keyboard menus,
+representative dialogue replay/skip, local save failure recovery, isolated QA,
+approved audio integration, visible loader retry and localhost canonicalization.
+Build/preview tools and actual-browser CI are delivered. Final story acts, USB,
+new credits music, deployment and full-game acceptance remain outside M3.

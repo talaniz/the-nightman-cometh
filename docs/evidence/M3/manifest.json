@@ -1,0 +1,398 @@
+{
+  "source_fingerprint": "07e97a93f112385397feaae81af388bfbe5bda692eabddae704a9fd811b77b05",
+  "revision": "Source fingerprint captured before evidence-only commit; no runtime changes after build.",
+  "base": "65a05abec308e9d7b263a713c14daafa3cc8ee68",
+  "browser": "Chromium 139.0.7258.66 Linux ARM64 headless",
+  "builds": {
+    "fixture": {
+      "source_fingerprint": "07e97a93f112385397feaae81af388bfbe5bda692eabddae704a9fd811b77b05",
+      "python": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+      "files": {
+        "boot-state.js": "c8d028b2ea02fab3b724acec7d326226c37d5efcb63a2898b0e41b27c51598cd",
+        "browserfs-LICENSE.txt": "3a7e16fe59c38735309c9df4657cda635cfd7a1bf672f5404b7c7ab5cf949d94",
+        "browserfs.min.js": "ba01fda78db31a7ba579afe74b8b56cf4636381ca1b6c54ffba20467756a627f",
+        "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
+        "index.html": "1d9b7f24e1bab506056fa76e1ce9c059b594bad41bd6eca339653136bf93c9d1",
+        "loader.js": "6ceaae0a806e51e2aae42aef2810c0805759860afe9b68208a134af29473575b",
+        "nightman.apk": "57b84f943e00c938908787f201487e434b7c5190830800419c45475f6aa49b61",
+        "nightman.tar.gz": "f2334c4c251baf1326498efe16cc13a6d1554ee3456d9554734774e627aba7e9",
+        "style.css": "3b8892da226c63874308f57177de72273a83ac3e2fdac8c173a340e21a0b012f"
+      }
+    },
+    "ordinary": {
+      "source_fingerprint": "07e97a93f112385397feaae81af388bfbe5bda692eabddae704a9fd811b77b05",
+      "python": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+      "files": {
+        "boot-state.js": "c8d028b2ea02fab3b724acec7d326226c37d5efcb63a2898b0e41b27c51598cd",
+        "browserfs-LICENSE.txt": "3a7e16fe59c38735309c9df4657cda635cfd7a1bf672f5404b7c7ab5cf949d94",
+        "browserfs.min.js": "ba01fda78db31a7ba579afe74b8b56cf4636381ca1b6c54ffba20467756a627f",
+        "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
+        "index.html": "1d9b7f24e1bab506056fa76e1ce9c059b594bad41bd6eca339653136bf93c9d1",
+        "loader.js": "6ceaae0a806e51e2aae42aef2810c0805759860afe9b68208a134af29473575b",
+        "nightman.apk": "757e1c6a9eb3bbb274a72a18872652e34e68357e8a9ff731021a5c64969368b4",
+        "nightman.tar.gz": "66daa1606292744c10b08852060132700e343a74c6f5a1bea9d24f59de645cd1",
+        "style.css": "3b8892da226c63874308f57177de72273a83ac3e2fdac8c173a340e21a0b012f"
+      }
+    }
+  },
+  "captures": [
+    {
+      "file": "captures/asset-load-error-1280.png",
+      "sha256": "e9baec3c2cfaf6e8e90dcbdfe112593b0615aec95dcf929a9edd830140fd5a90",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "asset-load-error-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/audio-error-1280.png",
+      "sha256": "d77bdcf6260314053eba12fe7ef2814948e7f76b1c08952617eaa1267c325783",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "audio-error-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/audio-recovered-1280.png",
+      "sha256": "fb26d84229b15a89c0b4a584cea70725546cc6d52ac7954d6b9a575b00134621",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "audio-recovered-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/bat-idle-1280.png",
+      "sha256": "5d7680f818e10536eb502d40048409063118477cf0350fc2d4b68d1a10b6e311",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "bat-idle-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/bat-swing-1280.png",
+      "sha256": "7b90d5dea2798c4bba7b8ff1facd3163517e7a0b2535763c68fd815840dcc333",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "bat-swing-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/beam-1280.png",
+      "sha256": "521a3fb073cbe790fb27d794999ce47d0e78005cb398592df5557ea816ac279d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "beam-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/boot-error-1280.png",
+      "sha256": "e9baec3c2cfaf6e8e90dcbdfe112593b0615aec95dcf929a9edd830140fd5a90",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "boot-error-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/damage-1280.png",
+      "sha256": "c8615daea8a8041918277bd46726093bc9b9e3455d0b163697f41673d5d47ae9",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "damage-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/death-1280.png",
+      "sha256": "a430d09d85f930aefeaf34bd64adc33185b2e15497ee6870a89946864a535b3a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "death-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/desktop-1920.png",
+      "sha256": "288d526b632ceb8c09707a85d84a9227ed1f2811eddbfe9e3298ecf972ee792a",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": "desktop-1920",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/dialogue-1280.png",
+      "sha256": "6f9acc91e069e1652a2354e206b765acbe9f1ced2064f108f6f9ee6a2f3e4656",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "dialogue-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/expired-1280.png",
+      "sha256": "7283e88edea30b58449df77a5d6667f26a2b69ca897dfcec5eb012025e02b87a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "expired-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/flag-first-1280.png",
+      "sha256": "7c53e0b384974d3ab73c999b839671e5c12d97a29be12729c85926d1a67cea79",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "flag-first-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/flag-repeat-1280.png",
+      "sha256": "4c62e0a5560e9d18f5cce650e862c67bcc4e8b94aac5eecb945236d5f9c5e5b9",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "flag-repeat-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/food-1280.png",
+      "sha256": "c2773123d895028d00d808ff23aea4899c772295ec554598969e7cb4e66e57fb",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "food-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/full-food-1280.png",
+      "sha256": "82587d684fc9b7ec4f95541744fac63f62246efcf19f7039d536527f7337246d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "full-food-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/invalid-password-1280.png",
+      "sha256": "c770522eb20b78e79f29d77ce7da1abbce8b4135310aa528d9f42211482bd94e",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "invalid-password-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/jump-1280.png",
+      "sha256": "abb923084ef5d7c4f64b234f4f665b15d2e7991e4d5daecdbfc1bcf98ef077fc",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "jump-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/meal-dayman-1280.png",
+      "sha256": "f6041864ed0c4c3039462b58ab9bc3a8090e7beb6a45fec30912bd5c486b99b0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "meal-dayman-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/narrow-390.png",
+      "sha256": "bdf24f2a0fbfc38737f0960516b86199226b4d20095ca28be95cb628ee6d5991",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "narrow-390",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/new-game-confirm-1280.png",
+      "sha256": "f1fcfe775af6be2727bb2bdb28687b686ffc7cc35b05d845b0e5b0627fbedad0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "new-game-confirm-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/options-1280.png",
+      "sha256": "fc95e3c9b61341098885e47e6b05218d0ef8df354351f0afd5af7d39adeae2e7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "options-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/pause-1280.png",
+      "sha256": "510b37fe23542cc99712ca665a5d27ed28e66cdfc5c2be5a0932b2b62f5eb58d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "pause-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/qa-1280.png",
+      "sha256": "907ecd72836b3fb182e160eaa87ee4f3d8983bc64d53ea56a0afa5aeecdbc4e6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "qa-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/retry-1280.png",
+      "sha256": "aa29bc5ca8052084dd38fac1a6b20f809e23202b1dfe8dba32a77a60ea214ed0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "retry-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/save-error-1280.png",
+      "sha256": "c098d1b225261ca9516697a36687191c9fe6751e2bbb172223447ea77a8520f8",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "save-error-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/startup-timeout-1280.png",
+      "sha256": "e9baec3c2cfaf6e8e90dcbdfe112593b0615aec95dcf929a9edd830140fd5a90",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "startup-timeout-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/stomp-1280.png",
+      "sha256": "4127a82f0fb66aead7aa6cbb83840e6288299cd940be642a619b85eaa16c4a2f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "stomp-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/storage-disabled-1280.png",
+      "sha256": "10f7cda96bb8dcd0fa3f65916eb948322dbae560ed2429617a1b6368181bdbd2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "storage-disabled-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/title-1280.png",
+      "sha256": "6ed602a7f1096e3cb02465a726c7391cb22c888edd10817723840c6e92d460fc",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "title-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/training-1280.png",
+      "sha256": "5c98cadfc524016c0ee760942663531f24177d7b27a794282b8a73c9b8ad52f9",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "training-1280",
+      "fixture_build": true,
+      "command": "NIGHTMAN_BUILD=<test-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/muted-1280.png",
+      "sha256": "089562cc20fe83cf38547f2b7a578947ed15176502a8e1c8211633be30ac0cee",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "muted-1280",
+      "fixture_build": false,
+      "command": "NIGHTMAN_BUILD=<ordinary-build> npx playwright test --project=chromium --grep \"AUDIO SMOKE\""
+    }
+  ],
+  "unexpected_errors": [],
+  "limitations": [
+    "Synthetic fixture builds for targeted edge cases; normal build omits mutation fixture module.",
+    "Screenshots supplement browser interactions, not human hearing or final artwork acceptance.",
+    "bat-swing and stomp captures show aftermath; timing asserted by simulation/browser checks."
+  ]
+}

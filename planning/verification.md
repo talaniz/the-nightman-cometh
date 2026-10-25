@@ -49,3 +49,7 @@ Any material issue blocks full sign-off: crash/softlock, broken progression, mis
 ## Release operational checks
 
 Check cold-load and warm-load, missing runtime/assets, supported desktop browsers (Chromium mandatory, Firefox smoke; declare untested browsers), initial loading feedback, CPU/frame-time on intended desktop plus measured Pi where available, key-repeat and game-speed independence, scaling/legibility, audio mix and volume persistence, no secrets/network telemetry, pinned dependencies and third-party notices. Performance targets: responsive 60Hz simulation, report measured rendering frame times rather than claim unmeasured universal performance. Validate downloadable static package, install/build instructions and rollback to prior artifact; no production deployment in this gate.
+
+## Delivered M3 candidate verification
+
+The executable M3 commands, environment and actual results are recorded in [M3 execution evidence](../docs/evidence/M3/execution.md); [README](../README.md) documents reproduction. Earlier milestone command lists remain contracts, not claims of execution. Full gameplay/USB and three qualifying final runs remain later gates.
