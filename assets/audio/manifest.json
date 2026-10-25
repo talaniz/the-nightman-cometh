@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "status": "four-previews-approved; integration-review-pending",
+  "human_listening_approval": "All four musical previews explicitly approved by the user; see docs/evidence/M1/approved-previews.md.",
+  "previews": [
+    {
+      "id": "dayman-v1-chip",
+      "file": "previews/dayman-v1-chip.wav",
+      "sha256": "f092f26c2645ce9562353460971fa3e63dd7abfdf40841db8c4e2f62af3587bc",
+      "duration_seconds": 16,
+      "sample_rate": 44100,
+      "approval": "rejected: user found v1 unrecognizable",
+      "score": "previews/dayman-v1.json",
+      "source": "https://www.youtube.com/watch?v=VCvr6tzZPTU",
+      "source_range_seconds": [
+        0,
+        15.22
+      ]
+    },
+    {
+      "id": "dayman-v1-melody",
+      "file": "previews/dayman-v1-melody.wav",
+      "sha256": "6736ca64e06abb07b79fbad1721c1c81a72b386e8ca540d71c2dec6010ced0d9",
+      "duration_seconds": 16,
+      "sample_rate": 44100,
+      "approval": "rejected: user found v1 unrecognizable",
+      "score": "previews/dayman-v1.json",
+      "source": "https://www.youtube.com/watch?v=VCvr6tzZPTU",
+      "source_range_seconds": [
+        0,
+        15.22
+      ]
+    },
+    {
+      "id": "dayman-v2",
+      "file": "previews/dayman-v2.wav",
+      "sha256": "89fcb694e1e449c842889986ebe35839fdf3a3c583b20f57238317d53c70b209",
+      "duration_seconds": 15,
+      "sample_rate": 44100,
+      "approval": "approved by user",
+      "score": "previews/dayman-v2.json",
+      "profile": "lead-v1"
+    },
+    {
+      "id": "proposal-v1",
+      "file": "previews/proposal-v1.wav",
+      "sha256": "d3f7198f17997309e322bbcec170424f8c014f265df7646e45f488341b27257f",
+      "duration_seconds": 27,
+      "sample_rate": 44100,
+      "approval": "approved by user",
+      "score": "previews/proposal-v1.json",
+      "profile": "lead-v1"
+    },
+    {
+      "id": "little-boy-v1",
+      "file": "previews/little-boy-v1.wav",
+      "sha256": "e18eae9de6e63c78209aabac8113fbe8fd93d8fed53ccaed0aa1bebf3fa502d6",
+      "duration_seconds": 15,
+      "sample_rate": 44100,
+      "approval": "approved by user",
+      "score": "previews/little-boy-v1.json",
+      "profile": "duet-v1"
+    },
+    {
+      "id": "troll-toll-v2",
+      "file": "previews/troll-toll-v2.wav",
+      "sha256": "5d74ed5a88e3ecd999cb22dc45173bed5ed797d45049684b08d0280008a45d9c",
+      "duration_seconds": 29,
+      "sample_rate": 44100,
+      "approval": "approved by user",
+      "score": "previews/troll-toll-v2.json",
+      "profile": "ensemble-v2"
+    }
+  ]
+}

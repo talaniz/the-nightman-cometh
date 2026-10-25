@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "files": [
+    {
+      "path": "assets/audio/previews/dayman-v1-chip.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 705600,
+      "duration_seconds": 16.0,
+      "peak": 5549,
+      "sha256": "f092f26c2645ce9562353460971fa3e63dd7abfdf40841db8c4e2f62af3587bc"
+    },
+    {
+      "path": "assets/audio/previews/dayman-v1-melody.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 705600,
+      "duration_seconds": 16.0,
+      "peak": 10000,
+      "sha256": "6736ca64e06abb07b79fbad1721c1c81a72b386e8ca540d71c2dec6010ced0d9"
+    }
+  ],
+  "errors": []
+}

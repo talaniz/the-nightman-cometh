@@ -1,0 +1,31 @@
+{
+  "previews": [
+    {
+      "id": "dayman-v2",
+      "sha256": "89fcb694e1e449c842889986ebe35839fdf3a3c583b20f57238317d53c70b209",
+      "byte_identical": true,
+      "overwrite_rejected": true
+    },
+    {
+      "id": "proposal-v1",
+      "sha256": "d3f7198f17997309e322bbcec170424f8c014f265df7646e45f488341b27257f",
+      "byte_identical": true,
+      "overwrite_rejected": true
+    },
+    {
+      "id": "little-boy-v1",
+      "sha256": "e18eae9de6e63c78209aabac8113fbe8fd93d8fed53ccaed0aa1bebf3fa502d6",
+      "byte_identical": true,
+      "overwrite_rejected": true
+    },
+    {
+      "id": "troll-toll-v2",
+      "sha256": "5d74ed5a88e3ecd999cb22dc45173bed5ed797d45049684b08d0280008a45d9c",
+      "byte_identical": true,
+      "overwrite_rejected": true
+    }
+  ],
+  "malformed_json_rejected": true,
+  "correction_recovery": true,
+  "dangling_output_symlink_rejected": true
+}
