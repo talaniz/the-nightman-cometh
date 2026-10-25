@@ -81,3 +81,11 @@ merge or deployment. New per-commit review, prior final-head revalidation and
 separate E2E review must cover this commit. M2 stays draft pending remaining
 human listening/browser-hearing evidence. Final whole-game sign-off is reserved
 by the user after the remaining milestones and three qualifying playthroughs.
+
+
+## Superseding finale and listening evidence
+User approved browser listening. See [finale routing](finale-routing.md) for the
+new ending Dayman / silent credits map and refreshed browser evidence. Earlier
+pending-human-listening statements and screenshots are historical. Current
+browser/ contains ten refreshed captures, including ending-dayman-1280.png and
+credits-silent-1280.png; desktop-1920 now depicts silent credits.

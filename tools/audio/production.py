@@ -130,7 +130,7 @@ def export(output):
         'title':'dayman','narration':'proposal','level1':'little-boy','cricket':'cricket-boss',
         'frank-kidnap':'frank-kidnap','bridge':'troll-toll','frank':'frank-boss',
         'nightman-kidnap':'nightman-kidnap','rooftop':'rooftop','nightman':'nightman-boss',
-        'proposal':'proposal','ending':None,'credits':'dayman'},
+        'proposal':'proposal','ending':'dayman','credits':None},
         'next':{'frank-kidnap':'bridge','nightman-kidnap':'rooftop','proposal':'ending'},
         'mix':{'music_gain_cap':.65,'sfx_gain_cap':.5,'sfx_voices':4},
         'approval':'New arrangements/effects and browser hearing pending; original six compositions approved'}

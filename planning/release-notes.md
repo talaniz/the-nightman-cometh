@@ -38,3 +38,11 @@ unlock, independent volume/mute, crossfades, pause/blur, scene restoration and
 missing-file retry in actual Chromium. Approved source previews and original
 masters remain unchanged. New arrangements/effects await listening; this is
 not a playable game or full M2/final-game acceptance.
+
+
+## M2 listening approval and finale adjustment (2026-10-25)
+User approved the browser audition after using numeric loopback; earlier pending
+listening statements are superseded. Ending now uses approved Dayman; credits
+are silent. Original Sunny-style credits music deferred to GitHub issue #12.
+No audio bytes changed. New routing regression failed before map correction.
+Final exact-head reviews and refreshed browser evidence pending; no merge/deploy.

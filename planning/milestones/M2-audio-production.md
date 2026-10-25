@@ -1,6 +1,6 @@
 # M2 — Soundtrack arrangements and separate SFX phase
 
-Status: in progress. M1 accepted at 001cc40559b9e4b0e9b9a99b738a79c22a0693d1; PR #10 non-draft, unmerged. Six original compositions approved by user. Production exports/SFX and actual browser sound-check delivered; final new-audio listening and current review pending.
+Status: all audio samples and actual browser listening approved by user. Ending Dayman / silent credits adjustment implemented; final exact-head review pending. Future credits composition deferred to issue #12.
 
 - Branch/worktree: `milestone/m2-audio-production` at `/home/palpatine/projects/the-nightman-cometh-m2`, stacked on the exact accepted M1 head; see context/PR. One PR across these phases.
 - Allowed paths: assets/audio/, tools/audio/, tools/audition.py, tools/check_audio.py, tests/audio/, docs/evidence/M2/, planning/
@@ -62,3 +62,8 @@ artifacts and runtime checks. Human approval of expanded/faster/looped audio and
 SFX, plus actual human browser hearing, remain open. Do not mark M2 complete from
 headless tests or the prior six-composition approval. Final whole-game sign-off
 remains reserved by the user.
+
+
+Latest acceptance supersedes earlier pending-listening execution notes: user approved
+the actual browser audition on 2026-10-25. No musical changes requested except
+ending Dayman and silent credits. See docs/evidence/M2/finale-routing.md.

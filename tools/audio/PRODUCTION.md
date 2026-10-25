@@ -15,7 +15,7 @@ python tools/audition.py --manifest assets/audio/production/manifest.json --buil
 python -m http.server 8765 --bind 127.0.0.1 --directory /tmp/nightman-new-audition
 ```
 
-Open localhost:8765 in a desktop browser. The browser runtime may first request
+Open http://127.0.0.1:8765 in a desktop browser. The browser runtime may first request
 a click; Enter inside the app enables music. Up/down selects scenes and Enter
 plays; D starts the 10-second Dayman override; P pauses/resumes; M mutes. Left/right
 selects an effect, Space plays it. 1/2 changes music volume, 3/4 effects volume.
@@ -79,3 +79,5 @@ is not supported or claimed. Build hashes identify the tested artifact; SDK buil
 timestamps mean whole archives are not asserted byte-identical across builds.
 M3 owns the game's loader/recovery, deployment packaging and integrated controls.
 This sound-check app is not game content, a deployment or final acceptance.
+Use the numeric loopback address: upstream runtime treats the literal localhost
+hostname as development mode and can request dependencies from the wrong port.

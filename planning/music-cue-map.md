@@ -17,7 +17,8 @@ approvals establish musical direction, not full-length cue approval.
 | Rooftop level | Original | Tense nighttime theme |
 | Nightman boss | Original | Faster/intense final-boss theme, distinct from approach |
 | Final rescue / Charlie proposal | Proposal Song | Finite cue, readable stills; duck/stop for final joke |
-| End / credits | Dayman | Final transition and credits arrangement pending |
+| Ending | Dayman | Approved production cue |
+| Credits | Silence | Future original Sunny-style cue deferred: [issue #12](https://github.com/talaniz/the-nightman-cometh/issues/12) |
 | Dayman power-up | Faster Dayman variant | Slightly faster requested; 1.10x pitch-preserving audition proposed |
 
 Original music may draw broad rhythmic/timbral inspiration from TMNT arcade and

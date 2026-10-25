@@ -60,3 +60,13 @@ Chromium. Record actual failing assertions, commands/results, source fingerprint
 asset hashes and capture dimensions. No screenshot or listening claim from unit
 checks. Browser audio analyser/mixer state checks are technical playback evidence,
 not human hearing. Human musical acceptance stays separate from full-game sign-off.
+
+## Approved finale routing adjustment (2026-10-25)
+User approved browser listening and requested Dayman for ending, silent credits,
+and deferred original Sunny-style credits music (GitHub issue #12).
+Scope: production scene map/exporter, director regression, browser finale checks,
+cue/spec/status documentation and refreshed audition evidence. Audio bytes unchanged.
+Acceptance: finite proposal advances to ending Dayman; choosing credits stops music;
+retry on credits stays silent. Exported and committed maps agree. Observe failing
+real-manifest director regression before changing maps, then run audio suite and
+actual pygbag browser flows with new screenshots. No new composition or deployment.

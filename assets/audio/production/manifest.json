@@ -373,8 +373,8 @@
     "rooftop": "rooftop",
     "nightman": "nightman-boss",
     "proposal": "proposal",
-    "ending": null,
-    "credits": "dayman"
+    "ending": "dayman",
+    "credits": null
   },
   "next": {
     "frank-kidnap": "bridge",

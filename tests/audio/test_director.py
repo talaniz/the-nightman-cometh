@@ -50,3 +50,20 @@ def test_sting_advances_but_skip_and_retry_clear_transients(rig):
 @pytest.mark.parametrize('scene',['../secret','bogus'])
 def test_invalid_scene_rejected(rig,scene):
     with pytest.raises(ValueError):rig[0].set_scene(scene)
+
+
+def test_production_finale_plays_dayman_then_silent_credits():
+    import json
+    from pathlib import Path
+    manifest = json.loads((Path(__file__).resolve().parents[2] / 'assets/audio/production/manifest.json').read_text())
+    backend = Backend()
+    director = Director(manifest, backend)
+    director.unlock()
+    director.set_scene('proposal')
+    director.tick(manifest['cues']['proposal']['duration'])
+    assert director.scene == 'ending'
+    assert backend.current == 'dayman'
+    director.set_scene('credits')
+    assert backend.current is None
+    director.retry()
+    assert backend.current is None and not director.error

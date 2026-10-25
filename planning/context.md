@@ -78,3 +78,11 @@ New listening samples delivered privately through Drive; no private links in Git
 Current screenshots/manifest at docs/evidence/M2/browser; evidence includes source
 fingerprint. Review gates must be renewed for the production commit. M2 remains
 draft until new-audio human listening and browser-hearing gates are satisfied.
+
+
+## M2 listening approval and finale adjustment (2026-10-25)
+User approved the browser audition after using numeric loopback; earlier pending
+listening statements are superseded. Ending now uses approved Dayman; credits
+are silent. Original Sunny-style credits music deferred to GitHub issue #12.
+No audio bytes changed. New routing regression failed before map correction.
+Final exact-head reviews and refreshed browser evidence pending; no merge/deploy.

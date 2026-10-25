@@ -75,6 +75,21 @@ def main():
             for _ in range(7):key('1',20);key('3',20)
             assert state()['gains']==[0.0,0.0]
             checks.append('actual effect voice cap and independent zero music/effect volumes')
+            # Real-time finite proposal leads into Dayman, then silent credits.
+            for _ in range(7):key('2',20)
+            for _ in range(5):key('ArrowDown',30)
+            key('Enter');assert state()['scene']=='proposal'
+            page.wait_for_timeout(58000)
+            assert state()['scene']=='ending' and state()['playing']=='dayman'
+            assert state()['music_busy']==1
+            capture('ending-dayman-1280')
+            for _ in range(2):key('ArrowDown',30)
+            key('Enter',400)
+            assert state()['scene']=='credits' and state()['playing'] is None
+            assert state()['music_busy']==0
+            key('r',400);assert state()['music_busy']==0 and not state()['error']
+            capture('credits-silent-1280')
+            checks.append('full proposal to ending Dayman; credits and retry silent')
             page.set_viewport_size({'width':1920,'height':1080});page.wait_for_timeout(300);capture('desktop-1920')
             page.set_viewport_size({'width':390,'height':844});page.wait_for_timeout(300)
             assert page.locator('#narrow').is_visible()
