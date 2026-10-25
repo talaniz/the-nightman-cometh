@@ -1,0 +1,266 @@
+{
+  "source_tree_sha256": "75c58f999535210ead24a44077d5a65391748747eec79aeef13a1c20cefd331c",
+  "browser": "139.0.7258.66",
+  "build_files": {
+    "browserfs-LICENSE.txt": "3a7e16fe59c38735309c9df4657cda635cfd7a1bf672f5404b7c7ab5cf949d94",
+    "browserfs.min.js": "ba01fda78db31a7ba579afe74b8b56cf4636381ca1b6c54ffba20467756a627f",
+    "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
+    "index.html": "65fb922d05173bdf6888d56188a3c39335fb7c81aad20697cdc8d644d7c91d15",
+    "soundcheck.apk": "b1a4a02a9d845ed28789924b7fce784b280878b2ef7b69f9441596cf8616966b",
+    "soundcheck.tar.gz": "322d1322f6ae4ec896b30c0e609a868d8b5786b257fa351c0b486836fbb579e6"
+  },
+  "captures": [
+    {
+      "file": "locked-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "title",
+        "playing": null,
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "",
+        "unlocked": false,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 0,
+        "sfx_busy": 0,
+        "gains": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "file": "playing-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "title",
+        "playing": "dayman",
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 1,
+        "sfx_busy": 0,
+        "gains": [
+          0.453125,
+          0.34375
+        ]
+      }
+    },
+    {
+      "file": "paused-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "title",
+        "playing": "dayman-fast",
+        "paused": true,
+        "muted": false,
+        "remaining": 9.665600000000003,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 1,
+        "sfx_busy": 0,
+        "gains": [
+          0.453125,
+          0.34375
+        ]
+      }
+    },
+    {
+      "file": "muted-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "title",
+        "playing": "dayman-fast",
+        "paused": false,
+        "muted": true,
+        "remaining": 8.764600000000003,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 1,
+        "sfx_busy": 0,
+        "gains": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "file": "asset-error-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "bridge",
+        "playing": null,
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "Audio unavailable. Press R to retry. Sound file could not load",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 0,
+        "sfx_busy": 0,
+        "gains": [
+          0.0,
+          0.34375
+        ]
+      }
+    },
+    {
+      "file": "recovered-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "bridge",
+        "playing": "troll-toll",
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 1,
+        "sfx_busy": 0,
+        "gains": [
+          0.453125,
+          0.34375
+        ]
+      }
+    },
+    {
+      "file": "ending-dayman-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "ending",
+        "playing": "dayman",
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 1,
+        "sfx_busy": 0,
+        "gains": [
+          0.453125,
+          0.0
+        ]
+      }
+    },
+    {
+      "file": "credits-silent-1280.png",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": {
+        "scene": "credits",
+        "playing": null,
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 0,
+        "sfx_busy": 0,
+        "gains": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "file": "desktop-1920.png",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": {
+        "scene": "credits",
+        "playing": null,
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 0,
+        "sfx_busy": 0,
+        "gains": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "file": "narrow-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": {
+        "scene": "credits",
+        "playing": null,
+        "paused": false,
+        "muted": false,
+        "remaining": 0,
+        "error": "",
+        "unlocked": true,
+        "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+        "pygame": "2.5.7",
+        "music_busy": 0,
+        "sfx_busy": 0,
+        "gains": [
+          0.0,
+          0.0
+        ]
+      }
+    }
+  ],
+  "checks": [
+    "gesture unlock and nonzero mixer gain",
+    "browser blur event pauses; explicit resume",
+    "pause freezes override; mute independent; expiry restores current bridge",
+    "actual missing Ogg load and retry recovery",
+    "finite sting advances, manual scene selection remains usable",
+    "actual effect voice cap and independent zero music/effect volumes",
+    "full proposal to ending Dayman; credits and retry silent",
+    "desktop and narrow-device guidance"
+  ],
+  "errors": [],
+  "hearing": "not established by headless checks"
+}

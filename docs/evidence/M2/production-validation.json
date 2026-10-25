@@ -1,0 +1,330 @@
+{
+  "ok": true,
+  "files": [
+    {
+      "path": "assets/audio/originals/cricket-boss-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 984558,
+      "duration_seconds": 22.325578231292518,
+      "peak": 18547,
+      "sha256": "84cd90d1b44f611ad95fc0990f407e6058f24e38696c44e7966680a301247094"
+    },
+    {
+      "path": "assets/audio/originals/frank-boss-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1114105,
+      "duration_seconds": 25.26315192743764,
+      "peak": 18723,
+      "sha256": "815c6c04957be6f85b5b270d7326b9b66cc9c0e7f192e2c0152bc7defb74a73c"
+    },
+    {
+      "path": "assets/audio/originals/frank-kidnap-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 151200,
+      "duration_seconds": 3.4285714285714284,
+      "peak": 16779,
+      "sha256": "e5684ddcfae3054c3f53950f2cf85a0010d1efab77c61376298abf43ed8b7d16"
+    },
+    {
+      "path": "assets/audio/originals/nightman-boss-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 920348,
+      "duration_seconds": 20.86956916099773,
+      "peak": 17756,
+      "sha256": "690d0880d7d3ca6449e7e76ee02dabe41fa18233edcf859311ada63dc65a80da"
+    },
+    {
+      "path": "assets/audio/originals/nightman-kidnap-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 165375,
+      "duration_seconds": 3.75,
+      "peak": 17239,
+      "sha256": "1db2d6ad9000c2598bc69b8c54d27e7f59a8d764aae6f657a262131c01384288"
+    },
+    {
+      "path": "assets/audio/originals/rooftop-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1459862,
+      "duration_seconds": 33.10344671201814,
+      "peak": 17736,
+      "sha256": "58df1ed991e5bdf8f018ddeae97692c6ddd60ad6f231592f05ae79e756c9f3b0"
+    },
+    {
+      "path": "assets/audio/previews/dayman-v1-chip.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 705600,
+      "duration_seconds": 16.0,
+      "peak": 5549,
+      "sha256": "f092f26c2645ce9562353460971fa3e63dd7abfdf40841db8c4e2f62af3587bc"
+    },
+    {
+      "path": "assets/audio/previews/dayman-v1-melody.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 705600,
+      "duration_seconds": 16.0,
+      "peak": 10000,
+      "sha256": "6736ca64e06abb07b79fbad1721c1c81a72b386e8ca540d71c2dec6010ced0d9"
+    },
+    {
+      "path": "assets/audio/previews/dayman-v2.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 661500,
+      "duration_seconds": 15.0,
+      "peak": 5549,
+      "sha256": "89fcb694e1e449c842889986ebe35839fdf3a3c583b20f57238317d53c70b209"
+    },
+    {
+      "path": "assets/audio/previews/little-boy-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 661500,
+      "duration_seconds": 15.0,
+      "peak": 5549,
+      "sha256": "e18eae9de6e63c78209aabac8113fbe8fd93d8fed53ccaed0aa1bebf3fa502d6"
+    },
+    {
+      "path": "assets/audio/previews/proposal-v1.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1190700,
+      "duration_seconds": 27.0,
+      "peak": 5549,
+      "sha256": "d3f7198f17997309e322bbcec170424f8c014f265df7646e45f488341b27257f"
+    },
+    {
+      "path": "assets/audio/previews/troll-toll-v2.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1278900,
+      "duration_seconds": 29.0,
+      "peak": 20745,
+      "sha256": "5d74ed5a88e3ecd999cb22dc45173bed5ed797d45049684b08d0280008a45d9c"
+    },
+    {
+      "path": "assets/audio/production/bat-hit.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 4410,
+      "duration_seconds": 0.1,
+      "peak": 5293,
+      "sha256": "ad893fbbcf6df2544576592d174da1b38dee32e721582d459426f476a73bf234"
+    },
+    {
+      "path": "assets/audio/production/bat-swing.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 5292,
+      "duration_seconds": 0.12,
+      "peak": 5121,
+      "sha256": "e6fa8808322c70238f1828fa15c0b0ea3d53780b1db7e001145e01cc5ad5a793"
+    },
+    {
+      "path": "assets/audio/production/beam.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 5733,
+      "duration_seconds": 0.13,
+      "peak": 4349,
+      "sha256": "214f3c135f7e1c7d2e95b94eed03e6873dba42ad4809be4af8fb5e3157cb059e"
+    },
+    {
+      "path": "assets/audio/production/boss-defeat.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 52920,
+      "duration_seconds": 1.2,
+      "peak": 5090,
+      "sha256": "6a9dd39097f95c59d96bceb6e120021ca13c7df6017a12684c4f81adf8e1bc37"
+    },
+    {
+      "path": "assets/audio/production/cat-food.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 9702,
+      "duration_seconds": 0.22,
+      "peak": 4469,
+      "sha256": "30c851b853914af39c99e5716b1f6af4c16f7e9fd941bf5afff21b2e629f877b"
+    },
+    {
+      "path": "assets/audio/production/checkpoint.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 21168,
+      "duration_seconds": 0.48,
+      "peak": 4521,
+      "sha256": "a6c77de5c97c753277849b61ffa3128f2b0f3b415edb31a23ecce40f66d9f504"
+    },
+    {
+      "path": "assets/audio/production/cricket-boss.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 984558,
+      "duration_seconds": 22.325578231292518,
+      "peak": 18547,
+      "sha256": "84cd90d1b44f611ad95fc0990f407e6058f24e38696c44e7966680a301247094"
+    },
+    {
+      "path": "assets/audio/production/dayman-fast.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 601364,
+      "duration_seconds": 13.636371882086168,
+      "peak": 5549,
+      "sha256": "97dd4b3cd5bc5d82b0f6f54e82486ee0467d5ffcdd17067a2d58c6d6bcb4fa05"
+    },
+    {
+      "path": "assets/audio/production/dayman.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1966572,
+      "duration_seconds": 44.5934693877551,
+      "peak": 5549,
+      "sha256": "254a6a0c8a071e5f11f86d9a992ce39c2d8ebdfd3a11385cae99871ca3559d34"
+    },
+    {
+      "path": "assets/audio/production/effects-reel.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 352359,
+      "duration_seconds": 7.99,
+      "peak": 5293,
+      "sha256": "7c7a00c2892db44fa49324108c2382418b65eb144bcff9bc0aa70ac103132f46"
+    },
+    {
+      "path": "assets/audio/production/frank-boss.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1114105,
+      "duration_seconds": 25.26315192743764,
+      "peak": 18723,
+      "sha256": "815c6c04957be6f85b5b270d7326b9b66cc9c0e7f192e2c0152bc7defb74a73c"
+    },
+    {
+      "path": "assets/audio/production/frank-kidnap.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 151200,
+      "duration_seconds": 3.4285714285714284,
+      "peak": 16779,
+      "sha256": "e5684ddcfae3054c3f53950f2cf85a0010d1efab77c61376298abf43ed8b7d16"
+    },
+    {
+      "path": "assets/audio/production/hoagie.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 7938,
+      "duration_seconds": 0.18,
+      "peak": 4653,
+      "sha256": "4567ea8becece93e56c8cc10731235849b9a7bd6c04300eed07acccd84990d35"
+    },
+    {
+      "path": "assets/audio/production/hurt.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 14112,
+      "duration_seconds": 0.32,
+      "peak": 4850,
+      "sha256": "67e865306143d126427cdf1ecb98ab3d143ece8207a3eac45e8f21634d4a51c4"
+    },
+    {
+      "path": "assets/audio/production/jump.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 7056,
+      "duration_seconds": 0.16,
+      "peak": 4351,
+      "sha256": "048780108966ab69cd9b25cb12b82b05b06a25f8b2c35dc928daf7e3036528f3"
+    },
+    {
+      "path": "assets/audio/production/little-boy.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 604800,
+      "duration_seconds": 13.714285714285714,
+      "peak": 5549,
+      "sha256": "bc14ada1ec720eb6f31a9f47ce60fba935ce4df2e1728e9eccaba1ea1e8e14ae"
+    },
+    {
+      "path": "assets/audio/production/meal.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 26460,
+      "duration_seconds": 0.6,
+      "peak": 4534,
+      "sha256": "5923eb9b08adc629b56aecf6a7e72de06a27c3325df24f46400cc18558e6d5e8"
+    },
+    {
+      "path": "assets/audio/production/menu.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 2646,
+      "duration_seconds": 0.06,
+      "peak": 4014,
+      "sha256": "ed9fc022b903253472482d0b7cf64aa0350eb4aea43b13764da1d93307c5d9fe"
+    },
+    {
+      "path": "assets/audio/production/nightman-boss.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 920348,
+      "duration_seconds": 20.86956916099773,
+      "peak": 17756,
+      "sha256": "690d0880d7d3ca6449e7e76ee02dabe41fa18233edcf859311ada63dc65a80da"
+    },
+    {
+      "path": "assets/audio/production/nightman-kidnap.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 165375,
+      "duration_seconds": 3.75,
+      "peak": 17239,
+      "sha256": "1db2d6ad9000c2598bc69b8c54d27e7f59a8d764aae6f657a262131c01384288"
+    },
+    {
+      "path": "assets/audio/production/proposal.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 2421673,
+      "duration_seconds": 54.913219954648525,
+      "peak": 5549,
+      "sha256": "6bad14fedab2989cfd7046d2f7429df1edb5201b826e3bea26a93b2d41d9ec7f"
+    },
+    {
+      "path": "assets/audio/production/rooftop.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1459862,
+      "duration_seconds": 33.10344671201814,
+      "peak": 17736,
+      "sha256": "58df1ed991e5bdf8f018ddeae97692c6ddd60ad6f231592f05ae79e756c9f3b0"
+    },
+    {
+      "path": "assets/audio/production/stomp.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 9702,
+      "duration_seconds": 0.22,
+      "peak": 4522,
+      "sha256": "7e01daca7f60dea310c4934bf7e081e8939a6490027bf8ca54e487279e0c909b"
+    },
+    {
+      "path": "assets/audio/production/troll-toll.wav",
+      "sample_rate": 44100,
+      "channels": 1,
+      "frames": 1209600,
+      "duration_seconds": 27.428571428571427,
+      "peak": 20745,
+      "sha256": "70e79e5a4776b115e110ac8d4160c8c0d35f4ce178b7b594c141c7f3ca80a96c"
+    }
+  ],
+  "errors": []
+}

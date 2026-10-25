@@ -1,0 +1,174 @@
+{
+  "schema": "ensemble-beats-v1",
+  "title": "Toll Collector Entrance",
+  "scene": "frank-kidnap",
+  "bpm": 140,
+  "beats": 8,
+  "approval": "approved by user: all six sound fine",
+  "mood": "A comic descending stumble ending in a theatrical thump",
+  "finite": true,
+  "provenance": "Original composition for this project; no game or episode audio imported.",
+  "parts": [
+    [
+      {
+        "start": 0,
+        "end": 0.4,
+        "midi": 72
+      },
+      {
+        "start": 0.5,
+        "end": 0.9,
+        "midi": 71
+      },
+      {
+        "start": 1,
+        "end": 1.4,
+        "midi": 70
+      },
+      {
+        "start": 1.5,
+        "end": 1.9,
+        "midi": 67
+      },
+      {
+        "start": 2,
+        "end": 2.6,
+        "midi": 63
+      },
+      {
+        "start": 3,
+        "end": 3.7,
+        "midi": 67
+      },
+      {
+        "start": 4,
+        "end": 4.4,
+        "midi": 68
+      },
+      {
+        "start": 4.5,
+        "end": 4.9,
+        "midi": 67
+      },
+      {
+        "start": 5,
+        "end": 5.4,
+        "midi": 65
+      },
+      {
+        "start": 5.5,
+        "end": 5.9,
+        "midi": 62
+      },
+      {
+        "start": 6,
+        "end": 7.5,
+        "midi": 60
+      }
+    ],
+    [
+      {
+        "start": 0,
+        "end": 0.8,
+        "midi": 36
+      },
+      {
+        "start": 0,
+        "end": 0.8,
+        "midi": 60
+      },
+      {
+        "start": 0,
+        "end": 0.8,
+        "midi": 63
+      },
+      {
+        "start": 0,
+        "end": 0.8,
+        "midi": 67
+      },
+      {
+        "start": 2,
+        "end": 2.8,
+        "midi": 43
+      },
+      {
+        "start": 2,
+        "end": 2.8,
+        "midi": 67
+      },
+      {
+        "start": 2,
+        "end": 2.8,
+        "midi": 71
+      },
+      {
+        "start": 2,
+        "end": 2.8,
+        "midi": 74
+      },
+      {
+        "start": 4,
+        "end": 4.8,
+        "midi": 41
+      },
+      {
+        "start": 4,
+        "end": 4.8,
+        "midi": 65
+      },
+      {
+        "start": 4,
+        "end": 4.8,
+        "midi": 68
+      },
+      {
+        "start": 4,
+        "end": 4.8,
+        "midi": 72
+      },
+      {
+        "start": 6,
+        "end": 7.6,
+        "midi": 36
+      },
+      {
+        "start": 6,
+        "end": 7.6,
+        "midi": 60
+      },
+      {
+        "start": 6,
+        "end": 7.6,
+        "midi": 63
+      },
+      {
+        "start": 6,
+        "end": 7.6,
+        "midi": 67
+      }
+    ],
+    [
+      {
+        "start": 0,
+        "end": 0.15,
+        "midi": 42
+      },
+      {
+        "start": 2,
+        "end": 2.15,
+        "midi": 42
+      },
+      {
+        "start": 4,
+        "end": 4.15,
+        "midi": 42
+      },
+      {
+        "start": 6,
+        "end": 6.15,
+        "midi": 42
+      }
+    ]
+  ]
+}

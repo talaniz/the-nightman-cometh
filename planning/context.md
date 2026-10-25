@@ -33,3 +33,56 @@ Reproduction preserves approved bytes; no further tune approval needed if hashes
 remain identical. M2 expanded to three phases (original gap/boss compositions now
 explicit). See music-cue-map.md. Existing worktree/branch/PR reused. No game exists yet.
 No new review sign-off is implied; integrate and review this head before M1 readiness.
+
+
+## Current resumption — M2 original-cue auditions
+
+M1 is accepted at `001cc40559b9e4b0e9b9a99b738a79c22a0693d1`: all four code
+reviewers and separate workflow reviewer signed off, PR #10 verified non-draft.
+No merge performed. M1's commit-time pending status above is superseded.
+Main owns `/home/palpatine/projects/the-nightman-cometh-m2`, branch
+`milestone/m2-audio-production`, based on that exact M1 head. This is an intentional
+stacked successor because merge remains unauthorized. M2 PR targets M1 branch.
+Latest build authorization applies; no renewed implementation permission needed.
+Original-cue auditions (phase 2.2) are brought forward before full production loop
+work to collect human feedback. Contract: M2-original-preview-contract.md.
+Six original cues rendered; 19 observed failures, then 69 audio tests pass; actual
+CLI rerender/failure/recovery and WAV checks pass. M1 assets remain unchanged.
+Human approval of six new cues is pending. Next: distinct per-commit review and
+private Drive audition delivery; then remaining 2.1/2.2/2.3 work and final separate
+M2 E2E/browser acceptance. No UI screenshots apply to this increment.
+
+
+M2 PR: https://github.com/talaniz/the-nightman-cometh/pull/11 (draft). Six auditions
+uploaded privately to Drive and metadata verified; human feedback requested.
+First code review found a valid cue-end noise-snap boundary issue. Main accepted;
+observed regression failed 130 != 0, then M2-only 5 ms end ramp fixed it. 70 audio
+tests pass and all six actual CLI WAV hashes remain unchanged. New fix reviewer,
+original reviewer revalidation and separate workflow review pending. Full M2
+music production/browser/SFX/listening gates still outstanding.
+
+
+## Current M2 production work
+User approved all six original compositions and authorized the remaining M2 work.
+Previous pending approval paragraphs are superseded. PR #11 remains on the same
+branch/worktree; prior scoped code/workflow reviews passed at 82fbfd8. New contract:
+M2-production-contract.md. Preserve approved WAV bytes; expanded phrases, faster
+Dayman and SFX require new listening. Main implements; new per-commit review and
+prior final-head revalidation follow. No merge/deploy authorization.
+
+
+Production candidates and twelve effects now exist in assets/audio/production/.
+Actual pygbag sound-check app and repeatable Chromium runner are implemented.
+Native tools /tmp/nightman-m2-tools; actual browser candidate /tmp/nightman-audition-final.
+New listening samples delivered privately through Drive; no private links in Git.
+Current screenshots/manifest at docs/evidence/M2/browser; evidence includes source
+fingerprint. Review gates must be renewed for the production commit. M2 remains
+draft until new-audio human listening and browser-hearing gates are satisfied.
+
+
+## M2 listening approval and finale adjustment (2026-10-25)
+User approved the browser audition after using numeric loopback; earlier pending
+listening statements are superseded. Ending now uses approved Dayman; credits
+are silent. Original Sunny-style credits music deferred to GitHub issue #12.
+No audio bytes changed. New routing regression failed before map correction.
+Final exact-head reviews and refreshed browser evidence pending; no merge/deploy.

@@ -17,7 +17,8 @@ approvals establish musical direction, not full-length cue approval.
 | Rooftop level | Original | Tense nighttime theme |
 | Nightman boss | Original | Faster/intense final-boss theme, distinct from approach |
 | Final rescue / Charlie proposal | Proposal Song | Finite cue, readable stills; duck/stop for final joke |
-| End / credits | Dayman | Final transition and credits arrangement pending |
+| Ending | Dayman | Approved production cue |
+| Credits | Silence | Future original Sunny-style cue deferred: [issue #12](https://github.com/talaniz/the-nightman-cometh/issues/12) |
 | Dayman power-up | Faster Dayman variant | Slightly faster requested; 1.10x pitch-preserving audition proposed |
 
 Original music may draw broad rhythmic/timbral inspiration from TMNT arcade and
@@ -48,3 +49,12 @@ M2: audition each new original cue, expanded arrangement, loop boundary, power-u
 speed and SFX mix with the user. M3–M6: verify transitions in real browser gameplay.
 M8: listen during all three qualifying final-candidate runs. None are inferred from
 waveform checks or independent source inspection.
+
+
+## Production update
+All six original compositions are now user-approved. Full Dayman/proposal,
+level loops, a 1.10x Dayman variant, twelve original SFX and an actual pygame
+browser sound-check app are delivered for listening. See ../tools/audio/PRODUCTION.md
+for scene mapping, loop lengths, effects order and reproduction. Approval of
+new arrangements/effects/browser hearing remains separate from the six-composition
+approval and the user's final whole-game sign-off.

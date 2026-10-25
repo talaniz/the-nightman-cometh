@@ -1,0 +1,390 @@
+{
+  "schema": 1,
+  "cues": {
+    "dayman": {
+      "file": "dayman.ogg",
+      "master": "dayman.wav",
+      "duration": 44.5934693877551,
+      "loop": true,
+      "approval": "extended phrase awaiting listening",
+      "source": "sources/dayman-full.json",
+      "sha256": "aac7bd94f798e999902fe6df573d59b6454e18ee81b28f3ff05127bee034cd7f",
+      "master_sha256": "254a6a0c8a071e5f11f86d9a992ce39c2d8ebdfd3a11385cae99871ca3559d34",
+      "peak": 5549,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "proposal": {
+      "file": "proposal.ogg",
+      "master": "proposal.wav",
+      "duration": 54.913219954648525,
+      "loop": false,
+      "approval": "extended phrase awaiting listening",
+      "source": "sources/proposal-full.json",
+      "sha256": "cca4365db106956212d0068b741ada9e496f6e7a9021f1decf764310bdfac970",
+      "master_sha256": "6bad14fedab2989cfd7046d2f7429df1edb5201b826e3bea26a93b2d41d9ec7f",
+      "peak": 5549,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "dayman-fast": {
+      "file": "dayman-fast.ogg",
+      "master": "dayman-fast.wav",
+      "duration": 13.636371882086168,
+      "loop": true,
+      "approval": "speed variant awaiting listening",
+      "source": "previews/dayman-v2.json at 1.10x tempo",
+      "sha256": "f70aeb76a56261758f0cb9ad945ce4417212ae45719adbdc5fce918ea38182aa",
+      "master_sha256": "97dd4b3cd5bc5d82b0f6f54e82486ee0467d5ffcdd17067a2d58c6d6bcb4fa05",
+      "peak": 5549,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "little-boy": {
+      "file": "little-boy.ogg",
+      "master": "little-boy.wav",
+      "duration": 13.714285714285714,
+      "loop": true,
+      "approval": "loop boundary awaiting listening",
+      "source": "previews/little-boy-v1.json",
+      "sha256": "7db0f54451864ab48fa17da429cdd072e4aba50140ef125c91b3a432f02f1248",
+      "master_sha256": "bc14ada1ec720eb6f31a9f47ce60fba935ce4df2e1728e9eccaba1ea1e8e14ae",
+      "peak": 5549,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "troll-toll": {
+      "file": "troll-toll.ogg",
+      "master": "troll-toll.wav",
+      "duration": 27.428571428571427,
+      "loop": true,
+      "approval": "loop boundary awaiting listening",
+      "source": "previews/troll-toll-v2.json",
+      "sha256": "0ac12658c77587cf00600d8175ea4b6d5a6ee031042388e2c8c683fa8649f8b9",
+      "master_sha256": "70e79e5a4776b115e110ac8d4160c8c0d35f4ce178b7b594c141c7f3ca80a96c",
+      "peak": 20745,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "cricket-boss": {
+      "file": "cricket-boss.ogg",
+      "master": "cricket-boss.wav",
+      "duration": 22.325578231292518,
+      "loop": true,
+      "approval": "composition approved; runtime loop/codec audition pending",
+      "source": "originals/cricket-boss-v1.wav",
+      "sha256": "7d82bbe555d27713402b649c35e9cc2b57ee3082ed04c8517c8a4e5a81d076a2",
+      "master_sha256": "84cd90d1b44f611ad95fc0990f407e6058f24e38696c44e7966680a301247094",
+      "peak": 18547,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "frank-boss": {
+      "file": "frank-boss.ogg",
+      "master": "frank-boss.wav",
+      "duration": 25.26315192743764,
+      "loop": true,
+      "approval": "composition approved; runtime loop/codec audition pending",
+      "source": "originals/frank-boss-v1.wav",
+      "sha256": "3b41d2598ca210c8026a61856b8716e0ac169072c8ae5588417d925d82c85b66",
+      "master_sha256": "815c6c04957be6f85b5b270d7326b9b66cc9c0e7f192e2c0152bc7defb74a73c",
+      "peak": 18723,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "frank-kidnap": {
+      "file": "frank-kidnap.ogg",
+      "master": "frank-kidnap.wav",
+      "duration": 3.4285714285714284,
+      "loop": false,
+      "approval": "composition approved; runtime loop/codec audition pending",
+      "source": "originals/frank-kidnap-v1.wav",
+      "sha256": "97bee518efc4688a87c3c734589b6a0897797234ec16b5b072af25eef1af2a4a",
+      "master_sha256": "e5684ddcfae3054c3f53950f2cf85a0010d1efab77c61376298abf43ed8b7d16",
+      "peak": 16779,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "nightman-boss": {
+      "file": "nightman-boss.ogg",
+      "master": "nightman-boss.wav",
+      "duration": 20.86956916099773,
+      "loop": true,
+      "approval": "composition approved; runtime loop/codec audition pending",
+      "source": "originals/nightman-boss-v1.wav",
+      "sha256": "407b8491d85523d4dd123b2a6f5589276d6a299e130806f7184299fe7db18f6b",
+      "master_sha256": "690d0880d7d3ca6449e7e76ee02dabe41fa18233edcf859311ada63dc65a80da",
+      "peak": 17756,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "nightman-kidnap": {
+      "file": "nightman-kidnap.ogg",
+      "master": "nightman-kidnap.wav",
+      "duration": 3.75,
+      "loop": false,
+      "approval": "composition approved; runtime loop/codec audition pending",
+      "source": "originals/nightman-kidnap-v1.wav",
+      "sha256": "e6e0451fe4c4f47ae5ec298b17806578f550af183d289180e1b77e27ce93d3fe",
+      "master_sha256": "1db2d6ad9000c2598bc69b8c54d27e7f59a8d764aae6f657a262131c01384288",
+      "peak": 17239,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "rooftop": {
+      "file": "rooftop.ogg",
+      "master": "rooftop.wav",
+      "duration": 33.10344671201814,
+      "loop": true,
+      "approval": "composition approved; runtime loop/codec audition pending",
+      "source": "originals/rooftop-v1.wav",
+      "sha256": "c209ac2c507689d15cec6047777f21a340303d3da3c046695c86582d096f7513",
+      "master_sha256": "58df1ed991e5bdf8f018ddeae97692c6ddd60ad6f231592f05ae79e756c9f3b0",
+      "peak": 17736,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "jump": {
+      "file": "jump.ogg",
+      "master": "jump.wav",
+      "duration": 0.16,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#jump",
+      "sha256": "ac31539c309848ce0baabcce421678d1b704d85b8286ada0389a432b4cc77354",
+      "master_sha256": "048780108966ab69cd9b25cb12b82b05b06a25f8b2c35dc928daf7e3036528f3",
+      "peak": 4351,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "stomp": {
+      "file": "stomp.ogg",
+      "master": "stomp.wav",
+      "duration": 0.22,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#stomp",
+      "sha256": "b410ca7ea8e9acd797f2f2dd3e8a8799e073038ac2f064cb4210ad3d132cdc26",
+      "master_sha256": "7e01daca7f60dea310c4934bf7e081e8939a6490027bf8ca54e487279e0c909b",
+      "peak": 4522,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "bat-swing": {
+      "file": "bat-swing.ogg",
+      "master": "bat-swing.wav",
+      "duration": 0.12,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#bat-swing",
+      "sha256": "233010a9d2c6a1e294b1c6168485da821d8990f6af86aeda4166c1e900df73eb",
+      "master_sha256": "e6fa8808322c70238f1828fa15c0b0ea3d53780b1db7e001145e01cc5ad5a793",
+      "peak": 5121,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "bat-hit": {
+      "file": "bat-hit.ogg",
+      "master": "bat-hit.wav",
+      "duration": 0.1,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#bat-hit",
+      "sha256": "33b80f784ddd13ee2789c1e27304871b0eb17a0e9ee8bde7535c98622d794622",
+      "master_sha256": "ad893fbbcf6df2544576592d174da1b38dee32e721582d459426f476a73bf234",
+      "peak": 5293,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "hurt": {
+      "file": "hurt.ogg",
+      "master": "hurt.wav",
+      "duration": 0.32,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#hurt",
+      "sha256": "e07a94166c779a7ca063d8c0822a5800fd869b5460a2be74814ece4add8fb20c",
+      "master_sha256": "67e865306143d126427cdf1ecb98ab3d143ece8207a3eac45e8f21634d4a51c4",
+      "peak": 4850,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "cat-food": {
+      "file": "cat-food.ogg",
+      "master": "cat-food.wav",
+      "duration": 0.22,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#cat-food",
+      "sha256": "7c335a30567828eb93853d4d0493fd6eed6aaa0a643e9e5be62a6248dd99df26",
+      "master_sha256": "30c851b853914af39c99e5716b1f6af4c16f7e9fd941bf5afff21b2e629f877b",
+      "peak": 4469,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "meal": {
+      "file": "meal.ogg",
+      "master": "meal.wav",
+      "duration": 0.6,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#meal",
+      "sha256": "8ffcfce4b6fea2d2427c66adcaf3696b695114530f2eb73097be0167f0cf163b",
+      "master_sha256": "5923eb9b08adc629b56aecf6a7e72de06a27c3325df24f46400cc18558e6d5e8",
+      "peak": 4534,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "beam": {
+      "file": "beam.ogg",
+      "master": "beam.wav",
+      "duration": 0.13,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#beam",
+      "sha256": "cc0c009b85e72a94c246544c56478b8e3de6a38b9e69112ad02c639d4a4f8384",
+      "master_sha256": "214f3c135f7e1c7d2e95b94eed03e6873dba42ad4809be4af8fb5e3157cb059e",
+      "peak": 4349,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "checkpoint": {
+      "file": "checkpoint.ogg",
+      "master": "checkpoint.wav",
+      "duration": 0.48,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#checkpoint",
+      "sha256": "16654996b98676b2a90efac3dc211850817fb3b44ca8d89e253722af144f9498",
+      "master_sha256": "a6c77de5c97c753277849b61ffa3128f2b0f3b415edb31a23ecce40f66d9f504",
+      "peak": 4521,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "hoagie": {
+      "file": "hoagie.ogg",
+      "master": "hoagie.wav",
+      "duration": 0.18,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#hoagie",
+      "sha256": "a0441d3a3531a116436be45ab9bf3a719940f46a50aa9fdcea61e486ff75d749",
+      "master_sha256": "4567ea8becece93e56c8cc10731235849b9a7bd6c04300eed07acccd84990d35",
+      "peak": 4653,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "boss-defeat": {
+      "file": "boss-defeat.ogg",
+      "master": "boss-defeat.wav",
+      "duration": 1.2,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#boss-defeat",
+      "sha256": "a2fae663588aa875fabadcfec377ae3511f046505855178413c6471e5ad308f2",
+      "master_sha256": "6a9dd39097f95c59d96bceb6e120021ca13c7df6017a12684c4f81adf8e1bc37",
+      "peak": 5090,
+      "endpoints": [
+        0,
+        0
+      ]
+    },
+    "menu": {
+      "file": "menu.ogg",
+      "master": "menu.wav",
+      "duration": 0.06,
+      "loop": false,
+      "approval": "effect awaiting listening",
+      "source": "sources/effects.json#menu",
+      "sha256": "9ab1a6c80b9f45bddd068da9437a78d4b51270abed56f0de81340d11ff37eb5c",
+      "master_sha256": "ed9fc022b903253472482d0b7cf64aa0350eb4aea43b13764da1d93307c5d9fe",
+      "peak": 4014,
+      "endpoints": [
+        0,
+        0
+      ]
+    }
+  },
+  "effects": [
+    "jump",
+    "stomp",
+    "bat-swing",
+    "bat-hit",
+    "hurt",
+    "cat-food",
+    "meal",
+    "beam",
+    "checkpoint",
+    "hoagie",
+    "boss-defeat",
+    "menu"
+  ],
+  "scenes": {
+    "title": "dayman",
+    "narration": "proposal",
+    "level1": "little-boy",
+    "cricket": "cricket-boss",
+    "frank-kidnap": "frank-kidnap",
+    "bridge": "troll-toll",
+    "frank": "frank-boss",
+    "nightman-kidnap": "nightman-kidnap",
+    "rooftop": "rooftop",
+    "nightman": "nightman-boss",
+    "proposal": "proposal",
+    "ending": "dayman",
+    "credits": null
+  },
+  "next": {
+    "frank-kidnap": "bridge",
+    "nightman-kidnap": "rooftop",
+    "proposal": "ending"
+  },
+  "mix": {
+    "music_gain_cap": 0.65,
+    "sfx_gain_cap": 0.5,
+    "sfx_voices": 4
+  },
+  "approval": "New arrangements/effects and browser hearing pending; original six compositions approved"
+}
