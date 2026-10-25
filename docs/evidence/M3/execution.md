@@ -105,3 +105,28 @@ These results apply to the first candidate. Updated-source verification follows.
   to an unused loopback port, then run commands above. Full CI and independent
   final-head review outcomes are recorded in PR13 after this fix commit. Human
   integrated hearing/feel remains pending; no milestone completion claimed.
+
+### Normal-loading evidence correction
+
+Independent E2E reviewer `/root/e2e_m3_c400146` identified missing normal-loading
+visual evidence (PR13 comment6404063940). Main accepted this evidence-only gap.
+Added inspected `loading-1280.png` and metadata from the ordinary corrected build,
+Chromium139 at1280x720. No game, runtime or asset inputs changed; the fingerprint
+above remains current. The gallery now has34 captures. Existing33 PNG hashes are
+unchanged. This capture is a loading-state observation, not a startup success test.
+
+Reproduce against the ordinary preview on127.0.0.1:8765: launch Playwright Chromium
+with `/usr/bin/chromium`, `--no-sandbox`, `--disable-gpu`, viewport1280x720 and
+`PW_TEST_SCREENSHOT_NO_FONTS_READY=1`. Route `**/pythons.js*` to await a promise;
+start navigation with `waitUntil: 'commit'`, then wait until `#loader` is visible,
+`#boot-status` reads `Loading the stage…` and `#boot-action` reads
+`Loading runtime…`. Capture the viewport, release the route and close the browser
+in a finally block. The screenshot environment flag bypasses Playwright's font-ready
+wait because the held script delays that promise; the page uses system fonts.
+The first capture attempt timed out awaiting fonts; the owned process was stopped
+and the successful capture used that flag. No production startup changes resulted.
+
+CI for source head `c4001466e549f545289c95e55e21297a38db630b` passed in run40238576169,
+including the complete Chromium9 and Firefox2 workflow groups. The evidence commit
+still requires its own current-head CI and independent reviews, recorded on PR13.
+Human integrated hearing and keyboard feel remain pending.

@@ -133,3 +133,9 @@ Refreshed synthetic branch captures. Source/build fingerprint, fixture vs ordina
 ## training-1280
 
 ![training-1280](captures/training-1280.png)
+
+## loading-1280
+
+Ordinary build before runtime readiness; SDK request briefly held for capture.
+
+![loading-1280](captures/loading-1280.png)

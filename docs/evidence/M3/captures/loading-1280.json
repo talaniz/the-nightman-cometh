@@ -1,0 +1,11 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "139.0.7258.66",
+  "state": "normal loading before runtime readiness",
+  "fixture": "BOOT-loading; SDK request briefly held; screenshot font-ready wait disabled because the held script delays that promise",
+  "status": "Loading the stage…",
+  "button": "Loading runtime…"
+}

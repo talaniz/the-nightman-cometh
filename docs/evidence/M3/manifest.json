@@ -398,6 +398,17 @@
       "state": "training-1280",
       "fixture_build": true,
       "command": "NIGHTMAN_BUILD=<fixture-build> NIGHTMAN_EVIDENCE=<capture-dir> npx playwright test --project=chromium"
+    },
+    {
+      "file": "captures/loading-1280.png",
+      "sha256": "16a48c164dfdb10ce7ba04486ab4461ea2d6e2d88da6f7e4264f28f8b530de5c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "normal loading before runtime readiness",
+      "fixture_build": false,
+      "command": "See execution.md normal-loading capture recipe; ordinary build with SDK request held briefly."
     }
   ],
   "unexpected_errors": [],
