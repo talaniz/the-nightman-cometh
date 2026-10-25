@@ -61,12 +61,12 @@
       "beams": [],
       "shots": [
         {
-          "x": 1418,
+          "x": 1464,
           "y": 410,
-          "life": 4.316666666666669
+          "life": 4.700000000000001
         }
       ],
-      "steps": 161
+      "steps": 138
     },
     "audio": {
       "playing": null,
@@ -80,8 +80,8 @@
       ]
     },
     "loops": 1,
-    "frames": 69,
-    "frame_ms_mean": 62.90434782608699,
+    "frames": 68,
+    "frame_ms_mean": 63.23529411764701,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

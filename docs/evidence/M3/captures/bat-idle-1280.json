@@ -60,7 +60,7 @@
       ],
       "beams": [],
       "shots": [],
-      "steps": 68
+      "steps": 66
     },
     "audio": {
       "playing": "little-boy",
@@ -74,8 +74,8 @@
       ]
     },
     "loops": 1,
-    "frames": 35,
-    "frame_ms_mean": 62.87428571428566,
+    "frames": 30,
+    "frame_ms_mean": 68.04333326666669,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

@@ -17,10 +17,10 @@
     "dialogue": 0,
     "world": {
       "player": {
-        "x": 690.6666666666658,
+        "x": 675.9999999999993,
         "y": 386,
         "hearts": 3,
-        "dayman": 8.433333333333255,
+        "dayman": 8.53333333333326,
         "invulnerable": 0,
         "facing": 1,
         "vy": 0,
@@ -60,7 +60,7 @@
       ],
       "beams": [],
       "shots": [],
-      "steps": 95
+      "steps": 89
     },
     "audio": {
       "playing": "dayman-fast",
@@ -74,8 +74,8 @@
       ]
     },
     "loops": 1,
-    "frames": 315,
-    "frame_ms_mean": 52.80500001666665,
+    "frames": 295,
+    "frame_ms_mean": 53.79500000833333,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

@@ -56,3 +56,52 @@ an explicit M3 gate; headless output cannot establish them.
 Full Chromium failure/recovery fixtures deliberately reject runtime/package requests, stall startup, disable storage and inject an actual missing audio load. Their asserted expected errors are not unexpected-error passes. Cold/normal/core/menu flows collect console, page and failed-request errors; only SDK pre-gesture MEDIA USER ACTION REQUIRED messages are excluded.
 
 Independent code and E2E review, CI and human integrated hearing/feel are pending. The source fingerprint records tested game inputs before the evidence-only additions; screenshots are inspected synthetic content. No M3 completion, full-game acceptance, merge or deployment is claimed.
+
+### Independent review corrections
+
+Reviewer `/root/review_m3_f7aa558` found audio retry cleared Dayman music early while
+world transformation remained active (PR review comment6403863316). Main accepted
+this against CORE/SHELL boundaries. A regression requested remaining4.25/pausedTrue
+and observed remaining0 before correction; the game recovery adapter now restores
+world-owned transformation and pause state. M2 director/recordings remain unchanged.
+Browser CORE now injects an audio failure while transformed and checks R recovery
+to dayman-fast, followed by ordinary expiry to little-boy.
+
+Main's visual check found the duplicate browser controls clipped beneath the canvas.
+A real-build bounding-box regression failed with canvas bottom704 > controls top690.
+Top anchoring corrects that overlap; no artwork or scope redesign. The regression
+trace archive had an independent write error after the assertion; the assertion and
+original screenshot establish the defect, not trace availability.
+
+Initial ordinary browser startup/audio reruns subsequently passed in isolation:
+Chromium BOOT smoke41.6s and Firefox AUDIO smoke48.2s. Combined browser launches
+are avoided on this Pi; initial concurrent timeouts are retained above, not hidden.
+These results apply to the first candidate. Updated-source verification follows.
+
+### Corrected candidate results
+
+- Native regression: **115 passed in70.92s**, same command/environment above.
+- Updated Chromium capture run passed its first eight groups, including Dayman
+  failure/retry and corrected footer bounds. The runner ended with SIGTERM143
+  during the ninth AUDIO smoke; this is an **interrupted run, not a full-suite pass**.
+  The stale owned test server was stopped. The eight completed groups and their
+  captures remain valid observations; separate ordinary smoke results follow.
+- Source fingerprint: `d4ceb84c6995d5a576bf12b7fc9ae958bc8d94ef4527fa5717471c5d16bd2576`.
+  Test-fixture and ordinary builds were rebuilt and match it. All affected captures
+  are refreshed. Runtime/audio source files are frozen after this build.
+- First-commit GitHub CI completed successfully (run40237587893). This does not
+  substitute for the new head's required CI run.
+
+- Corrected ordinary build, Chromium `--grep SMOKE`: **2 passed in1.0minute**.
+  Includes explicit airborne-jump assertion, menu/pause/scaling and mute/restoration.
+- Corrected ordinary build, Firefox `--grep SMOKE`: **2 passed** (cold test37.9s,
+  audio test32.2s). Browsers were serialized, with separate ports/results.
+- `tools/verify_evidence.py docs/evidence/M3/manifest.json`: **33 refreshed captures
+  verified**, including new Dayman retry state and ordinary jump/mute. Main visually
+  inspected each capture; `git diff --check` passed. Approved audio/director diff
+  against baseline remains empty.
+- Reproduction: build with/without `--test-fixtures`; set `NIGHTMAN_BUILD` to the
+  relevant output, `NIGHTMAN_RESULTS` to a fresh result directory and `NIGHTMAN_PORT`
+  to an unused loopback port, then run commands above. Full CI and independent
+  final-head review outcomes are recorded in PR13 after this fix commit. Human
+  integrated hearing/feel remains pending; no milestone completion claimed.

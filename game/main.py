@@ -8,6 +8,7 @@ import pygame
 from game.session import Session
 from game.render import Renderer
 from game.world import DT
+from game.audio import retry_audio
 from tools.audio.audition_app.backend import Mixer
 from tools.audio.audition_app.director import Director
 
@@ -49,7 +50,7 @@ async def main():
             if key==pygame.K_ESCAPE:session.back();held.clear();pending.clear()
             elif key==pygame.K_RETURN:session.activate()
             elif key==pygame.K_m:audio.volumes(muted=not audio.muted)
-            elif key==pygame.K_r:audio.retry()
+            elif key==pygame.K_r:retry_audio(audio,session.world.player.dayman if audio.scene=='level1' else 0,audio.paused)
             elif session.screen=='training':
                 if key==pygame.K_SPACE:pending.add('jump')
                 if key==pygame.K_j:pending.add('bat')
@@ -63,7 +64,9 @@ async def main():
                 window.__nightmanFixture=''
                 from game.fixtures import apply
                 request=json.loads(raw)
-                if request.get('name')=='audio-error':mixer.fail_next=True;audio.retry()
+                if request.get('name')=='audio-error':
+                    mixer.fail_next=True
+                    retry_audio(audio,session.world.player.dayman if audio.scene=='level1' else 0,audio.paused)
                 else:apply(session,request)
                 held.clear();pending.clear()
         before=session.world.steps

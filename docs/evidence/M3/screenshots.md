@@ -1,6 +1,6 @@
 # M3 actual-branch screenshots
 
-Synthetic branch captures, source/build fingerprint and reproduction commands in [manifest](manifest.json). Main inspected every image before publication. These are representative rehearsal assets, not final act art.
+Refreshed synthetic branch captures. Source/build fingerprint, fixture vs ordinary build, viewport and reproduction commands are in the [manifest](manifest.json). Main inspected every image before publication. Representative rehearsal assets, not final act art. Bat/stomp captures show aftermath; timing is separately checked through simulation/browser interactions.
 
 ## asset-load-error-1280
 
@@ -33,6 +33,10 @@ Synthetic branch captures, source/build fingerprint and reproduction commands in
 ## damage-1280
 
 ![damage-1280](captures/damage-1280.png)
+
+## dayman-audio-retry-1280
+
+![dayman-audio-retry-1280](captures/dayman-audio-retry-1280.png)
 
 ## death-1280
 
@@ -77,6 +81,10 @@ Synthetic branch captures, source/build fingerprint and reproduction commands in
 ## meal-dayman-1280
 
 ![meal-dayman-1280](captures/meal-dayman-1280.png)
+
+## muted-1280
+
+![muted-1280](captures/muted-1280.png)
 
 ## narrow-390
 
@@ -125,7 +133,3 @@ Synthetic branch captures, source/build fingerprint and reproduction commands in
 ## training-1280
 
 ![training-1280](captures/training-1280.png)
-
-## Ordinary build: mute
-
-![Muted gameplay](captures/muted-1280.png)

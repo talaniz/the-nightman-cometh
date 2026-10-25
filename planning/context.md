@@ -109,3 +109,15 @@ Node loader tests supplement, not replace, actual-browser failure tests.
 .gitignore is included as necessary build hygiene for scoped generated outputs.
 
 M3 candidate: 114 native tests and 2 loader tests pass; eight actual Chromium workflow groups pass. Ordinary build removes synthetic mutation support and serves loopback 8765. Evidence in docs/evidence/M3. Browser smoke reruns, CI, distinct per-commit review, independent E2E and integrated human hearing/feel remain pending. User was offered the existing SSH tunnel workflow. No merge/deployment authorized.
+
+M3 delivery PR: https://github.com/talaniz/the-nightman-cometh/pull/13 (draft).
+Initial commit f7aa558997e7b818b6c61afd97f4067dd49c52d2 reviewed by
+/root/review_m3_f7aa558; one accepted in-scope audio retry finding, no other material
+findings. Fix preserves game-owned Dayman/pause state and corrects clipped browser
+controls. Native115 tests pass. Refresh/review results are recorded in
+ docs/evidence/M3/execution.md and exact-head PR comments, which are the live review
+ledger after this commit. Require a distinct fix-commit reviewer, original reviewer's
+final-head revalidation, then separate E2E reviewer. Human hearing/feel pending.
+Preview now uses /tmp/nightman-m3-fix-normal on loopback8765, explicitly stopped/
+started with tools/serve_preview.py; existing SSH workflow applies. No merge or
+public deployment authority; do not begin M4 from M3 approval.

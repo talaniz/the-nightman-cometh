@@ -17,7 +17,7 @@
     "dialogue": 0,
     "world": {
       "player": {
-        "x": 448.00000000000045,
+        "x": 459.0000000000005,
         "y": 386,
         "hearts": 1,
         "dayman": 0,
@@ -62,7 +62,7 @@
       ],
       "beams": [],
       "shots": [],
-      "steps": 92
+      "steps": 94
     },
     "audio": {
       "playing": "little-boy",
@@ -76,8 +76,8 @@
       ]
     },
     "loops": 1,
-    "frames": 236,
-    "frame_ms_mean": 55.827499999999986,
+    "frames": 222,
+    "frame_ms_mean": 53.73083332500001,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

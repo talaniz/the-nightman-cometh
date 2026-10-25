@@ -31,13 +31,14 @@ function monitor(page){
 test('BOOT SMOKE cold load menus movement and pause',async({page})=>{
  const errors=monitor(page);await boot(page);
  const box=await page.locator('#canvas').boundingBox();expect(box.width/box.height).toBeCloseTo(16/9,1);
+ const hint=await page.locator('#controls').boundingBox();expect(box.y+box.height).toBeLessThanOrEqual(hint.y);
  await capture(page,'title-1280');
  await menu(page,'Start new rehearsal');expect((await state(page)).screen).toBe('dialogue');await capture(page,'dialogue-1280');
  await press(page,'Escape');expect((await state(page)).screen).toBe('training');
  const start=(await state(page)).world.player.x;
  await page.keyboard.down('ArrowRight');await page.waitForTimeout(500);await page.keyboard.up('ArrowRight');
  expect((await state(page)).world.player.x).toBeGreaterThan(start);await capture(page,'training-1280');
- await press(page,'Space');await capture(page,'jump-1280');
+ await page.keyboard.press('Space');await expect.poll(async()=>(await state(page)).world.player.y,{timeout:1000}).toBeLessThan(386);await capture(page,'jump-1280');
  await press(page,'Escape');expect((await state(page)).screen).toBe('pause');await capture(page,'pause-1280');
  await page.setViewportSize({width:1920,height:1080});await capture(page,'desktop-1920');
  await page.setViewportSize({width:390,height:844});await expect(page.locator('#narrow')).toBeVisible();await capture(page,'narrow-390');
@@ -73,6 +74,8 @@ test('CORE bat stomp food flags death transformation and blur',async({page})=>{
  await fixture(page,'meal');await page.keyboard.down('ArrowRight');await page.waitForTimeout(160);await page.keyboard.up('ArrowRight');
  expect((await state(page)).world.player.dayman).toBeGreaterThan(9);await capture(page,'meal-dayman-1280');
  await press(page,'k',80);const beams=(await state(page)).world.beams;expect(beams.length).toBe(1);expect(beams[0].dy).toBe(0);await capture(page,'beam-1280');
+ await fixture(page,'audio-error');expect((await state(page)).audio.error).not.toBe('');
+ await press(page,'r',160);expect((await state(page)).audio.error).toBe('');expect((await state(page)).world.player.dayman).toBeGreaterThan(0);expect((await state(page)).audio.playing).toBe('dayman-fast');await capture(page,'dayman-audio-retry-1280');
  await page.keyboard.down('ArrowRight');await page.evaluate(()=>window.dispatchEvent(new Event('blur')));await page.waitForTimeout(150);
  expect((await state(page)).screen).toBe('pause');const timer=(await state(page)).world.player.dayman;await page.waitForTimeout(400);expect((await state(page)).world.player.dayman).toBe(timer);
  await page.keyboard.up('ArrowRight');await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await press(page,'Escape');const x=(await state(page)).world.player.x;await page.waitForTimeout(300);expect((await state(page)).world.player.x).toBe(x);
