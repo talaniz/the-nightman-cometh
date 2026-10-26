@@ -66,10 +66,13 @@ test('SAVE ACT1 legacy migration keeps volumes and resets coordinates',async({pa
 // Ordinary full route uses only keyboard actions and read-only observations.
 // No test fixtures, passwords, invincibility or skipped story states.
 for(const recovery of [false,true])test('ACT1_NORMAL '+(recovery?'death checkpoint reload recovery':'full keyboard rescue and safe end of preview'),async({page})=>{
- test.setTimeout(360000);const faults=errors(page);await boot(page);expect((await state(page)).test_build).toBe(false);await choose(page,'Start Act 1');
+ test.setTimeout(420000);const faults=errors(page);await boot(page);expect((await state(page)).test_build).toBe(false);await choose(page,'Start Act 1');
  while((await state(page)).screen==='dialogue')await press(page,'Enter',70);
- let held='';let iterations=0;let deaths=0;let forcedRecovery=false;
- while(iterations++<650){
+ let held='';let deaths=0;let forcedRecovery=false;
+ // A read-count cap runs out sooner on faster hosts despite ongoing gameplay.
+ // Bound elapsed route time instead; success still requires the full rescue.
+ const routeDeadline=Date.now()+180000;
+ while(Date.now()<routeDeadline){
   let s=await state(page),w=s.world,p=w.player;
   if(s.screen==='dialogue'||s.screen==='complete')break;
   if(recovery&&!forcedRecovery&&w.boss_active){

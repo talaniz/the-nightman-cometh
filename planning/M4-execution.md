@@ -84,3 +84,22 @@ ghoul alive=false); capture moved to a clear pre-boss stretch via labelled QA Da
 All57 retained screenshots were opened and inspected by main; hashes/source verified.
 
 Final native gameplay/audio regression:138passed in64.71s (exit0). Approved audio and M2 mixer/director remain byte-unchanged from M3. Draft PR next; all independent/human gates remain open.
+
+### CI ordinary-route timing correction
+
+Run40261162801 passed all14 fixture Chromium checks but both ordinary routes
+failed their final dialogue assertion: expected dialogue, received training.
+Downloaded traces show both stopped at the fixed650-observation cap with Cricket
+at1HP and the player alive at1heart, with advancing simulation steps (2757 on the
+full route,1809 after recovery reload). Fast-host polling exhausted the observation
+budget while battle was still progressing. Firefox was not reached.
+
+Before changing the driver, define this test-only correction: replace observation
+count with a bounded180-second wall-clock route deadline; retain the actual keyboard
+route, fewer-than5-deaths assertion, required rescue/Frank/completion/save/reload
+assertions and prohibition on fixtures/QA/skips/invincibility. Allow420seconds for
+the complete test including boot and reload. Paths: tests/browser/act1.spec.cjs,
+this ledger and M4 verification evidence. No gameplay, assets or runtime changes;
+the57 screenshots retain their verified source fingerprint. Re-run ordinary
+Chromium/Firefox workflows via CI and independent final-head review. The original
+CI failure is the observed red; a rerun must demonstrate green before acceptance.
