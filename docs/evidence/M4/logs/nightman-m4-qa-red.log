@@ -1,0 +1,24 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_qa_completion_replay_does_not_overwrite_normal_save ___________
+
+    def test_qa_completion_replay_does_not_overwrite_normal_save():
+        import json
+        class Store:
+            raw=None
+            def read(self):return self.raw
+            def write(self,value):self.raw=value
+        store=Store();s=Session(store);s.start();s.next_dialogue(skip=True)
+        before=store.raw;normal=s.world
+        s.password='PAINTDOG';s.submit_password();s.world.complete=True;s.update(0,{})
+        s.next_dialogue(skip=True)
+>       assert s.menu()==['Replay QA Act 1','Exit QA']
+E       AssertionError: assert ['Replay Act 1', 'Title'] == ['Replay QA Act 1', 'Exit QA']
+E
+E         At index 0 diff: 'Replay Act 1' != 'Replay QA Act 1'
+E         Use -v to get more diff
+
+tests/unit/test_act1_contract.py:175: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_qa_completion_replay_does_not_overwrite_normal_save
+1 failed, 17 deselected in 0.56s

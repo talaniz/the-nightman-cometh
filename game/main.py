@@ -48,9 +48,11 @@ async def main():
                 elif getattr(event,'unicode','').isascii() and event.unicode.isalnum() and len(session.password)<16:session.password+=event.unicode.upper()
                 continue
             if key==pygame.K_ESCAPE:session.back();held.clear();pending.clear()
-            elif key==pygame.K_RETURN:session.activate()
+            elif key==pygame.K_RETURN:
+                was_dead=session.screen=='dead';session.activate()
+                if was_dead:held.clear();pending.clear()
             elif key==pygame.K_m:audio.volumes(muted=not audio.muted)
-            elif key==pygame.K_r:retry_audio(audio,session.world.player.dayman if audio.scene=='level1' else 0,audio.paused)
+            elif key==pygame.K_r:retry_audio(audio,session.world.player.dayman if audio.scene in ('level1','cricket') else 0,audio.paused)
             elif session.screen=='training':
                 if key==pygame.K_SPACE:pending.add('jump')
                 if key==pygame.K_j:pending.add('bat')
@@ -66,33 +68,35 @@ async def main():
                 request=json.loads(raw)
                 if request.get('name')=='audio-error':
                     mixer.fail_next=True
-                    retry_audio(audio,session.world.player.dayman if audio.scene=='level1' else 0,audio.paused)
+                    retry_audio(audio,session.world.player.dayman if audio.scene in ('level1','cricket') else 0,audio.paused)
                 else:apply(session,request)
                 held.clear();pending.clear()
         before=session.world.steps
         controls={'left':bool(held & {pygame.K_LEFT,pygame.K_a}),'right':bool(held & {pygame.K_RIGHT,pygame.K_d}),**{k:True for k in pending}}
         session.update(dt,controls)
         if session.world.steps!=before:pending.clear()
-        if session.screen!=previous_screen:
-            if session.screen=='training':
-                # Leaving death/pause also clears any prior audio transformation state.
-                audio.remaining=session.world.player.dayman
-                audio.set_scene('level1');audio._play()
-            elif session.screen=='dialogue':audio.remaining=0;audio.set_scene('narration')
-            elif session.screen=='title':audio.remaining=0;audio.set_scene('title')
-            previous_screen=session.screen
+        desired=audio.scene
+        if session.screen=='training':desired='cricket' if getattr(session.world,'boss_active',False) else 'level1'
+        elif session.screen=='dialogue':desired=session.sequence[min(session.dialogue,len(session.sequence)-1)].music
+        elif session.screen=='title':desired='title'
+        elif session.screen=='complete':desired='credits'
+        if desired!=audio.scene or session.screen!=previous_screen and session.screen=='training':
+            audio.remaining=session.world.player.dayman if session.screen=='training' else 0
+            audio.set_scene(desired)
+            if audio.remaining:audio._play()
+        previous_screen=session.screen
         audio.pause(session.screen in ('pause','dead','options','confirm','password'))
         audio.volumes(music=session.progress.settings['music'],sfx=session.progress.settings['effects'])
         for event in session.world.events:
             if event=='meal':audio.transform()
-            audio.effect(event)
+            audio.effect('boss-defeat' if event=='defeat' else event) if event!='boss-start' else None
         session.world.events.clear()
         audio.tick((session.world.steps-before)*DT if session.screen=='training' else dt)
         renderer.draw(session,audio);frame_count+=1
         if WEB:
             state={'screen':session.screen,'selection':session.selection,'menu':session.menu(),'qa':session.qa,'qa_label':session.qa_label,
                    'message':session.message or session.progress.message,'settings':session.progress.settings,'dialogue':session.dialogue,
-                   'world':session.world.snapshot(),'audio':{'playing':audio.playing,'muted':audio.muted,'error':audio.error,**mixer.state()},
+                   'story':{'count':len(session.sequence),'speaker':session.sequence[min(session.dialogue,len(session.sequence)-1)].speaker},'world':session.world.snapshot(),'audio':{'playing':audio.playing,'muted':audio.muted,'error':audio.error,**mixer.state()},
                    'loops':1,'frames':frame_count,'frame_ms_mean':sum(frames)/len(frames),'test_build':test_mode,
                    'python':sys.version,'pygame':pygame.version.ver}
             window.__nightmanGame=json.dumps(state)

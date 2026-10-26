@@ -1,0 +1,15 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_title_from_future_qa_restores_normal_act_before_continue _________
+
+    def test_title_from_future_qa_restores_normal_act_before_continue():
+        s=Session(Memory());s.start();s.next_dialogue(skip=True);normal=s.world
+        s.password='TROLLTOLL';s.submit_password();s.back();s.selection=s.menu().index('Title');s.activate()
+>       assert not s.qa and s.world is normal
+E       assert (not True)
+E        +  where True = <game.session.Session object at 0x7f83555090>.qa
+
+tests/unit/test_act1_contract.py:190: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_title_from_future_qa_restores_normal_act_before_continue
+1 failed, 19 deselected in 0.36s

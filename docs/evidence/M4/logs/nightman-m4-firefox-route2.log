@@ -1,0 +1,48 @@
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:38:53] "GET / HTTP/1.1" 200 -
+
+Running 2 tests using 1 worker
+
+(node:219010) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:39:06] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:39:07] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:39:07] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:39:07] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:39:07] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:39:08] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:39:42] "GET /nightman.tar.gz HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:44:40] "GET /nightman.tar.gz HTTP/1.1" 304 -
+  ✘  1 [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL full keyboard rescue and safe end of preview (6.0m)
+Testing stopped early after 1 maximum allowed failures.
+
+
+  1) [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL full keyboard rescue and safe end of preview
+
+    TimeoutError: page.waitForFunction: Timeout 120000ms exceeded.
+
+      4 | const state=async p=>JSON.parse(await p.evaluate(()=>window.__nightmanGame));
+      5 | async function press(p,key,ms=120){await p.keyboard.press(key);await p.waitForTimeout(ms);}
+    > 6 | async function boot(p){await p.goto('/');await expect(p.locator('#boot-action')).toBeEnabled({timeout:120000});await p.locator('#boot-action').click();await p.waitForFunction(()=>!!window.__nightmanGame,{},{timeout:120000});await p.locator('#canvas').focus();}
+        |                                                                                                                                                                ^
+      7 | async function choose(p,label){let s=await state(p);let i=s.menu.indexOf(label);expect(i).toBeGreaterThanOrEqual(0);for(let n=0;n<(i-s.selection+s.menu.length)%s.menu.length;n++)await press(p,'ArrowDown',30);await press(p,'Enter');}
+      8 | async function capture(p,name){if(!evidence)return;fs.mkdirSync(evidence,{recursive:true});await p.screenshot({path:path.join(evidence,name+'.png')});fs.writeFileSync(path.join(evidence,name+'.json'),JSON.stringify({viewport:p.viewportSize(),browser:p.context().browser().version(),project:test.info().project.name,test:test.info().title,build:process.env.NIGHTMAN_BUILD,state_after_capture:true,state:await state(p)},null,2));}
+      9 | async function fixture(p,name){await p.evaluate(name=>window.__nightmanFixture=JSON.stringify({name}),name);await p.waitForTimeout(160);}
+        at boot (/home/palpatine/projects/the-nightman-cometh-m4/tests/browser/act1.spec.cjs:6:160)
+        at /home/palpatine/projects/the-nightman-cometh-m4/tests/browser/act1.spec.cjs:125:85
+
+    Error Context: ../../../../tmp/nightman-m4-firefox-route2/act1-ACT1-NORMAL-full-keyb-299a2-cue-and-safe-end-of-preview-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../tmp/nightman-m4-firefox-route2/act1-ACT1-NORMAL-full-keyb-299a2-cue-and-safe-end-of-preview-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../tmp/nightman-m4-firefox-route2/act1-ACT1-NORMAL-full-keyb-299a2-cue-and-safe-end-of-preview-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: [firefox] › tests/browser/act1.spec.cjs (6.0m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL full keyboard rescue and safe end of preview
+  1 did not run
+  1 error was not a part of any test, see above for details

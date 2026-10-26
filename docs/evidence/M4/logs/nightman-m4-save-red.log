@@ -1,0 +1,36 @@
+.......FF                                                                [100%]
+=================================== FAILURES ===================================
+________ test_legacy_save_migrates_settings_without_fake_story_progress ________
+
+    def test_legacy_save_migrates_settings_without_fake_story_progress():
+        import json
+        from game.progress import Progress
+        class Store:
+            def read(self):return json.dumps(dict(v=1,checkpoint=1400,flags=['preboss'],settings=dict(music=.3,effects=.6)))
+            def write(self,value):pass
+        p=Progress(Store());p.load()
+        assert p.settings['music']==.3
+>       assert p.saved['checkpoint']==80 and p.saved['flags']==[]
+E       assert (1400 == 80)
+
+tests/unit/test_act1_contract.py:67: AssertionError
+_______________ test_act1_save_roundtrip_retains_completed_flag ________________
+
+    def test_act1_save_roundtrip_retains_completed_flag():
+        from game.progress import Progress
+        from game.levels.act1 import Act1
+        class Store:
+            raw=None
+            def read(self):return self.raw
+            def write(self,value):self.raw=value
+        store=Store();w=Act1();w.flag('preboss',3350);w.complete=True
+        Progress(store).save(w);p=Progress(store);p.load();restored=Act1();p.restore(restored)
+>       assert restored.complete and restored.checkpoint==3350
+E       assert (False)
+E        +  where False = <game.levels.act1.Act1 object at 0x7f8e577b50>.complete
+
+tests/unit/test_act1_contract.py:79: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_legacy_save_migrates_settings_without_fake_story_progress
+FAILED tests/unit/test_act1_contract.py::test_act1_save_roundtrip_retains_completed_flag
+2 failed, 7 passed in 0.29s

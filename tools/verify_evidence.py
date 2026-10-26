@@ -1,4 +1,4 @@
-"""Verify the game source fingerprint and all committed M3 evidence hashes."""
+"""Verify the game source fingerprint and the supplied milestone evidence hashes."""
 import argparse
 import hashlib
 import json

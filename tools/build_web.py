@@ -12,20 +12,54 @@ import urllib.request
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 
+ART_ROOTS=('sprites','backgrounds','ui','scenes')
+
+def art_files():
+    paths=[]
+    for name in ART_ROOTS:
+        root=ROOT/'assets'/name
+        if root.is_symlink():raise ValueError('Linked production art is not allowed')
+        if root.exists():
+            for path in sorted(root.rglob('*')):
+                if path.is_symlink():raise ValueError('Linked production art is not allowed')
+                if path.is_file() and path.suffix.lower() in ('.png','.json','.ttf','.otf'):
+                    paths.append(path)
+    return paths
+
+def validate_art():
+    import pygame
+    files=art_files()
+    required=('sprites/cast.png','scenes/act1/opening.png',
+              'scenes/act1/kidnapping.png','backgrounds/act1/street.png','ui/kitten-mittens.png')
+    for relative in required:
+        path=ROOT/'assets'/relative
+        if path not in files:raise ValueError('Missing required art: '+relative)
+        try:
+            image=pygame.image.load(str(path))
+            if image.get_width()<64 or image.get_height()<64:raise ValueError('image too small')
+            if relative=='sprites/cast.png' and not image.get_masks()[3]:raise ValueError('sprite atlas lacks alpha')
+        except (pygame.error,OSError,ValueError) as exc:
+            raise ValueError('Invalid art: '+relative) from exc
+    return files
+
 def fingerprint():
-    paths=sorted([*ROOT.joinpath('game').rglob('*.py'),*ROOT.joinpath('game/web').glob('*'),
+    paths=sorted([*art_files(),*ROOT.joinpath('game').rglob('*.py'),*ROOT.joinpath('game/web').glob('*'),
                   ROOT/'tools/build_web.py',ROOT/'pyproject.toml',ROOT/'requirements.lock',ROOT/'assets/audio/production/manifest.json',
                   ROOT/'tools/audio/audition_app/backend.py',ROOT/'tools/audio/audition_app/director.py'])
     return hashlib.sha256(''.join(str(p.relative_to(ROOT))+hashlib.sha256(p.read_bytes()).hexdigest() for p in paths).encode()).hexdigest()
 
 def build(output,test_fixtures=False):
     if output.exists() or output.is_symlink():raise ValueError('Choose a new output directory')
+    validated_art=validate_art()
     with tempfile.TemporaryDirectory(prefix='nightman-build-') as temp:
         app=Path(temp)/'nightman';app.mkdir()
         shutil.copytree(ROOT/'game',app/'game',ignore=shutil.ignore_patterns('__pycache__'))
         if not test_fixtures:(app/'game/fixtures.py').unlink(missing_ok=True)
         else:(app/'test-fixtures.json').write_text('{}')
         (app/'main.py').write_text('import asyncio\nimport pygame  # pygbag dependency scanner needs top-level imports\nfrom game.main import main\nasyncio.run(main())\n')
+        for asset in validated_art:
+            target=app/asset.relative_to(ROOT);target.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(asset,target)
         # Reuse the reviewed M2 mixer/director verbatim; no parallel mixer fork.
         dest=app/'tools/audio/audition_app';dest.mkdir(parents=True)
         for name in ['backend.py','director.py']:shutil.copyfile(ROOT/'tools/audio/audition_app'/name,dest/name)

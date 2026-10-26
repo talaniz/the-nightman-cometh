@@ -1,0 +1,50 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+__________________ test_opening_preserves_approved_first_line __________________
+
+    def test_opening_preserves_approved_first_line():
+        from game.session import DIALOGUE
+>       assert DIALOGUE[0][1] == 'Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—'
+E       AssertionError: assert 'Welcome to r...and villainy.' == 'Come ye of g.... For ye see—'
+E
+E         - Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—
+E         + Welcome to rehearsal. Tonight: a tale of intrigue and villainy.
+
+tests/unit/test_act1_contract.py:11: AssertionError
+_________________ test_new_run_enters_story_act_not_rehearsal __________________
+
+    def test_new_run_enters_story_act_not_rehearsal():
+        session=Session(Memory());session.start();session.next_dialogue(skip=True)
+>       assert getattr(session.world,'act',None)=='act1'
+E       AssertionError: assert None == 'act1'
+E        +  where None = getattr(<game.world.World object at 0x7f9b813010>, 'act', None)
+E        +    where <game.world.World object at 0x7f9b813010> = <game.session.Session object at 0x7f9b812d90>.world
+
+tests/unit/test_act1_contract.py:15: AssertionError
+__________________ test_art_changes_invalidate_build_evidence __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-palpatine/pytest-40/test_art_changes_invalidate_bu0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f9b05e750>
+
+    def test_art_changes_invalidate_build_evidence(tmp_path,monkeypatch):
+        import tools.build_web as build
+        # Reuse existing inputs while isolating the additional asset root.
+        root=tmp_path/'root';root.mkdir()
+        for name in ('game','tools','pyproject.toml','requirements.lock'):
+            (root/name).symlink_to(build.ROOT/name,target_is_directory=(build.ROOT/name).is_dir())
+        (root/'assets').mkdir();(root/'assets/audio').symlink_to(build.ROOT/'assets/audio',target_is_directory=True)
+        art=root/'assets/scenes/act1';art.mkdir(parents=True)
+        image=art/'intro.png';image.write_bytes(b'first-art')
+        monkeypatch.setattr(build,'ROOT',root)
+        before=fingerprint();image.write_bytes(b'revised-art')
+>       assert fingerprint()!=before,'Shipped art must participate in source fingerprint'
+E       AssertionError: Shipped art must participate in source fingerprint
+E       assert 'd4ceb84c6995d5a576bf12b7fc9ae958bc8d94ef4527fa5717471c5d16bd2576' != 'd4ceb84c6995d5a576bf12b7fc9ae958bc8d94ef4527fa5717471c5d16bd2576'
+E        +  where 'd4ceb84c6995d5a576bf12b7fc9ae958bc8d94ef4527fa5717471c5d16bd2576' = fingerprint()
+
+tests/unit/test_act1_contract.py:28: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_opening_preserves_approved_first_line
+FAILED tests/unit/test_act1_contract.py::test_new_run_enters_story_act_not_rehearsal
+FAILED tests/unit/test_act1_contract.py::test_art_changes_invalidate_build_evidence
+3 failed in 0.24s

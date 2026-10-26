@@ -1,0 +1,14 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "139.0.7258.66",
+  "project": "chromium",
+  "test": "BOOT normal loading is visible before runtime readiness",
+  "build": "/tmp/nightman-m4-review-fixture",
+  "fixture": "SDK request held briefly before readiness",
+  "status": "Loading the stage\u2026",
+  "frozen_visual_pose": false,
+  "source_fingerprint": "674bf4acf595c3616a83fe56c49216a505e52cb2faed4148a8bdd84ecf175560"
+}

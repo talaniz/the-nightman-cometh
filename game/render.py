@@ -2,14 +2,14 @@
 import math
 import pygame
 from game.world import FLAGS, PLATFORMS, WIDTH
-from game.session import DIALOGUE
+from game.art import Art
 
 INK=(15,18,32);GOLD=(231,185,87);CREAM=(238,227,199);MUTED=(166,174,192)
 
 class Renderer:
     def __init__(self,screen):
-        self.screen=screen
-        self.font=pygame.font.Font(None,25);self.small=pygame.font.Font(None,21);self.large=pygame.font.Font(None,48)
+        self.screen=screen;self.art=Art()
+        self.item_font=pygame.font.Font(None,16);self.font=pygame.font.Font(None,25);self.small=pygame.font.Font(None,21);self.large=pygame.font.Font(None,48)
     def text(self,text,x,y,color=CREAM,font=None):
         self.screen.blit((font or self.font).render(text,False,color),(int(x),int(y)))
     def center(self,text,y,color=CREAM,font=None):
@@ -82,34 +82,43 @@ class Renderer:
         self.text('MIND THE GAP',1050-camera,472,MUTED,self.small)
         self.text('END OF REHEARSAL',1510-camera,355,GOLD,self.small)
     def training(self,session):
-        w=session.world;p=w.player;camera=max(0,min(WIDTH-960,p.x-350));self.scenery(camera)
-        for name,x in FLAGS.items():
+        w=session.world;p=w.player;camera=max(0,min(w.width-960,p.x-350));self.act_scenery(w,camera) if w.act=="act1" else self.scenery(camera)
+        for name,x in w.flag_positions.items():
             color=(126,202,139) if name in w.flags else GOLD
             pygame.draw.polygon(self.screen,color,[(x-camera+2,362),(x-camera+35,371),(x-camera+2,382)])
         for t in w.targets:
             if t['alive']:
-                x=t['x']-camera;y=t['y'];self.rect((123,65,63),(x,y,30,32));self.rect((199,139,83),(x+4,y+4,22,24))
+                x=t['x']-camera;y=t['y']
+                if w.act=='act1':
+                    self.enemy(t,camera);continue
+                self.rect((123,65,63),(x,y,30,32));self.rect((199,139,83),(x+4,y+4,22,24))
                 pygame.draw.circle(self.screen,(91,43,44),(int(x)+15,int(y)+15),9,2);pygame.draw.circle(self.screen,CREAM,(int(x)+15,int(y)+15),3)
                 self.rect((67,47,42),(x+11,y+29,8,4))
         for item in w.pickups:
             if item['taken']:continue
             x=item['x']-camera;y=item['y']
+            if item['kind']=='meal' and w.act=='act1':
+                self.screen.blit(self.art.image('cast',15,(44,25)),(int(x-22),int(y-15)));continue
             if item['kind']=='meal':
                 pygame.draw.ellipse(self.screen,CREAM,(x-18,y-6,38,12));pygame.draw.ellipse(self.screen,(142,75,64),(x-12,y-10,20,12))
                 for dx,c in ((10,(177,211,117)),(15,GOLD),(6,(191,99,143))):pygame.draw.circle(self.screen,c,(int(x+dx),int(y-5)),3)
             else:
-                self.rect((122,159,173),(x-9,y-15,18,22));self.rect(CREAM,(x-9,y-10,18,10));self.text('CAT',x-8,y-10,INK,self.small)
-        if not (p.invulnerable>0 and int(p.invulnerable*12)%2):self.person(p.x-camera,p.y,p.dayman>0,p.facing,p.swing>0,w.steps*.22 if p.grounded else 0)
+                self.rect((122,159,173),(x-14,y-15,28,22));self.rect(CREAM,(x-14,y-10,28,12));self.text('CAT',x-11,y-10,INK,self.item_font)
+        if w.act=='act1' or not (p.invulnerable>0 and int(p.invulnerable*12)%2):self.actor(p,camera,w.steps) if w.act=='act1' else self.person(p.x-camera,p.y,p.dayman>0,p.facing,p.swing>0,w.steps*.22 if p.grounded else 0)
+        for impact in w.impacts:
+            x=int(impact['x']-camera);y=int(impact['y']);radius=int(5+impact['life']*30)
+            for dx,dy in ((1,0),(0,1),(1,1),(1,-1)):
+                pygame.draw.line(self.screen,CREAM,(x-dx*radius,y-dy*radius),(x+dx*radius,y+dy*radius),2)
         for shot in w.shots:
             pygame.draw.circle(self.screen,(207,98,76),(int(shot['x']-camera),int(shot['y'])),7)
             pygame.draw.circle(self.screen,GOLD,(int(shot['x']-camera)-2,int(shot['y'])-2),3)
         for b in w.beams:
             self.rect((255,242,164),(b['x']-camera-12,b['y']-3,26,6));self.rect(GOLD,(b['x']-camera-10,b['y']-1,23,2))
-        self.rect((24,25,39),(0,0,960,70));self.rect(GOLD,(0,68,960,2));self.bat(25,18,2);self.text('RAT BAT',130,18,GOLD);self.text('DENNIS AS CHARLIE',130,42,MUTED,self.small)
+        self.rect((24,25,39),(0,0,960,70));self.rect(GOLD,(0,68,960,2));self.screen.blit(self.art.image('cast',14,(96,42)),(20,14)) if w.act=='act1' else self.bat(25,18,2);self.text('RAT BAT',130,18,GOLD);self.text('DENNIS AS CHARLIE',130,42,MUTED,self.small)
         for i in range(3):
             x=365+i*33;color=(205,83,86) if i<p.hearts else (60,53,65)
             pygame.draw.polygon(self.screen,color,[(x,24),(x+7,19),(x+14,24),(x+21,19),(x+28,24),(x+28,32),(x+14,46),(x,32)])
-        self.text(('DAYMAN  '+str(max(0,math.ceil(p.dayman)))+'s') if p.dayman else 'REHEARSAL  /  RAT BAT',520,27,GOLD)
+        self.text(('DAYMAN  '+str(max(0,math.ceil(p.dayman)))+'s') if p.dayman else ('COFFEE-SHOP RESCUE' if w.act=='act1' else 'REHEARSAL / RAT BAT'),520,27,GOLD)
         self.text('ESC PAUSE',810,28,MUTED,self.small)
         self.rect((24,25,39),(0,506,960,34));self.text('SPACE jump    J bat    K sunbeam    M mute    R retry audio',24,515,MUTED,self.small)
         if session.qa:self.text('QA · '+session.qa_label+(' · INVINCIBLE' if w.invincible else ''),22,79,(245,160,112),self.small)
@@ -123,12 +132,13 @@ class Renderer:
     def draw(self,session,audio):
         if session.screen in ('training','pause','dead'):self.training(session)
         else:
-            self.scenery(0);self.curtains()
+            self.screen.blit(self.art.image('opening',5,(960,540)),(0,0));self.curtains()
             self.center('THE NIGHTMAN COMETH',82,GOLD,self.large)
-            self.center('A MUSICAL PLATFORMER  ·  REHEARSAL',126,MUTED,self.small)
-        if session.screen in ('title','pause','options','confirm','dead'):
-            headings={'title':'ENTER THE THEATRE','pause':'TAKE FIVE','options':'OPTIONS','confirm':'START A NEW RUN?','dead':'CURTAIN CALL'}
+            self.center('ACT I  ·  THE COFFEE-SHOP RESCUE',126,MUTED,self.small)
+        if session.screen in ('title','pause','options','confirm','dead','complete'):
+            headings={'title':'ENTER THE THEATRE','pause':'TAKE FIVE','options':'OPTIONS','confirm':'START A NEW RUN?','dead':'CURTAIN CALL','complete':'ACT 1 COMPLETE'}
             self.panel(headings[session.screen])
+            if session.screen=='complete':self.center('Under the bridge comes next.',195,MUTED,self.small)
             for i,choice in enumerate(session.menu()):
                 y=220+i*(27 if len(session.menu())>6 else 38)
                 if session.screen=='options' and i<2:choice+='   < '+str(round(session.progress.settings[['music','effects'][i]]*100))+'% >'
@@ -136,19 +146,94 @@ class Renderer:
                 self.text(('> ' if i==session.selection else '  ')+choice,255,y,GOLD if i==session.selection else CREAM)
             self.center('UP / DOWN choose · ENTER confirm · ESC back',480,MUTED,self.small)
         elif session.screen=='password':
-            self.panel('PASSWORD');self.center('QA destinations use rehearsal props.',220,MUTED);self.center(session.password+'_',270,GOLD,self.large)
+            self.panel('PASSWORD');self.center('PAINTDOG: Act 1. Other acts: rehearsal only.',220,MUTED);self.center(session.password+'_',270,GOLD,self.large)
             self.center(session.message or 'Type a code. Enter confirms. Esc returns.',350,CREAM,self.small)
         elif session.screen=='dialogue':
-            self.panel(DIALOGUE[min(session.dialogue,2)][0]);self.portrait(DIALOGUE[min(session.dialogue,2)][0],245,235)
-            words=DIALOGUE[min(session.dialogue,2)][1].split();lines=['']
-            for word in words:
-                if len(lines[-1])+len(word)>40:lines.append('')
-                lines[-1]+=word+' '
-            for i,line in enumerate(lines):self.text(line,315,240+i*30)
-            self.center('ENTER next · ESC skip · Replay from the menu',430,MUTED,self.small)
+            self.story(session)
         message=session.progress.message or session.message
         if audio.error:message='Audio unavailable · R retries · play can continue'
         elif audio.muted:message='MUTED · press M to restore audio'
         if message and session.screen!='password':
             self.rect((54,39,43),(10,478,940,26));self.text(message,20,482,(242,191,139),self.small)
         pygame.display.flip()
+
+    def story(self,session):
+        still=session.sequence[min(session.dialogue,len(session.sequence)-1)]
+        self.screen.fill(INK)
+        self.screen.blit(self.art.image(still.atlas,still.panel,(960,420)),(0,0))
+        self.rect(CREAM,(24,368,912,140));self.rect(GOLD,(24,368,912,140),3)
+        pygame.draw.polygon(self.screen,CREAM,[(110,370),(140,342),(157,370)])
+        self.text(still.speaker,43,380,(104,58,28),self.small)
+        body,_,whisper=still.text.partition('\n')
+        words=body.split();lines=['']
+        for word in words:
+            candidate=(lines[-1]+' '+word).strip()
+            if self.font.size(candidate)[0]>866:lines.append(word)
+            else:lines[-1]=candidate
+        for i,line in enumerate(lines):
+            self.text(line,43,405+i*26,INK)
+            if 'and words' in line:
+                left=43+self.font.size(line.split('and words')[0])[0]
+                pygame.draw.line(self.screen,(130,78,28),(left,428+i*26),(left+self.font.size('and words')[0],428+i*26),2)
+        if whisper:self.text(whisper,43,410+len(lines)*26,(87,80,69),self.small)
+        self.center('ENTER next    ESC skip    Replay from the menu',519,MUTED,self.small)
+
+    def actor(self,p,camera,steps):
+        moving=getattr(p,'moving',False)
+        frame=3 if not p.grounded else (1+(steps//8)%2 if moving else 0)
+        if p.dayman:frame+=4
+        sprite=self.art.image('cast',frame,(40,64),p.facing<0)
+        if p.invulnerable and int(p.invulnerable*12)%2:
+            sprite=sprite.copy();sprite.fill((180,180,180,0),special_flags=pygame.BLEND_RGB_ADD)
+        self.screen.blit(sprite,(int(p.x-camera-8),int(p.y-20)))
+        # Per-pose hand anchors keep the bat attached to the atlas animation.
+        hand_x,hand_y=((23,17),(29,3),(29,3),(29,-8))[frame%4]
+        if p.swing:hand_y-=5
+        bat_x=p.x-camera+hand_x if p.facing>0 else p.x-camera+24-hand_x-43
+        self.screen.blit(self.art.image('cast',14,(43,19),p.facing<0),(int(bat_x),int(p.y+hand_y)))
+        if p.swing:pygame.draw.arc(self.screen,GOLD,(int(p.x-camera)-28,int(p.y)-10,80,60),-.6,.6,2)
+
+    def enemy(self,t,camera):
+        index={'rat':8,'ghoul':9,'chicken':10,'cricket':11}[t['kind']]
+        if t['kind']=='cricket' and t['state'] in ('stunned','defeated'):index=12
+        size=(44,48) if t['kind']=='cricket' else (38,36)
+        if t['kind']=='chicken' and t['state']=='waiting':return
+        if t['state']=='warning':self.text('!',t['x']-camera+12,t['y']-26,GOLD,self.large)
+        if t['state']=='stunned':self.text('* * *',t['x']-camera-7,t['y']-30,GOLD)
+        self.screen.blit(self.art.image('cast',index,size,(t.get('direction',1)>0 if t['kind']=='cricket' else t.get('direction',1)<0)),(int(t['x']-camera-5),int(t['y']+32-size[1])))
+        if t['kind']=='cricket':
+            self.text('CRICKET',675,83,GOLD)
+            for i in range(t['hp']):self.rect((204,86,78),(790+i*27,84,20,12))
+
+    def act_scenery(self,w,camera):
+        if not hasattr(self,'stage_backdrop'):
+            source=pygame.image.load(str(self.art.root/'backgrounds/act1/street.png')).convert()
+            self.stage_backdrop=pygame.transform.scale(source,(1350,450))
+        self.screen.blit(self.stage_backdrop,(-int(camera*390/(w.width-960)),70))
+        # Foreground brick flats and readable collision surfaces, independent of painted backdrop.
+        for x,y,width,height in w.platforms:
+            self.rect((82,51,43),(x-camera,y,width,height));self.rect((184,126,69),(x-camera,y,width,6))
+            for yy in range(y+16,min(506,y+height),18):
+                pygame.draw.line(self.screen,(47,35,36),(x-camera,yy),(x+width-camera,yy),2)
+                for xx in range(x,x+width,44):self.rect((47,35,36),(xx-camera+(22 if yy%36 else 0),yy-16,2,16))
+        for x,label in ((1700,'MIDPOINT'),(3350,'PRE-BOSS')):
+            pygame.draw.line(self.screen,CREAM,(x-camera,430),(x-camera,360),3)
+            self.text(label,x-camera-40,447,GOLD,self.small)
+        for x,label in ((100,'SHERWIN-WILLIAMS'),(1100,'THE COFFEE SHOP')):
+            self.text(label,x-int(camera*390/(w.width-960)),248,GOLD,self.small)
+        for x,title,sub in ((420,'KITTEN MITTENS','CHARLIE APPROVED'),(1290,'WOLF COLA','REFRESH YOUR NIGHT'),(2730,"SHADYNASTY'S",'JAZZ CLUB')):
+            top=190 if x==420 else 230;height=165 if x==420 else 105
+            self.rect((221,197,140),(x-camera,top,185,height));self.rect((71,49,40),(x-camera,top,185,height),3)
+            self.text(title,x-camera+10,top+10,INK,self.small);self.text(sub,x-camera+10,top+height-24,INK,self.small)
+            if x==420:
+                if not hasattr(self,'kitten_poster'):
+                    source=pygame.image.load(str(self.art.root/'ui/kitten-mittens.png')).convert()
+                    self.kitten_poster=pygame.transform.scale(source,(104,104))
+                self.screen.blit(self.kitten_poster,(x-camera+40,top+34))
+        if w.boss_active:
+            for x in (3530,4090):
+                self.rect((116,135,137),(x-camera,393,34,37))
+                for rib in (5,12,20,27):self.rect((65,85,91),(x-camera+rib,397,2,29))
+                pygame.draw.ellipse(self.screen,(184,193,185),(int(x-camera-3),388,40,10))
+                self.rect((218,218,193),(x-camera+10,385,14,4))
+            self.screen.blit(self.art.image('cast',13,(38,62)),(4140-camera,368))

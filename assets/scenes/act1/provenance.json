@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-25",
+  "reference": "User title and corrected planning mockups; opening reference round-02/A-opening-storyboard.png",
+  "notes": "Generated production-intent art, not a claim of third-party distribution permissions. No user desktop screenshots packaged. No baked dialogue. Actual build evidence is separate.",
+  "assets": [
+    {
+      "path": "assets/scenes/act1/opening.png",
+      "sha256": "5fafdcc0addc800ac65b5d8732c2cf6977dd336bafee042d08baa633c9fcc15b",
+      "generator": "Built-in image_gen",
+      "generated_source": "exec-93cbd223-c88c-43d4-8d3d-d380079212dd.png",
+      "role": "Six opening illustration panels; dialogue rendered by code",
+      "review": "Main visually inspected generated source and initial runtime probes; final browser review pending"
+    },
+    {
+      "path": "assets/scenes/act1/kidnapping.png",
+      "sha256": "fddcf88a318d526a49db25f6944f537e13ba03c70a4e22b744b246e5b8d79642",
+      "generator": "Built-in image_gen",
+      "generated_source": "exec-19c8412f-0ca0-4fa1-8d90-6e0d44afa0ed.png",
+      "role": "Six dumpster/chase/rescue/Frank panels",
+      "review": "Main visually inspected generated source and initial runtime probes; final browser review pending"
+    },
+    {
+      "path": "assets/sprites/cast.png",
+      "sha256": "bab0557f968bd8e79090a07c6f73d05d49fec530f5dd89f61aaf35684391ab2e",
+      "generator": "Built-in image_gen",
+      "generated_source": "exec-e8e88673-99e3-46fc-9c89-f8c0b55a91c7.png",
+      "role": "4x4 transparent cast/enemy/item atlas",
+      "review": "Main visually inspected generated source and initial runtime probes; final browser review pending"
+    },
+    {
+      "path": "assets/backgrounds/act1/street.png",
+      "sha256": "52af084377f5a4ba55da096cbbe340d04d600ee85a1562d80fded6f844f59aad",
+      "generator": "Built-in image_gen",
+      "generated_source": "exec-399840e0-d2a8-4d9d-9609-475a02397c4f.png",
+      "role": "Painted Philadelphia street stage",
+      "review": "Main visually inspected generated source and initial runtime probes; final browser review pending"
+    },
+    {
+      "path": "assets/ui/kitten-mittens.png",
+      "sha256": "840fcdc02cf7ca48e5880e3955175b85e5a966a70ab6ad6059dc99c5a5c064ac",
+      "generator": "Built-in image_gen",
+      "generated_source": "exec-04030198-aeef-4d8b-ade7-752ed1b164d1.png",
+      "role": "Charlie advertising a cat with four red mittens; text supplied by renderer",
+      "review": "Main visually inspected source; final actual-size browser evidence pending"
+    }
+  ]
+}
