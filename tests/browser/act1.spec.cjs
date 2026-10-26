@@ -105,7 +105,8 @@ for(const recovery of [false,true])test('ACT1_NORMAL '+(recovery?'death checkpoi
    if(Math.abs(distance)>14){
     await page.keyboard.press(distance>0?'ArrowLeft':'ArrowRight',{delay:Math.min(180,Math.abs(distance)/220*1000)});continue;
    }
-   const incoming=b.state==='charge'&&b.direction<0&&b.x-p.x>0&&b.x-p.x<250;
+   // Jump within the flight window, rather than early enough to land before contact.
+   const incoming=b.state==='charge'&&b.direction<0&&b.x-p.x>0&&b.x-p.x<140;
    const leaving=b.state==='warning'&&b.direction>0&&b.x<3600&&b.timer<.45;
    if(p.grounded&&(incoming||leaving))await page.keyboard.press('Space');
    if(b.state==='stunned'&&b.x<3600){

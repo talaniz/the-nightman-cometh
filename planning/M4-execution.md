@@ -103,3 +103,18 @@ this ledger and M4 verification evidence. No gameplay, assets or runtime changes
 the57 screenshots retain their verified source fingerprint. Re-run ordinary
 Chromium/Firefox workflows via CI and independent final-head review. The original
 CI failure is the observed red; a rerun must demonstrate green before acceptance.
+
+### Ordinary-driver jump timing correction
+
+Run40262710223 passed14 focused Chromium tests and the ordinary full rescue/reload,
+but recovery failed the unchanged fewer-than5-deaths assertion. Inspecting the
+retained first CI trace independently explains repeated damage: the250px incoming
+threshold starts jumps with Cricket about217px away;42simulation steps later the
+player has landed and Cricket reaches contact, costing a heart. This is an early
+keyboard action by the test driver, not evidence of unavoidable game damage.
+
+Test-only contract: trigger the incoming jump within140px (under0.47seconds at the
+unchanged300px/s charge speed), inside the approximately0.75-second jump flight.
+Keep the route deadline, death limit, real keyboard input and all rescue/recovery
+assertions. Observe Chromium/Firefox CI plus independent review before claiming
+green. Only this ledger and browser driver change; no shipped source/art change.
