@@ -118,3 +118,18 @@ unchanged300px/s charge speed), inside the approximately0.75-second jump flight.
 Keep the route deadline, death limit, real keyboard input and all rescue/recovery
 assertions. Observe Chromium/Firefox CI plus independent review before claiming
 green. Only this ledger and browser driver change; no shipped source/art change.
+
+### Deliberate Firefox unload classification
+
+Run40263695746:14 focused Chromium and2 ordinary Chromium passed; Firefox3passed,
+recovery reached completion but failed unexpected-console assertion. Trace shows
+exactly two `InvalidStateError: Navigated away from page` console messages at
+88938.912/88939.329ms, after intentional about:blank completed88937.030ms and before
+new game navigation88949.522ms. They are old-document teardown notifications.
+
+Test-only correction: bracket the deliberate unload, classify only that exact
+Firefox console message while the URL is about:blank inside that bracket, and
+report it explicitly as expected. All other console errors, page errors and failed
+requests remain failures. Drain teardown events for50ms before new boot; ensure the
+unexpected-error assertion also runs after the final reload. Re-run full CI and
+independent relevant browser checks; no runtime/art or screenshot change.

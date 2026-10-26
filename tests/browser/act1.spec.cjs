@@ -7,7 +7,22 @@ async function boot(p){await p.goto('/');await expect(p.locator('#boot-action'))
 async function choose(p,label){let s=await state(p);let i=s.menu.indexOf(label);expect(i).toBeGreaterThanOrEqual(0);for(let n=0;n<(i-s.selection+s.menu.length)%s.menu.length;n++)await press(p,'ArrowDown',30);await press(p,'Enter');}
 async function capture(p,name){if(!evidence)return;fs.mkdirSync(evidence,{recursive:true});await p.screenshot({path:path.join(evidence,name+'.png')});fs.writeFileSync(path.join(evidence,name+'.json'),JSON.stringify({viewport:p.viewportSize(),browser:p.context().browser().version(),project:test.info().project.name,test:test.info().title,build:process.env.NIGHTMAN_BUILD,state_after_capture:true,state:await state(p)},null,2));}
 async function fixture(p,name){await p.evaluate(name=>window.__nightmanFixture=JSON.stringify({name}),name);await p.waitForTimeout(160);}
-function errors(p){const list=[];p.on('pageerror',e=>list.push(String(e)));p.on('console',m=>{if(m.type()==='error'&&!m.text().includes('MEDIA USER ACTION REQUIRED'))list.push(m.text())});p.on('requestfailed',r=>list.push(r.url()));return list;}
+const unloading=new WeakSet();
+async function restart(p){
+ await p.evaluate(()=>window.onbeforeunload=null);unloading.add(p);
+ try{await p.goto('about:blank');await p.waitForTimeout(50);}finally{unloading.delete(p);}
+ await boot(p);
+}
+function errors(p){
+ const list=[];p.on('pageerror',e=>list.push(String(e)));
+ p.on('console',m=>{
+  if(m.type()!=='error'||m.text().includes('MEDIA USER ACTION REQUIRED'))return;
+  const expectedUnload=test.info().project.name==='firefox'&&unloading.has(p)&&p.url()==='about:blank'&&m.text()==='[JavaScript Error: "InvalidStateError: Navigated away from page"]';
+  if(expectedUnload)console.info('Expected Firefox notification during deliberate about:blank unload:',m.text());
+  else list.push(m.text());
+ });
+ p.on('requestfailed',r=>list.push(r.url()));return list;
+}
 
 test('STORY ACT1 exact sequence art audio and skip replay',async({page})=>{
  const faults=errors(page);await boot(page);await choose(page,'Start Act 1');
@@ -81,7 +96,7 @@ for(const recovery of [false,true])test('ACT1_NORMAL '+(recovery?'death checkpoi
    await expect.poll(async()=>(await state(page)).screen,{timeout:45000}).toBe('dead');
    await capture(page,'normal-death');await press(page,'Enter');
    let retry=await state(page);expect(retry.world.player.hearts).toBe(3);expect(retry.world.player.dayman).toBe(0);expect(retry.world.checkpoint).toBe(3350);await capture(page,'normal-retry');
-   await page.evaluate(()=>window.onbeforeunload=null);await page.goto('about:blank');await boot(page);await choose(page,'Continue Act 1');
+   await restart(page);await choose(page,'Continue Act 1');
    let restored=await state(page);expect(restored.world.checkpoint).toBe(3350);expect(restored.world.flags).toContain('preboss');forcedRecovery=true;continue;
   }
   if(s.screen==='dead'){deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.up('ArrowLeft');await page.keyboard.up('ArrowRight');await press(page,'Enter');held='';continue;}
@@ -126,5 +141,5 @@ for(const recovery of [false,true])test('ACT1_NORMAL '+(recovery?'death checkpoi
  for(let i=0;i<3;i++)await press(page,'Enter');
  expect((await state(page)).screen).toBe('complete');await capture(page,'normal-complete');
  const saved=JSON.parse(await page.evaluate(()=>localStorage.getItem('nightman.progress.v1')));expect(saved.complete).toBe(true);expect(saved.flags).toContain('preboss');if(recovery)expect(forcedRecovery).toBe(true);expect(faults).toEqual([]);
- await page.evaluate(()=>window.onbeforeunload=null);await page.goto('about:blank');await boot(page);await choose(page,'Continue Act 1');expect((await state(page)).screen).toBe('complete');
+ await restart(page);await choose(page,'Continue Act 1');expect((await state(page)).screen).toBe('complete');expect(faults).toEqual([]);
 });
