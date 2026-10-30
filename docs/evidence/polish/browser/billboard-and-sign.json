@@ -1,0 +1,154 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "139.0.7258.66",
+  "test": "POLISH real keyboard raised route and mounted art",
+  "build": "/tmp/nightman-polish-fixture-v4",
+  "state": {
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": false,
+    "qa_label": "",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 1,
+    "story": {
+      "count": 10,
+      "speaker": "DEE"
+    },
+    "world": {
+      "player": {
+        "x": 428.33333333333394,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "kind": "rat",
+          "x": 547,
+          "y": 398,
+          "home": 580,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 931
+        },
+        {
+          "id": 1,
+          "kind": "ghoul",
+          "x": 810.6000000000031,
+          "y": 328,
+          "home": 780,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 931
+        },
+        {
+          "id": 2,
+          "kind": "rat",
+          "x": 1407,
+          "y": 398,
+          "home": 1440,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 931
+        },
+        {
+          "id": 3,
+          "kind": "ghoul",
+          "x": 2020.600000000003,
+          "y": 398,
+          "home": 1990,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 931
+        },
+        {
+          "id": 4,
+          "kind": "ghoul",
+          "x": 2375.099999999986,
+          "y": 268,
+          "home": 2340,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 931
+        },
+        {
+          "id": 5,
+          "kind": "rat",
+          "x": 2827,
+          "y": 318,
+          "home": 2860,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 931
+        },
+        {
+          "id": 6,
+          "kind": "chicken",
+          "x": 2200,
+          "y": 160,
+          "home": 2200,
+          "alive": true,
+          "direction": 1,
+          "state": "waiting",
+          "timer": 0,
+          "animation_step": 931
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 932,
+      "act": "act1",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "little-boy",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "loops": 1,
+    "frames": 228,
+    "frame_ms_mean": 73.22750000000013,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

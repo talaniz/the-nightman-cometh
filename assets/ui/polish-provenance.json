@@ -1,0 +1,37 @@
+{
+  "method": "built-in image_gen",
+  "purpose": "issue17 Act1 polish",
+  "assets": [
+    {
+      "asset": "ui/kitten-billboard.png",
+      "generated_source": "exec-0d6d80bb-a519-4059-b1d9-c0a51bdf56a0.png",
+      "sha256": "6de14179945ea94120bb14c5bd5ec1b3919258d54b6e6efae7931110858be302"
+    },
+    {
+      "asset": "ui/wolf-billboard.png",
+      "generated_source": "exec-f92ab8d5-c98c-4945-a73c-e80a7d320f12.png",
+      "sha256": "9d000f47f9ddc0df84ec1540dd5c32013f9826f31a8ef17546ca56a755e5f1ba"
+    },
+    {
+      "asset": "ui/sherwin-sign.png",
+      "generated_source": "exec-eaafa06e-d6f1-471d-9fe0-af17c39ff18a.png",
+      "sha256": "a1a1d546dba6307bf6657d946b53077615ed797db9219fd466568eed9f4e407c"
+    },
+    {
+      "asset": "sprites/nail-bat.png",
+      "generated_source": "exec-0cc47fb0-3194-4d8e-9273-38646d07034d.png",
+      "sha256": "9ad4bac26caf642cb74ac6cc1ed901a11e09a756267a17ef34645e7407b28eb3"
+    },
+    {
+      "asset": "sprites/enemy-walk.png",
+      "generated_source": "exec-b376148d-df2f-485e-951d-65648dcdbb6b.png",
+      "sha256": "badb342c6e6f50342cfa4f0644382f475c4cdc0c36b60d498240aef6d8ceab06"
+    },
+    {
+      "asset": "sprites/bat-attack.png",
+      "generated_source": "exec-e8b8d007-822d-4bbc-a5de-9ab09a720229.png",
+      "sha256": "754a1ff6dfdbca3b08d275e1a4a4b2ec787811a850607fed7cd93e3783a8a3a5"
+    }
+  ],
+  "rights": "Generation provenance only; not a grant of third-party distribution rights."
+}

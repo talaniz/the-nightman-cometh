@@ -6,15 +6,15 @@ class Act1(World):
     width=4200
     flag_positions={'mid':1700,'preboss':3350}
     platforms=((0,430,1050,110),(1122,430,1378,110),(2572,430,1628,110),
-               (690,340,150,18),(890,280,150,18),(2050,340,170,18),(2290,290,170,18),
+               (690,360,150,18),(890,300,150,18),(2050,360,170,18),(2290,300,170,18),
                (2820,350,160,18))
     launcher=False
 
     def reset_encounter(self):
         self.boss_active=False;self.complete=False;self.chicken_clock=0
         self.targets=[]
-        for i,(kind,x,y) in enumerate((('rat',580,398),('ghoul',780,308),('rat',1440,398),
-                    ('ghoul',1990,398),('ghoul',2340,258),('rat',2860,318),('chicken',2200,160))):
+        for i,(kind,x,y) in enumerate((('rat',580,398),('ghoul',780,328),('rat',1440,398),
+                    ('ghoul',1990,398),('ghoul',2340,268),('rat',2860,318),('chicken',2200,160))):
             self.targets.append(dict(id=i,kind=kind,x=float(x),y=float(y),home=x,alive=True,
                                      direction=1,state='waiting' if kind=='chicken' else 'patrol',timer=0))
         self.pickups=[dict(id='food1',kind='cat-food',x=900,y=412,taken=False),
@@ -51,6 +51,7 @@ class Act1(World):
         if self.player.x>=3500 and not self.boss_active:self.enter_boss()
         for target in self.targets:
             if not target['alive']:continue
+            target['animation_step']=self.steps
             kind=target['kind']
             if kind=='cricket':
                 target['timer']-=DT

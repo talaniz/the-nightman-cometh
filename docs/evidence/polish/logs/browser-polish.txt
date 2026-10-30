@@ -1,0 +1,24 @@
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:45:22] "GET / HTTP/1.1" 200 -
+
+Running 2 tests using 1 worker
+
+(node:1594274) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:45:41] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:45:41] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:45:41] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:45:41] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:45:41] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:45:41] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:46:12] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/polish.spec.cjs:20:1 › POLISH real keyboard raised route and mounted art (1.9m)
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:47:32] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:47:32] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:47:32] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:47:32] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:47:32] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:47:33] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [30/Oct/2026 16:47:52] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  2 [chromium] › tests/browser/polish.spec.cjs:37:1 › POLISH live weapon and creature motion plus pause (1.3m)
+
+  2 passed (3.4m)
