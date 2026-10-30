@@ -20,12 +20,18 @@ class Player:
     facing:int=1
     vy:float=0
     grounded:bool=True
+    moving:bool=False
     swing:float=0
     beam_cooldown:float=0
     @property
     def rect(self):return (self.x,self.y,24,44)
 
 class World:
+    launcher=True
+    width=WIDTH
+    platforms=PLATFORMS
+    flag_positions=FLAGS
+    act="rehearsal"
     def __init__(self):
         self.player=Player();self.flags=set();self.checkpoint=80
         self.paused=False;self.dead=False;self.events=[];self.beams=[]
@@ -35,9 +41,9 @@ class World:
         self.targets=[{'id':i,'x':x,'y':y,'alive':True} for i,(x,y) in enumerate(((520,398),(750,308),(930,248),(1520,398)))]
         self.pickups=[{'id':'food','kind':'cat-food','x':250,'y':412,'taken':False},
                       {'id':'meal','kind':'meal','x':640,'y':412,'taken':False}]
-        self.beams=[];self.shots=[];self.shot_clock=0
+        self.beams=[];self.shots=[];self.shot_clock=0;self.impacts=[]
     def flag(self,name,x):
-        if name not in FLAGS or FLAGS[name]!=x:raise ValueError('Unknown checkpoint')
+        if name not in self.flag_positions or self.flag_positions[name]!=x:raise ValueError('Unknown checkpoint')
         # Activation and its heal are one-shot across death and save/reload.
         if name in self.flags:return
         self.flags.add(name);self.checkpoint=x
@@ -57,6 +63,14 @@ class World:
         if p.dayman<=0 or p.beam_cooldown>0 or self.paused or self.dead:return
         self.beams.append({'x':p.x+12+p.facing*18,'y':p.y+19,'dx':p.facing*600,'dy':0,'life':1.8})
         p.beam_cooldown=.25;self.events.append('beam')
+    def contact_hurts(self,target):
+        return True
+    def target_active(self,target):
+        return target["alive"]
+    def hit_target(self,target,event):
+        target["alive"]=False;self.events.append(event)
+        self.impacts.append(dict(x=target["x"]+15,y=target["y"]+16,life=.25))
+        return True
     def contact(self,old_bottom,target_top,descending):
         return 'stomp' if descending and old_bottom<=target_top+1 else 'hurt'
     def attack(self):
@@ -76,37 +90,40 @@ class World:
     def step(self,inputs=None):
         if self.paused or self.dead:return
         self.steps+=1;p=self.player;controls=inputs or {}
+        for impact in self.impacts:impact["life"]-=DT
+        self.impacts=[impact for impact in self.impacts if impact["life"]>0]
         for attr in ('dayman','invulnerable','swing','beam_cooldown'):setattr(p,attr,max(0,getattr(p,attr)-DT))
         direction=int(bool(controls.get('right')))-int(bool(controls.get('left')))
+        p.moving=bool(direction)
         if direction:p.facing=direction
-        p.x=max(0,min(WIDTH-24,p.x+direction*220*DT))
+        p.x=max(0,min(self.width-24,p.x+direction*220*DT))
         if controls.get('jump') and p.grounded:p.vy=-490;p.grounded=False;self.events.append('jump')
         if controls.get('bat'):self.attack()
         if controls.get('beam'):self.shoot()
         old_bottom=p.y+44;p.vy=min(800,p.vy+1300*DT);p.y+=p.vy*DT;p.grounded=False
-        for x,y,w,h in PLATFORMS:
+        for x,y,w,h in self.platforms:
             if p.vy>=0 and p.x+24>x and p.x<x+w and old_bottom<=y+.01 and p.y+44>=y:
                 p.y=y-44;p.vy=0;p.grounded=True;break
         if p.y>600:
             p.hearts=0;self.dead=True;self.events.append('hurt');return
-        for name,x in FLAGS.items():
+        for name,x in self.flag_positions.items():
             if abs(p.x-x)<25 and p.y+44>=FLOOR-5:self.flag(name,x)
         for pickup in self.pickups:
             if not pickup['taken'] and overlap(p.rect,(pickup['x']-15,pickup['y']-13,30,26)):
                 pickup['taken']=True
                 self.meal() if pickup['kind']=='meal' else self.food()
         for target in self.targets:
-            if not target['alive']:continue
+            if not self.target_active(target):continue
             rect=(target['x'],target['y'],30,32)
             hitbox=(p.x+24 if p.facing>0 else p.x-42,p.y+7,42,27)
             if .04<p.swing<.18 and target['id'] not in self.swing_hits and overlap(hitbox,rect):
-                self.swing_hits.add(target['id']);target['alive']=False;self.events.append('bat-hit');continue
+                self.swing_hits.add(target['id']);self.hit_target(target,'bat-hit');continue
             if overlap(p.rect,rect):
                 if self.contact(old_bottom,target['y'],p.vy>0)=='stomp':
-                    target['alive']=False;p.y=target['y']-44;p.vy=-350;self.events.append('stomp')
-                else:self.hurt()
+                    self.hit_target(target,'stomp');p.y=target['y']-44;p.vy=-350
+                elif self.contact_hurts(target):self.hurt()
         self.shot_clock+=DT
-        if self.shot_clock>=2:
+        if self.launcher and self.shot_clock>=2:
             self.shot_clock=0
             if self.targets[-1]['alive']:self.shots.append({'x':1500.0,'y':410.0,'life':5.0})
         for shot in self.shots:
@@ -124,8 +141,8 @@ class World:
         for beam in self.beams:
             beam['x']+=beam['dx']*DT;beam['life']-=DT
             for target in self.targets:
-                if target['alive'] and overlap((beam['x']-10,beam['y']-3,20,6),(target['x'],target['y'],30,32)):
-                    target['alive']=False;beam['life']=0;self.events.append('bat-hit');break
+                if self.target_active(target) and overlap((beam['x']-10,beam['y']-3,20,6),(target['x'],target['y'],30,32)):
+                    self.hit_target(target,'bat-hit');beam['life']=0;break
         self.beams=[b for b in self.beams if b['life']>0]
     def snapshot(self):
         return {'player':asdict(self.player),'flags':sorted(self.flags),'checkpoint':self.checkpoint,

@@ -1,0 +1,55 @@
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:16:45] "GET / HTTP/1.1" 200 -
+
+Running 4 tests using 1 worker
+
+(node:213249) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:16:53] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:16:53] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:16:53] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:16:53] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:16:53] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:16:53] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:17:08] "GET /nightman.tar.gz HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:33] "GET / HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:33] "GET /boot-state.js HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:33] "GET /browserfs.min.js HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:33] "GET /loader.js HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:33] "GET /style.css HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:34] "GET /favicon.png HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:46] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/act1.spec.cjs:66:36 › ACT1_NORMAL full keyboard rescue and safe end of preview (2.0m)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:55] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:55] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:55] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:55] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:55] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:18:56] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:19:14] "GET /nightman.tar.gz HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:20:31] "GET / HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:20:31] "GET /boot-state.js HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:20:31] "GET /loader.js HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:20:31] "GET /browserfs.min.js HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:20:31] "GET /style.css HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:20:31] "GET /favicon.png HTTP/1.1" 304 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:20:44] "GET /nightman.tar.gz HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:21:35] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  2 [chromium] › tests/browser/act1.spec.cjs:66:36 › ACT1_NORMAL death checkpoint reload recovery (2.8m)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:21:46] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:21:46] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:21:46] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:21:46] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:21:46] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:21:47] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:02] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  3 [chromium] › tests/browser/game.spec.cjs:31:1 › BOOT SMOKE cold load menus movement and pause (44.4s)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:30] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:30] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:30] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:30] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:30] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:30] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:22:46] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  4 [chromium] › tests/browser/game.spec.cjs:126:1 › AUDIO SMOKE mute restores playback without restarting gameplay (34.7s)
+
+  4 passed (6.4m)

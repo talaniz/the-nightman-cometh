@@ -1,0 +1,21 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_linked_art_root_cannot_package_outside_content ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-palpatine/pytest-60/test_linked_art_root_cannot_pa0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f8de49210>
+
+    def test_linked_art_root_cannot_package_outside_content(tmp_path,monkeypatch):
+        import pytest
+        import tools.build_web as build
+        root=tmp_path/'repo';(root/'assets').mkdir(parents=True)
+        external=tmp_path/'outside';external.mkdir();(external/'private.png').write_bytes(b'not approved')
+        (root/'assets/scenes').symlink_to(external,target_is_directory=True)
+        monkeypatch.setattr(build,'ROOT',root)
+>       with pytest.raises(ValueError,match='Linked production art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_act1_contract.py:223: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_linked_art_root_cannot_package_outside_content
+1 failed, 22 deselected in 0.42s

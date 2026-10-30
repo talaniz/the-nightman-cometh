@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_knocked_out_cricket_does_not_hurt_player_on_contact ___________
+
+    def test_knocked_out_cricket_does_not_hurt_player_on_contact():
+        from game.levels.act1 import Act1
+        w=Act1();w.player.x=3500;w.step({});boss=w.targets[0]
+        boss.update(state='stunned',timer=1.5,x=3700);w.player.x=3700
+        w.step({})
+>       assert w.player.hearts==3,'A stunned Cricket is an opening, not a contact hazard'
+E       AssertionError: A stunned Cricket is an opening, not a contact hazard
+E       assert 2 == 3
+E        +  where 2 = Player(x=3700.0, y=386, hearts=2, dayman=0, invulnerable=1, facing=1, vy=0, grounded=True, moving=False, swing=0, beam_cooldown=0).hearts
+E        +    where Player(x=3700.0, y=386, hearts=2, dayman=0, invulnerable=1, facing=1, vy=0, grounded=True, moving=False, swing=0, beam_cooldown=0) = <game.levels.act1.Act1 object at 0x7fb196fb50>.player
+
+tests/unit/test_act1_contract.py:185: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_knocked_out_cricket_does_not_hurt_player_on_contact
+1 failed, 18 deselected in 0.35s

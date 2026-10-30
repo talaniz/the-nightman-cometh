@@ -1,3 +1,13 @@
+# Current execution status — M4 (2026-10-25)
+
+M3 is complete and merged via PR13 at1f97dd46a7479536d94c56567479ec73ce86fcd0; issue4 is closed. All per-commit/E2E reviews, CI and human integrated play/audio acceptance passed. Earlier M3 pending statements below are historical observations, superseded by this status and PR13's acceptance/merge record.
+
+User approved M4 issue5 contract (comment6405341553) and implementation on2026-10-25. One branch/worktree: milestone/m4-coffee-shop at /home/palpatine/projects/the-nightman-cometh-m4, base1f97dd46a7479536d94c56567479ec73ce86fcd0. No M4 merge/deployment authorization. Approved scope is planning/milestones/M4-coffee-shop.md; actual red/green/evidence record is planning/M4-execution.md. Main implements; distinct per-commit reviewers and separate actual-browser E2E reviewer are required after the draft PR exists. User visual/play/audio approval remains mandatory.
+
+Current work: Act1 implementation and57 inspected browser screenshots are ready for a draft PR. Native138pass; Chromium ordinary4pass and focused/core/startup checks recorded. Firefox revised driver completes rescue, but same-page runtime reload timed out on the Pi; final-head CI and independent review must resolve cross-browser verification. No M4 sign-off or completion claimed. Existing M3 preview remains untouched; candidate ordinary preview is loopback8767. See docs/evidence/M4/execution.md for actual results, source fingerprint and commands. PR URL/reviewer exact-head records will be maintained in issue5 and the PR to avoid evidence-only status churn.
+
+---
+
 # Execution context
 
 - Repository: https://github.com/talaniz/the-nightman-cometh (public).

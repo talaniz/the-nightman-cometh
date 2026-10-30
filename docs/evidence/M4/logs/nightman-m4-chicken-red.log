@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_chicken_warning_cannot_damage_before_swoop ________________
+
+    def test_chicken_warning_cannot_damage_before_swoop():
+        from game.levels.act1 import Act1
+        w=Act1();chicken=next(t for t in w.targets if t['kind']=='chicken')
+        w.player.x=2200;w.player.y=160;w.player.grounded=False
+        chicken.update(x=2200,y=160,state='warning',timer=1.2)
+        w.step({})
+>       assert w.player.hearts==3,'A warning must precede damaging contact'
+E       AssertionError: A warning must precede damaging contact
+E       assert 2 == 3
+E        +  where 2 = Player(x=2200.0, y=160.36111111111111, hearts=2, dayman=0, invulnerable=1, facing=1, vy=21.666666666666668, grounded=False, moving=False, swing=0, beam_cooldown=0).hearts
+E        +    where Player(x=2200.0, y=160.36111111111111, hearts=2, dayman=0, invulnerable=1, facing=1, vy=21.666666666666668, grounded=False, moving=False, swing=0, beam_cooldown=0) = <game.levels.act1.Act1 object at 0x7f941924d0>.player
+
+tests/unit/test_act1_contract.py:163: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_chicken_warning_cannot_damage_before_swoop
+1 failed, 16 deselected in 0.50s

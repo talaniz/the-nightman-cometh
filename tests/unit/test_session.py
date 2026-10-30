@@ -11,7 +11,7 @@ def test_passwords_are_isolated_and_exit_restores_normal():
     s=Session(Memory());normal=s.world;s.password='bad';s.submit_password();assert s.message and not s.qa
     s.password='PAINTDOG';s.submit_password();assert s.qa and s.world is not normal
     s.enter_screen('pause');s.selection=s.menu().index('QA checkpoint');s.activate()
-    assert s.world.checkpoint==1400 and s.progress.saved is None
+    assert s.world.checkpoint==3350 and s.progress.saved is None
     s.enter_screen('pause');s.selection=s.menu().index('Exit QA');s.activate();assert s.world is normal and not s.qa
 
 def test_new_game_confirmation_and_blur_pause():

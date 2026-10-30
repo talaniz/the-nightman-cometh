@@ -1,0 +1,84 @@
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:24:00] "GET / HTTP/1.1" 200 -
+
+Running 4 tests using 1 worker
+
+(node:215111) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:24:13] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:24:14] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:24:14] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:24:14] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:24:14] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:24:16] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:25:54] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✘  1 [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL full keyboard rescue and safe end of preview (4.7m)
+(node:216435) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:29:37] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:29:37] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:29:37] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:29:37] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:29:37] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:29:38] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:30:48] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✘  2 [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL death checkpoint reload recovery (2.5m)
+
+
+  1) [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL full keyboard rescue and safe end of preview
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 5
+    Received:   5
+
+      82 |    let restored=await state(page);expect(restored.world.checkpoint).toBe(3350);expect(restored.world.flags).toContain('preboss');forcedRecovery=true;continue;
+      83 |   }
+    > 84 |   if(s.screen==='dead'){deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.up('ArrowLeft');await page.keyboard.up('ArrowRight');await press(page,'Enter');held='';continue;}
+         |                                                 ^
+      85 |   // Stop before approaching a pit: driver round trips on the Pi can exceed400ms.
+      86 |   // Keyboard pulses and a stationary read avoid walking off while awaiting observations.
+      87 |   const edge=[1050,2500].find(edge=>edge-p.x>0&&edge-p.x<300);
+        at /home/palpatine/projects/the-nightman-cometh-m4/tests/browser/act1.spec.cjs:84:49
+
+    Error Context: ../../../../tmp/nightman-m4-review-results-ordinary-firefox/act1-ACT1-NORMAL-full-keyb-299a2-cue-and-safe-end-of-preview-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../tmp/nightman-m4-review-results-ordinary-firefox/act1-ACT1-NORMAL-full-keyb-299a2-cue-and-safe-end-of-preview-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../tmp/nightman-m4-review-results-ordinary-firefox/act1-ACT1-NORMAL-full-keyb-299a2-cue-and-safe-end-of-preview-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL death checkpoint reload recovery ──
+
+    Test was interrupted.
+
+    Error: page.evaluate: Target page, context or browser has been closed
+
+      2 | const fs=require('node:fs'),path=require('node:path');
+      3 | const evidence=process.env.NIGHTMAN_EVIDENCE;
+    > 4 | const state=async p=>JSON.parse(await p.evaluate(()=>window.__nightmanGame));
+        |                                         ^
+      5 | async function press(p,key,ms=120){await p.keyboard.press(key);await p.waitForTimeout(ms);}
+      6 | async function boot(p){await p.goto('/');await expect(p.locator('#boot-action')).toBeEnabled({timeout:120000});await p.locator('#boot-action').click();await p.waitForFunction(()=>!!window.__nightmanGame,{},{timeout:120000});await p.locator('#canvas').focus();}
+      7 | async function choose(p,label){let s=await state(p);let i=s.menu.indexOf(label);expect(i).toBeGreaterThanOrEqual(0);for(let n=0;n<(i-s.selection+s.menu.length)%s.menu.length;n++)await press(p,'ArrowDown',30);await press(p,'Enter');}
+        at state (/home/palpatine/projects/the-nightman-cometh-m4/tests/browser/act1.spec.cjs:4:41)
+        at expect.poll.timeout (/home/palpatine/projects/the-nightman-cometh-m4/tests/browser/act1.spec.cjs:78:38)
+        at /home/palpatine/projects/the-nightman-cometh-m4/tests/browser/act1.spec.cjs:78:4
+
+    Error Context: ../../../../tmp/nightman-m4-review-results-ordinary-firefox/act1-ACT1-NORMAL-death-checkpoint-reload-recovery-firefox/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../tmp/nightman-m4-review-results-ordinary-firefox/act1-ACT1-NORMAL-death-checkpoint-reload-recovery-firefox/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../tmp/nightman-m4-review-results-ordinary-firefox/act1-ACT1-NORMAL-death-checkpoint-reload-recovery-firefox/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL full keyboard rescue and safe end of preview
+  1 interrupted
+    [firefox] › tests/browser/act1.spec.cjs:68:36 › ACT1_NORMAL death checkpoint reload recovery ───
+  2 did not run

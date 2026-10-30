@@ -1,0 +1,41 @@
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:25] "GET / HTTP/1.1" 200 -
+
+Running 4 tests using 1 worker
+
+(node:211957) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:30] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:30] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:30] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:30] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:30] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:31] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:12:46] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/game.spec.cjs:62:1 › CORE bat stomp food flags death transformation and blur (1.0m)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:13:31] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:13:31] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:13:31] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:13:31] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:13:31] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:13:32] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:13:47] "GET /nightman.tar.gz HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:14:36] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  2 [chromium] › tests/browser/game.spec.cjs:84:1 › SHELL keyboard settings QA isolation dialogue replay and reload (1.2m)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:14:45] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:14:45] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:14:45] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:14:45] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:14:45] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:14:45] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:00] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  3 [chromium] › tests/browser/game.spec.cjs:97:1 › SHELL corrupt and disabled storage keep game usable (30.8s)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:16] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:16] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:16] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:16] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:16] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:16] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:15:31] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  4 [chromium] › tests/browser/game.spec.cjs:101:1 › SHELL storage disabled and audio failure remain recoverable (35.5s)
+
+  4 passed (3.5m)

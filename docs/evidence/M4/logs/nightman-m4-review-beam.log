@@ -1,0 +1,44 @@
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:23] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:217880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:37] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:37] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:37] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:37] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:37] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:37] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [25/Oct/2026 19:35:53] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✘  1 [chromium] › tests/browser/act1.spec.cjs:53:1 › ACT1 BEAM transformed sprite and horizontal shot (40.9s)
+
+
+  1) [chromium] › tests/browser/act1.spec.cjs:53:1 › ACT1 BEAM transformed sprite and horizontal shot
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 1
+    Received: 0
+
+      53 | test('ACT1 BEAM transformed sprite and horizontal shot',async({page})=>{
+      54 |  const faults=errors(page);await boot(page);await fixture(page,'act1-meal');await press(page,'k',40);
+    > 55 |  const beams=(await state(page)).world.beams;expect(beams.length).toBe(1);expect(beams[0].dy).toBe(0);
+         |                                                                   ^
+      56 |  await capture(page,'act1-beam');
+      57 |  await fixture(page,'act1-preboss');await page.keyboard.down('ArrowLeft');await page.waitForTimeout(1800);await page.keyboard.up('ArrowLeft');
+      58 |  expect((await state(page)).screen).toBe('training');await capture(page,'act1-shadynastys');expect(faults).toEqual([]);
+        at /home/palpatine/projects/the-nightman-cometh-m4/tests/browser/act1.spec.cjs:55:67
+
+    Error Context: ../../../../tmp/nightman-m4-review-results-beam/act1-ACT1-BEAM-transformed-sprite-and-horizontal-shot-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../../../tmp/nightman-m4-review-results-beam/act1-ACT1-BEAM-transformed-sprite-and-horizontal-shot-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../../../tmp/nightman-m4-review-results-beam/act1-ACT1-BEAM-transformed-sprite-and-horizontal-shot-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests/browser/act1.spec.cjs:53:1 › ACT1 BEAM transformed sprite and horizontal shot

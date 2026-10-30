@@ -1,0 +1,42 @@
+...F.FF                                                                  [100%]
+=================================== FAILURES ===================================
+__________ test_approach_has_distinct_enemies_and_telegraphed_chicken __________
+
+    def test_approach_has_distinct_enemies_and_telegraphed_chicken():
+        from game.levels.act1 import Act1
+        w=Act1()
+>       assert {'rat','ghoul','chicken'} <= {t.get('kind') for t in w.targets}
+E       AssertionError: assert {'chicken', 'ghoul', 'rat'} <= {None}
+E
+E         Extra items in the left set:
+E         'rat'
+E         'chicken'
+E         'ghoul'
+
+tests/unit/test_act1_contract.py:33: AssertionError
+________________ test_boss_isolated_and_only_stunned_hits_count ________________
+
+    def test_boss_isolated_and_only_stunned_hits_count():
+        from game.levels.act1 import Act1
+        w=Act1();w.player.x=3500;w.step({})
+>       assert getattr(w,'boss_active',False),'Crossing arena threshold starts Cricket'
+E       AssertionError: Crossing arena threshold starts Cricket
+E       assert False
+E        +  where False = getattr(<game.levels.act1.Act1 object at 0x7f7e4fcb90>, 'boss_active', False)
+
+tests/unit/test_act1_contract.py:46: AssertionError
+_______________ test_boss_retry_clears_battle_and_transformation _______________
+
+    def test_boss_retry_clears_battle_and_transformation():
+        from game.levels.act1 import Act1
+        w=Act1();w.flag('preboss',3350);w.player.x=3500;w.step({});w.meal();w.retry()
+>       assert not getattr(w,'boss_active',True)
+E       AssertionError: assert not True
+E        +  where True = getattr(<game.levels.act1.Act1 object at 0x7f7e510290>, 'boss_active', True)
+
+tests/unit/test_act1_contract.py:56: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_approach_has_distinct_enemies_and_telegraphed_chicken
+FAILED tests/unit/test_act1_contract.py::test_boss_isolated_and_only_stunned_hits_count
+FAILED tests/unit/test_act1_contract.py::test_boss_retry_clears_battle_and_transformation
+3 failed, 4 passed in 0.24s

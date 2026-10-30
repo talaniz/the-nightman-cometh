@@ -1,0 +1,95 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "139.0.7258.66",
+  "project": "chromium",
+  "test": "SHELL keyboard settings QA isolation dialogue replay and reload",
+  "build": "/tmp/nightman-m4-review-fixture",
+  "state_after_capture": true,
+  "state": {
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "Bridge rehearsal",
+    "message": "",
+    "settings": {
+      "music": 0.6,
+      "effects": 0.7
+    },
+    "dialogue": 0,
+    "story": {
+      "count": 10,
+      "speaker": "CHARLIE"
+    },
+    "world": {
+      "player": {
+        "x": 80,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "x": 520,
+          "y": 398,
+          "alive": true
+        },
+        {
+          "id": 1,
+          "x": 750,
+          "y": 308,
+          "alive": true
+        },
+        {
+          "id": 2,
+          "x": 930,
+          "y": 248,
+          "alive": true
+        },
+        {
+          "id": 3,
+          "x": 1520,
+          "y": 398,
+          "alive": true
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 73
+    },
+    "audio": {
+      "playing": "little-boy",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.3828125,
+        0.34375
+      ]
+    },
+    "loops": 1,
+    "frames": 184,
+    "frame_ms_mean": 66.06250000833329,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  },
+  "frozen_visual_pose": false,
+  "source_fingerprint": "674bf4acf595c3616a83fe56c49216a505e52cb2faed4148a8bdd84ecf175560"
+}

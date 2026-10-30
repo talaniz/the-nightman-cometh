@@ -1,0 +1,34 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_______________ test_missing_required_art_fails_before_packaging _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-palpatine/pytest-51/test_missing_required_art_fail0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f96d598d0>
+
+    def test_missing_required_art_fails_before_packaging(tmp_path,monkeypatch):
+        import pytest
+        import tools.build_web as build
+        monkeypatch.setattr(build,'ROOT',tmp_path)
+>       with pytest.raises(ValueError,match='Missing required art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_act1_contract.py:145: Failed
+______________ test_corrupt_art_is_rejected_before_browser_build _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-palpatine/pytest-51/test_corrupt_art_is_rejected_b0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f96e4ec50>
+
+    def test_corrupt_art_is_rejected_before_browser_build(tmp_path,monkeypatch):
+        import pytest
+        import tools.build_web as build
+        monkeypatch.setattr(build,'ROOT',tmp_path)
+        for rel in ['sprites/cast.png','scenes/act1/opening.png','scenes/act1/kidnapping.png','backgrounds/act1/street.png']:
+            p=tmp_path/'assets'/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b'broken png')
+>       with pytest.raises(ValueError,match='Invalid art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_act1_contract.py:154: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_missing_required_art_fails_before_packaging
+FAILED tests/unit/test_act1_contract.py::test_corrupt_art_is_rejected_before_browser_build
+2 failed, 14 deselected in 0.54s

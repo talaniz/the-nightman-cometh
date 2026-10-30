@@ -1,0 +1,902 @@
+{
+  "source_fingerprint": "674bf4acf595c3616a83fe56c49216a505e52cb2faed4148a8bdd84ecf175560",
+  "base_commit": "1f97dd46a7479536d94c56567479ec73ce86fcd0",
+  "revision": "M4 implementation source tree; included in the first M4 commit; no runtime or asset changes after capture",
+  "builds": {
+    "fixture": {
+      "source_fingerprint": "674bf4acf595c3616a83fe56c49216a505e52cb2faed4148a8bdd84ecf175560",
+      "python": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+      "files": {
+        "boot-state.js": "c8d028b2ea02fab3b724acec7d326226c37d5efcb63a2898b0e41b27c51598cd",
+        "browserfs-LICENSE.txt": "3a7e16fe59c38735309c9df4657cda635cfd7a1bf672f5404b7c7ab5cf949d94",
+        "browserfs.min.js": "ba01fda78db31a7ba579afe74b8b56cf4636381ca1b6c54ffba20467756a627f",
+        "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
+        "index.html": "1d9b7f24e1bab506056fa76e1ce9c059b594bad41bd6eca339653136bf93c9d1",
+        "loader.js": "6ceaae0a806e51e2aae42aef2810c0805759860afe9b68208a134af29473575b",
+        "nightman.apk": "c19598e3b8186f7ae416798aed5bc734d6880decf38b1d9e97602c1754a1e29c",
+        "nightman.tar.gz": "c3af5fd543fba04b1cba38ef4d9776bfc3e99e4e701b09c2b9aa9ff5767b09c5",
+        "style.css": "98e3d4b1b80fa5a62cf02204f2591b94a03c8687aec275aad48250e702967e6d"
+      }
+    },
+    "normal": {
+      "source_fingerprint": "674bf4acf595c3616a83fe56c49216a505e52cb2faed4148a8bdd84ecf175560",
+      "python": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
+      "files": {
+        "boot-state.js": "c8d028b2ea02fab3b724acec7d326226c37d5efcb63a2898b0e41b27c51598cd",
+        "browserfs-LICENSE.txt": "3a7e16fe59c38735309c9df4657cda635cfd7a1bf672f5404b7c7ab5cf949d94",
+        "browserfs.min.js": "ba01fda78db31a7ba579afe74b8b56cf4636381ca1b6c54ffba20467756a627f",
+        "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
+        "index.html": "1d9b7f24e1bab506056fa76e1ce9c059b594bad41bd6eca339653136bf93c9d1",
+        "loader.js": "6ceaae0a806e51e2aae42aef2810c0805759860afe9b68208a134af29473575b",
+        "nightman.apk": "6a0af2ace83f03cca8e52aa9b0a312ed7b1d25316e20a78a81c36492be8cd4b9",
+        "nightman.tar.gz": "20a2a178651e1a996ff7a6fcf41c115f335787b057787ddd18585b39e301981b",
+        "style.css": "98e3d4b1b80fa5a62cf02204f2591b94a03c8687aec275aad48250e702967e6d"
+      }
+    }
+  },
+  "unexpected_errors": [],
+  "notes": [
+    "All images are actual pygbag browser captures, not concept art.",
+    "Frozen pose fixtures hold bat/jump/damage/boss states for visual inspection; separate live keyboard and collision checks verify behavior.",
+    "Snapshot JSON is read after the screenshot; live positions/timers may advance between them.",
+    "Negative BOOT/save/audio tests intentionally inject failures; these are not unexpected errors.",
+    "Narrow viewport verifies guidance only; mobile play is out of scope."
+  ],
+  "captures": [
+    {
+      "file": "captures/act1-approach.png",
+      "sha256": "df42c8242d9580623931a2516f2a1cb9c0d5547e16af5120ca168c3c7506576b",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-approach",
+      "record": "captures/act1-approach.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-bat-pose.png",
+      "sha256": "6ecb69f6175045a3856155cb22545c667bf91cfaa1658bbcd37d9f04cd2f8ea2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-bat-pose",
+      "record": "captures/act1-bat-pose.json",
+      "frozen_visual_pose": true,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-beam.png",
+      "sha256": "3efe37c2046ff09bb0be7a26d6468631d2923ac16bc00ba3407cb0b441de673f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-beam",
+      "record": "captures/act1-beam.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 BEAM transformed sprite and horizontal shot"
+    },
+    {
+      "file": "captures/act1-chicken.png",
+      "sha256": "01162d6303994e041c335e57d7bcc9689d9dfaf2e15bb76c60da21ca8c39b725",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-chicken",
+      "record": "captures/act1-chicken.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-complete-1920.png",
+      "sha256": "8842cc0cf7edb80f2680571ff8597e95295c803cbb7806c28cb8c649e2145e4b",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-complete-1920",
+      "record": "captures/act1-complete-1920.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-complete.png",
+      "sha256": "0702d349ce07585c7e901166364d2270dd7b8b03682c2fd2276338bdc73a1282",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-complete",
+      "record": "captures/act1-complete.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-damage-pose.png",
+      "sha256": "dce772a8e397926496a957308ba9131d41ec2faf1a21ff4090c7a54a5656e9e4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-damage-pose",
+      "record": "captures/act1-damage-pose.json",
+      "frozen_visual_pose": true,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-death.png",
+      "sha256": "6bc8b3df653c53ac765b9038540ed150b9a1db2fc182f8f79486688e426c52f9",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-death",
+      "record": "captures/act1-death.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-flag-first.png",
+      "sha256": "18217e291766b1816c97c61315bc28e792b93fa54cbf52e9d58936b668b45cc2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-flag-first",
+      "record": "captures/act1-flag-first.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-flag-repeat.png",
+      "sha256": "26ad6402027f10f02a5faaed6c0a9c4abe5a29b38e6fd93d47556048a3f49dee",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-flag-repeat",
+      "record": "captures/act1-flag-repeat.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-jump-pose.png",
+      "sha256": "226d2ee7711c44cf6d2dcb4203ebdbf19bdbcb8c0e92b1ef74510e22fc51ff23",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-jump-pose",
+      "record": "captures/act1-jump-pose.json",
+      "frozen_visual_pose": true,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-meal.png",
+      "sha256": "33502f0e3b88828a1e23135083cea6114b33784951b99bbe5410ead7fe130131",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-meal",
+      "record": "captures/act1-meal.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-mid.png",
+      "sha256": "41224a127cc758d78a6bca476f16f9ae456049275878f93d48378fbf94a858b4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-mid",
+      "record": "captures/act1-mid.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-narrow.png",
+      "sha256": "bdf24f2a0fbfc38737f0960516b86199226b4d20095ca28be95cb628ee6d5991",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-narrow",
+      "record": "captures/act1-narrow.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-preboss.png",
+      "sha256": "d6d9eef587b51af1bbc0dfe049941d2e005c33209c9f56cb4225aff78f2d7f49",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-preboss",
+      "record": "captures/act1-preboss.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-retry.png",
+      "sha256": "98c6098292488e5f2e6629b99e7bffc8bfb08b2eeafd6fb23527c4a7357af492",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-retry",
+      "record": "captures/act1-retry.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-running.png",
+      "sha256": "d9bf123faf7e6eb3d737096925b4266abcc5ccc9f7caf78c333668b4bbcadfdd",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-running",
+      "record": "captures/act1-running.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/act1-shadynastys.png",
+      "sha256": "68cad1146d3fa8e852a9f99672d806115829a3d2dc235b1e02d74c57ba972abb",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "act1-shadynastys",
+      "record": "captures/act1-shadynastys.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 BEAM transformed sprite and horizontal shot"
+    },
+    {
+      "file": "captures/cricket-charge.png",
+      "sha256": "e99ce639b1fb1e0c364e3c592be179052dcad3684b51d5b7d041a424aee159d1",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "cricket-charge",
+      "record": "captures/cricket-charge.json",
+      "frozen_visual_pose": true,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/cricket-defeated.png",
+      "sha256": "d95afd0aa90dc574ff62421338bbba55dc8e0f5ff96a2976910af45642d01b66",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "cricket-defeated",
+      "record": "captures/cricket-defeated.json",
+      "frozen_visual_pose": true,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/cricket-hit.png",
+      "sha256": "3883e6aa0eb99183b2e3069b51413de1963db235b0827495f48a3d5e342d3a26",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "cricket-hit",
+      "record": "captures/cricket-hit.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/cricket-stunned.png",
+      "sha256": "6177b82fdc80abefbc5bddc5ffadd94b9dc82421c05f8bbe5a42dadfdb286bf1",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "cricket-stunned",
+      "record": "captures/cricket-stunned.json",
+      "frozen_visual_pose": true,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/cricket-warning.png",
+      "sha256": "46f263d110efacce492ce04ecf1efc73c691c0987b42c35e7dba426d555b5477",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "cricket-warning",
+      "record": "captures/cricket-warning.json",
+      "frozen_visual_pose": true,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/frank-0.png",
+      "sha256": "61ecbeccf815492f70cd656a102a0080c76c08237736022bda0b89bc0540b389",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "frank-0",
+      "record": "captures/frank-0.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/frank-1.png",
+      "sha256": "ba43bb071562e55847cc3d34704f7c18ea5338f667c7c830f2986257d4c90438",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "frank-1",
+      "record": "captures/frank-1.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/frank-2.png",
+      "sha256": "4f375b2d8a106a98f5810372b6b802b42245d1867a9765706b9a6315168654ab",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "frank-2",
+      "record": "captures/frank-2.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/normal-complete.png",
+      "sha256": "57d92144ac3f684f6cad4cfe4a1cab1c4ec97008a1a1069fe0deb5a18ef29057",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "normal-complete",
+      "record": "captures/normal-complete.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-normal",
+      "test": "ACT1_NORMAL death checkpoint reload recovery"
+    },
+    {
+      "file": "captures/normal-death.png",
+      "sha256": "2452eac365bfa11e6f5ac0c42cf57b5fe3507b95ee4507cfe448d1fbe281e0c3",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "normal-death",
+      "record": "captures/normal-death.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-normal",
+      "test": "ACT1_NORMAL death checkpoint reload recovery"
+    },
+    {
+      "file": "captures/normal-retry.png",
+      "sha256": "bba57c59a03edebf83284e5b673285aea637d9b485b73421ae0940e2f9fcb6b6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "normal-retry",
+      "record": "captures/normal-retry.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-normal",
+      "test": "ACT1_NORMAL death checkpoint reload recovery"
+    },
+    {
+      "file": "captures/opening-0.png",
+      "sha256": "dc16bb5d5f162ca751f398677f5b72fc8b9ddec0420535d38c5b6a5932964096",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-0",
+      "record": "captures/opening-0.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-1.png",
+      "sha256": "1db120ac7585390b33429418b1bc8672ba768d342008f8f6ca0fe9d8d2fbdd0c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-1",
+      "record": "captures/opening-1.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-2.png",
+      "sha256": "9471a3c4bafbb79e66b349f93ce6a0c5075dc8584c27827b8aecd4673547a96f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-2",
+      "record": "captures/opening-2.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-3.png",
+      "sha256": "4d3c703751b0b0336bde1a55308c1b31c613535b0bdbc7fef1aaa0e844790842",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-3",
+      "record": "captures/opening-3.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-4.png",
+      "sha256": "4874519970ba0e2884974e6617d7db572a10f0e24906b1cfa124f9d9d728ed89",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-4",
+      "record": "captures/opening-4.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-5.png",
+      "sha256": "29840676945db36d1f15f22dc95bf452b4fe34ca8ad52f28cd197a5648f391d2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-5",
+      "record": "captures/opening-5.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-6.png",
+      "sha256": "3b971ad0a6a956a0b7061a2431b516c6270a39b17764b54fbc3d22664ba3779d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-6",
+      "record": "captures/opening-6.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-7.png",
+      "sha256": "96b097085b1ebd87bddac4ec45bc52429e2cae2e0750036971c9fe772f4051d0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-7",
+      "record": "captures/opening-7.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-8.png",
+      "sha256": "ba538a1d1c438fd1a2d900e63b34524df9fdaaaafeca4d341c7bd64e7a7b66bb",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-8",
+      "record": "captures/opening-8.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/opening-9.png",
+      "sha256": "c8252123139acd095160d71cde73dbdf80ddb6f8a813515372dd1cac3a7d4857",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "opening-9",
+      "record": "captures/opening-9.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "STORY ACT1 exact sequence art audio and skip replay"
+    },
+    {
+      "file": "captures/wolf-cola.png",
+      "sha256": "c1eaacbdf08f192ac11e164d2c6b3f88a6d6a195faa1b31315e21b2478278dfc",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "wolf-cola",
+      "record": "captures/wolf-cola.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "ACT1 CRICKET state fixtures attacks recovery and evidence"
+    },
+    {
+      "file": "captures/save-migrated.png",
+      "sha256": "fa26097a1496f5dea3708bfed6a0b3e9bdc7fb743c7f5519b52f71a72c9e0642",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "save-migrated",
+      "record": "captures/save-migrated.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SAVE ACT1 legacy migration keeps volumes and resets coordinates"
+    },
+    {
+      "file": "captures/title-1280.png",
+      "sha256": "7c869b0a5dc6efdba4f3c90620018bb555fff54c4c566e8dae57dcc1f598e4d6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "title-1280",
+      "record": "captures/title-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-normal",
+      "test": "BOOT SMOKE cold load menus movement and pause"
+    },
+    {
+      "file": "captures/desktop-1920.png",
+      "sha256": "60e89a036d293a6169168224e388074f913f6505b760ff63de0bcc82d913ad2b",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "desktop-1920",
+      "record": "captures/desktop-1920.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-normal",
+      "test": "BOOT SMOKE cold load menus movement and pause"
+    },
+    {
+      "file": "captures/pause-1280.png",
+      "sha256": "81159192db050f2cec1f0091eea9a1db405c6d1b36f36b148c7c90f9d6baf30d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "pause-1280",
+      "record": "captures/pause-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-normal",
+      "test": "BOOT SMOKE cold load menus movement and pause"
+    },
+    {
+      "file": "captures/options-1280.png",
+      "sha256": "de538b81156395f92cfa801ae6a4cce9d2a1a6e951d9b83f585b2095f02f6c2b",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "options-1280",
+      "record": "captures/options-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL keyboard settings QA isolation dialogue replay and reload"
+    },
+    {
+      "file": "captures/invalid-password-1280.png",
+      "sha256": "b7d639d87de51b8fa364ee74d5156503f5872d5f4222ad9e0cdae4b3e05752d9",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "invalid-password-1280",
+      "record": "captures/invalid-password-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL keyboard settings QA isolation dialogue replay and reload"
+    },
+    {
+      "file": "captures/qa-1280.png",
+      "sha256": "20e5932290d5a0ae3a1808aeb879dcd06adfd7a1bf081a144d6ce510b169e741",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "qa-1280",
+      "record": "captures/qa-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL keyboard settings QA isolation dialogue replay and reload"
+    },
+    {
+      "file": "captures/new-game-confirm-1280.png",
+      "sha256": "5e8ea6bad3a3b6e0817e1279736aa49cf2e9f9936cbe6f115732d83098ec1326",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "new-game-confirm-1280",
+      "record": "captures/new-game-confirm-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL keyboard settings QA isolation dialogue replay and reload"
+    },
+    {
+      "file": "captures/save-error-1280.png",
+      "sha256": "6cfd213ec8d6cc4186b456a98f0066a2a09a406bc8f2250eb74767906bda61b1",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "save-error-1280",
+      "record": "captures/save-error-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL corrupt and disabled storage keep game usable"
+    },
+    {
+      "file": "captures/storage-disabled-1280.png",
+      "sha256": "80dc5d008524e60691291abe3d22b139333b655682cfa368c7bc7d310659e5b3",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "storage-disabled-1280",
+      "record": "captures/storage-disabled-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL storage disabled and audio failure remain recoverable"
+    },
+    {
+      "file": "captures/audio-error-1280.png",
+      "sha256": "8b2c693e0f3f71d636f4e3ef3346c2201b565038488773181673d94e6f90427e",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "audio-error-1280",
+      "record": "captures/audio-error-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL storage disabled and audio failure remain recoverable"
+    },
+    {
+      "file": "captures/audio-recovered-1280.png",
+      "sha256": "4c51f919c88cc777d4b423bd430db7486b602633e310478dc0a2f558e3433e97",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "audio-recovered-1280",
+      "record": "captures/audio-recovered-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "SHELL storage disabled and audio failure remain recoverable"
+    },
+    {
+      "file": "captures/loading-1280.png",
+      "sha256": "16a48c164dfdb10ce7ba04486ab4461ea2d6e2d88da6f7e4264f28f8b530de5c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "loading-1280",
+      "record": "captures/loading-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "BOOT normal loading is visible before runtime readiness"
+    },
+    {
+      "file": "captures/boot-error-1280.png",
+      "sha256": "e9baec3c2cfaf6e8e90dcbdfe112593b0615aec95dcf929a9edd830140fd5a90",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "boot-error-1280",
+      "record": "captures/boot-error-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "BOOT negative startup cases"
+    },
+    {
+      "file": "captures/asset-load-error-1280.png",
+      "sha256": "e9baec3c2cfaf6e8e90dcbdfe112593b0615aec95dcf929a9edd830140fd5a90",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "asset-load-error-1280",
+      "record": "captures/asset-load-error-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "BOOT negative startup cases"
+    },
+    {
+      "file": "captures/startup-timeout-1280.png",
+      "sha256": "e9baec3c2cfaf6e8e90dcbdfe112593b0615aec95dcf929a9edd830140fd5a90",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "startup-timeout-1280",
+      "record": "captures/startup-timeout-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-fixture",
+      "test": "BOOT negative startup cases"
+    },
+    {
+      "file": "captures/muted-1280.png",
+      "sha256": "e501eb9e669fde440fd8eeefaeac507033812071995dddc4f18ef8cfa3469123",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "browser": "139.0.7258.66",
+      "project": "chromium",
+      "state": "muted-1280",
+      "record": "captures/muted-1280.json",
+      "frozen_visual_pose": false,
+      "build": "/tmp/nightman-m4-review-normal",
+      "test": "AUDIO SMOKE mute restores playback without restarting gameplay"
+    }
+  ]
+}

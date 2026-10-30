@@ -7,7 +7,7 @@ async function state(page){return JSON.parse(await page.evaluate(()=>window.__ni
 async function capture(page,name){
  if(!evidence)return;fs.mkdirSync(evidence,{recursive:true});
  await page.screenshot({path:path.join(evidence,name+'.png')});
- fs.writeFileSync(path.join(evidence,name+'.json'),JSON.stringify({viewport:page.viewportSize(),state:await state(page)},null,2));
+ fs.writeFileSync(path.join(evidence,name+'.json'),JSON.stringify({viewport:page.viewportSize(),browser:page.context().browser().version(),project:test.info().project.name,test:test.info().title,build:process.env.NIGHTMAN_BUILD,state_after_capture:true,state:await state(page)},null,2));
 }
 async function boot(page){
  await page.goto('/');await expect(page.locator('#boot-action')).toBeEnabled({timeout:120000});
@@ -33,7 +33,7 @@ test('BOOT SMOKE cold load menus movement and pause',async({page})=>{
  const box=await page.locator('#canvas').boundingBox();expect(box.width/box.height).toBeCloseTo(16/9,1);
  const hint=await page.locator('#controls').boundingBox();expect(box.y+box.height).toBeLessThanOrEqual(hint.y);
  await capture(page,'title-1280');
- await menu(page,'Start new rehearsal');expect((await state(page)).screen).toBe('dialogue');await capture(page,'dialogue-1280');
+ await menu(page,'Start Act 1');expect((await state(page)).screen).toBe('dialogue');await capture(page,'dialogue-1280');
  await press(page,'Escape');expect((await state(page)).screen).toBe('training');
  const start=(await state(page)).world.player.x;
  await page.keyboard.down('ArrowRight');await page.waitForTimeout(500);await page.keyboard.up('ArrowRight');
@@ -71,8 +71,8 @@ test('CORE bat stomp food flags death transformation and blur',async({page})=>{
  await fixture(page,'repeat-flag');await page.keyboard.down('ArrowRight');await page.waitForTimeout(200);await page.keyboard.up('ArrowRight');expect((await state(page)).world.player.hearts).toBe(1);await capture(page,'flag-repeat-1280');
  await fixture(page,'death');expect((await state(page)).screen).toBe('dead');await capture(page,'death-1280');await press(page,'Enter');
  expect((await state(page)).world.player.hearts).toBe(3);expect((await state(page)).world.checkpoint).toBe(400);await capture(page,'retry-1280');
- await fixture(page,'meal');await page.keyboard.down('ArrowRight');await page.waitForTimeout(160);await page.keyboard.up('ArrowRight');
- expect((await state(page)).world.player.dayman).toBeGreaterThan(9);await capture(page,'meal-dayman-1280');
+ const mealStarted=Date.now();await fixture(page,'meal');await page.keyboard.down('ArrowRight');await page.waitForTimeout(160);await page.keyboard.up('ArrowRight');
+ const mealRemaining=(await state(page)).world.player.dayman;expect(mealRemaining).toBeGreaterThan(0);expect(mealRemaining).toBeGreaterThanOrEqual(Math.max(0,10-(Date.now()-mealStarted)/1000-.15));expect(mealRemaining).toBeLessThanOrEqual(10);await capture(page,'meal-dayman-1280');
  await press(page,'k',80);const beams=(await state(page)).world.beams;expect(beams.length).toBe(1);expect(beams[0].dy).toBe(0);await capture(page,'beam-1280');
  await fixture(page,'audio-error');expect((await state(page)).audio.error).not.toBe('');
  await press(page,'r',160);expect((await state(page)).audio.error).toBe('');expect((await state(page)).world.player.dayman).toBeGreaterThan(0);expect((await state(page)).audio.playing).toBe('dayman-fast');await capture(page,'dayman-audio-retry-1280');
@@ -89,14 +89,14 @@ test('SHELL keyboard settings QA isolation dialogue replay and reload',async({pa
  await press(page,'Escape');await menu(page,'QA checkpoint');await press(page,'Escape');await menu(page,'Exit QA');expect((await state(page)).qa).toBe(false);
  expect(await page.evaluate(()=>localStorage.getItem('nightman.progress.v1'))).toBe(before);
  await menu(page,'Replay dialogue');await press(page,'Escape');expect((await state(page)).screen).toBe('title');
- await menu(page,'Start new rehearsal');expect((await state(page)).screen).toBe('confirm');await capture(page,'new-game-confirm-1280');await menu(page,'Start fresh');await press(page,'Escape');
- // Save a real normal checkpoint by ordinary keyboard movement.
- await page.keyboard.down('ArrowRight');await page.waitForTimeout(1550);await page.keyboard.up('ArrowRight');expect((await state(page)).world.flags).toContain('mid');
- await page.evaluate(()=>window.onbeforeunload=null);await page.goto('about:blank');await boot(page);await menu(page,'Continue rehearsal');expect((await state(page)).world.checkpoint).toBe(400);expect((await state(page)).world.flags).toContain('mid');expect(errors).toEqual([]);
+ await menu(page,'Start Act 1');expect((await state(page)).screen).toBe('confirm');await capture(page,'new-game-confirm-1280');await menu(page,'Start fresh');await press(page,'Escape');
+ // Full Act1 checkpoint/reload journey is exercised by ACT1_NORMAL. Here verify settings persist.
+ await page.evaluate(()=>window.onbeforeunload=null);await page.goto('about:blank');await boot(page);
+ expect((await state(page)).settings.music).toBe(.6);expect(errors).toEqual([]);
 });
 test('SHELL corrupt and disabled storage keep game usable',async({page})=>{
  await page.addInitScript(()=>localStorage.setItem('nightman.progress.v1','{broken'));
- await boot(page);expect((await state(page)).message).toContain('Save unavailable');await capture(page,'save-error-1280');await menu(page,'Start new rehearsal');await press(page,'Escape');expect((await state(page)).screen).toBe('training');
+ await boot(page);expect((await state(page)).message).toContain('Save unavailable');await capture(page,'save-error-1280');await menu(page,'Start Act 1');await press(page,'Escape');expect((await state(page)).screen).toBe('training');
 });
 test('SHELL storage disabled and audio failure remain recoverable',async({page})=>{
  await page.addInitScript(()=>{
@@ -104,7 +104,7 @@ test('SHELL storage disabled and audio failure remain recoverable',async({page})
   Storage.prototype.setItem=function(){throw new Error('disabled storage fixture');};
  });
  await boot(page);expect((await state(page)).message).toContain('Save unavailable');
- await menu(page,'Start new rehearsal');await press(page,'Escape');expect((await state(page)).screen).toBe('training');
+ await menu(page,'Start Act 1');await press(page,'Escape');expect((await state(page)).screen).toBe('training');
  await capture(page,'storage-disabled-1280');
  await fixture(page,'audio-error');expect((await state(page)).audio.error).not.toBe('');await capture(page,'audio-error-1280');
  const x=(await state(page)).world.player.x;await page.keyboard.down('ArrowRight');await page.waitForTimeout(200);await page.keyboard.up('ArrowRight');expect((await state(page)).world.player.x).toBeGreaterThan(x);
@@ -124,8 +124,24 @@ test('BOOT missing package and stalled runtime expose retry',async({page})=>{
 });
 
 test('AUDIO SMOKE mute restores playback without restarting gameplay',async({page})=>{
- const errors=monitor(page);await boot(page);await menu(page,'Start new rehearsal');await press(page,'Escape');
+ const errors=monitor(page);await boot(page);await menu(page,'Start Act 1');await press(page,'Escape');
  await press(page,'m');expect((await state(page)).audio.muted).toBe(true);await capture(page,'muted-1280');
  const x=(await state(page)).world.player.x;await page.keyboard.down('ArrowRight');await page.waitForTimeout(200);await page.keyboard.up('ArrowRight');expect((await state(page)).world.player.x).toBeGreaterThan(x);
  await press(page,'m');expect((await state(page)).audio.muted).toBe(false);expect((await state(page)).audio.playing).toBe('little-boy');expect(errors).toEqual([]);
+});
+
+test('BOOT normal loading is visible before runtime readiness',async({page})=>{
+ let release;const gate=new Promise(resolve=>release=resolve);
+ await page.route('**/pythons.js',async route=>{await gate;await route.continue();});
+ try{
+  await page.goto('/',{waitUntil:'commit'});
+  await expect(page.locator('#boot-status')).toHaveText('Loading the stage…');
+  await expect(page.locator('#boot-action')).toBeDisabled();
+  if(evidence){
+   // Holding the SDK also holds document.fonts.ready; system-font rendering is already visible.
+   process.env.PW_TEST_SCREENSHOT_NO_FONTS_READY='1';
+   await page.screenshot({path:path.join(evidence,'loading-1280.png')});
+   fs.writeFileSync(path.join(evidence,'loading-1280.json'),JSON.stringify({viewport:page.viewportSize(),browser:page.context().browser().version(),project:test.info().project.name,test:test.info().title,build:process.env.NIGHTMAN_BUILD,fixture:'SDK request held briefly before readiness',status:await page.locator('#boot-status').textContent()}));
+  }
+ }finally{release();await page.unrouteAll({behavior:'wait'});delete process.env.PW_TEST_SCREENSHOT_NO_FONTS_READY;}
 });
