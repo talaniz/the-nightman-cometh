@@ -1,0 +1,88 @@
+FF.FF                                                                    [100%]
+=================================== FAILURES ===================================
+_____________ test_standing_jump_lands_on_each_first_step[720-340] _____________
+
+x = 720, top = 340
+
+    @pytest.mark.parametrize('x,top', [(720,340),(2080,340),(2860,350)])
+    def test_standing_jump_lands_on_each_first_step(x,top):
+        w=Act1(); w.targets=[]; w.player.x=x
+        ledge=next(p for p in w.platforms if p[0]<=x<p[0]+p[2] and p[1]<430)
+        w.step({'jump':True})
+        landed=False
+        for _ in range(70):
+            w.step()
+            if w.player.grounded and w.player.y+44==ledge[1]:landed=True
+>       assert landed, 'ordinary jump must reach the visible raised platform'
+E       AssertionError: ordinary jump must reach the visible raised platform
+E       assert False
+
+tests/unit/test_polish.py:16: AssertionError
+____________ test_standing_jump_lands_on_each_first_step[2080-340] _____________
+
+x = 2080, top = 340
+
+    @pytest.mark.parametrize('x,top', [(720,340),(2080,340),(2860,350)])
+    def test_standing_jump_lands_on_each_first_step(x,top):
+        w=Act1(); w.targets=[]; w.player.x=x
+        ledge=next(p for p in w.platforms if p[0]<=x<p[0]+p[2] and p[1]<430)
+        w.step({'jump':True})
+        landed=False
+        for _ in range(70):
+            w.step()
+            if w.player.grounded and w.player.y+44==ledge[1]:landed=True
+>       assert landed, 'ordinary jump must reach the visible raised platform'
+E       AssertionError: ordinary jump must reach the visible raised platform
+E       assert False
+
+tests/unit/test_polish.py:16: AssertionError
+_________________ test_enemy_pose_changes_without_sliding[rat] _________________
+
+kind = 'rat'
+
+    @pytest.mark.parametrize('kind', ['rat','ghoul'])
+    def test_enemy_pose_changes_without_sliding(kind):
+        pygame.init();pygame.display.set_mode((960,540))
+        r=Renderer(pygame.Surface((960,540)));w=Act1()
+        target=next(t for t in w.targets if t['kind']==kind)
+        frames=[]
+        for step in (0,8,16,24):
+            r.screen.fill((0,0,0));r.enemy(target,0)
+            frames.append(pygame.image.tobytes(r.screen,'RGB'))
+            # Enemy pose must use simulation time, independently from world translation.
+            target['animation_step']=step+8
+>       assert len(set(frames))==4, 'four different limb poses required at a fixed world position'
+E       AssertionError: four different limb poses required at a fixed world position
+E       assert 1 == 4
+E        +  where 1 = len({b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'})
+E        +    where {b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'} = set([b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'])
+
+tests/unit/test_polish.py:29: AssertionError
+________________ test_enemy_pose_changes_without_sliding[ghoul] ________________
+
+kind = 'ghoul'
+
+    @pytest.mark.parametrize('kind', ['rat','ghoul'])
+    def test_enemy_pose_changes_without_sliding(kind):
+        pygame.init();pygame.display.set_mode((960,540))
+        r=Renderer(pygame.Surface((960,540)));w=Act1()
+        target=next(t for t in w.targets if t['kind']==kind)
+        frames=[]
+        for step in (0,8,16,24):
+            r.screen.fill((0,0,0));r.enemy(target,0)
+            frames.append(pygame.image.tobytes(r.screen,'RGB'))
+            # Enemy pose must use simulation time, independently from world translation.
+            target['animation_step']=step+8
+>       assert len(set(frames))==4, 'four different limb poses required at a fixed world position'
+E       AssertionError: four different limb poses required at a fixed world position
+E       assert 1 == 4
+E        +  where 1 = len({b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'})
+E        +    where {b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'} = set([b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0...0\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'])
+
+tests/unit/test_polish.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_polish.py::test_standing_jump_lands_on_each_first_step[720-340]
+FAILED tests/unit/test_polish.py::test_standing_jump_lands_on_each_first_step[2080-340]
+FAILED tests/unit/test_polish.py::test_enemy_pose_changes_without_sliding[rat]
+FAILED tests/unit/test_polish.py::test_enemy_pose_changes_without_sliding[ghoul]
+4 failed, 1 passed in 2.46s

@@ -34,6 +34,10 @@ def act1_fixture(session,name):
     elif suffix.startswith('frank-'):
         session.sequence=FRANK;session.dialogue=int(suffix.split('-')[1]);session.enter_screen('dialogue')
     elif suffix=='approach':pass
+    elif suffix in ('platform-first','platform-second','platform-third'):
+        # Isolate geometry from combat while preserving real platforms and jump physics.
+        w.player.x={'platform-first':720,'platform-second':2080,'platform-third':2860}[suffix]
+        w.targets=[]
     elif suffix=='bat':w.player.swing=.12
     elif suffix=='jump':w.player.y=300;w.player.grounded=False
     elif suffix=='hurt':w.player.hearts=2;w.player.invulnerable=.6

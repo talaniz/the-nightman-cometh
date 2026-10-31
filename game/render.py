@@ -114,7 +114,7 @@ class Renderer:
             pygame.draw.circle(self.screen,GOLD,(int(shot['x']-camera)-2,int(shot['y'])-2),3)
         for b in w.beams:
             self.rect((255,242,164),(b['x']-camera-12,b['y']-3,26,6));self.rect(GOLD,(b['x']-camera-10,b['y']-1,23,2))
-        self.rect((24,25,39),(0,0,960,70));self.rect(GOLD,(0,68,960,2));self.screen.blit(self.art.image('cast',14,(96,42)),(20,14)) if w.act=='act1' else self.bat(25,18,2);self.text('RAT BAT',130,18,GOLD);self.text('DENNIS AS CHARLIE',130,42,MUTED,self.small)
+        self.rect((24,25,39),(0,0,960,70));self.rect(GOLD,(0,68,960,2));self.screen.blit(self.art.asset('sprites/nail-bat.png',(96,30),trim=True),(20,14)) if w.act=='act1' else self.bat(25,18,2);self.text('RAT BAT',130,18,GOLD);self.text('DENNIS AS CHARLIE',130,42,MUTED,self.small)
         for i in range(3):
             x=365+i*33;color=(205,83,86) if i<p.hearts else (60,53,65)
             pygame.draw.polygon(self.screen,color,[(x,24),(x+7,19),(x+14,24),(x+21,19),(x+28,24),(x+28,32),(x+14,46),(x,32)])
@@ -179,6 +179,15 @@ class Renderer:
         self.center('ENTER next    ESC skip    Replay from the menu',519,MUTED,self.small)
 
     def actor(self,p,camera,steps):
+        if p.swing:
+            # Match existing .22s swing: windup >.18, active strike .18..04, recovery <.04.
+            pose=0 if p.swing>=.18 else (1 if p.swing>.04 else 2)
+            frame=pose+(3 if p.dayman else 0)
+            sprite=self.art.sequence('sprites/bat-attack.png',frame,3,2,(92,92),p.facing<0)
+            anchor=(48,40,40)[pose]
+            if p.facing<0:anchor=92-anchor
+            self.screen.blit(sprite,(int(p.x-camera+12-anchor),int(p.y+44-90)))
+            return
         moving=getattr(p,'moving',False)
         frame=3 if not p.grounded else (1+(steps//8)%2 if moving else 0)
         if p.dayman:frame+=4
@@ -188,12 +197,19 @@ class Renderer:
         self.screen.blit(sprite,(int(p.x-camera-8),int(p.y-20)))
         # Per-pose hand anchors keep the bat attached to the atlas animation.
         hand_x,hand_y=((23,17),(29,3),(29,3),(29,-8))[frame%4]
-        if p.swing:hand_y-=5
         bat_x=p.x-camera+hand_x if p.facing>0 else p.x-camera+24-hand_x-43
-        self.screen.blit(self.art.image('cast',14,(43,19),p.facing<0),(int(bat_x),int(p.y+hand_y)))
-        if p.swing:pygame.draw.arc(self.screen,GOLD,(int(p.x-camera)-28,int(p.y)-10,80,60),-.6,.6,2)
+        bat=self.art.asset('sprites/nail-bat.png',(43,13),trim=True)
+        if p.facing<0:bat=pygame.transform.flip(bat,True,False)
+        self.screen.blit(bat,(int(bat_x),int(p.y+hand_y)))
 
     def enemy(self,t,camera):
+        if t['kind'] in ('rat','ghoul'):
+            row=0 if t['kind']=='rat' else 1
+            frame=(t.get('animation_step',0)//8)%4+row*4
+            size=(44,23) if row==0 else (38,42)
+            sprite=self.art.sequence('sprites/enemy-walk.png',frame,4,2,size,t.get('direction',1)<0,trim_row=True)
+            self.screen.blit(sprite,(int(t['x']-camera+(30-size[0])/2),int(t['y']+32-size[1])))
+            return
         index={'rat':8,'ghoul':9,'chicken':10,'cricket':11}[t['kind']]
         if t['kind']=='cricket' and t['state'] in ('stunned','defeated'):index=12
         size=(44,48) if t['kind']=='cricket' else (38,36)
@@ -219,17 +235,23 @@ class Renderer:
         for x,label in ((1700,'MIDPOINT'),(3350,'PRE-BOSS')):
             pygame.draw.line(self.screen,CREAM,(x-camera,430),(x-camera,360),3)
             self.text(label,x-camera-40,447,GOLD,self.small)
-        for x,label in ((100,'SHERWIN-WILLIAMS'),(1100,'THE COFFEE SHOP')):
-            self.text(label,x-int(camera*390/(w.width-960)),248,GOLD,self.small)
-        for x,title,sub in ((420,'KITTEN MITTENS','CHARLIE APPROVED'),(1290,'WOLF COLA','REFRESH YOUR NIGHT'),(2730,"SHADYNASTY'S",'JAZZ CLUB')):
-            top=190 if x==420 else 230;height=165 if x==420 else 105
-            self.rect((221,197,140),(x-camera,top,185,height));self.rect((71,49,40),(x-camera,top,185,height),3)
-            self.text(title,x-camera+10,top+10,INK,self.small);self.text(sub,x-camera+10,top+height-24,INK,self.small)
-            if x==420:
-                if not hasattr(self,'kitten_poster'):
-                    source=pygame.image.load(str(self.art.root/'ui/kitten-mittens.png')).convert()
-                    self.kitten_poster=pygame.transform.scale(source,(104,104))
-                self.screen.blit(self.kitten_poster,(x-camera+40,top+34))
+        # Storefront fascia shares the painted flat's parallax, not the camera/HUD layer.
+        offset=int(camera*390/(w.width-960))
+        self.screen.blit(self.art.asset('ui/sherwin-sign.png',(294,48)),(48-offset,244))
+        # Ads are mounted above the playable lane; physical posts and braces locate them in the set.
+        for x,top,asset in ((410,75,'kitten-billboard.png'),(1290,75,'wolf-billboard.png')):
+            sx=x-camera;width=250;height=166
+            for dx in (22,width-22):
+                self.rect((37,33,33),(sx+dx,top+height,7,430-top-height))
+                self.rect((109,85,57),(sx+dx,top+height,2,430-top-height))
+            pygame.draw.line(self.screen,(64,51,40),(sx+22,top+height+35),(sx+width-22,top+height+65),4)
+            self.screen.blit(self.art.asset('ui/'+asset,(width,height)),(int(sx),top))
+        # Existing later-route venue remains an enamel mounted sign, not a floating HUD label.
+        sx=2730-camera
+        self.rect((58,38,35),(sx,220,220,105));self.rect((174,129,69),(sx+4,224,212,97),3)
+        lettering=pygame.font.Font(None,31).render("SHADYNASTY'S",False,(232,205,151))
+        self.screen.blit(lettering,(int(sx+(220-lettering.get_width())/2),240))
+        self.text('JAZZ CLUB',sx+67,282,(190,160,107),self.small)
         if w.boss_active:
             for x in (3530,4090):
                 self.rect((116,135,137),(x-camera,393,34,37))
