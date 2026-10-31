@@ -29,7 +29,7 @@ async def main():
     manifest=json.loads((root/'manifest.json').read_text());mixer=Mixer(manifest,root);audio=Director(gameplay_manifest(manifest),mixer)
     audio.volumes(music=session.progress.settings['music'],sfx=session.progress.settings['effects']);audio.unlock()
     previous=time.monotonic();previous_screen='title';frames=[];frame_count=0
-    fixture_path=Path('test-fixtures.json');test_mode=fixture_path.is_file()
+    fixture_path=Path('test-fixtures.json');test_mode=fixture_path.is_file();fixture_id=None
     while True:
         now=time.monotonic();dt=min(.1,now-previous);previous=now;frames.append(dt*1000);frames=frames[-120:]
         for event in pygame.event.get():
@@ -69,7 +69,9 @@ async def main():
                 if request.get('name')=='audio-error':
                     mixer.fail_next=True
                     retry_audio(audio,session.world.player.dayman if audio.scene in ('level1','cricket','bridge','frank') else 0,audio.paused)
-                else:apply(session,request)
+                else:
+                    apply(session,request);previous_screen='fixture'
+                fixture_id=request.get('id')
                 held.clear();pending.clear()
         before=session.world.steps
         controls={'left':bool(held & {pygame.K_LEFT,pygame.K_a}),'right':bool(held & {pygame.K_RIGHT,pygame.K_d}),**{k:True for k in pending}}
@@ -98,7 +100,7 @@ async def main():
             state={'screen':session.screen,'selection':session.selection,'menu':session.menu(),'qa':session.qa,'qa_label':session.qa_label,
                    'message':session.message or session.progress.message,'settings':session.progress.settings,'dialogue':session.dialogue,
                    'story':{'count':len(session.sequence),'speaker':session.sequence[min(session.dialogue,len(session.sequence)-1)].speaker,'text':session.sequence[min(session.dialogue,len(session.sequence)-1)].text},'world':session.world.snapshot(),'audio':{'playing':audio.playing,'muted':audio.muted,'error':audio.error,**mixer.state()},
-                   'loops':1,'frames':frame_count,'frame_ms_mean':sum(frames)/len(frames),'test_build':test_mode,
+                   'fixture_id':fixture_id,'loops':1,'frames':frame_count,'frame_ms_mean':sum(frames)/len(frames),'test_build':test_mode,
                    'python':sys.version,'pygame':pygame.version.ver}
             window.__nightmanGame=json.dumps(state)
         await asyncio.sleep(0)

@@ -40,7 +40,7 @@ test('POLISH live weapon and creature motion plus pause',async({page})=>{
  await move(page,420);await page.keyboard.press('j');await shot(page,'swing-live');
  await page.keyboard.press('ArrowLeft',{delay:35});await page.keyboard.press('j');await page.waitForTimeout(70);await shot(page,'swing-left-live');
  await page.keyboard.press('Space');await page.keyboard.press('j');await shot(page,'swing-jump-live');
- await page.keyboard.press('Escape');const before=(await state(page)).world;await page.waitForTimeout(400);expect((await state(page)).world).toEqual(before);await shot(page,'paused-animation');
+ await page.keyboard.press('Escape');await expect.poll(async()=>(await state(page)).screen).toBe('pause');const before=(await state(page)).world;await page.waitForTimeout(400);expect((await state(page)).world).toEqual(before);await shot(page,'paused-animation');
  await page.keyboard.press('Escape');
  // Existing midpoint fixture is diagnostic only; then actual keyboard travel shows the Wolf ad.
  await page.evaluate(()=>window.__nightmanFixture=JSON.stringify({name:'act1-mid'}));await page.waitForTimeout(150);

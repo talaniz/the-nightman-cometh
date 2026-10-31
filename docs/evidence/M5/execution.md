@@ -22,3 +22,9 @@ Base d27ca3e643dcacf7c511ceeb6ce50c9c10282f87 (merged polish PR #18). User autho
 Adds underbridge Act 2 with animated Duncan/Z and walking guns; composed mounted signs; cat food, combined meal and one-shot flags; Frank's active bat/stomp/beam fight with straight sandwiches; Nightman abduction; stage-aware saves and a safe two-act preview endpoint. Appends the user-requested extra Frank kidnapping still and exact Dennis dialogue without removing earlier stills. The polished nailed bat/animations are reused in Act 2.
 
 Rooftop gameplay, final ending/credits, physical controller testing, three full-game acceptance runs and deployment remain later milestones. Approved music files stay unchanged. No new dependencies or backend.
+
+## Initial CI findings — run 41250071738
+
+Native/loader/build passed; 17 focused browser tests passed and 3 failed. Act 2 approach reached the retry assertion, but the test read hearts before the Enter event was consumed. The existing polish pause test likewise compared pre-pause state with paused state. Both now wait for the requested observable state before assertions; assertions remain intact.
+
+The Frank test reset a Dayman fixture directly into another training fixture with the same baseline cue, so the previous transformation music persisted despite the new world. Test-build fixture application now forces scene resynchronization and publishes an acknowledgement ID after rendering. The harness waits for that ID instead of a fixed sleep. Normal gameplay already resynchronizes on menu/death/scene transitions. Added fixture acknowledgement is diagnostic only and does not grant ordinary builds mutation access. Initial CI failures are retained, not counted as passes.

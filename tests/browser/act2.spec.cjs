@@ -2,7 +2,8 @@ const {test,expect}=require('@playwright/test');
 const fs=require('node:fs'),path=require('node:path');
 const state=async p=>JSON.parse(await p.evaluate(()=>window.__nightmanGame));
 async function boot(p){await p.goto('/');await expect(p.locator('#boot-action')).toBeEnabled({timeout:120000});await p.locator('#boot-action').click();await p.waitForFunction(()=>!!window.__nightmanGame,{},{timeout:120000});await p.locator('#canvas').focus();}
-async function fixture(p,name){await p.evaluate(name=>window.__nightmanFixture=JSON.stringify({name:'act2-'+name}),name);await p.waitForTimeout(200);}
+let fixtureId=0;
+async function fixture(p,name){const id=++fixtureId;await p.evaluate(req=>window.__nightmanFixture=JSON.stringify(req),{name:'act2-'+name,id});await p.waitForFunction(id=>JSON.parse(window.__nightmanGame).fixture_id===id,id,{timeout:30000});}
 async function capture(p,name){const dir=process.env.NIGHTMAN_EVIDENCE;if(!dir)return;fs.mkdirSync(dir,{recursive:true});await p.screenshot({path:path.join(dir,name+'.png')});fs.writeFileSync(path.join(dir,name+'.json'),JSON.stringify({viewport:p.viewportSize(),state:await state(p),build:process.env.NIGHTMAN_BUILD},null,2));}
 function errors(p){const list=[];p.on('pageerror',e=>list.push(String(e)));p.on('console',m=>{if(m.type()==='error'&&!m.text().includes('MEDIA USER ACTION REQUIRED'))list.push(m.text());});p.on('requestfailed',r=>list.push(r.url()));return list;}
 
@@ -32,9 +33,9 @@ test('ACT2_APPROACH bridge platforms signs pickups pause and retry',async({page}
   if(name==='meal')expect((await state(page)).world.player.dayman).toBeGreaterThan(0);
   if(['mid','preboss'].includes(name))expect((await state(page)).world.player.hearts).toBe(2);
   await capture(page,'bridge-'+name);
-  if(name==='death'){await page.keyboard.press('Enter');expect((await state(page)).world.player.hearts).toBe(3);await capture(page,'bridge-retry');}
+  if(name==='death'){await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).world.player.hearts).toBe(3);await capture(page,'bridge-retry');}
  }
- await fixture(page,'crew');await page.keyboard.press('Escape');const before=(await state(page)).world;await page.waitForTimeout(250);expect((await state(page)).world).toEqual(before);await capture(page,'bridge-pause');
+ await fixture(page,'crew');await page.keyboard.press('Escape');await expect.poll(async()=>(await state(page)).screen).toBe('pause');const before=(await state(page)).world;await page.waitForTimeout(250);expect((await state(page)).world).toEqual(before);await capture(page,'bridge-pause');
  await page.keyboard.press('Escape');await page.setViewportSize({width:1920,height:1080});await capture(page,'bridge-1920');await page.setViewportSize({width:390,height:844});await capture(page,'bridge-narrow');expect(faults).toEqual([]);
 });
 
@@ -54,9 +55,9 @@ test('ACT2_STORY exact extra kidnapping screen abduction and endpoint',async({pa
  const faults=errors(page);await boot(page);await fixture(page,'frank-story-3');
  expect((await state(page)).story.speaker).toBe('DENNIS');
  expect((await state(page)).story.text).toBe('Dee—er—Waitress! Stop getting kidnapped, you bird!');await capture(page,'frank-extra-kidnapping');
- await page.keyboard.press('Enter');expect((await state(page)).world.act).toBe('act2');expect((await state(page)).screen).toBe('training');
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act2');
  for(let i=0;i<2;i++){await fixture(page,'nightman-story-'+i);await capture(page,'nightman-abduction-'+i);}
- await page.keyboard.press('Enter');expect((await state(page)).screen).toBe('complete');await capture(page,'act2-preview-end');
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('complete');await capture(page,'act2-preview-end');
  expect((await state(page)).menu).toContain('Replay QA Act 2');expect(faults).toEqual([]);
 });
 
@@ -84,7 +85,7 @@ test('ACT2_MOTION live crew gun and Frank pose evidence',async({page})=>{
    };requestAnimationFrame(sample);
   });
   // Real keyboard input exercises scene motion; observer reads pixels only.
-  await page.keyboard.press('j');await page.waitForTimeout(name==='boss'?3500:2800);
+  await page.keyboard.press('j');if(name==='crew')await page.keyboard.press('ArrowRight',{delay:200});await page.waitForTimeout(name==='boss'?3500:2800);
   const frames=await page.evaluate(()=>{window.__motion.active=false;return window.__motion.frames;});
   const kind=name==='crew'?'z':name==='gun'?'gun':'frank';
   expect(Object.keys(frames).filter(k=>k.startsWith(kind)).length).toBeGreaterThanOrEqual(2);
