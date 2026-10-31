@@ -92,11 +92,11 @@ def test_opening_advance_and_skip_reach_identical_start():
     assert a.screen==b.screen=='training'
     assert a.world.snapshot()==b.world.snapshot()
 
-def test_win_transition_runs_once_and_never_loads_bridge():
+def test_win_transition_runs_once_and_enters_bridge():
     s=Session(Memory());s.start();s.next_dialogue(skip=True);s.world.complete=True;s.update(0,{})
     assert s.screen=='dialogue' and s.sequence[0].speaker=='DEE'
-    s.next_dialogue(skip=True);assert s.screen=='complete'
-    s.update(1,{});assert s.screen=='complete'
+    s.next_dialogue(skip=True);assert s.screen=='training' and s.world.act=='act2'
+    world=s.world;s.update(1,{});assert s.world is world and s.screen=='training'
 
 def test_normal_input_route_can_win_without_beams():
     from game.levels.act1 import Act1
@@ -172,7 +172,9 @@ def test_qa_completion_replay_does_not_overwrite_normal_save():
     before=store.raw;normal=s.world
     s.password='PAINTDOG';s.submit_password();s.world.complete=True;s.update(0,{})
     s.next_dialogue(skip=True)
-    assert s.menu()==['Replay QA Act 1','Exit QA']
+    assert s.world.act=='act2' and s.qa
+    s.world.complete=True;s.update(0,{});s.next_dialogue(skip=True)
+    assert s.menu()==['Replay QA Act 2','Exit QA']
     s.activate();assert s.qa and store.raw==before
     s.next_dialogue(skip=True);s.back();s.selection=s.menu().index('Exit QA');s.activate()
     assert not s.qa and s.world is normal and store.raw==before

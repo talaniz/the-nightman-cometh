@@ -10,7 +10,7 @@ class Art:
     def panel(self,name,index,columns=2,rows=3):
         key=(name,index,columns,rows)
         if key in self.cache:return self.cache[key]
-        path=self.root/('sprites/cast.png' if name=='cast' else 'scenes/act1/'+name+'.png')
+        path=self.root/('sprites/cast.png' if name=='cast' else ('scenes/act2/story.png' if name=='bridge-story' else 'scenes/act1/'+name+'.png'))
         image=pygame.image.load(str(path)).convert_alpha()
         x=index%columns;y=index//columns
         rect=pygame.Rect(x*image.get_width()//columns,y*image.get_height()//rows,
@@ -26,7 +26,7 @@ class Art:
     def image(self,name,index,size,flip=False):
         key=(name,index,size,flip)
         if key not in self.scaled:
-            source=self.panel(name,index,4,4) if name=='cast' else self.panel(name,index)
+            source=self.panel(name,index,4,4) if name=='cast' else (self.panel(name,index,2,2) if name=='bridge-story' else self.panel(name,index))
             result=pygame.transform.scale(source,size)
             if flip:result=pygame.transform.flip(result,True,False)
             self.scaled[key]=result

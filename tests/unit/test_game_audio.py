@@ -18,3 +18,11 @@ def test_audio_recovery_uses_game_timer_and_preserves_pause():
     assert audio.playing=='dayman-fast' and backend.paused
     retry_audio(audio,remaining=0,paused=False)
     assert audio.playing=='little-boy' and not backend.paused
+
+def test_kidnapping_music_never_advances_a_player_controlled_scene():
+    from game.audio import gameplay_manifest
+    manifest=json.loads(Path('assets/audio/production/manifest.json').read_text())
+    audio=Director(gameplay_manifest(manifest),Backend());audio.unlock();audio.set_scene('nightman-kidnap')
+    audio.tick(120)
+    assert audio.scene=='nightman-kidnap'
+    assert manifest['next']['nightman-kidnap']=='rooftop','Audition metadata stays unchanged'

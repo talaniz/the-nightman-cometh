@@ -12,3 +12,7 @@ def retry_audio(director, remaining, paused):
     director.elapsed = 0
     director.unlocked = True
     return director._play()
+
+def gameplay_manifest(manifest):
+    """Adapt audition metadata for player-controlled game scene progression."""
+    return {**manifest, "next": {}}

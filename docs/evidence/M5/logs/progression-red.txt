@@ -1,0 +1,56 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+________________________ test_added_frank_escape_still _________________________
+
+    def test_added_frank_escape_still():
+>       assert len(FRANK)==4
+E       AssertionError: assert 3 == 4
+E        +  where 3 = len((Still(speaker='DEE', text='Finally. Can we leave?', atlas='kidnapping', panel=3, music='frank-kidnap'), Still(speaker...nap'), Still(speaker='DENNIS', text='Seriously? We just did this.', atlas='kidnapping', panel=5, music='frank-kidnap')))
+
+tests/unit/test_act2_contract.py:10: AssertionError
+_____________________ test_frank_sequence_enters_act2_once _____________________
+
+    def test_frank_sequence_enters_act2_once():
+        s=Session(Memory());s.start();s.next_dialogue(skip=True)
+        s.world.complete=True;s.update(0,{})
+        assert s.sequence is FRANK
+        s.next_dialogue(skip=True)
+>       assert s.world.act=='act2' and s.screen=='training'
+E       AssertionError: assert ('act1' == 'act2'
+E
+E         - act2
+E         ?    ^
+E         + act1
+E         ?    ^)
+
+tests/unit/test_act2_contract.py:19: AssertionError
+___________ test_troll_password_uses_real_bridge_and_preserves_save ____________
+
+    def test_troll_password_uses_real_bridge_and_preserves_save():
+        store=Memory();s=Session(store);s.start();saved=store.raw
+        s.password='TROLLTOLL';s.submit_password()
+>       assert s.world.act=='act2' and s.qa
+E       AssertionError: assert ('rehearsal' == 'act2'
+E
+E         - act2
+E         + rehearsal)
+
+tests/unit/test_act2_contract.py:26: AssertionError
+_______________ test_completed_act1_save_continues_toward_bridge _______________
+
+    def test_completed_act1_save_continues_toward_bridge():
+        store=Memory();s=Session(store);s.start();s.world.complete=True;s.progress.save(s.world)
+        resumed=Session(store);resumed.selection=resumed.menu().index('Continue Act 1');resumed.activate()
+>       assert resumed.screen=='dialogue' and resumed.sequence is FRANK
+E       AssertionError: assert ('complete' == 'dialogue'
+E
+E         - dialogue
+E         + complete)
+
+tests/unit/test_act2_contract.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act2_contract.py::test_added_frank_escape_still - Asse...
+FAILED tests/unit/test_act2_contract.py::test_frank_sequence_enters_act2_once
+FAILED tests/unit/test_act2_contract.py::test_troll_password_uses_real_bridge_and_preserves_save
+FAILED tests/unit/test_act2_contract.py::test_completed_act1_save_continues_toward_bridge
+4 failed in 0.19s

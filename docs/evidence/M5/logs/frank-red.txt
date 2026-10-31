@@ -1,0 +1,531 @@
+FFFFFFFFFF                                                               [100%]
+=================================== FAILURES ===================================
+_________________ test_arena_entry_cleans_ordinary_projectiles _________________
+
+    def test_arena_entry_cleans_ordinary_projectiles():
+        w=Act2();w.shots=[dict(x=3000,y=410,life=2)];w.beams=[dict(x=2900,y=400,life=2)]
+>       w.player.x=2950;w.step({})
+                        ^^^^^^^^^^
+
+tests/unit/test_frank_contract.py:11:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+game/levels/act2.py:63: in step
+    super().step(inputs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f7fe6a310>, inputs = {}
+
+    def step(self,inputs=None):
+        if self.paused or self.dead:return
+        self.steps+=1;p=self.player;controls=inputs or {}
+        for impact in self.impacts:impact["life"]-=DT
+        self.impacts=[impact for impact in self.impacts if impact["life"]>0]
+        for attr in ('dayman','invulnerable','swing','beam_cooldown'):setattr(p,attr,max(0,getattr(p,attr)-DT))
+        direction=int(bool(controls.get('right')))-int(bool(controls.get('left')))
+        p.moving=bool(direction)
+        if direction:p.facing=direction
+        p.x=max(0,min(self.width-24,p.x+direction*220*DT))
+        if controls.get('jump') and p.grounded:p.vy=-490;p.grounded=False;self.events.append('jump')
+        if controls.get('bat'):self.attack()
+        if controls.get('beam'):self.shoot()
+        old_bottom=p.y+44;p.vy=min(800,p.vy+1300*DT);p.y+=p.vy*DT;p.grounded=False
+        for x,y,w,h in self.platforms:
+            if p.vy>=0 and p.x+24>x and p.x<x+w and old_bottom<=y+.01 and p.y+44>=y:
+                p.y=y-44;p.vy=0;p.grounded=True;break
+        if p.y>600:
+            p.hearts=0;self.dead=True;self.events.append('hurt');return
+        for name,x in self.flag_positions.items():
+            if abs(p.x-x)<25 and p.y+44>=FLOOR-5:self.flag(name,x)
+        for pickup in self.pickups:
+            if not pickup['taken'] and overlap(p.rect,(pickup['x']-15,pickup['y']-13,30,26)):
+                pickup['taken']=True
+                self.meal() if pickup['kind']=='meal' else self.food()
+        for target in self.targets:
+            if not self.target_active(target):continue
+            rect=(target['x'],target['y'],30,32)
+            hitbox=(p.x+24 if p.facing>0 else p.x-42,p.y+7,42,27)
+            if .04<p.swing<.18 and target['id'] not in self.swing_hits and overlap(hitbox,rect):
+                self.swing_hits.add(target['id']);self.hit_target(target,'bat-hit');continue
+            if overlap(p.rect,rect):
+                if self.contact(old_bottom,target['y'],p.vy>0)=='stomp':
+                    self.hit_target(target,'stomp');p.y=target['y']-44;p.vy=-350
+                elif self.contact_hurts(target):self.hurt()
+        self.shot_clock+=DT
+        if self.launcher and self.shot_clock>=2:
+            self.shot_clock=0
+            if self.targets[-1]['alive']:self.shots.append({'x':1500.0,'y':410.0,'life':5.0})
+        for shot in self.shots:
+            shot['x']+=shot.get('dx',-120)*DT;shot['life']-=DT
+            rect=(shot['x']-7,shot['y']-7,14,14)
+            hitbox=(p.x+24 if p.facing>0 else p.x-42,p.y+7,42,27)
+            if .04<p.swing<.18 and overlap(hitbox,rect):shot['life']=0;self.events.append('bat-hit')
+            elif overlap(p.rect,rect):
+                if self.contact(old_bottom,shot['y']-7,p.vy>0)=='stomp':p.vy=-350;self.events.append('stomp')
+                else:self.hurt()
+                shot['life']=0
+            for beam in self.beams:
+                if overlap((beam['x']-10,beam['y']-3,20,6),rect):shot['life']=0;beam['life']=0;self.events.append('bat-hit')
+        self.shots=[shot for shot in self.shots if shot['life']>0]
+        for beam in self.beams:
+>           beam['x']+=beam['dx']*DT;beam['life']-=DT
+                       ^^^^^^^^^^
+E           KeyError: 'dx'
+
+game/world.py:142: KeyError
+____ test_frank_active_damage_has_short_immunity_and_requires_multiple_hits ____
+
+    def test_frank_active_damage_has_short_immunity_and_requires_multiple_hits():
+        w=boss();b=w.targets[0]
+>       assert w.hit_target(b,'bat-hit') and b['hp']==4 and b['alive']
+E       AssertionError: assert (True and 5 == 4)
+E        +  where True = hit_target({'id': 100, 'kind': 'frank', 'x': 3310.0, 'y': 382.0, ...}, 'bat-hit')
+E        +    where hit_target = <game.levels.act2.Act2 object at 0x7f7fb64310>.hit_target
+
+tests/unit/test_frank_contract.py:17: AssertionError
+______________ test_frank_throws_horizontal_sandwich_after_windup ______________
+
+    def test_frank_throws_horizontal_sandwich_after_windup():
+        w=boss();seen=set()
+        for _ in range(240):
+>           w.step({});seen.add(w.targets[0]['state'])
+            ^^^^^^^^^^
+
+tests/unit/test_frank_contract.py:23:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f8004fa90>, inputs = {}
+
+    def step(self,inputs=None):
+        from game.world import DT
+        if self.paused or self.dead or self.complete:return
+        for target in self.targets:
+            if not target['alive']:continue
+            target['animation_step']=self.steps
+            target['timer']-=DT
+            near=abs(self.player.x-target['x'])<380
+            if target['kind']=='gun':
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*24*DT
+                    if abs(target['x']-target['home'])>35:target['direction']*=-1
+                    if near and target['timer']<=0:
+                        target['state']='windup';target['timer']=.9
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='recover';target['timer']=1.2
+                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.0
+            else:
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*32*DT
+                    if abs(target['x']-target['home'])>42:target['direction']*=-1
+                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                        target['state']='windup';target['timer']=.65
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='lunge';target['timer']=.3
+                elif target['state']=='lunge':
+                    target['x']+=target['direction']*80*DT
+                    if target['timer']<=0:target['state']='recover';target['timer']=.7
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.2
+>               target['x']=max(target['home']-70,min(target['home']+70,target['x']))
+                                ^^^^^^^^^^^^^^
+E               KeyError: 'home'
+
+game/levels/act2.py:62: KeyError
+______________ test_attack_matrix_uses_world_collision[bat-frank] ______________
+
+kind = 'frank', attack = 'bat'
+
+    @pytest.mark.parametrize('kind',['frank','sandwich'])
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attack_matrix_uses_world_collision(kind,attack):
+        w=boss();t=w.targets[0]
+        if kind=='sandwich':
+            t=dict(id=101,kind='sandwich',x=3200.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+            w.targets=[t]
+        t['x']=3200;t['timer']=10
+        p=w.player
+        if attack=='bat':p.x=3160;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3200;p.y=t['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3190.,y=t['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({})
+
+tests/unit/test_frank_contract.py:43:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f7fb62550>, inputs = {}
+
+    def step(self,inputs=None):
+        from game.world import DT
+        if self.paused or self.dead or self.complete:return
+        for target in self.targets:
+            if not target['alive']:continue
+            target['animation_step']=self.steps
+            target['timer']-=DT
+            near=abs(self.player.x-target['x'])<380
+            if target['kind']=='gun':
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*24*DT
+                    if abs(target['x']-target['home'])>35:target['direction']*=-1
+                    if near and target['timer']<=0:
+                        target['state']='windup';target['timer']=.9
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='recover';target['timer']=1.2
+                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.0
+            else:
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*32*DT
+                    if abs(target['x']-target['home'])>42:target['direction']*=-1
+                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                        target['state']='windup';target['timer']=.65
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='lunge';target['timer']=.3
+                elif target['state']=='lunge':
+                    target['x']+=target['direction']*80*DT
+                    if target['timer']<=0:target['state']='recover';target['timer']=.7
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.2
+>               target['x']=max(target['home']-70,min(target['home']+70,target['x']))
+                                ^^^^^^^^^^^^^^
+E               KeyError: 'home'
+
+game/levels/act2.py:62: KeyError
+____________ test_attack_matrix_uses_world_collision[bat-sandwich] _____________
+
+kind = 'sandwich', attack = 'bat'
+
+    @pytest.mark.parametrize('kind',['frank','sandwich'])
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attack_matrix_uses_world_collision(kind,attack):
+        w=boss();t=w.targets[0]
+        if kind=='sandwich':
+            t=dict(id=101,kind='sandwich',x=3200.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+            w.targets=[t]
+        t['x']=3200;t['timer']=10
+        p=w.player
+        if attack=='bat':p.x=3160;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3200;p.y=t['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3190.,y=t['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({})
+
+tests/unit/test_frank_contract.py:43:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f7fe12fd0>, inputs = {}
+
+    def step(self,inputs=None):
+        from game.world import DT
+        if self.paused or self.dead or self.complete:return
+        for target in self.targets:
+            if not target['alive']:continue
+            target['animation_step']=self.steps
+            target['timer']-=DT
+            near=abs(self.player.x-target['x'])<380
+            if target['kind']=='gun':
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*24*DT
+                    if abs(target['x']-target['home'])>35:target['direction']*=-1
+                    if near and target['timer']<=0:
+                        target['state']='windup';target['timer']=.9
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='recover';target['timer']=1.2
+                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.0
+            else:
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*32*DT
+                    if abs(target['x']-target['home'])>42:target['direction']*=-1
+                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                        target['state']='windup';target['timer']=.65
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='lunge';target['timer']=.3
+                elif target['state']=='lunge':
+                    target['x']+=target['direction']*80*DT
+                    if target['timer']<=0:target['state']='recover';target['timer']=.7
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.2
+>               target['x']=max(target['home']-70,min(target['home']+70,target['x']))
+                                ^^^^^^^^^^^^^^
+E               KeyError: 'home'
+
+game/levels/act2.py:62: KeyError
+_____________ test_attack_matrix_uses_world_collision[stomp-frank] _____________
+
+kind = 'frank', attack = 'stomp'
+
+    @pytest.mark.parametrize('kind',['frank','sandwich'])
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attack_matrix_uses_world_collision(kind,attack):
+        w=boss();t=w.targets[0]
+        if kind=='sandwich':
+            t=dict(id=101,kind='sandwich',x=3200.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+            w.targets=[t]
+        t['x']=3200;t['timer']=10
+        p=w.player
+        if attack=='bat':p.x=3160;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3200;p.y=t['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3190.,y=t['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({})
+
+tests/unit/test_frank_contract.py:43:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f7fe57550>, inputs = {}
+
+    def step(self,inputs=None):
+        from game.world import DT
+        if self.paused or self.dead or self.complete:return
+        for target in self.targets:
+            if not target['alive']:continue
+            target['animation_step']=self.steps
+            target['timer']-=DT
+            near=abs(self.player.x-target['x'])<380
+            if target['kind']=='gun':
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*24*DT
+                    if abs(target['x']-target['home'])>35:target['direction']*=-1
+                    if near and target['timer']<=0:
+                        target['state']='windup';target['timer']=.9
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='recover';target['timer']=1.2
+                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.0
+            else:
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*32*DT
+                    if abs(target['x']-target['home'])>42:target['direction']*=-1
+                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                        target['state']='windup';target['timer']=.65
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='lunge';target['timer']=.3
+                elif target['state']=='lunge':
+                    target['x']+=target['direction']*80*DT
+                    if target['timer']<=0:target['state']='recover';target['timer']=.7
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.2
+>               target['x']=max(target['home']-70,min(target['home']+70,target['x']))
+                                ^^^^^^^^^^^^^^
+E               KeyError: 'home'
+
+game/levels/act2.py:62: KeyError
+___________ test_attack_matrix_uses_world_collision[stomp-sandwich] ____________
+
+kind = 'sandwich', attack = 'stomp'
+
+    @pytest.mark.parametrize('kind',['frank','sandwich'])
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attack_matrix_uses_world_collision(kind,attack):
+        w=boss();t=w.targets[0]
+        if kind=='sandwich':
+            t=dict(id=101,kind='sandwich',x=3200.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+            w.targets=[t]
+        t['x']=3200;t['timer']=10
+        p=w.player
+        if attack=='bat':p.x=3160;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3200;p.y=t['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3190.,y=t['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({})
+
+tests/unit/test_frank_contract.py:43:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f7fdfff50>, inputs = {}
+
+    def step(self,inputs=None):
+        from game.world import DT
+        if self.paused or self.dead or self.complete:return
+        for target in self.targets:
+            if not target['alive']:continue
+            target['animation_step']=self.steps
+            target['timer']-=DT
+            near=abs(self.player.x-target['x'])<380
+            if target['kind']=='gun':
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*24*DT
+                    if abs(target['x']-target['home'])>35:target['direction']*=-1
+                    if near and target['timer']<=0:
+                        target['state']='windup';target['timer']=.9
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='recover';target['timer']=1.2
+                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.0
+            else:
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*32*DT
+                    if abs(target['x']-target['home'])>42:target['direction']*=-1
+                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                        target['state']='windup';target['timer']=.65
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='lunge';target['timer']=.3
+                elif target['state']=='lunge':
+                    target['x']+=target['direction']*80*DT
+                    if target['timer']<=0:target['state']='recover';target['timer']=.7
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.2
+>               target['x']=max(target['home']-70,min(target['home']+70,target['x']))
+                                ^^^^^^^^^^^^^^
+E               KeyError: 'home'
+
+game/levels/act2.py:62: KeyError
+_____________ test_attack_matrix_uses_world_collision[beam-frank] ______________
+
+kind = 'frank', attack = 'beam'
+
+    @pytest.mark.parametrize('kind',['frank','sandwich'])
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attack_matrix_uses_world_collision(kind,attack):
+        w=boss();t=w.targets[0]
+        if kind=='sandwich':
+            t=dict(id=101,kind='sandwich',x=3200.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+            w.targets=[t]
+        t['x']=3200;t['timer']=10
+        p=w.player
+        if attack=='bat':p.x=3160;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3200;p.y=t['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3190.,y=t['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({})
+
+tests/unit/test_frank_contract.py:43:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f7fb644d0>, inputs = {}
+
+    def step(self,inputs=None):
+        from game.world import DT
+        if self.paused or self.dead or self.complete:return
+        for target in self.targets:
+            if not target['alive']:continue
+            target['animation_step']=self.steps
+            target['timer']-=DT
+            near=abs(self.player.x-target['x'])<380
+            if target['kind']=='gun':
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*24*DT
+                    if abs(target['x']-target['home'])>35:target['direction']*=-1
+                    if near and target['timer']<=0:
+                        target['state']='windup';target['timer']=.9
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='recover';target['timer']=1.2
+                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.0
+            else:
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*32*DT
+                    if abs(target['x']-target['home'])>42:target['direction']*=-1
+                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                        target['state']='windup';target['timer']=.65
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='lunge';target['timer']=.3
+                elif target['state']=='lunge':
+                    target['x']+=target['direction']*80*DT
+                    if target['timer']<=0:target['state']='recover';target['timer']=.7
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.2
+>               target['x']=max(target['home']-70,min(target['home']+70,target['x']))
+                                ^^^^^^^^^^^^^^
+E               KeyError: 'home'
+
+game/levels/act2.py:62: KeyError
+____________ test_attack_matrix_uses_world_collision[beam-sandwich] ____________
+
+kind = 'sandwich', attack = 'beam'
+
+    @pytest.mark.parametrize('kind',['frank','sandwich'])
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attack_matrix_uses_world_collision(kind,attack):
+        w=boss();t=w.targets[0]
+        if kind=='sandwich':
+            t=dict(id=101,kind='sandwich',x=3200.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+            w.targets=[t]
+        t['x']=3200;t['timer']=10
+        p=w.player
+        if attack=='bat':p.x=3160;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3200;p.y=t['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3190.,y=t['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({})
+
+tests/unit/test_frank_contract.py:43:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <game.levels.act2.Act2 object at 0x7f7fe129d0>, inputs = {}
+
+    def step(self,inputs=None):
+        from game.world import DT
+        if self.paused or self.dead or self.complete:return
+        for target in self.targets:
+            if not target['alive']:continue
+            target['animation_step']=self.steps
+            target['timer']-=DT
+            near=abs(self.player.x-target['x'])<380
+            if target['kind']=='gun':
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*24*DT
+                    if abs(target['x']-target['home'])>35:target['direction']*=-1
+                    if near and target['timer']<=0:
+                        target['state']='windup';target['timer']=.9
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='recover';target['timer']=1.2
+                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.0
+            else:
+                if target['state']=='patrol':
+                    target['x']+=target['direction']*32*DT
+                    if abs(target['x']-target['home'])>42:target['direction']*=-1
+                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                        target['direction']=1 if self.player.x>target['x'] else -1
+                        target['state']='windup';target['timer']=.65
+                elif target['state']=='windup' and target['timer']<=0:
+                    target['state']='lunge';target['timer']=.3
+                elif target['state']=='lunge':
+                    target['x']+=target['direction']*80*DT
+                    if target['timer']<=0:target['state']='recover';target['timer']=.7
+                elif target['state']=='recover' and target['timer']<=0:
+                    target['state']='patrol';target['timer']=1.2
+>               target['x']=max(target['home']-70,min(target['home']+70,target['x']))
+                                ^^^^^^^^^^^^^^
+E               KeyError: 'home'
+
+game/levels/act2.py:62: KeyError
+___________________ test_unpowered_boss_victory_and_cleanup ____________________
+
+    def test_unpowered_boss_victory_and_cleanup():
+        w=boss();b=w.targets[0]
+        for _ in range(5):
+            b['immune']=0;w.hit_target(b,'stomp')
+>       assert w.complete and not b['alive'] and w.shots==[]
+E       assert (False)
+E        +  where False = <game.levels.act2.Act2 object at 0x7f7fb77190>.complete
+
+tests/unit/test_frank_contract.py:51: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_frank_contract.py::test_arena_entry_cleans_ordinary_projectiles
+FAILED tests/unit/test_frank_contract.py::test_frank_active_damage_has_short_immunity_and_requires_multiple_hits
+FAILED tests/unit/test_frank_contract.py::test_frank_throws_horizontal_sandwich_after_windup
+FAILED tests/unit/test_frank_contract.py::test_attack_matrix_uses_world_collision[bat-frank]
+FAILED tests/unit/test_frank_contract.py::test_attack_matrix_uses_world_collision[bat-sandwich]
+FAILED tests/unit/test_frank_contract.py::test_attack_matrix_uses_world_collision[stomp-frank]
+FAILED tests/unit/test_frank_contract.py::test_attack_matrix_uses_world_collision[stomp-sandwich]
+FAILED tests/unit/test_frank_contract.py::test_attack_matrix_uses_world_collision[beam-frank]
+FAILED tests/unit/test_frank_contract.py::test_attack_matrix_uses_world_collision[beam-sandwich]
+FAILED tests/unit/test_frank_contract.py::test_unpowered_boss_victory_and_cleanup
+10 failed in 0.42s

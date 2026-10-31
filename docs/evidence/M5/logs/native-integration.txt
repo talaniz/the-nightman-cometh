@@ -1,0 +1,40 @@
+...........F.....F...................................................... [ 41%]
+........................................................................ [ 82%]
+...............................                                          [100%]
+=================================== FAILURES ===================================
+_____________ test_win_transition_runs_once_and_never_loads_bridge _____________
+
+    def test_win_transition_runs_once_and_never_loads_bridge():
+        s=Session(Memory());s.start();s.next_dialogue(skip=True);s.world.complete=True;s.update(0,{})
+        assert s.screen=='dialogue' and s.sequence[0].speaker=='DEE'
+>       s.next_dialogue(skip=True);assert s.screen=='complete'
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'training' == 'complete'
+E
+E         - complete
+E         + training
+
+tests/unit/test_act1_contract.py:98: AssertionError
+___________ test_qa_completion_replay_does_not_overwrite_normal_save ___________
+
+    def test_qa_completion_replay_does_not_overwrite_normal_save():
+        import json
+        class Store:
+            raw=None
+            def read(self):return self.raw
+            def write(self,value):self.raw=value
+        store=Store();s=Session(store);s.start();s.next_dialogue(skip=True)
+        before=store.raw;normal=s.world
+        s.password='PAINTDOG';s.submit_password();s.world.complete=True;s.update(0,{})
+        s.next_dialogue(skip=True)
+>       assert s.menu()==['Replay QA Act 1','Exit QA']
+E       AssertionError: assert [] == ['Replay QA Act 1', 'Exit QA']
+E
+E         Right contains 2 more items, first extra item: 'Replay QA Act 1'
+E         Use -v to get more diff
+
+tests/unit/test_act1_contract.py:175: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_win_transition_runs_once_and_never_loads_bridge
+FAILED tests/unit/test_act1_contract.py::test_qa_completion_replay_does_not_overwrite_normal_save
+2 failed, 173 passed in 67.99s (0:01:07)

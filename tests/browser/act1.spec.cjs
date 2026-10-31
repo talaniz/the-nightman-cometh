@@ -1,4 +1,5 @@
 const {test,expect}=require('@playwright/test');
+const {driveBridge}=require('./bridge-route.cjs');
 const fs=require('node:fs'),path=require('node:path');
 const evidence=process.env.NIGHTMAN_EVIDENCE;
 const state=async p=>JSON.parse(await p.evaluate(()=>window.__nightmanGame));
@@ -59,8 +60,8 @@ test('ACT1 CRICKET state fixtures attacks recovery and evidence',async({page})=>
  expect((await state(page)).world.targets[0].hp).toBe(2);await capture(page,'cricket-hit');
  await fixture(page,'act1-boss-stunned');await page.keyboard.press('k');expect((await state(page)).world.beams).toEqual([]);
  await fixture(page,'act1-pose-boss-defeated');await capture(page,'cricket-defeated');
- for(let i=0;i<3;i++){await fixture(page,'act1-frank-'+i);expect((await state(page)).audio.playing).toBe('frank-kidnap');await capture(page,'frank-'+i);}
- await press(page,'Escape');expect((await state(page)).screen).toBe('complete');await capture(page,'act1-complete');
+ for(let i=0;i<4;i++){await fixture(page,'act1-frank-'+i);expect((await state(page)).audio.playing).toBe('frank-kidnap');await capture(page,'frank-'+i);}
+ await press(page,'Escape');expect((await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act2');await capture(page,'act1-handoff');
  await page.setViewportSize({width:1920,height:1080});await capture(page,'act1-complete-1920');await page.setViewportSize({width:390,height:844});await capture(page,'act1-narrow');
  expect(faults).toEqual([]);
 });
@@ -80,13 +81,13 @@ test('SAVE ACT1 legacy migration keeps volumes and resets coordinates',async({pa
 
 // Ordinary full route uses only keyboard actions and read-only observations.
 // No test fixtures, passwords, invincibility or skipped story states.
-for(const recovery of [false,true])test('ACT1_NORMAL '+(recovery?'death checkpoint reload recovery':'full keyboard rescue and safe end of preview'),async({page})=>{
- test.setTimeout(420000);const faults=errors(page);await boot(page);expect((await state(page)).test_build).toBe(false);await choose(page,'Start Act 1');
+for(const recovery of [false,true])test('ACT1_NORMAL ACT2_NORMAL '+(recovery?'death checkpoint reload recovery':'full keyboard rescue and safe end of preview'),async({page})=>{
+ test.setTimeout(Number(process.env.NIGHTMAN_TEST_MS||900000));const faults=errors(page);await boot(page);expect((await state(page)).test_build).toBe(false);await choose(page,'Start Act 1');
  while((await state(page)).screen==='dialogue')await press(page,'Enter',70);
  let held='';let deaths=0;let forcedRecovery=false;
  // A read-count cap runs out sooner on faster hosts despite ongoing gameplay.
  // Bound elapsed route time instead; success still requires the full rescue.
- const routeDeadline=Date.now()+180000;
+ const routeDeadline=Date.now()+Number(process.env.NIGHTMAN_ROUTE_MS||180000);
  while(Date.now()<routeDeadline){
   let s=await state(page),w=s.world,p=w.player;
   if(s.screen==='dialogue'||s.screen==='complete')break;
@@ -138,8 +139,11 @@ for(const recovery of [false,true])test('ACT1_NORMAL '+(recovery?'death checkpoi
  }
  if(held)await page.keyboard.up(held);
  expect((await state(page)).screen).toBe('dialogue');expect((await state(page)).world.complete).toBe(true);
- for(let i=0;i<3;i++)await press(page,'Enter');
+ for(let i=0;i<4;i++)await press(page,'Enter');
+ expect((await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act2');
+ await driveBridge(page,{recovery,restart,choose,capture});
+ while((await state(page)).screen==='dialogue')await press(page,'Enter');
  expect((await state(page)).screen).toBe('complete');await capture(page,'normal-complete');
  const saved=JSON.parse(await page.evaluate(()=>localStorage.getItem('nightman.progress.v1')));expect(saved.complete).toBe(true);expect(saved.flags).toContain('preboss');if(recovery)expect(forcedRecovery).toBe(true);expect(faults).toEqual([]);
- await restart(page);await choose(page,'Continue Act 1');expect((await state(page)).screen).toBe('complete');expect(faults).toEqual([]);
+ await restart(page);await choose(page,'Continue Act 2');expect((await state(page)).screen).toBe('complete');expect(faults).toEqual([]);
 });

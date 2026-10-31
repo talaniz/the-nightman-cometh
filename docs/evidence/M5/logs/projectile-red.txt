@@ -1,0 +1,14 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_directional_projectile_preserves_release_height _____________
+
+    def test_directional_projectile_preserves_release_height():
+        w=Act2();w.targets=[];w.shots=[dict(x=700.,y=410.,dx=180.,life=2.)]
+        w.step({})
+>       assert w.shots[0]['x']>700 and w.shots[0]['y']==410
+E       assert (698.0 > 700)
+
+tests/unit/test_act2_contract.py:65: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act2_contract.py::test_directional_projectile_preserves_release_height
+1 failed in 0.18s

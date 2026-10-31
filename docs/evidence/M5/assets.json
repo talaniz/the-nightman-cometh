@@ -1,0 +1,29 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "file": "assets/backgrounds/act2/bridge.png",
+      "source": "exec-1c6e0ad9-1dbe-48f5-8894-b825c6775946.png",
+      "brief": "Theatrical Philadelphia underbridge night backdrop, empty foreground lane.",
+      "sha256": "28b2a010c3fb3488862d78216e9adf8269ad70c19cea1c750c139b1d49fbaaba"
+    },
+    {
+      "file": "assets/sprites/bridge.png",
+      "source": "exec-16c0e18d-ed41-465f-9c93-02345b796046.png",
+      "brief": "Transparent 4x4 atlas: Duncan, Z, walking gun, warm pointed-nose Frank; four distinct motion poses each.",
+      "sha256": "92aef245000c2dd0a0cb211ab0870662b46483fa2af7b0839b9bb9f1202f4081"
+    },
+    {
+      "file": "assets/scenes/act2/story.png",
+      "source": "exec-ed4c4ed3-28ec-448c-85ff-3b6e99da055a.png",
+      "brief": "2x2 scene atlas: Frank carrying Dee while Dennis shouts; Nightman leap, capture and escape. Dialogue rendered by game.",
+      "sha256": "ff8f064905d38d826c0cf0cf8e8828930ba05383d2b12adaae877376d3489025"
+    },
+    {
+      "file": "assets/ui/bridge-ads.png",
+      "source": "exec-bc8ff181-e810-4460-b4cd-8cac7fa40e93.png",
+      "brief": "Two mounted sign faces: Shadynasty's Jazz Club and Fight Milk with exact bodyguards copy.",
+      "sha256": "727843fbbe7e69479bd181724270db4e76b827ccb32b8641477a277e3aeef40f"
+    }
+  ]
+}
