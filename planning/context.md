@@ -1,3 +1,13 @@
+# Current execution status — Act 1 polish (2026-10-30)
+
+M4 is merged through PR15 at `5e982162e2a68969cd0434a821e8417d80389e3d`. Earlier pending M4 statements below are historical. User authorized all seven issue17 observations: “Ok, let's make those changes, remember to finish with an e2e review”.
+
+Main owns branch `milestone/act1-polish` and worktree `/home/palpatine/projects/the-nightman-cometh-polish`, based on that main commit. Contract: [M4-polish](milestones/M4-polish.md). One PR for geometry, mounted advertisement/sign art, nailed bat and real swing/enemy animation. Existing physics, audio, story, save/checkpoint semantics and boss behavior remain boundaries; M5 and issue16 are outside this pass.
+
+Implementation and evidence are prepared together. Current exact-head reviewer/CI results live on the polish PR linked from issue17; this source record is not review sign-off. Distinct per-commit code review precedes separate actual-browser E2E review. Human visual acceptance remains separate; no merge or deployment authorized.
+
+---
+
 # Current execution status — M4 (2026-10-25)
 
 M3 is complete and merged via PR13 at1f97dd46a7479536d94c56567479ec73ce86fcd0; issue4 is closed. All per-commit/E2E reviews, CI and human integrated play/audio acceptance passed. Earlier M3 pending statements below are historical observations, superseded by this status and PR13's acceptance/merge record.
