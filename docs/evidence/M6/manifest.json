@@ -1,0 +1,652 @@
+{
+  "source_fingerprint": "52699acdd686ddac1d1bd21800ceae2c1c9d6f8dca958a1855d3e4c678c06618",
+  "revision": "7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1; no game/runtime/asset changes after capture",
+  "base_commit": "9a0d57be05ae35d2850635e15e3a975956daa483",
+  "captures": [
+    {
+      "file": "captures/act1-beam.png",
+      "sha256": "18115d9d0a5a5403d9c4936ea1a00d125c868b18818154e829dd31283eb2f7b5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act1-beam",
+      "metadata": "captures/act1-beam.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/act1-chicken.png",
+      "sha256": "641b670fb377d5c24b7b3df0b26c99b66ce6980ffc463939e9e5d2ab4803ae3a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act1-chicken",
+      "metadata": "captures/act1-chicken.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/act1-meal.png",
+      "sha256": "cc81f0c7453a416c266a1d59a81a3c9101aee15bfac7259d90418e029025eeae",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act1-meal",
+      "metadata": "captures/act1-meal.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/act3-handoff.png",
+      "sha256": "f8fb263444b822b15f817908bf398cf8317c9aa5850d63b7b4406564c647b1df",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act3-handoff",
+      "metadata": "captures/act3-handoff.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/act3-normal-death.png",
+      "sha256": "8a635051ab1cf3af743226415e8b38d4a3d92fb8860a18f024608427d63d431a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act3-normal-death",
+      "metadata": "captures/act3-normal-death.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/act3-normal-retry.png",
+      "sha256": "011fc977593e28610abc1887402fc427852b4ed3b563b5326da0e7ef1547456d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act3-normal-retry",
+      "metadata": "captures/act3-normal-retry.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/act3-save-migrated.png",
+      "sha256": "426db4355af9a8975510f63bfb6982a12689332860dbd5986ed176f7c14fb361",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act3-save-migrated",
+      "metadata": "captures/act3-save-migrated.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/asset-load-error-1280.png",
+      "sha256": "dfac3a700d4ae13099a1d067119df0147e19e671afadba05dd2aedd6c8d1c609",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "asset-load-error-1280",
+      "metadata": null,
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/audio-error-1280.png",
+      "sha256": "4ca026ddf793bc960cb7a58eb996cec46a94695048aff51c2de4743dccc886ec",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "audio-error-1280",
+      "metadata": "captures/audio-error-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/audio-recovered-1280.png",
+      "sha256": "839a41c5dc28b75c6600fe93ee7cb4e6413bd9e1d718e516e60e2aa0eb869b4a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "audio-recovered-1280",
+      "metadata": "captures/audio-recovered-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/dayman-ending.png",
+      "sha256": "9f1192a2659bda922a878936bb01d7afcc6eddd2c5fb36f6e1f1dfb0f83a18e2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "dayman-ending",
+      "metadata": "captures/dayman-ending.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/ending-1920.png",
+      "sha256": "82373b62203527038af2ccc30bd1c6e5d6caea09b8a17892181d9aa774d31f3b",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": "ending-1920",
+      "metadata": "captures/ending-1920.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/ending-narrow.png",
+      "sha256": "3477c622eeb01fc86569490a327a9be6e79e4c6fa2a775bb4571d91fd8e60614",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "ending-narrow",
+      "metadata": "captures/ending-narrow.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/finale-0.png",
+      "sha256": "bba2d0257d859f1c9b15b8511726fbb4d160422325975038b8593a00b3a867da",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-0",
+      "metadata": "captures/finale-0.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/finale-1.png",
+      "sha256": "4d01452d007d265fede6080586fd948630f1d6426259936c7f6f872c362b61e4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-1",
+      "metadata": "captures/finale-1.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/finale-2.png",
+      "sha256": "7fcd41130ace545d683a48e7d5c2075ab1c7e009328516c9db80143b463b0c97",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-2",
+      "metadata": "captures/finale-2.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/finale-3.png",
+      "sha256": "624d68d4f9233460d642f9529d47cf80d76d688100e9ed43d4157d89ea7cb945",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-3",
+      "metadata": "captures/finale-3.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/finale-4.png",
+      "sha256": "af4825ad02b34ed56db1dada972367c0945e5ec9f8a0200b6bb0d5a742e73bb6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-4",
+      "metadata": "captures/finale-4.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/finale-5.png",
+      "sha256": "b3e566c813a6346c7adb19adb9af7ed4aa427e387695c04d59a7d0b70cab656f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-5",
+      "metadata": "captures/finale-5.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/finale-6.png",
+      "sha256": "859a03b5011f58e55fcf2dd2d360fda075ea00ea85fb1b06dff3c3983bd9c794",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-6",
+      "metadata": "captures/finale-6.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/invalid-password-1280.png",
+      "sha256": "4379477e659cc4588f2d2a77cce70225f26e1ef4145f094c288bea13a9194fd0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "invalid-password-1280",
+      "metadata": "captures/invalid-password-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/loading-1280.png",
+      "sha256": "12039907a9b37d1bf9567b2365d2ff851ed2cd8fef33aa51983a91359b87118c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "loading-1280",
+      "metadata": "captures/loading-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/new-game-confirm-1280.png",
+      "sha256": "855f948d593bff4c0ef217006cbb472f4fc0a4a8dab39c24cc9377b6e1252d85",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "new-game-confirm-1280",
+      "metadata": "captures/new-game-confirm-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-beam.png",
+      "sha256": "486b92faa06c7a5f8fe2c7f0321b7c8a757c908990ac8687dc7114d9fa4c7d9c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-beam",
+      "metadata": "captures/nightman-beam.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-close.png",
+      "sha256": "6e0b7ea7d15e544d93bc3103174f87a9dc4ae7862b1004a64f50afe783502f3c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-close",
+      "metadata": "captures/nightman-close.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-expiry.png",
+      "sha256": "d264c8c9c5f27385e36bf620d9ad1979e4660dacace9317b7b0bcc80a2c49a89",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-expiry",
+      "metadata": "captures/nightman-expiry.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-motion-dash.png",
+      "sha256": "337616bb33ba90deaa5d62c1471fbc93cffe5cac1cf07c01512f15c6761a689c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-motion-dash",
+      "metadata": "captures/nightman-motion-dash.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-motion-idle.png",
+      "sha256": "ef39cf1ea932519e38f5e9c4dbdf5754d15c43e07161ab7feec165070fe44a28",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-motion-idle",
+      "metadata": "captures/nightman-motion-idle.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-motion-leap.png",
+      "sha256": "5fd90627f900487326bce9239d2a8ed52bbaf3db589bc482557162929be27b06",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-motion-leap",
+      "metadata": "captures/nightman-motion-leap.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-motion-recover.png",
+      "sha256": "edb32474e6ec568d52aebedf1e756aea4d98bff433284ac640ec319982da2f69",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-motion-recover",
+      "metadata": "captures/nightman-motion-recover.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-motion-summon.png",
+      "sha256": "a2ced148cb69978da1e65773e0391803a9f60d01ec75af1210292038ad293167",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-motion-summon",
+      "metadata": "captures/nightman-motion-summon.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-motion-windup.png",
+      "sha256": "c8fc52afb54851e9de0f8349c500d9bb89b4e0739e771d64100f38b1b3466450",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-motion-windup",
+      "metadata": "captures/nightman-motion-windup.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-stomp.png",
+      "sha256": "8167fa0fe866b5e2e34e89accca834f92e81ebf73bfb537e6e5b702fac53a8b7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-stomp",
+      "metadata": "captures/nightman-stomp.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/nightman-summons.png",
+      "sha256": "52d3d895edecdf823b4dc4cad3389a78703d1000c915d93cd4dc823d4c8a9284",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-summons",
+      "metadata": "captures/nightman-summons.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/normal-complete.png",
+      "sha256": "258d702235c5b42a594851c3d4daacba7383e036796424084ac269e61cf1694b",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "normal-complete",
+      "metadata": "captures/normal-complete.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/normal-ending.png",
+      "sha256": "8db97a87221f215a94214806b936ced8a640d56ed450bb73b19cc7c674ea2815",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "normal-ending",
+      "metadata": "captures/normal-ending.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/options-1280.png",
+      "sha256": "13b9ab27cc00e94e121cb241eafc8e341656e2b74707d020d48f5683c84b43ae",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "options-1280",
+      "metadata": "captures/options-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-1920.png",
+      "sha256": "1cac458bb9c245d558f5e5524aafa6646bdba2ba94630037961804b58883e6f9",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": "rooftop-1920",
+      "metadata": "captures/rooftop-1920.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-death.png",
+      "sha256": "46b742686d92cba79b448dc1bda6b430049fa394c9388cf2b68d0b391d70b7f9",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-death",
+      "metadata": "captures/rooftop-death.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-entrance.png",
+      "sha256": "3ac3dd8f14d74de70a4f84c5d8b740455fc4403296b5195d1ade8fa64940d2bb",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-entrance",
+      "metadata": "captures/rooftop-entrance.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-lower-first.png",
+      "sha256": "1b8cb2fc9d08fd919e251ef1968475a8a85f0fc225d512a4193487def789c455",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-lower-first",
+      "metadata": "captures/rooftop-lower-first.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-lower-second.png",
+      "sha256": "1513af29925cd48c3cdbb1a5ea5c5f69939ce76fa6b828d7594c714b43a463f8",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-lower-second",
+      "metadata": "captures/rooftop-lower-second.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-meal.png",
+      "sha256": "90bec1c3323ea43268bf7c1e727f258fa655e3ff624904d70fdef9661af3e5f4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-meal",
+      "metadata": "captures/rooftop-meal.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-mid.png",
+      "sha256": "2f86b2c26386d1c9d072c5918e9567383406605de99cfd222eddcf7fdfc6462a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-mid",
+      "metadata": "captures/rooftop-mid.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-narrow.png",
+      "sha256": "3477c622eeb01fc86569490a327a9be6e79e4c6fa2a775bb4571d91fd8e60614",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "rooftop-narrow",
+      "metadata": "captures/rooftop-narrow.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-pause.png",
+      "sha256": "7fe536a604987e4b0eaf5dc4a68b20be998e387ac91e50313494546ec2f186b5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-pause",
+      "metadata": "captures/rooftop-pause.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-poster.png",
+      "sha256": "91191826c77694371816a6faea499611b0fb15ab502fa3edc9bae58213526102",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-poster",
+      "metadata": "captures/rooftop-poster.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-preboss.png",
+      "sha256": "1da8e6148fce6d4c67054943b7baf8e88314f7f0cfecedbe66f20518a024c0a3",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-preboss",
+      "metadata": "captures/rooftop-preboss.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-retry.png",
+      "sha256": "71f894bd9f9e4c2961a262a1ccea93182b042559c3e03442a765850d6d1fe99b",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-retry",
+      "metadata": "captures/rooftop-retry.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-upper-first.png",
+      "sha256": "d9d35be6defeb757b73dc5e087006b891130a30af705d7018481016a33e5011c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-upper-first",
+      "metadata": "captures/rooftop-upper-first.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/rooftop-upper-second.png",
+      "sha256": "9e262b50d154ba84cbe74282de463f5b0978e4e2f2b9596c3e9acd5d84ce1b03",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-upper-second",
+      "metadata": "captures/rooftop-upper-second.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/save-error-1280.png",
+      "sha256": "8acacfee49bb6fa5df562af421a17801c4af8576680f68356ce4a6cdb3f7e69a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "save-error-1280",
+      "metadata": "captures/save-error-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/silent-credits.png",
+      "sha256": "7e3b6544f90b10dfb31b14989f7f6b35ab8d698fcf816271f3052480a76c9893",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "silent-credits",
+      "metadata": "captures/silent-credits.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/storage-disabled-1280.png",
+      "sha256": "b8caca6e4875e724cd53284b91dccc03f14c04d07984b1dd7f4cd90082dc7a69",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "storage-disabled-1280",
+      "metadata": "captures/storage-disabled-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/swing-jump-live.png",
+      "sha256": "1eef9df03cee716666dda5e036bfc56386d7f228068b006723c69486d7addf91",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "swing-jump-live",
+      "metadata": "captures/swing-jump-live.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/swing-left-live.png",
+      "sha256": "b97d4a65bfdc21e569e1108b45dc4e6e606569fa691c9b654ff8989e22b3cf25",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "swing-left-live",
+      "metadata": "captures/swing-left-live.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/swing-live.png",
+      "sha256": "2005471d2a8110358126f6b895e98aee9682226b60d03faa1f74d87786cfbcc9",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "swing-live",
+      "metadata": "captures/swing-live.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    },
+    {
+      "file": "captures/title-1280.png",
+      "sha256": "e4e2038d0cc7c0417828860147d2609708a320bcdcbb8c89a45864c7f112a449",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "title-1280",
+      "metadata": "captures/title-1280.json",
+      "origin": "CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1"
+    }
+  ],
+  "unexpected_errors": [],
+  "commands": [
+    "npx playwright test --project=chromium --grep-invert ACT1_NORMAL",
+    "NIGHTMAN_BUILD=build/normal npx playwright test --project=chromium --grep ACT1_NORMAL",
+    "NIGHTMAN_BUILD=build/normal npx playwright test --project=firefox --grep \"SMOKE|ACT1_NORMAL\""
+  ],
+  "environment": "Ubuntu24.04 CI Python3.11.17 pygame-ce2.5.8 Node22; pinned Playwright Chromium/Firefox"
+}

@@ -1,0 +1,45 @@
+.................F.............F........................................ [ 35%]
+........................................................................ [ 70%]
+.............................................................            [100%]
+=================================== FAILURES ===================================
+___________ test_qa_completion_replay_does_not_overwrite_normal_save ___________
+
+    def test_qa_completion_replay_does_not_overwrite_normal_save():
+        import json
+        class Store:
+            raw=None
+            def read(self):return self.raw
+            def write(self,value):self.raw=value
+        store=Store();s=Session(store);s.start();s.next_dialogue(skip=True)
+        before=store.raw;normal=s.world
+        s.password='PAINTDOG';s.submit_password();s.world.complete=True;s.update(0,{})
+        s.next_dialogue(skip=True)
+        assert s.world.act=='act2' and s.qa
+        s.world.complete=True;s.update(0,{});s.next_dialogue(skip=True)
+>       assert s.menu()==['Replay QA Act 2','Exit QA']
+E       AssertionError: assert [] == ['Replay QA Act 2', 'Exit QA']
+E         
+E         Right contains 2 more items, first extra item: 'Replay QA Act 2'
+E         Use -v to get more diff
+
+tests/unit/test_act1_contract.py:177: AssertionError
+_____________ test_abduction_play_skip_and_completed_reload_agree ______________
+
+    def test_abduction_play_skip_and_completed_reload_agree():
+        for skip in (True,False):
+            store=Memory();s=Session(store);s.world=Act2();s.world.complete=True;s.enter_screen('training');s.update(0,{})
+            assert s.sequence is NIGHTMAN
+            if skip:s.next_dialogue(skip=True)
+            else:
+                for _ in NIGHTMAN:s.next_dialogue()
+>           assert s.screen=='complete' and s.world.act=='act2'
+E           AssertionError: assert ('training' == 'complete'
+E             
+E             - complete
+E             + training)
+
+tests/unit/test_act2_contract.py:77: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act1_contract.py::test_qa_completion_replay_does_not_overwrite_normal_save
+FAILED tests/unit/test_act2_contract.py::test_abduction_play_skip_and_completed_reload_agree
+2 failed, 203 passed in 123.79s (0:02:03)

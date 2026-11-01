@@ -102,14 +102,14 @@ class Renderer:
         self.text('MIND THE GAP',1050-camera,472,MUTED,self.small)
         self.text('END OF REHEARSAL',1510-camera,355,GOLD,self.small)
     def training(self,session):
-        w=session.world;p=w.player;camera=max(0,min(w.width-960,p.x-350));self.act_scenery(w,camera) if w.act in ("act1","act2") else self.scenery(camera)
+        w=session.world;p=w.player;camera=max(0,min(w.width-960,p.x-350));self.act_scenery(w,camera) if w.act in ("act1","act2","act3") else self.scenery(camera)
         for name,x in w.flag_positions.items():
             color=(126,202,139) if name in w.flags else GOLD
             pygame.draw.polygon(self.screen,color,[(x-camera+2,362),(x-camera+35,371),(x-camera+2,382)])
         for t in w.targets:
             if t['alive']:
                 x=t['x']-camera;y=t['y']
-                if w.act in ('act1','act2'):
+                if w.act in ('act1','act2','act3'):
                     self.enemy(t,camera);continue
                 self.rect((123,65,63),(x,y,30,32));self.rect((199,139,83),(x+4,y+4,22,24))
                 pygame.draw.circle(self.screen,(91,43,44),(int(x)+15,int(y)+15),9,2);pygame.draw.circle(self.screen,CREAM,(int(x)+15,int(y)+15),3)
@@ -117,14 +117,14 @@ class Renderer:
         for item in w.pickups:
             if item['taken']:continue
             x=item['x']-camera;y=item['y']
-            if item['kind']=='meal' and w.act in ('act1','act2'):
+            if item['kind']=='meal' and w.act in ('act1','act2','act3'):
                 self.screen.blit(self.art.image('cast',15,(44,25)),(int(x-22),int(y-15)));continue
             if item['kind']=='meal':
                 pygame.draw.ellipse(self.screen,CREAM,(x-18,y-6,38,12));pygame.draw.ellipse(self.screen,(142,75,64),(x-12,y-10,20,12))
                 for dx,c in ((10,(177,211,117)),(15,GOLD),(6,(191,99,143))):pygame.draw.circle(self.screen,c,(int(x+dx),int(y-5)),3)
             else:
                 self.rect((122,159,173),(x-14,y-15,28,22));self.rect(CREAM,(x-14,y-10,28,12));self.text('CAT',x-11,y-10,INK,self.item_font)
-        if w.act in ('act1','act2') or not (p.invulnerable>0 and int(p.invulnerable*12)%2):self.actor(p,camera,w.steps) if w.act in ('act1','act2') else self.person(p.x-camera,p.y,p.dayman>0,p.facing,p.swing>0,w.steps*.22 if p.grounded else 0)
+        if w.act in ('act1','act2','act3') or not (p.invulnerable>0 and int(p.invulnerable*12)%2):self.actor(p,camera,w.steps) if w.act in ('act1','act2','act3') else self.person(p.x-camera,p.y,p.dayman>0,p.facing,p.swing>0,w.steps*.22 if p.grounded else 0)
         for impact in w.impacts:
             x=int(impact['x']-camera);y=int(impact['y']);radius=int(5+impact['life']*30)
             for dx,dy in ((1,0),(0,1),(1,1),(1,-1)):
@@ -134,13 +134,18 @@ class Renderer:
             pygame.draw.circle(self.screen,GOLD,(int(shot['x']-camera)-2,int(shot['y'])-2),3)
         for b in w.beams:
             self.rect((255,242,164),(b['x']-camera-12,b['y']-3,26,6));self.rect(GOLD,(b['x']-camera-10,b['y']-1,23,2))
-        self.rect((24,25,39),(0,0,960,70));self.rect(GOLD,(0,68,960,2));self.screen.blit(self.art.asset('sprites/nail-bat.png',(96,30),trim=True),(20,14)) if w.act in ('act1','act2') else self.bat(25,18,2);self.text('RAT BAT',130,18,GOLD);self.text('DENNIS AS CHARLIE',130,42,MUTED,self.small)
+        self.rect((24,25,39),(0,0,960,70));self.rect(GOLD,(0,68,960,2));self.screen.blit(self.art.asset('sprites/nail-bat.png',(96,30),trim=True),(20,14)) if w.act in ('act1','act2','act3') else self.bat(25,18,2);self.text('RAT BAT',130,18,GOLD);self.text('DENNIS AS CHARLIE',130,42,MUTED,self.small)
         for i in range(3):
             x=365+i*33;color=(205,83,86) if i<p.hearts else (60,53,65)
             pygame.draw.polygon(self.screen,color,[(x,24),(x+7,19),(x+14,24),(x+21,19),(x+28,24),(x+28,32),(x+14,46),(x,32)])
-        self.text(('DAYMAN  '+str(max(0,math.ceil(p.dayman)))+'s') if p.dayman else ({'act1':'COFFEE-SHOP RESCUE','act2':'THE TROLL TOLL'}.get(w.act,'REHEARSAL / RAT BAT')),520,27,GOLD)
+        self.text(('DAYMAN  '+str(max(0,math.ceil(p.dayman)))+'s') if p.dayman else ({'act1':'COFFEE-SHOP RESCUE','act2':'THE TROLL TOLL','act3':'ROOFTOP SHOWDOWN'}.get(w.act,'REHEARSAL / RAT BAT')),520,27,GOLD)
         self.text('ESC PAUSE',810,28,MUTED,self.small)
         self.rect((24,25,39),(0,506,960,34));self.text('SPACE jump    J bat    K sunbeam    M mute    R retry audio',24,515,MUTED,self.small)
+        if w.act=='act3' and w.steps<45:
+            width=int(120*(1-w.steps/45))
+            for x in (0,960-width):
+                self.rect((108,28,45),(x,70,width,436))
+                for fold in range(0,width,14):self.rect((81,22,37),(x+fold,70,min(5,width-fold),436))
         if session.qa:self.text('QA · '+session.qa_label+(' · INVINCIBLE' if w.invincible else ''),22,79,(245,160,112),self.small)
     def curtains(self):
         for side in (0,840):
@@ -154,8 +159,10 @@ class Renderer:
         else:
             self.screen.blit(self.art.image('opening',5,(960,540)),(0,0));self.curtains()
             self.center('THE NIGHTMAN COMETH',82,GOLD,self.large)
-            self.center('ACTS I–II  ·  A MUSICAL ADVENTURE',126,MUTED,self.small)
-        if session.screen in ('title','pause','options','confirm','dead','complete'):
+            self.center('THREE ACTS  ·  A MUSICAL ADVENTURE',126,MUTED,self.small)
+        if session.screen in ('ending','credits'):
+            self.ending(session)
+        elif session.screen in ('title','pause','options','confirm','dead','complete'):
             headings={'title':'ENTER THE THEATRE','pause':'TAKE FIVE','options':'OPTIONS','confirm':'START A NEW RUN?','dead':'CURTAIN CALL','complete':'ACT 2 COMPLETE' if session.world.act=='act2' else 'ACT 1 COMPLETE'}
             self.panel(headings[session.screen])
             if session.screen=='complete':self.center('End of preview · Rooftops come next.' if session.world.act=='act2' else 'Under the bridge comes next.',195,MUTED,self.small)
@@ -166,7 +173,7 @@ class Renderer:
                 self.text(('> ' if i==session.selection else '  ')+choice,255,y,GOLD if i==session.selection else CREAM)
             self.center('UP / DOWN choose · ENTER confirm · ESC back',480,MUTED,self.small)
         elif session.screen=='password':
-            self.panel('PASSWORD');self.center('PAINTDOG: Act 1 · TROLLTOLL: Act 2',220,MUTED);self.center(session.password+'_',270,GOLD,self.large)
+            self.panel('PASSWORD');self.center('PAINTDOG · TROLLTOLL · NIGHTMAN',220,MUTED);self.center(session.password+'_',270,GOLD,self.large)
             self.center(session.message or 'Type a code. Enter confirms. Esc returns.',350,CREAM,self.small)
         elif session.screen=='dialogue':
             self.story(session)
@@ -223,6 +230,7 @@ class Renderer:
         self.screen.blit(bat,(int(bat_x),int(p.y+hand_y)))
 
     def enemy(self,t,camera):
+        if t['kind']=='nightman':self.nightman(t,camera);return
         if t['kind'] in ('duncan','z','gun','frank','sandwich'):
             self.bridge_enemy(t,camera);return
         if t['kind'] in ('rat','ghoul'):
@@ -244,6 +252,7 @@ class Renderer:
             for i in range(t['hp']):self.rect((204,86,78),(790+i*27,84,20,12))
 
     def act_scenery(self,w,camera):
+        if w.act=='act3':self.rooftop_scenery(w,camera);return
         if w.act=='act2':self.bridge_scenery(w,camera);return
         if not hasattr(self,'stage_backdrop'):
             source=pygame.image.load(str(self.art.root/'backgrounds/act1/street.png')).convert()
@@ -330,3 +339,53 @@ class Renderer:
         if w.boss_active:
             self.text('TROLL CROSSING',3190-camera,250,GOLD,self.small)
             self.screen.blit(self.art.image('cast',13,(38,62)),(3540-camera,368))
+
+    def nightman(self,t,camera):
+        state=t['state']
+        pose={'idle':0,'windup':3,'leap':4,'recover':5,'summon':6,'defeated':7}.get(state,1+(t.get('animation_step',0)//7)%2)
+        if t.get('immune',0)>0:pose=7
+        sprite,anchor=self.art.nightman(pose,t['direction']<0)
+        self.screen.blit(sprite,(int(t['x']-camera+16-anchor),int(t['y']+56-sprite.get_bounding_rect().bottom)))
+        if state in ('windup','summon'):self.text('!' if state=='windup' else '*',t['x']-camera+10,t['y']-30,GOLD,self.large)
+        self.text('NIGHTMAN',640,83,GOLD)
+        for i in range(t['hp']):self.rect((204,86,78),(790+i*25,84,18,12))
+
+    def rooftop_scenery(self,w,camera):
+        self.screen.fill(INK)
+        self.screen.blit(self.art.asset('backgrounds/act3/rooftop.png',(1320,440)),(-int(camera*360/(w.width-960)),70))
+        for x,y,width,height in w.platforms:
+            sx=x-camera
+            if height>30:
+                self.rect((62,47,54),(sx,y,width,height));self.rect((145,142,142),(sx,y,width,6))
+                self.rect((39,36,43),(sx,y+6,width,8))
+                for yy in range(y+28,506,20):
+                    pygame.draw.line(self.screen,(33,29,38),(sx,yy),(sx+width,yy),2)
+                    for xx in range(x,x+width,52):self.rect((33,29,38),(xx-camera+(26 if yy%40 else 0),yy-18,2,18))
+            else:
+                self.rect((72,81,92),(sx,y,width,height));self.rect((177,180,170),(sx,y,width,5))
+                for xx in range(x+8,x+width,18):self.rect((29,36,49),(xx-camera,y+7,10,7))
+                for xx in (x+12,x+width-16):pygame.draw.line(self.screen,(104,107,112),(xx-camera,y+height),(xx-camera-14,y+height+25),4)
+        for name,x in w.flag_positions.items():
+            pygame.draw.line(self.screen,CREAM,(x-camera,430),(x-camera,360),3)
+            self.text('MIDPOINT' if name=='mid' else 'PRE-BOSS',x-camera-40,447,GOLD,self.small)
+        for x,index in ((180,0),(2450,1)):
+            sx=x-camera;top=92;width=260;height=232
+            for dx in (18,width-24):self.rect((74,67,61),(sx+dx,top+height,6,430-top-height))
+            pygame.draw.line(self.screen,(124,104,70),(sx+18,top+height+12),(sx+width-24,top+height+32),4)
+            self.screen.blit(self.art.sequence('ui/rooftop-ads.png',index,2,1,(width,height)),(int(sx),top))
+        if w.boss_active:self.screen.blit(self.art.image('cast',13,(38,62)),(3940-camera,368))
+
+    def ending(self,session):
+        self.screen.blit(self.art.image('finale',7,(960,540)),(0,0))
+        if session.qa:self.center('QA PREVIEW · ordinary progress unchanged',510,GOLD,self.small)
+        if session.screen=='ending':
+            self.panel('THE DAYMAN');self.center('The Nightman Cometh',235,CREAM)
+            self.center('THE END',295,GOLD,self.large)
+            self.center('ENTER for credits',400,CREAM)
+        else:
+            self.panel('CREDITS')
+            for i,line in enumerate(('The Nightman Cometh','A fan-made musical adventure','Inspired by It’s Always Sunny in Philadelphia','Built with Python, pygame-ce and pygbag')):
+                self.center(line,218+i*28,CREAM,self.small)
+            for i,choice in enumerate(session.menu()):
+                self.center(('> ' if i==session.selection else '')+choice,365+i*36,GOLD if i==session.selection else CREAM)
+            self.center('UP / DOWN choose · ENTER confirm · ESC title',490,CREAM,self.small)

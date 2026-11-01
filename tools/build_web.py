@@ -33,7 +33,8 @@ def validate_art():
               'scenes/act1/kidnapping.png','backgrounds/act1/street.png','ui/kitten-mittens.png',
               'ui/kitten-billboard.png','ui/wolf-billboard.png','ui/sherwin-sign.png',
               'sprites/enemy-walk.png','sprites/nail-bat.png','sprites/bat-attack.png',
-              'sprites/bridge.png','backgrounds/act2/bridge.png','scenes/act2/story.png','ui/bridge-ads.png')
+              'sprites/bridge.png','backgrounds/act2/bridge.png','scenes/act2/story.png','ui/bridge-ads.png','sprites/nightman.png','backgrounds/act3/rooftop.png',
+              'scenes/act3/finale.png','ui/rooftop-ads.png')
     for relative in required:
         path=ROOT/'assets'/relative
         if path not in files:raise ValueError('Missing required art: '+relative)

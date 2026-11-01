@@ -1,0 +1,153 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": false,
+    "qa_label": "",
+    "message": "",
+    "settings": {
+      "music": 0.3,
+      "effects": 0.6
+    },
+    "dialogue": 1,
+    "story": {
+      "count": 2,
+      "speaker": "DEE",
+      "text": "Not again!"
+    },
+    "world": {
+      "player": {
+        "x": 80,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "kind": "rat",
+          "x": 484.75,
+          "y": 398,
+          "home": 460,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 32
+        },
+        {
+          "id": 1,
+          "kind": "ghoul",
+          "x": 734.8500000000015,
+          "y": 328,
+          "home": 720,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 32
+        },
+        {
+          "id": 2,
+          "kind": "rat",
+          "x": 1344.75,
+          "y": 398,
+          "home": 1320,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 32
+        },
+        {
+          "id": 3,
+          "kind": "ghoul",
+          "x": 1804.8500000000015,
+          "y": 398,
+          "home": 1790,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 32
+        },
+        {
+          "id": 4,
+          "kind": "ghoul",
+          "x": 2124.849999999994,
+          "y": 268,
+          "home": 2110,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 32
+        },
+        {
+          "id": 5,
+          "kind": "rat",
+          "x": 2714.75,
+          "y": 398,
+          "home": 2690,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 32
+        },
+        {
+          "id": 6,
+          "kind": "chicken",
+          "x": 2210,
+          "y": 150,
+          "home": 2210,
+          "alive": true,
+          "direction": 1,
+          "state": "waiting",
+          "timer": 0,
+          "animation_step": 32
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 33,
+      "act": "act3",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "rooftop",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.1875,
+        0.296875
+      ]
+    },
+    "fixture_id": null,
+    "loops": 1,
+    "frames": 44,
+    "frame_ms_mean": 23.115909090909078,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}
