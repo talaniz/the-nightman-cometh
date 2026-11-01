@@ -570,7 +570,7 @@
   "commands": [
     "NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=chromium --grep-invert ACT1_NORMAL",
     "NIGHTMAN_BUILD=build/normal NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=chromium --grep ACT1_NORMAL",
-    "NIGHTMAN_BUILD=build/normal NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=firefox --grep SMOKE|ACT1_NORMAL",
+    "NIGHTMAN_BUILD=build/normal NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'",
     "NIGHTMAN_BUILD=/tmp/nightman-m5-fixture-v3 NIGHTMAN_EVIDENCE=/tmp/nightman-m5-final-captures npx playwright test --project=chromium --trace off --grep ACT2_MOTION"
   ],
   "limitations": [
