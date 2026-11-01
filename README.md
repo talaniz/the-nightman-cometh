@@ -1,13 +1,14 @@
 # The Nightman Cometh
 
 A Python/pygame browser platformer inspired by Charlie's musical: Philadelphia
-painted as stage scenery, the Rat Bat, Dayman and three planned story acts.
+painted as stage scenery, the Rat Bat, Dayman and three story acts.
 
-M1–M3 are accepted and merged. The M4 candidate adds the full coffee-shop act:
-Charlie's illustrated opening, staged Philadelphia approach, Cricket boss and
-Frank's abduction. It ends explicitly before the bridge. M4 visual/play/audio
-acceptance and independent review are still pending. Bridge/rooftop acts, USB
-controllers and the final three full-game playthroughs remain later milestones.
+The M6 candidate connects the coffee-shop rescue, underbridge Troll Toll and
+rooftop Nightman encounter into a complete keyboard journey. It includes Charlie's
+proposal/rejection finale, Dayman on the ending screen and silent credits.
+M6 independent review and human visual/listening acceptance remain separate gates.
+Physical USB controller support is M7; three final-candidate playthroughs and release
+acceptance are M8. This candidate is not a final release.
 
 ## Build and preview
 
@@ -55,8 +56,8 @@ The background preview reports readiness and an occupied port clearly.
 - Arrows or A/D: move. Space: jump. J: Rat Bat. K: sunbeam while Dayman.
 - Enter: choose/advance. Escape: back, pause, or skip dialogue. M: mute.
 - Options: arrows adjust separate music/effect volume. R: retry unavailable audio.
-- PAINTDOG enters actual Act1 in QA. TROLLTOLL and NIGHTMAN enter clearly labelled
-  rehearsal destinations for future acts. Pause provides QA controls and Exit QA.
+- Passwords PAINTDOG, TROLLTOLL and NIGHTMAN enter actual Acts 1, 2 and 3 in
+  clearly labelled QA mode. Pause provides QA controls and Exit QA.
   QA does not write ordinary progress. Mobile touch and controllers are not included.
 
 Three hearts; cat food heals one. Milksteak with jellybeans transforms for ten
@@ -64,9 +65,12 @@ seconds. Flags heal once and set checkpoints. Death retries at the last flag wit
 three hearts; flag healing cannot be farmed. Progress/settings are stored only in
 this browser origin. Storage failure permits in-memory play. Clear browser data
 or use Start Act1 to begin fresh; New Game confirms before discarding a save.
-Legacy rehearsal saves keep volumes and reset to the Act1 start with an explanation.
-Completed Act1 can be replayed without erasing completion; Continue returns to the
-safe end-of-preview screen until the next act is implemented.
+Legacy rehearsal saves retain volumes and start Act 1. Continue from a completed
+Act 1 or Act 2 save plays the kidnapping transition into the next act. Completed
+Act 3 saves open silent credits with Replay ending and Title controls; replay does
+not erase progress. The finale uses Enter to advance and Escape to skip safely.
+Changing the preview port changes the browser origin, so existing saves are not
+shared automatically between ports.
 
 ## Verification
 
@@ -79,7 +83,7 @@ python tools/build_web.py --output build/normal-web
 NIGHTMAN_BUILD=build/normal-web npx playwright test --project=chromium --grep ACT1_NORMAL
 NIGHTMAN_BUILD=build/normal-web npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'
 python tools/check_audio.py --min-duration 0.02 --max-duration 120 assets/audio
-python tools/verify_evidence.py docs/evidence/M4/manifest.json
+python tools/verify_evidence.py docs/evidence/M6/manifest.json
 ```
 
 Chromium defaults to /usr/bin/chromium on the Pi. Override CHROMIUM_PATH for a
@@ -90,13 +94,13 @@ mutation support; the full CORE suite requires --test-fixtures. Screenshots must
 identify that test build, and ordinary-build smoke coverage remains mandatory.
 
 - [Specification](planning/specification.md)
-- [Approved M4 contract](planning/milestones/M4-coffee-shop.md)
+- [Approved M6 contract](planning/milestones/M6-rooftop-ending.md)
 - [Milestones](planning/implementation-plan.md)
 - [Verification and final playthroughs](planning/verification.md)
 - [Concept references](planning/mockups/README.md)
 - [Execution context](planning/context.md)
 - [Review boundaries](AGENTS.md)
 
-M4 remains subject to exact-head independent reviews and integrated human visual,
+M6 remains subject to exact-head independent reviews and integrated human visual,
 listening and gameplay acceptance. Passing automation alone is not final acceptance.
 Merge and deployment require separate authorization.

@@ -36,3 +36,7 @@ CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1 passed: 207 nativ
 Downloaded actual branch captures and inspected every image selected for gallery.md. Manifest records source fingerprint 52699acdd686ddac1d1bd21800ceae2c1c9d6f8dca958a1855d3e4c678c06618 and image hashes. No game/runtime/asset changes followed capture. Native previews were not published as browser evidence. CI environment is Ubuntu24.04/Python3.11.17 with pinned browser dependencies. Pi resource constraints are why browser acceptance uses CI; no local browser pass is claimed.
 
 Independent exact-head code and E2E reviews and human visual/listening acceptance remain outstanding. This is not final-game release acceptance.
+
+## Documentation correction during review
+
+README still described the old M4 preview and rehearsal-only TROLLTOLL/NIGHTMAN passwords. Updated it to the actual three-act candidate, completed-save behavior, exact ending/credits routing, QA destinations and M6 evidence command. Runtime/source fingerprint is unchanged. This documentation-only commit requires its own code review and all final-head revalidations; it does not invalidate runtime-equivalent browser captures. No game-source changes were made to satisfy review.
