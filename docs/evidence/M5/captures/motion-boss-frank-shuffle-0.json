@@ -1,0 +1,21 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "id": 100,
+    "kind": "frank",
+    "x": 3301.566666666664,
+    "y": 382,
+    "alive": true,
+    "hp": 5,
+    "direction": -1,
+    "state": "shuffle",
+    "timer": 0.6166666666666655,
+    "immune": 0,
+    "animation_step": 22
+  },
+  "kind": "live browser canvas crop",
+  "build": "/tmp/nightman-m5-fixture-v3"
+}

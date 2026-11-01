@@ -1,0 +1,104 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "157.0",
+  "project": "firefox",
+  "test": "ACT1_NORMAL ACT2_NORMAL death checkpoint reload recovery",
+  "build": "build/normal",
+  "state_after_capture": true,
+  "state": {
+    "screen": "dead",
+    "selection": 0,
+    "menu": [
+      "Retry checkpoint",
+      "Title"
+    ],
+    "qa": false,
+    "qa_label": "",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 4,
+    "story": {
+      "count": 4,
+      "speaker": "DENNIS",
+      "text": "Dee\u2014er\u2014Waitress! Stop getting kidnapped, you bird!"
+    },
+    "world": {
+      "player": {
+        "x": 3113.9999999999936,
+        "y": 386,
+        "hearts": 0,
+        "dayman": 0,
+        "invulnerable": 1,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [
+        "mid",
+        "preboss"
+      ],
+      "checkpoint": 2800,
+      "dead": true,
+      "paused": true,
+      "targets": [
+        {
+          "id": 100,
+          "kind": "frank",
+          "x": 3313.666666666668,
+          "y": 382,
+          "alive": true,
+          "hp": 5,
+          "direction": -1,
+          "state": "shuffle",
+          "timer": 1.0666666666666669,
+          "immune": 0,
+          "animation_step": 1612
+        },
+        {
+          "id": 1002,
+          "kind": "sandwich",
+          "x": 3137.899999999993,
+          "y": 398,
+          "alive": true,
+          "direction": -1,
+          "state": "flight",
+          "timer": 2.0500000000000034,
+          "animation_step": 1612
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 1613,
+      "act": "act2",
+      "boss_active": true,
+      "complete": false
+    },
+    "audio": {
+      "playing": "frank-boss",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 4,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": null,
+    "loops": 1,
+    "frames": 2712,
+    "frame_ms_mean": 16.683333333333294,
+    "test_build": false,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

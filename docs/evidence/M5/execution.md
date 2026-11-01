@@ -32,3 +32,15 @@ The Frank test reset a Dayman fixture directly into another training fixture wit
 ## Screenshot staging
 
 Pi browser startup is resource constrained and interrupted/failed local runs are not acceptance passes. CI now retains synthetic actual-browser captures as a staging artifact. Main must download and inspect every image before selecting and publishing durable PR evidence. Native layouts are not substituted for browser screenshots.
+
+Local final-source bridge run landed on all four raised ledges, then failed a one-heart assertion because the 230ms input pulse did not reach the flag on the busy Pi. The harness now holds movement until it observes the flag activation (or meal transformation), then releases and asserts the same health outcome. No game physics or checkpoint rules changed.
+
+## Verified CI and evidence, 2026-10-31
+
+Run https://github.com/talaniz/the-nightman-cometh/actions/runs/41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89 succeeded: 179 native tests (12.98s), loader checks, fixture/ordinary builds, 20 focused Chromium tests (4.7m), two ordinary two-act Chromium routes (3.1m), four Firefox smoke/ordinary-route checks (3.5m). Ordinary routes use no fixture/QA mutations and cover death/retry/checkpoint reload and completed-save reload. This is a two-act preview, not three qualifying final-game runs.
+
+Artifact 13060999056 was downloaded and selected captures opened individually before publication. Gallery and manifest contain 51 inspected images, including 16 live Pi animation crops from a passing ACT2_MOTION test. The manifest verifies hashes and unchanged game/runtime/asset fingerprint 9029eb4ff6544158b45647224653f4a1e0b9476985e3adec7d7dbb3480d2d178. CI uses Ubuntu 24.04, Python 3.11.17, bundled Playwright browsers; Pi uses Python 3.11.2, pygame-ce 2.5.8, Node 22.23.2 and Chromium 139.0.7258.66. Exact commands and capture state metadata are in the manifest/gallery.
+
+Local mixed browser run: motion passed, approach failed the fixed input pulse assertion, story exceeded a 5s transition wait. Subsequent focused run timed out during startup and stalled during Frank; interrupted after the CI success rather than treating retries as acceptance. Pi showed 199MiB swap fully used, ~69MiB free RAM and Chromium in I/O wait while other project work ran. Host later stalled for hours; cause of the entire stall is not established. These failures remain limitations. Outcome-based checkpoint waits and bounded 30s story transition waits now avoid the two known harness timing assumptions; final-head CI must validate this harness update. No game physics was changed to obtain a test pass.
+
+Audio validator returned no errors; audio bytes remain unchanged against base. Approved compositions are preserved. Automated cue selection is not human listening acceptance. Independent exact-head code and E2E review are still required; PR remains draft.

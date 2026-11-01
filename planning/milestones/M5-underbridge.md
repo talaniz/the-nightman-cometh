@@ -8,7 +8,7 @@ Tracker: https://github.com/talaniz/the-nightman-cometh/issues/6
 
 User said "let's proceed" in response to preparing M5's plan for implementation sign-off. User subsequently approved the contract with the additional Frank kidnapping screen. This authorizes both implementation phases, production assets and their reviews without repeated phase permission requests. Merge, deployment and final human acceptance remain separate.
 
-Main owns branch codex/m5-underbridge and worktree /home/palpatine/projects/the-nightman-cometh-m5, based on the merge above. This replaces the earlier reserved branch name milestone/m5-underbridge. One branch/worktree and one draft PR across both phases. Prior worktrees remain untouched. No PR or planning commit yet; include this contract with the first authorized phase commit and link it from issue #6 before executable work.
+Main owns branch codex/m5-underbridge and worktree /home/palpatine/projects/the-nightman-cometh-m5, based on the merge above. This replaces the earlier reserved branch name milestone/m5-underbridge. One branch/worktree and one draft PR across both phases. Prior worktrees remain untouched. Draft PR #19 contains both phases; issue #6 records the contract and user approval before implementation.
 
 ## Outcome and boundaries
 
@@ -100,8 +100,7 @@ Distinct independent code-review agent per new commit, including plan/fixes; all
 
 ## Current evidence / resumption
 
-Planning only: live merged PR verified, isolated branch created, existing Act 1 session/save/renderer/test infrastructure inspected. No M5 tests executed, assets generated, game source edited, dependencies installed or deployment performed. Documentation diff/links checked separately.
-Next: user signs off this contract; implement 5.1 with recorded behavioral red, then 5.2 and full review cycle. USB hardware and three final full-game runs remain M7/M8.
+Both phases implemented in draft PR #19. CI run 41250831919 passed 179 native tests, 20 focused Chromium tests, two ordinary Chromium routes and four Firefox checks. See docs/evidence/M5/execution.md and manifest.json for actual results, screenshots and Pi limitations. Independent reviews and user in-game acceptance remain pending. USB hardware and three final full-game runs remain M7/M8.
 
 ### Accepted narrow shared change
 Bridge guns must shoot toward either facing direction; World previously forced every shot left at 120px/s. projectile-red.txt reproduces x698 instead of x>700 for a rightward shot. Permit optional dx with legacy -120 default, keeping vertical position and all legacy collision/damage semantics. Run world/Act1 and full native/browser regressions.

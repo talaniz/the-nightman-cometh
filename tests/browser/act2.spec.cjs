@@ -5,7 +5,7 @@ async function boot(p){await p.goto('/');await expect(p.locator('#boot-action'))
 let fixtureId=0;
 async function fixture(p,name){const id=++fixtureId;await p.evaluate(req=>window.__nightmanFixture=JSON.stringify(req),{name:'act2-'+name,id});await p.waitForFunction(id=>JSON.parse(window.__nightmanGame).fixture_id===id,id,{timeout:30000});}
 async function capture(p,name){const dir=process.env.NIGHTMAN_EVIDENCE;if(!dir)return;fs.mkdirSync(dir,{recursive:true});await p.screenshot({path:path.join(dir,name+'.png')});fs.writeFileSync(path.join(dir,name+'.json'),JSON.stringify({viewport:p.viewportSize(),state:await state(p),build:process.env.NIGHTMAN_BUILD},null,2));}
-function errors(p){const list=[];p.on('pageerror',e=>list.push(String(e)));p.on('console',m=>{if(m.type()==='error'&&!m.text().includes('MEDIA USER ACTION REQUIRED'))list.push(m.text());});p.on('requestfailed',r=>list.push(r.url()));return list;}
+function errors(p){const list=[];p.on('pageerror',e=>{list.push(String(e));console.error('Browser page error:',String(e));});p.on('console',m=>{if(m.type()==='error'&&!m.text().includes('MEDIA USER ACTION REQUIRED'))list.push(m.text());});p.on('requestfailed',r=>list.push(r.url()));return list;}
 
 test('ACT2_APPROACH bridge platforms signs pickups pause and retry',async({page})=>{
  const faults=errors(page);await boot(page);
@@ -29,7 +29,11 @@ test('ACT2_APPROACH bridge platforms signs pickups pause and retry',async({page}
  }
  for(const name of ['crew','gun','meal','mid','preboss','death']){
   await fixture(page,name);
-  if(['meal','mid','preboss'].includes(name)){await page.keyboard.press('ArrowRight',{delay:230});}
+  if(['meal','mid','preboss'].includes(name)){
+   await page.keyboard.down('ArrowRight');
+   try{await expect.poll(async()=>{const w=(await state(page)).world;return name==='meal'?w.player.dayman>0:w.flags.includes(name);},{timeout:15000}).toBe(true);}
+   finally{await page.keyboard.up('ArrowRight');}
+  }
   if(name==='meal')expect((await state(page)).world.player.dayman).toBeGreaterThan(0);
   if(['mid','preboss'].includes(name))expect((await state(page)).world.player.hearts).toBe(2);
   await capture(page,'bridge-'+name);
@@ -55,9 +59,9 @@ test('ACT2_STORY exact extra kidnapping screen abduction and endpoint',async({pa
  const faults=errors(page);await boot(page);await fixture(page,'frank-story-3');
  expect((await state(page)).story.speaker).toBe('DENNIS');
  expect((await state(page)).story.text).toBe('Dee—er—Waitress! Stop getting kidnapped, you bird!');await capture(page,'frank-extra-kidnapping');
- await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act2');
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen,{timeout:30000}).toBe('training');expect((await state(page)).world.act).toBe('act2');
  for(let i=0;i<2;i++){await fixture(page,'nightman-story-'+i);await capture(page,'nightman-abduction-'+i);}
- await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('complete');await capture(page,'act2-preview-end');
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen,{timeout:30000}).toBe('complete');await capture(page,'act2-preview-end');
  expect((await state(page)).menu).toContain('Replay QA Act 2');expect(faults).toEqual([]);
 });
 
