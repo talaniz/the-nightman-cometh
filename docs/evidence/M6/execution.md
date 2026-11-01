@@ -40,3 +40,9 @@ Independent exact-head code and E2E reviews and human visual/listening acceptanc
 ## Documentation correction during review
 
 README still described the old M4 preview and rehearsal-only TROLLTOLL/NIGHTMAN passwords. Updated it to the actual three-act candidate, completed-save behavior, exact ending/credits routing, QA destinations and M6 evidence command. Runtime/source fingerprint is unchanged. This documentation-only commit requires its own code review and all final-head revalidations; it does not invalidate runtime-equivalent browser captures. No game-source changes were made to satisfy review.
+
+### Post-reset Firefox route correction
+
+Final-head CI 41360773069 at 0ce508a passed native, focused Chromium and both ordinary Chromium routes, but ordinary Firefox failed rooftop-route.cjs:26: expected Dayman 0, observed 1.8333333333332567. The keyboard route can legitimately collect the meal and reach the arena before its ten-second duration expires; jumping near the meal is not a reliable avoidance contract.
+
+Correction scope: tests/browser/rooftop-route.cjs only, plus this record. Before entering the arena, stop at the pre-boss flag and observe natural Dayman expiry. Retain the strict zero-Dayman/no-beams assertions throughout boss combat. Never mutate game state, use passwords or change gameplay. Failure cases: expiry timeout, premature boss entry or unexpected death must fail explicitly. Verification: renewed ordinary Chromium/Firefox full-route CI, unchanged game-source fingerprint and screenshot hashes, independent per-commit review followed by E2E revalidation. No runtime or asset change; existing captures remain applicable.

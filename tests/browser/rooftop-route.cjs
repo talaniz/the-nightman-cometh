@@ -22,6 +22,17 @@ async function driveRooftop(page,{recovery=false,restart,choose,capture=async()=
    await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).world.checkpoint).toBe(3000);
    forced=true;continue;
   }
+  // A fast route can collect the meal despite the avoidance jump. Wait at
+  // the flag for natural expiry, so boss victory remains strictly unpowered.
+  if(!w.boss_active&&p.x>=3000&&p.dayman>0){
+   await expect.poll(async()=>{
+    const current=await state(page);
+    expect(current.screen).toBe('training');
+    expect(current.world.boss_active).toBe(false);
+    return current.world.player.dayman;
+   },{timeout:15000}).toBe(0);
+   continue;
+  }
   if(w.boss_active){
    expect(p.dayman).toBe(0);expect(w.beams).toEqual([]);
    const b=w.targets.find(t=>t.kind==='nightman'),dx=b.x-p.x;
