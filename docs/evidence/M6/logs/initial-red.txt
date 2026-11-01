@@ -1,0 +1,172 @@
+FFFFFFF.FFFF                                                             [100%]
+=================================== FAILURES ===================================
+_________________ test_abduction_enters_actual_rooftop[False] __________________
+
+skip = False
+
+    @pytest.mark.parametrize('skip',[False,True])
+    def test_abduction_enters_actual_rooftop(skip):
+        s=Session(Memory());s.world=Act2();s.world.complete=True;s.enter_screen('training');s.update(0,{})
+        assert s.sequence is NIGHTMAN
+        if skip:s.next_dialogue(skip=True)
+        else:
+            for _ in NIGHTMAN:s.next_dialogue()
+>       assert s.world.act=='act3' and s.screen=='training'
+E       AssertionError: assert ('act2' == 'act3'
+E         
+E         - act3
+E         ?    ^
+E         + act2
+E         ?    ^)
+
+tests/unit/test_act3_contract.py:17: AssertionError
+__________________ test_abduction_enters_actual_rooftop[True] __________________
+
+skip = True
+
+    @pytest.mark.parametrize('skip',[False,True])
+    def test_abduction_enters_actual_rooftop(skip):
+        s=Session(Memory());s.world=Act2();s.world.complete=True;s.enter_screen('training');s.update(0,{})
+        assert s.sequence is NIGHTMAN
+        if skip:s.next_dialogue(skip=True)
+        else:
+            for _ in NIGHTMAN:s.next_dialogue()
+>       assert s.world.act=='act3' and s.screen=='training'
+E       AssertionError: assert ('act2' == 'act3'
+E         
+E         - act3
+E         ?    ^
+E         + act2
+E         ?    ^)
+
+tests/unit/test_act3_contract.py:17: AssertionError
+________________ test_completed_act2_continue_and_rooftop_save _________________
+
+    def test_completed_act2_continue_and_rooftop_save():
+        storage=Memory();s=Session(storage);w=Act2();w.complete=True;s.progress.save(w)
+        s=Session(storage);s.selection=s.menu().index('Continue Act 2');s.activate()
+>       assert s.sequence is NIGHTMAN and s.screen=='dialogue'
+E       AssertionError: assert ((Still(speaker='CHARLIE', text='Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. ... Still(speaker='THE NIGHTMAN COMETH', text='A musical by Charlie Kelly', atlas='opening', panel=5, music='title'), ...) is (Still(speaker='NIGHTMAN', text='Confound your lousy toll, troll', atlas='bridge-story', panel=1, music='nightman-kidnap'), Still(speaker='DEE', text='Not again!', atlas='bridge-story', panel=3, music='nightman-kidnap')))
+E        +  where (Still(speaker='CHARLIE', text='Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. ... Still(speaker='THE NIGHTMAN COMETH', text='A musical by Charlie Kelly', atlas='opening', panel=5, music='title'), ...) = <game.session.Session object at 0x7f9175d4d0>.sequence
+
+tests/unit/test_act3_contract.py:22: AssertionError
+_____________ test_nightman_password_real_level_isolates_progress ______________
+
+    def test_nightman_password_real_level_isolates_progress():
+        store=Memory();s=Session(store);s.start();saved=store.raw
+        s.password='NIGHTMAN';s.submit_password()
+>       assert s.world.act=='act3' and s.qa
+E       AssertionError: assert ('rehearsal' == 'act3'
+E         
+E         - act3
+E         + rehearsal)
+
+tests/unit/test_act3_contract.py:32: AssertionError
+_________________________ test_rooftop_flags_and_retry _________________________
+
+    def test_rooftop_flags_and_retry():
+>       w=Act3();assert w.flag_positions=={'mid':1600,'preboss':3000}
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert {'mid': 400, 'preboss': 1400} == {'mid': 1600, 'preboss': 3000}
+E         
+E         Differing items:
+E         {'mid': 400} != {'mid': 1600}
+E         {'preboss': 1400} != {'preboss': 3000}
+E         Use -v to get more diff
+
+tests/unit/test_act3_contract.py:38: AssertionError
+_______________ test_entry_has_only_nightman_and_clears_attacks ________________
+
+    def test_entry_has_only_nightman_and_clears_attacks():
+        w=Act3();w.shots=[dict(x=1,y=1,life=1)];w.beams=[dict(x=1,y=1,life=1)]
+        w.enter_boss()
+>       assert [t.get('kind') for t in w.targets]==['nightman']
+E       AssertionError: assert [None, None, None, None] == ['nightman']
+E         
+E         At index 0 diff: None != 'nightman'
+E         Left contains 3 more items, first extra item: None
+E         Use -v to get more diff
+
+tests/unit/test_nightman_contract.py:12: AssertionError
+_________________________ test_summons_capped_and_safe _________________________
+
+    def test_summons_capped_and_safe():
+        w=arena()
+>       assert w.summon()
+E       assert False
+E        +  where False = summon()
+E        +    where summon = <game.levels.act3.Act3 object at 0x7f91772990>.summon
+
+tests/unit/test_nightman_contract.py:17: AssertionError
+_____________________ test_attacks_hit_nightman_once[bat] ______________________
+
+attack = 'bat'
+
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attacks_hit_nightman_once(attack):
+        w=arena();b=w.targets[0];b.update(x=3380.,timer=10)
+        p=w.player
+        if attack=='bat':p.x=3340;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3380;p.y=b['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3370.,y=b['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({});assert b['hp']==5
+                          ^^^^^^^
+E       KeyError: 'hp'
+
+tests/unit/test_nightman_contract.py:35: KeyError
+____________________ test_attacks_hit_nightman_once[stomp] _____________________
+
+attack = 'stomp'
+
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attacks_hit_nightman_once(attack):
+        w=arena();b=w.targets[0];b.update(x=3380.,timer=10)
+        p=w.player
+        if attack=='bat':p.x=3340;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3380;p.y=b['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3370.,y=b['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({});assert b['hp']==5
+                          ^^^^^^^
+E       KeyError: 'hp'
+
+tests/unit/test_nightman_contract.py:35: KeyError
+_____________________ test_attacks_hit_nightman_once[beam] _____________________
+
+attack = 'beam'
+
+    @pytest.mark.parametrize('attack',['bat','stomp','beam'])
+    def test_attacks_hit_nightman_once(attack):
+        w=arena();b=w.targets[0];b.update(x=3380.,timer=10)
+        p=w.player
+        if attack=='bat':p.x=3340;p.y=386;p.facing=1;p.swing=.14
+        elif attack=='stomp':p.x=3380;p.y=b['y']-44;p.vy=100;p.grounded=False
+        else:w.beams=[dict(x=3370.,y=b['y']+10,dx=600.,dy=0,life=1)]
+>       w.step({});assert b['hp']==5
+                          ^^^^^^^
+E       KeyError: 'hp'
+
+tests/unit/test_nightman_contract.py:35: KeyError
+_____________ test_victory_cleans_summons_and_paused_state_frozen ______________
+
+    def test_victory_cleans_summons_and_paused_state_frozen():
+        w=arena();w.summon();w.paused=True;before=w.snapshot();w.advance(1,{});assert w.snapshot()==before
+        w.paused=False;b=w.targets[0]
+        for _ in range(6):b['immune']=0;w.hit_target(b,'bat-hit')
+>       assert w.complete and not any(t['alive'] for t in w.targets)
+E       assert (False)
+E        +  where False = <game.levels.act3.Act3 object at 0x7f9174fc50>.complete
+
+tests/unit/test_nightman_contract.py:43: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act3_contract.py::test_abduction_enters_actual_rooftop[False]
+FAILED tests/unit/test_act3_contract.py::test_abduction_enters_actual_rooftop[True]
+FAILED tests/unit/test_act3_contract.py::test_completed_act2_continue_and_rooftop_save
+FAILED tests/unit/test_act3_contract.py::test_nightman_password_real_level_isolates_progress
+FAILED tests/unit/test_act3_contract.py::test_rooftop_flags_and_retry - Asser...
+FAILED tests/unit/test_nightman_contract.py::test_entry_has_only_nightman_and_clears_attacks
+FAILED tests/unit/test_nightman_contract.py::test_summons_capped_and_safe - a...
+FAILED tests/unit/test_nightman_contract.py::test_attacks_hit_nightman_once[bat]
+FAILED tests/unit/test_nightman_contract.py::test_attacks_hit_nightman_once[stomp]
+FAILED tests/unit/test_nightman_contract.py::test_attacks_hit_nightman_once[beam]
+FAILED tests/unit/test_nightman_contract.py::test_victory_cleans_summons_and_paused_state_frozen
+11 failed, 1 passed in 0.51s

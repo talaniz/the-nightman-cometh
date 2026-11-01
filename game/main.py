@@ -52,7 +52,7 @@ async def main():
                 was_dead=session.screen=='dead';session.activate()
                 if was_dead:held.clear();pending.clear()
             elif key==pygame.K_m:audio.volumes(muted=not audio.muted)
-            elif key==pygame.K_r:retry_audio(audio,session.world.player.dayman if audio.scene in ('level1','cricket','bridge','frank') else 0,audio.paused)
+            elif key==pygame.K_r:retry_audio(audio,session.world.player.dayman if audio.scene in ('level1','cricket','bridge','frank','rooftop','nightman') else 0,audio.paused)
             elif session.screen=='training':
                 if key==pygame.K_SPACE:pending.add('jump')
                 if key==pygame.K_j:pending.add('bat')
@@ -68,7 +68,7 @@ async def main():
                 request=json.loads(raw)
                 if request.get('name')=='audio-error':
                     mixer.fail_next=True
-                    retry_audio(audio,session.world.player.dayman if audio.scene in ('level1','cricket','bridge','frank') else 0,audio.paused)
+                    retry_audio(audio,session.world.player.dayman if audio.scene in ('level1','cricket','bridge','frank','rooftop','nightman') else 0,audio.paused)
                 else:
                     apply(session,request);previous_screen='fixture'
                 fixture_id=request.get('id')
@@ -77,12 +77,7 @@ async def main():
         controls={'left':bool(held & {pygame.K_LEFT,pygame.K_a}),'right':bool(held & {pygame.K_RIGHT,pygame.K_d}),**{k:True for k in pending}}
         session.update(dt,controls)
         if session.world.steps!=before:pending.clear()
-        desired=audio.scene
-        if session.screen=='training':
-            desired=('frank' if session.world.boss_active else 'bridge') if session.world.act=='act2' else ('cricket' if getattr(session.world,'boss_active',False) else 'level1')
-        elif session.screen=='dialogue':desired=session.sequence[min(session.dialogue,len(session.sequence)-1)].music
-        elif session.screen=='title':desired='title'
-        elif session.screen=='complete':desired='credits'
+        desired=session.music_scene() or audio.scene
         if desired!=audio.scene or session.screen!=previous_screen and session.screen=='training':
             audio.remaining=session.world.player.dayman if session.screen=='training' else 0
             audio.set_scene(desired)

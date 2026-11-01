@@ -1,27 +1,34 @@
 """Keyboard menu and progress coordination; explicit QA/normal state separation."""
-from game.world import World
 from game.progress import Progress
 
-CODES={'PAINTDOG':'Coffee-shop Act 1','TROLLTOLL':'Underbridge Act 2','NIGHTMAN':'Rooftop rehearsal'}
+CODES={'PAINTDOG':'Coffee-shop Act 1','TROLLTOLL':'Underbridge Act 2','NIGHTMAN':'Rooftop Act 3'}
 from game.scenes.opening import OPENING, FRANK, NIGHTMAN
+from game.scenes.finale import FINALE
 from game.levels.act1 import Act1
 from game.levels.act2 import Act2
+from game.levels.act3 import Act3
 DIALOGUE=tuple((still.speaker,still.text) for still in OPENING)
 
 class Session:
     def __init__(self,storage):
-        self.progress=Progress(storage);self.progress.load();self.world=Act2() if self.progress.saved and self.progress.saved.get('stage')=='act2' else Act1();self.progress.restore(self.world)
+        self.progress=Progress(storage);self.progress.load();self.world={'act1':Act1,'act2':Act2,'act3':Act3}.get((self.progress.saved or {}).get('stage'),Act1)();self.progress.restore(self.world)
         self.screen='title';self.selection=0;self.return_screen='title';self.qa=False;self.qa_label=''
         self.normal_world=None;self.password='';self.message='';self.dialogue=0;self.replaying=False;self.sequence=OPENING
     def menu(self):
-        if self.screen=='title':return ['Start Act 1']+(['Continue Act 2' if self.progress.saved.get('stage')=='act2' else 'Continue Act 1'] if self.progress.saved else [])+['Options','Password','Replay dialogue']
+        if self.screen=='title':return ['Start Act 1']+(['Continue Act '+self.world.act[-1]] if self.progress.saved else [])+['Options','Password','Replay dialogue']
         if self.screen=='pause':return ['Resume','Options','Replay dialogue']+(['QA Dayman','QA invincibility','QA checkpoint','Exit QA'] if self.qa else [])+['Title']
         if self.screen=='options':return ['Music','Effects','Back']
         if self.screen=='confirm':return ['Keep current progress','Start fresh']
         if self.screen=='complete':return (['Replay QA Act 2','Exit QA'] if self.qa else ['Replay Act 2','Title']) if self.world.act=='act2' else (['Replay QA Act 1','Exit QA'] if self.qa else ['Replay Act 1','Title'])
+        if self.screen=='ending':return ['Credits']
+        if self.screen=='credits':return ['Replay ending','Exit QA' if self.qa else 'Title']
         if self.screen=='dead':return ['Retry checkpoint','Title']
         return []
-    def enter_screen(self,screen):self.screen=screen;self.selection=0;self.world.paused=screen!='training'
+    def enter_screen(self,screen):
+        self.screen=screen;self.selection=0;self.world.paused=screen!='training'
+        if screen=='title' and self.world.act=='act3':
+            self.world.targets=[t for t in self.world.targets if not t.get('summoned')]
+            self.world.beams=[];self.world.shots=[]
     def select(self,direction):
         options=self.menu()
         if options:self.selection=(self.selection+direction)%len(options)
@@ -37,7 +44,10 @@ class Session:
         options=self.menu()
         if not options:return
         choice=options[self.selection]
-        if choice=='Replay QA Act 1':
+        if choice=='Credits':self.enter_screen('credits')
+        elif choice=='Replay ending':
+            self.sequence=FINALE;self.dialogue=0;self.replaying=False;self.enter_screen('dialogue')
+        elif choice=='Replay QA Act 1':
             self.world=Act1();self.sequence=OPENING;self.dialogue=0;self.replaying=False;self.enter_screen('dialogue')
         elif choice in ('Replay Act 2','Replay QA Act 2'):
             self.world=Act2();self.enter_screen('training')
@@ -46,16 +56,16 @@ class Session:
             self.enter_screen('confirm') if self.progress.saved else self.start()
         elif choice=='Start fresh':self.start()
         elif choice=='Keep current progress':self.enter_screen('title')
-        elif choice in ('Continue Act 1','Continue Act 2'):
-            if self.world.act=='act1' and self.world.complete:
-                self.sequence=FRANK;self.dialogue=0;self.replaying=False;self.enter_screen('dialogue')
-            else:self.enter_screen('complete' if getattr(self.world,'complete',False) else 'training')
+        elif choice in ('Continue Act 1','Continue Act 2','Continue Act 3'):
+            if self.world.act in ('act1','act2') and self.world.complete:
+                self.sequence={'act1':FRANK,'act2':NIGHTMAN,'act3':FINALE}[self.world.act];self.dialogue=0;self.replaying=False;self.enter_screen('dialogue')
+            else:self.enter_screen(('credits' if self.world.act=='act3' else 'complete') if getattr(self.world,'complete',False) else 'training')
         elif choice=='Resume':self.enter_screen('training')
         elif choice=='Options':self.return_screen=self.screen;self.enter_screen('options')
         elif choice=='Back':self.enter_screen(self.return_screen)
         elif choice=='Password':self.password='';self.message='';self.enter_screen('password')
         elif choice=='Replay dialogue':
-            self.return_screen=self.screen;self.sequence=(NIGHTMAN if self.world.complete else FRANK) if self.world.act=='act2' else OPENING;self.dialogue=0;self.replaying=True;self.enter_screen('dialogue')
+            self.return_screen=self.screen;self.sequence=((FINALE if self.world.complete else NIGHTMAN) if self.world.act=='act3' else (NIGHTMAN if self.world.complete else FRANK) if self.world.act=='act2' else OPENING);self.dialogue=0;self.replaying=True;self.enter_screen('dialogue')
         elif choice=='Retry checkpoint':self.world.retry();self.enter_screen('training')
         elif choice=='Title':self.exit_qa() if self.qa else self.enter_screen('title')
         elif choice=='QA Dayman':self.world.meal();self.enter_screen('training')
@@ -73,20 +83,24 @@ class Session:
         code=self.password.strip().upper()
         if code not in CODES:self.message='Unknown password. Try again or press Esc.';return
         if not self.qa:self.normal_world=self.world
-        self.world=Act1() if code=='PAINTDOG' else (Act2() if code=='TROLLTOLL' else World());self.qa=True;self.qa_label=CODES[code];self.message='';self.enter_screen('training')
+        self.world=Act1() if code=='PAINTDOG' else (Act2() if code=='TROLLTOLL' else Act3());self.qa=True;self.qa_label=CODES[code];self.message='';self.enter_screen('training')
     def next_dialogue(self,skip=False):
         self.dialogue+=1
         if skip or self.dialogue>=len(self.sequence):
             if self.replaying:self.enter_screen(self.return_screen)
+            elif self.sequence is FINALE:self.enter_screen('ending')
             elif self.sequence is FRANK:
                 self.world=Act2();self.progress.save(self.world,qa=self.qa);self.enter_screen('training')
-            elif self.sequence is NIGHTMAN:self.enter_screen('complete')
+            elif self.sequence is NIGHTMAN:
+                self.world=Act3();self.progress.save(self.world,qa=self.qa);self.enter_screen('training')
             else:self.enter_screen('training')
     def back(self):
         if self.screen=='training':self.enter_screen('pause')
         elif self.screen=='pause':self.enter_screen('training')
         elif self.screen=='dialogue':self.next_dialogue(skip=True)
         elif self.screen=='options':self.enter_screen(self.return_screen)
+        elif self.screen=='ending':self.enter_screen('credits')
+        elif self.screen=='credits':self.exit_qa() if self.qa else self.enter_screen('title')
         elif self.screen in ('password','confirm'):self.enter_screen('title')
     def blur(self):
         if self.screen=='training':self.enter_screen('pause')
@@ -97,4 +111,10 @@ class Session:
         if self.world.dead:self.enter_screen('dead')
         elif getattr(self.world,'complete',False):
             self.progress.save(self.world,qa=self.qa)
-            self.sequence=FRANK if self.world.act=='act1' else NIGHTMAN;self.dialogue=0;self.replaying=False;self.enter_screen('dialogue')
+            self.sequence={'act1':FRANK,'act2':NIGHTMAN,'act3':FINALE}[self.world.act];self.dialogue=0;self.replaying=False;self.enter_screen('dialogue')
+
+    def music_scene(self):
+        if self.screen=='training':
+            return {'act1':('level1','cricket'),'act2':('bridge','frank'),'act3':('rooftop','nightman')}.get(self.world.act,('level1','cricket'))[int(getattr(self.world,'boss_active',False))]
+        if self.screen=='dialogue':return self.sequence[min(self.dialogue,len(self.sequence)-1)].music
+        return {'title':'title','ending':'ending','credits':'credits','complete':'credits'}.get(self.screen)

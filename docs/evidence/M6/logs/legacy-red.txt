@@ -1,0 +1,16 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_v2_rehearsal_save_keeps_working_continue_label ______________
+
+    def test_v2_rehearsal_save_keeps_working_continue_label():
+        store=Memory();store.raw=json.dumps(dict(v=2,stage='rehearsal',checkpoint=80,flags=[],complete=False,settings={'music':.4,'effects':.5}))
+        s=Session(store)
+>       assert 'Continue Act 1' in s.menu()
+E       AssertionError: assert 'Continue Act 1' in ['Start Act 1', 'Continue Act l', 'Options', 'Password', 'Replay dialogue']
+E        +  where ['Start Act 1', 'Continue Act l', 'Options', 'Password', 'Replay dialogue'] = menu()
+E        +    where menu = <game.session.Session object at 0x7f87d6a390>.menu
+
+tests/unit/test_act3_contract.py:80: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act3_contract.py::test_v2_rehearsal_save_keeps_working_continue_label
+1 failed, 11 deselected in 0.39s

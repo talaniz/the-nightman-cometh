@@ -1,0 +1,26 @@
+.........F.......F.......                                                [100%]
+=================================== FAILURES ===================================
+______________ test_leaving_gameplay_removes_summons_and_attacks _______________
+
+    def test_leaving_gameplay_removes_summons_and_attacks():
+        s=Session(Memory());s.world=Act3();s.world.enter_boss();s.world.summon()
+        s.enter_screen('title')
+>       assert not any(t.get('summoned') and t['alive'] for t in s.world.targets)
+E       assert not True
+E        +  where True = any(<generator object test_leaving_gameplay_removes_summons_and_attacks.<locals>.<genexpr> at 0x7fb050bca0>)
+
+tests/unit/test_act3_contract.py:57: AssertionError
+___________________ test_no_supported_spawn_position_defers ____________________
+
+    def test_no_supported_spawn_position_defers():
+        w=arena();w.platforms=()
+>       assert not w.summon()
+E       assert not True
+E        +  where True = summon()
+E        +    where summon = <game.levels.act3.Act3 object at 0x7fb02b7d10>.summon
+
+tests/unit/test_nightman_contract.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_act3_contract.py::test_leaving_gameplay_removes_summons_and_attacks
+FAILED tests/unit/test_nightman_contract.py::test_no_supported_spawn_position_defers
+2 failed, 23 passed in 0.64s
