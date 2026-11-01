@@ -12,6 +12,26 @@ class Renderer:
         self.item_font=pygame.font.Font(None,16);self.font=pygame.font.Font(None,25);self.small=pygame.font.Font(None,21);self.large=pygame.font.Font(None,48)
     def text(self,text,x,y,color=CREAM,font=None):
         self.screen.blit((font or self.font).render(text,False,color),(int(x),int(y)))
+    def dialogue_width(self,text):
+        parts=text.split('—')
+        dash_width=max(12,self.font.size('M')[0])+6
+        return sum(self.font.size(part)[0] for part in parts)+(len(parts)-1)*dash_width
+    def dialogue_image(self,text):
+        # Web runtime fonts can give em dashes overhanging ink. Keep authored
+        # punctuation, but reserve a separate cell and paint its pixel stroke.
+        if '—' not in text:return self.font.render(text,False,INK)
+        dash_width=max(12,self.font.size('M')[0])+6
+        parts=text.split('—')
+        runs=[self.font.render(part,False,INK) for part in parts]
+        height=max(run.get_height() for run in runs)
+        image=pygame.Surface((self.dialogue_width(text),height),pygame.SRCALPHA)
+        x=0
+        for index,(part,rendered) in enumerate(zip(parts,runs)):
+            if index:
+                pygame.draw.line(image,INK,(x+3,height//2),(x+dash_width-4,height//2),2)
+                x+=dash_width
+            image.blit(rendered,(x,0));x+=self.font.size(part)[0]
+        return image
     def center(self,text,y,color=CREAM,font=None):
         image=(font or self.font).render(text,False,color);self.screen.blit(image,((960-image.get_width())//2,y))
     def rect(self,color,rect,width=0):pygame.draw.rect(self.screen,color,tuple(int(v) for v in rect),width)
@@ -168,10 +188,10 @@ class Renderer:
         words=body.split();lines=['']
         for word in words:
             candidate=(lines[-1]+' '+word).strip()
-            if self.font.size(candidate)[0]>866:lines.append(word)
+            if self.dialogue_width(candidate)>866:lines.append(word)
             else:lines[-1]=candidate
         for i,line in enumerate(lines):
-            self.text(line,43,405+i*26,INK)
+            self.screen.blit(self.dialogue_image(line),(43,405+i*26))
             if 'and words' in line:
                 left=43+self.font.size(line.split('and words')[0])[0]
                 pygame.draw.line(self.screen,(130,78,28),(left,428+i*26),(left+self.font.size('and words')[0],428+i*26),2)
