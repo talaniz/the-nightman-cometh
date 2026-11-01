@@ -1,0 +1,68 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "AUTOMATED ACT3 FIXTURE",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 0,
+    "story": {
+      "count": 10,
+      "speaker": "CHARLIE",
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
+    },
+    "world": {
+      "player": {
+        "x": 2081.666666666669,
+        "y": 256,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [],
+      "beams": [],
+      "shots": [],
+      "steps": 170,
+      "act": "act3",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "rooftop",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": 1003,
+    "loops": 1,
+    "frames": 353,
+    "frame_ms_mean": 16.74583333333334,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

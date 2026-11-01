@@ -25,6 +25,14 @@ Raw native red/green logs are in logs/. Native render previews were visually ins
 
 Completes the playable rooftop act and Nightman encounter, followed by the user-authored finale. Existing completed bridge saves can continue to Act3. Completed rooftop saves reopen silent credits and allow ending replay. QA passwords remain isolated from normal saves. All six boss hits can be delivered without Dayman; spawned ghouls are capped at two and cleared on retry, victory and leaving gameplay.
 
-## Remaining gates
+## Gates at initial publication (superseded by results below)
 
 Browser workflow evidence and visual inspection; durable screenshot manifest/gallery; exact-head independent reviews; user visual/listening acceptance. Real USB support remains M7 and the three same-artifact qualifying runs remain M8. No full-game or human acceptance claimed.
+
+## Verified browser candidate, 2026-11-01
+
+CI run 41349928401 at 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1 passed: 207 native tests (15.16s), loader/build checks, 25 focused Chromium tests (6.0m), two ordinary three-act Chromium keyboard routes (5.0m), four Firefox smoke/full-route checks (5.7m). Routes cover all three bosses, unpowered Nightman victory, deliberate death/checkpoint reload and completed-save credits. Aggregate automated timings include loading and test probes; they are not a measured human 10–15-minute play-length assessment.
+
+Downloaded actual branch captures and inspected every image selected for gallery.md. Manifest records source fingerprint 52699acdd686ddac1d1bd21800ceae2c1c9d6f8dca958a1855d3e4c678c06618 and image hashes. No game/runtime/asset changes followed capture. Native previews were not published as browser evidence. CI environment is Ubuntu24.04/Python3.11.17 with pinned browser dependencies. Pi resource constraints are why browser acceptance uses CI; no local browser pass is claimed.
+
+Independent exact-head code and E2E reviews and human visual/listening acceptance remain outstanding. This is not final-game release acceptance.

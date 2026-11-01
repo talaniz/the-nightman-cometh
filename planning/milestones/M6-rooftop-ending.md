@@ -1,12 +1,12 @@
 # M6 — Rooftop, Nightman and complete keyboard journey
 
-Status: user approved both implementation phases on 2026-11-01; phase 6.1 underway.
+Status: both phases implemented; PR #20 is draft, browser verification and independent reviews underway.
 
 ## Authority and context
 
 On 2026-11-01 the user requested refinement of acceptance criteria, verification contracts, scope and boundaries. The subsequent user reply "Approved" authorizes both refined implementation phases, production assets and their reviews. PR #19 is merged; fetched main is 9a0d57be05ae35d2850635e15e3a975956daa483. User reported reviewing M5 before merge; do not infer physical controller or final whole-game acceptance.
 
-Repository: https://github.com/talaniz/the-nightman-cometh. Main owns branch `codex/m6-rooftop-ending`, worktree `/home/palpatine/projects/the-nightman-cometh-m6`, based on that merge. Local main was fast-forwarded; prior worktrees preserved. One branch and one PR across both implementation phases. No M6 PR or implementation commit yet. Pre-dev-prep verified this worktree and its two main-owned planning edits. Execute both phases without repeated phase permission requests. Merge, deployment and final human acceptance remain separate.
+Repository: https://github.com/talaniz/the-nightman-cometh. Main owns branch `codex/m6-rooftop-ending`, worktree `/home/palpatine/projects/the-nightman-cometh-m6`, based on that merge. Local main was fast-forwarded; prior worktrees preserved. One branch and one PR across both implementation phases. Implementation commit 7efc4bb0aae7d7af7df23a18ea0dd09ed3fedbc1 is published in draft PR #20. Pre-dev-prep verified this worktree and its two main-owned planning edits. Execute both phases without repeated phase permission requests. Merge, deployment and final human acceptance remain separate.
 
 Specification precedence: latest user decisions and planning/specification.md. Correct the older M6/music-map sentence saying Dayman credits: Dayman belongs on the ending screen; credits are silent. New credits composition remains issue #12. Preserve approved audio files and existing first/second-act content.
 
@@ -103,4 +103,4 @@ Technical readiness: exact-head code/E2E sign-offs, all required checks, current
 
 ## Resumption
 
-Both phases authorized and implemented locally. Native red/green evidence and release notes are in docs/evidence/M6/execution.md. Draft PR publication and actual-browser CI are next; screenshots and independent reviews remain pending. No merge or deployment authorized.
+Both phases authorized and implemented locally. Native red/green evidence and release notes are in docs/evidence/M6/execution.md. Draft PR #20 is published; actual-browser CI run 41349928401 passed. Inspected screenshots are in docs/evidence/M6/gallery.md; independent reviews remain pending. No merge or deployment authorized.
