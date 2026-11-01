@@ -26,11 +26,11 @@
     "story": {
       "count": 4,
       "speaker": "DENNIS",
-      "text": "Dee\u2014er\u2014Waitress! Stop getting kidnapped, you bird!"
+      "text": "Dee—er—Waitress! Stop getting kidnapped, you bird!"
     },
     "world": {
       "player": {
-        "x": 3113.9999999999936,
+        "x": 3124.999999999993,
         "y": 386,
         "hearts": 0,
         "dayman": 0,
@@ -53,31 +53,31 @@
         {
           "id": 100,
           "kind": "frank",
-          "x": 3313.666666666668,
+          "x": 3314.4000000000015,
           "y": 382,
           "alive": true,
           "hp": 5,
           "direction": -1,
-          "state": "shuffle",
-          "timer": 1.0666666666666669,
+          "state": "recover",
+          "timer": 0.016666666666666493,
           "immune": 0,
-          "animation_step": 1612
+          "animation_step": 1647
         },
         {
           "id": 1002,
           "kind": "sandwich",
-          "x": 3137.899999999993,
+          "x": 3146.3999999999933,
           "y": 398,
           "alive": true,
           "direction": -1,
           "state": "flight",
-          "timer": 2.0500000000000034,
-          "animation_step": 1612
+          "timer": 2.100000000000003,
+          "animation_step": 1647
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 1613,
+      "steps": 1648,
       "act": "act2",
       "boss_active": true,
       "complete": false
@@ -95,8 +95,8 @@
     },
     "fixture_id": null,
     "loops": 1,
-    "frames": 2712,
-    "frame_ms_mean": 16.683333333333294,
+    "frames": 2721,
+    "frame_ms_mean": 16.67499999999998,
     "test_build": false,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

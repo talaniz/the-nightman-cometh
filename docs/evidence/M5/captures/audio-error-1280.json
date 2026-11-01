@@ -46,74 +46,74 @@
         {
           "id": 0,
           "kind": "rat",
-          "x": 624.25,
+          "x": 625.75,
           "y": 398,
           "home": 580,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 62
+          "animation_step": 60
         },
         {
           "id": 1,
           "kind": "ghoul",
-          "x": 808.3500000000029,
+          "x": 807.4500000000028,
           "y": 328,
           "home": 780,
           "alive": true,
           "direction": 1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 62
+          "animation_step": 60
         },
         {
           "id": 2,
           "kind": "rat",
-          "x": 1484.25,
+          "x": 1485.75,
           "y": 398,
           "home": 1440,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 62
+          "animation_step": 60
         },
         {
           "id": 3,
           "kind": "ghoul",
-          "x": 2018.3500000000029,
+          "x": 2017.4500000000028,
           "y": 398,
           "home": 1990,
           "alive": true,
           "direction": 1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 62
+          "animation_step": 60
         },
         {
           "id": 4,
           "kind": "ghoul",
-          "x": 2368.3499999999885,
+          "x": 2367.449999999989,
           "y": 268,
           "home": 2340,
           "alive": true,
           "direction": 1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 62
+          "animation_step": 60
         },
         {
           "id": 5,
           "kind": "rat",
-          "x": 2904.25,
+          "x": 2905.75,
           "y": 318,
           "home": 2860,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 62
+          "animation_step": 60
         },
         {
           "id": 6,
@@ -125,12 +125,12 @@
           "direction": 1,
           "state": "waiting",
           "timer": 0,
-          "animation_step": 62
+          "animation_step": 60
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 63,
+      "steps": 61,
       "act": "act1",
       "boss_active": false,
       "complete": false
@@ -148,8 +148,8 @@
     },
     "fixture_id": null,
     "loops": 1,
-    "frames": 86,
-    "frame_ms_mean": 20.165116279069764,
+    "frames": 82,
+    "frame_ms_mean": 20.18048782926829,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

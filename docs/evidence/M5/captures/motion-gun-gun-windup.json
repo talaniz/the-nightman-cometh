@@ -15,6 +15,5 @@
     "timer": 0.9,
     "animation_step": 59
   },
-  "kind": "live browser canvas crop",
-  "build": "/tmp/nightman-m5-fixture-v3"
+  "kind": "live browser canvas crop"
 }

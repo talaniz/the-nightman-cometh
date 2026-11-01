@@ -18,7 +18,7 @@
     "story": {
       "count": 10,
       "speaker": "CHARLIE",
-      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see\u2014"
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
     },
     "world": {
       "player": {
@@ -42,79 +42,79 @@
         {
           "id": 0,
           "kind": "duncan",
-          "x": 432.3999999999991,
+          "x": 431.3333333333324,
           "y": 398,
           "home": 450,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.4499999999999985,
-          "animation_step": 32
+          "timer": 0.4166666666666652,
+          "animation_step": 34
         },
         {
           "id": 1,
           "kind": "gun",
-          "x": 836.8000000000008,
+          "x": 836.0000000000008,
           "y": 398,
           "home": 850,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.4499999999999985,
-          "animation_step": 32
+          "timer": 0.4166666666666652,
+          "animation_step": 34
         },
         {
           "id": 2,
           "kind": "z",
-          "x": 1272.400000000001,
+          "x": 1271.3333333333344,
           "y": 398,
           "home": 1290,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.4499999999999985,
-          "animation_step": 32
+          "timer": 0.4166666666666652,
+          "animation_step": 34
         },
         {
           "id": 3,
           "kind": "gun",
-          "x": 1796.799999999997,
+          "x": 1795.9999999999968,
           "y": 398,
           "home": 1810,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.4499999999999985,
-          "animation_step": 32
+          "timer": 0.4166666666666652,
+          "animation_step": 34
         },
         {
           "id": 4,
           "kind": "duncan",
-          "x": 2402.400000000001,
+          "x": 2401.3333333333344,
           "y": 398,
           "home": 2420,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.4499999999999985,
-          "animation_step": 32
+          "timer": 0.4166666666666652,
+          "animation_step": 34
         },
         {
           "id": 5,
           "kind": "z",
-          "x": 2612.400000000001,
+          "x": 2611.3333333333344,
           "y": 398,
           "home": 2630,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.4499999999999985,
-          "animation_step": 32
+          "timer": 0.4166666666666652,
+          "animation_step": 34
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 33,
+      "steps": 35,
       "act": "act2",
       "boss_active": false,
       "complete": false
@@ -132,8 +132,8 @@
     },
     "fixture_id": 10,
     "loops": 1,
-    "frames": 754,
-    "frame_ms_mean": 17.50000000000001,
+    "frames": 739,
+    "frame_ms_mean": 17.055000008333316,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

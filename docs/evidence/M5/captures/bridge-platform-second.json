@@ -18,7 +18,7 @@
     "story": {
       "count": 10,
       "speaker": "CHARLIE",
-      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see\u2014"
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
     },
     "world": {
       "player": {
@@ -41,7 +41,7 @@
       "targets": [],
       "beams": [],
       "shots": [],
-      "steps": 76,
+      "steps": 80,
       "act": "act2",
       "boss_active": false,
       "complete": false
@@ -59,8 +59,8 @@
     },
     "fixture_id": 3,
     "loops": 1,
-    "frames": 323,
-    "frame_ms_mean": 16.99833333333333,
+    "frames": 373,
+    "frame_ms_mean": 16.74749999166667,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

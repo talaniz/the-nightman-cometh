@@ -6,15 +6,14 @@
   "state": {
     "id": 2,
     "kind": "z",
-    "x": 1252.6666666666688,
+    "x": 1258.0000000000018,
     "y": 398,
     "home": 1290,
     "alive": true,
     "direction": -1,
     "state": "lunge",
-    "timer": 0.23333333333333334,
-    "animation_step": 102
+    "timer": 0.3,
+    "animation_step": 98
   },
-  "kind": "live browser canvas crop",
-  "build": "/tmp/nightman-m5-fixture-v3"
+  "kind": "live browser canvas crop"
 }

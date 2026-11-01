@@ -18,17 +18,17 @@
     "story": {
       "count": 10,
       "speaker": "CHARLIE",
-      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see\u2014"
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
     },
     "world": {
       "player": {
         "x": 3310,
-        "y": 295.77777777777777,
+        "y": 297.1666666666667,
         "hearts": 3,
         "dayman": 0,
         "invulnerable": 0,
         "facing": 1,
-        "vy": 61.666666666666714,
+        "vy": 83.33333333333339,
         "grounded": false,
         "moving": false,
         "swing": 0,
@@ -44,20 +44,20 @@
         {
           "id": 100,
           "kind": "frank",
-          "x": 3310,
+          "x": 3310.366666666667,
           "y": 382,
           "alive": true,
           "hp": 4,
-          "direction": 1,
+          "direction": -1,
           "state": "shuffle",
-          "timer": 0.5666666666666653,
-          "immune": 0.4333333333333326,
-          "animation_step": 25
+          "timer": 0.5499999999999986,
+          "immune": 0.41666666666666596,
+          "animation_step": 26
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 26,
+      "steps": 27,
       "act": "act2",
       "boss_active": true,
       "complete": false
@@ -67,7 +67,7 @@
       "muted": false,
       "error": "",
       "music_busy": 1,
-      "sfx_busy": 1,
+      "sfx_busy": 0,
       "gains": [
         0.453125,
         0.34375
@@ -75,8 +75,8 @@
     },
     "fixture_id": 12,
     "loops": 1,
-    "frames": 58,
-    "frame_ms_mean": 22.763793068965523,
+    "frames": 65,
+    "frame_ms_mean": 21.40461536923077,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

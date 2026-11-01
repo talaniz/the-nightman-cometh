@@ -18,14 +18,14 @@
     "story": {
       "count": 10,
       "speaker": "CHARLIE",
-      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see\u2014"
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
     },
     "world": {
       "player": {
         "x": 3200,
         "y": 386,
         "hearts": 3,
-        "dayman": 9.39999999999997,
+        "dayman": 9.433333333333305,
         "invulnerable": 0,
         "facing": 1,
         "vy": 0,
@@ -44,20 +44,20 @@
         {
           "id": 100,
           "kind": "frank",
-          "x": 3304.1333333333314,
+          "x": 3303.399999999998,
           "y": 382,
           "alive": true,
           "hp": 4,
           "direction": -1,
           "state": "shuffle",
-          "timer": 0.3999999999999985,
-          "immune": 0.3999999999999993,
-          "animation_step": 35
+          "timer": 0.43333333333333185,
+          "immune": 0.4499999999999993,
+          "animation_step": 33
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 36,
+      "steps": 34,
       "act": "act2",
       "boss_active": true,
       "complete": false
@@ -75,8 +75,8 @@
     },
     "fixture_id": 13,
     "loops": 1,
-    "frames": 92,
-    "frame_ms_mean": 21.2489130326087,
+    "frames": 96,
+    "frame_ms_mean": 20.616666666666664,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

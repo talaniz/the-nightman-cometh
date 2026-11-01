@@ -23,7 +23,7 @@
     "story": {
       "count": 4,
       "speaker": "DENNIS",
-      "text": "Dee\u2014er\u2014Waitress! Stop getting kidnapped, you bird!"
+      "text": "Dee—er—Waitress! Stop getting kidnapped, you bird!"
     },
     "world": {
       "player": {
@@ -50,79 +50,79 @@
         {
           "id": 0,
           "kind": "duncan",
-          "x": 445.7333333333331,
+          "x": 443.5999999999997,
           "y": 398,
           "home": 450,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.8666666666666663,
-          "animation_step": 1620
+          "timer": 0.7999999999999994,
+          "animation_step": 1659
         },
         {
           "id": 1,
           "kind": "gun",
-          "x": 846.8000000000002,
+          "x": 845.2000000000003,
           "y": 398,
           "home": 850,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.8666666666666663,
-          "animation_step": 1620
+          "timer": 0.7999999999999994,
+          "animation_step": 1659
         },
         {
           "id": 2,
           "kind": "z",
-          "x": 1285.7333333333336,
+          "x": 1283.6000000000004,
           "y": 398,
           "home": 1290,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.8666666666666663,
-          "animation_step": 1620
+          "timer": 0.7999999999999994,
+          "animation_step": 1659
         },
         {
           "id": 3,
           "kind": "gun",
-          "x": 1806.7999999999993,
+          "x": 1805.199999999999,
           "y": 398,
           "home": 1810,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.8666666666666663,
-          "animation_step": 1620
+          "timer": 0.7999999999999994,
+          "animation_step": 1659
         },
         {
           "id": 4,
           "kind": "duncan",
-          "x": 2415.7333333333336,
+          "x": 2413.6000000000004,
           "y": 398,
           "home": 2420,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.8666666666666663,
-          "animation_step": 1620
+          "timer": 0.7999999999999994,
+          "animation_step": 1659
         },
         {
           "id": 5,
           "kind": "z",
-          "x": 2625.7333333333336,
+          "x": 2623.6000000000004,
           "y": 398,
           "home": 2630,
           "alive": true,
           "direction": -1,
           "state": "patrol",
-          "timer": 0.8666666666666663,
-          "animation_step": 1620
+          "timer": 0.7999999999999994,
+          "animation_step": 1659
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 1621,
+      "steps": 1660,
       "act": "act2",
       "boss_active": false,
       "complete": false
@@ -140,8 +140,8 @@
     },
     "fixture_id": null,
     "loops": 1,
-    "frames": 2722,
-    "frame_ms_mean": 16.666666666666668,
+    "frames": 2734,
+    "frame_ms_mean": 16.683333333333355,
     "test_build": false,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

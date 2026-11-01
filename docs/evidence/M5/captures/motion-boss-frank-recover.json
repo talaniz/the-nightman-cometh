@@ -12,10 +12,9 @@
     "hp": 5,
     "direction": -1,
     "state": "recover",
-    "timer": 0.5833333333333333,
+    "timer": 0.6,
     "immune": 0,
-    "animation_step": 130
+    "animation_step": 129
   },
-  "kind": "live browser canvas crop",
-  "build": "/tmp/nightman-m5-fixture-v3"
+  "kind": "live browser canvas crop"
 }

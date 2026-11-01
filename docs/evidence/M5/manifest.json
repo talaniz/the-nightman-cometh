@@ -1,18 +1,18 @@
 {
-  "source_fingerprint": "9029eb4ff6544158b45647224653f4a1e0b9476985e3adec7d7dbb3480d2d178",
-  "revision": "Game/runtime/assets unchanged since 28aabce8614762e055575d2d795b26c1dabc2bbf; CI captures from 659d2d8f5ef6d4397be7be2c97105d1b8c458d89",
+  "source_fingerprint": "0868a08af14d06cde178f6200e6dfd0f64a56b5d843036aa8e164396086eedc9",
+  "revision": "5c61f18dbf66f05b0757e53fb39fe32b41a7170a; no game/runtime/asset edits after capture",
   "base_commit": "d27ca3e643dcacf7c511ceeb6ce50c9c10282f87",
   "captures": [
     {
       "file": "captures/frank-extra-kidnapping.png",
-      "sha256": "5bb83d2822a1de6f495e81a695d3eef6887b65d00de7b22597fec9778a638bfe",
+      "sha256": "1ce0472018999a10bef1d71398f2dbab0f56fb13a5dfb0add9053e9ccd0dc9bd",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "frank-extra-kidnapping",
       "metadata": "captures/frank-extra-kidnapping.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/nightman-abduction-0.png",
@@ -23,7 +23,7 @@
       },
       "state": "nightman-abduction-0",
       "metadata": "captures/nightman-abduction-0.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/nightman-abduction-1.png",
@@ -34,51 +34,51 @@
       },
       "state": "nightman-abduction-1",
       "metadata": "captures/nightman-abduction-1.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/frank-bat.png",
-      "sha256": "0a6a74647813aaf15bf7ce82c8b0d62b49cc13ba45f5744fc427a6d20fc58945",
+      "sha256": "9187b8baafc56b16ecdc2544b41d842b623051f8ae613f844a07e776af642d4f",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "frank-bat",
       "metadata": "captures/frank-bat.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/frank-stomp.png",
-      "sha256": "5b7a5b5d2e5ef10635654389214525a336d926fe19d0b63d892fef2449122853",
+      "sha256": "2982f2e8573ebc39e1d17d0825f12826965114bd419783954c42c59ad057a2e7",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "frank-stomp",
       "metadata": "captures/frank-stomp.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/frank-beam.png",
-      "sha256": "850b6579098abbc1d371eab4c14d7e1c555574f5c80820b342c5e024d4922d11",
+      "sha256": "609819b2c2e6975ad9f70ba2b2f44ae190ec9b1663dc037b1e0cf687bb83a889",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "frank-beam",
       "metadata": "captures/frank-beam.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/frank-sandwich.png",
-      "sha256": "46d12f06887d25423e83dd6ba6ccd5276659a2f04fa58bb9d56967ff67a146af",
+      "sha256": "9d9d6c817e89455adc56fdf55176d1d9acb1204c1b26989fa0e5386216b11e1c",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "frank-sandwich",
       "metadata": "captures/frank-sandwich.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/normal-complete.png",
@@ -89,18 +89,18 @@
       },
       "state": "normal-complete",
       "metadata": "captures/normal-complete.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-entrance.png",
-      "sha256": "b5cea69026f0d8aa9ee2cd107b9efc663bde965a9c8964c330c3128932311dcd",
+      "sha256": "25c798072c0f95d1abd97ba79777b110145eaebc5e8d2a5df77f36e6018729d2",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "bridge-entrance",
       "metadata": "captures/bridge-entrance.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-crew.png",
@@ -111,51 +111,51 @@
       },
       "state": "bridge-crew",
       "metadata": "captures/bridge-crew.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-gun.png",
-      "sha256": "e28abf2e4bf3e8e86a7f6415846693897a5f15de595252109f70bc113c0b979a",
+      "sha256": "ef4595999b772f206e7576ebd542759a0b68cff210511fe0cf8467eab10248b1",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "bridge-gun",
       "metadata": "captures/bridge-gun.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-meal.png",
-      "sha256": "bf973db22f748eafb4547462a7b29f9a9536d20ed1aabcb77a84bf9cbae88b75",
+      "sha256": "f487b14f4ca7ebb5fa0c2f2be6db7cfd74dbd711033f51c0b646a7f26e94ac6d",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "bridge-meal",
       "metadata": "captures/bridge-meal.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-mid.png",
-      "sha256": "e45b87fed887046937020af55f712f654fcc1ad685551acf3942ba1a76dccdeb",
+      "sha256": "4d975d38d3a4ee892e07b6891a6fe5fe4cd0290df55fe7a805187975ccb9a3e2",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "bridge-mid",
       "metadata": "captures/bridge-mid.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-preboss.png",
-      "sha256": "ab690d865b6ed7a869d39f048c5273bebd041b78f521b7c467819ba913d93b55",
+      "sha256": "f1cdd15101e816127abf86042bc1dc886a87eadbf5f3562f00fe884229fb2464",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "bridge-preboss",
       "metadata": "captures/bridge-preboss.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-1920.png",
@@ -166,7 +166,7 @@
       },
       "state": "bridge-1920",
       "metadata": "captures/bridge-1920.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-narrow.png",
@@ -177,7 +177,7 @@
       },
       "state": "bridge-narrow",
       "metadata": "captures/bridge-narrow.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-platform-first.png",
@@ -188,18 +188,18 @@
       },
       "state": "bridge-platform-first",
       "metadata": "captures/bridge-platform-first.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-upper-first.png",
-      "sha256": "4d67ec869dba0fe511320bcc20624e8fbd894b6d5d30786c29cd67964f81a791",
+      "sha256": "46df0856692d090ebedda3d2dd25f8d4e396378f72db6c75ff8fddd746ee0319",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "bridge-upper-first",
       "metadata": "captures/bridge-upper-first.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-platform-second.png",
@@ -210,18 +210,18 @@
       },
       "state": "bridge-platform-second",
       "metadata": "captures/bridge-platform-second.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-upper-second.png",
-      "sha256": "ef279b964f3349a30ac34a44f78c5e1f7e5d89517d64711c150309b6f4d2576c",
+      "sha256": "d58bae58a037a0acdd503b53f64468abdf643504e596cb63f9c9beddd8c93a28",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "bridge-upper-second",
       "metadata": "captures/bridge-upper-second.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/act2-normal-death.png",
@@ -232,7 +232,7 @@
       },
       "state": "act2-normal-death",
       "metadata": "captures/act2-normal-death.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/act2-normal-retry.png",
@@ -243,7 +243,7 @@
       },
       "state": "act2-normal-retry",
       "metadata": "captures/act2-normal-retry.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/bridge-pause.png",
@@ -254,7 +254,7 @@
       },
       "state": "bridge-pause",
       "metadata": "captures/bridge-pause.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/title-1280.png",
@@ -265,7 +265,7 @@
       },
       "state": "title-1280",
       "metadata": "captures/title-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/options-1280.png",
@@ -276,7 +276,7 @@
       },
       "state": "options-1280",
       "metadata": "captures/options-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/invalid-password-1280.png",
@@ -287,7 +287,7 @@
       },
       "state": "invalid-password-1280",
       "metadata": "captures/invalid-password-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/loading-1280.png",
@@ -298,7 +298,7 @@
       },
       "state": "loading-1280",
       "metadata": "captures/loading-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/boot-error-1280.png",
@@ -309,29 +309,29 @@
       },
       "state": "boot-error-1280",
       "metadata": "captures/boot-error-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/audio-error-1280.png",
-      "sha256": "4ca026ddf793bc960cb7a58eb996cec46a94695048aff51c2de4743dccc886ec",
+      "sha256": "4d96547b1f1cd194d63524545fa4edc79c38cb3575d06a246ef9dd40b72a8b48",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "audio-error-1280",
       "metadata": "captures/audio-error-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/audio-recovered-1280.png",
-      "sha256": "b4360630837b7b1860a401f4f01bb7bc2659f80a5ce43d812dda4670a7f53779",
+      "sha256": "70ae7b95927cba831c1a51f94adad7bdee960fdc3eafc607bfe515a07d0e4960",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "audio-recovered-1280",
       "metadata": "captures/audio-recovered-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/save-error-1280.png",
@@ -342,7 +342,7 @@
       },
       "state": "save-error-1280",
       "metadata": "captures/save-error-1280.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/save-migrated.png",
@@ -353,73 +353,73 @@
       },
       "state": "save-migrated",
       "metadata": "captures/save-migrated.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/swing-live.png",
-      "sha256": "887404cd739e8a11c6df2c165a53f572775ba776983b81f802b7b5a19efc1bed",
+      "sha256": "6f51cef3ecbbbd0021f626abbb5c49a1b8f37f2e9490a7060b6dfb5947ede90f",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "swing-live",
       "metadata": "captures/swing-live.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/swing-left-live.png",
-      "sha256": "e6fc98d957e5c90e15ce8670e58f7021b69f99211ec7490365160971e0cccbcd",
+      "sha256": "aaee15773a16141e64440553f6c07c6cb9138517682730639c2d4df14f158a72",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "swing-left-live",
       "metadata": "captures/swing-left-live.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/swing-jump-live.png",
-      "sha256": "a7181c61d98756abdc873ecc4850e58486e43789a80926c72959ead3aa55fca1",
+      "sha256": "767d9d8359523bd60fa33eb1a0b8aa0f1baa1bdfd873323e5f20e22c0f135b87",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "swing-jump-live",
       "metadata": "captures/swing-jump-live.json",
-      "origin": "CI run 41250831919 at 659d2d8f5ef6d4397be7be2c97105d1b8c458d89"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-crew-z-patrol-0.png",
-      "sha256": "2883cd5775fdfc6322ec0f9849a36165298199f8dac81433531b12dfdc87a439",
+      "sha256": "b4e5b836fc2863da4b6f04c29f914b05b3eb7c68ce9a9dce183be8e32d8fa777",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-crew-z-patrol-0",
       "metadata": "captures/motion-crew-z-patrol-0.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-crew-z-patrol-1.png",
-      "sha256": "b6908f747b87a6bfe2d654af80b1e474c69bec429b5bde32de70d59bdc568780",
+      "sha256": "d01c8914edc5a5c0ae497e64f848c661396db45de136631778c05b5da35bd1e6",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-crew-z-patrol-1",
       "metadata": "captures/motion-crew-z-patrol-1.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-crew-z-recover.png",
-      "sha256": "ba80bacf4ef7bae6ddfba61632d77f72c8cb0eafb0581b2aaac0a69836655972",
+      "sha256": "aa1e691a4f0e549beed482b063d627cb4f0203c862969b53768269d34c6859c9",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-crew-z-recover",
       "metadata": "captures/motion-crew-z-recover.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-gun-gun-windup.png",
@@ -430,128 +430,128 @@
       },
       "state": "motion-gun-gun-windup",
       "metadata": "captures/motion-gun-gun-windup.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-gun-gun-patrol-1.png",
-      "sha256": "1cccac9a7047725739410a5120be6d5f9856d65eec9c0e7236a020717d14c61d",
+      "sha256": "7fca22b75b3a4c23ab5db8087006068ee9d2c14814a60e8eb40290084764742d",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-gun-gun-patrol-1",
       "metadata": "captures/motion-gun-gun-patrol-1.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-boss-frank-throw.png",
-      "sha256": "224945176ee0af92903971ca063d774e7005b156ceef384adf8ee441e5e768aa",
+      "sha256": "8a07af831c68c466c2d5286955a2511806f122074d63de26697a209b278702c0",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-boss-frank-throw",
       "metadata": "captures/motion-boss-frank-throw.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-boss-frank-shuffle-0.png",
-      "sha256": "b2e437bb4920d4f6cd71d4325441001476d08216a54410cf0c3ae4ee99f3ab3b",
+      "sha256": "6cacf53724bd8cfa2f051a871d4814c272eed0c560adf80ef7a341d92223d194",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-boss-frank-shuffle-0",
       "metadata": "captures/motion-boss-frank-shuffle-0.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-gun-gun-recover.png",
-      "sha256": "a44266d5ec79bc20add31b8e07503a7ddf0658e6c1b31ad646ee9f38c24ea17b",
+      "sha256": "f215e5f79b4bd2ef2fbf4f0426fc5e80acbb73ec24c0f1399be2a5e87964f9fa",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-gun-gun-recover",
       "metadata": "captures/motion-gun-gun-recover.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-crew-z-lunge.png",
-      "sha256": "8c62b877e0e104bfa66e161b2b570bd3bd593685a9746502db7323ad3e2ebeba",
+      "sha256": "d76f8265b314db8c59e8e78fdcf6f98280c9b1a2e484428ffbdfe68f7c4152e5",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-crew-z-lunge",
       "metadata": "captures/motion-crew-z-lunge.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-boss-frank-recover.png",
-      "sha256": "2190540b2de44d9111acc73c9fbd6da19c7f8a3837d449cdafb69395dacb8c08",
+      "sha256": "e38871046ab4c24744ef15168b1e87640bee5e61b437716aedff2cf90bed48d7",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-boss-frank-recover",
       "metadata": "captures/motion-boss-frank-recover.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-gun-duncan-patrol-1.png",
-      "sha256": "48d49340e456ca6ef091b36180db86eaaefcfd26b376e471207f9b656c3e90a3",
+      "sha256": "7ef028c2168befd38dbb9c5b9ef42bae6a6532b58f332fd2e42f39194a00de4a",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-gun-duncan-patrol-1",
       "metadata": "captures/motion-gun-duncan-patrol-1.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-gun-gun-patrol-0.png",
-      "sha256": "fc34f6b882e50d4ca7cded419ed2eeeb1bc2a26db8e02c73173463d26cdf8f17",
+      "sha256": "1a7f60cf8e3684a0ec4e131965eb814e242fe3ae55fe0abfa1403721bea6d932",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-gun-gun-patrol-0",
       "metadata": "captures/motion-gun-gun-patrol-0.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-crew-z-windup.png",
-      "sha256": "d05706345f04219780ad00aa2cfe86265a151d22bfdc388878f1d5ba3482a3b8",
+      "sha256": "937cf83d9ab808f610b089f39ed6c47ac87580fefc1632994c0b442484576cd5",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-crew-z-windup",
       "metadata": "captures/motion-crew-z-windup.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-gun-duncan-patrol-0.png",
-      "sha256": "1e54e99d8b4e4e721dd461b72d04368fb2c822d5660942aaa33017c7824d5f9f",
+      "sha256": "f290d2e4e369a536b0232116e3c6e90c2778826d6d7a38161e74ee46342cb117",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-gun-duncan-patrol-0",
       "metadata": "captures/motion-gun-duncan-patrol-0.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-boss-frank-shuffle-1.png",
-      "sha256": "5418f40ea38025c2de8e5c7c5ffe31470bf85cf32f263b2c92cf7b1a0e9eb00b",
+      "sha256": "d34714ad68a38e98f4575ab4c1d46e5120fb4a439e8043e7df9809bc47429eda",
       "viewport": {
         "width": 1280,
         "height": 720
       },
       "state": "motion-boss-frank-shuffle-1",
       "metadata": "captures/motion-boss-frank-shuffle-1.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     },
     {
       "file": "captures/motion-boss-frank-windup.png",
@@ -562,24 +562,56 @@
       },
       "state": "motion-boss-frank-windup",
       "metadata": "captures/motion-boss-frank-windup.json",
-      "origin": "Pi Chromium ACT2_MOTION passed; source at 28aabce8614762e055575d2d795b26c1dabc2bbf"
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
+    },
+    {
+      "file": "captures/opening-0.png",
+      "sha256": "ec683d1bd4e40b72903312b5bed0df710c270a02ba16f563f4faee9c3ba7e4c5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "opening-0",
+      "metadata": "captures/opening-0.json",
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
+    },
+    {
+      "file": "captures/opening-8.png",
+      "sha256": "16187d235e3b51c10523019979c595a23614dc0cb46edb9d1ac5b1db1a86764f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "opening-8",
+      "metadata": "captures/opening-8.json",
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
+    },
+    {
+      "file": "captures/opening-9.png",
+      "sha256": "642003002c0082bc8304ef14a8f97ed1d14b103e17f97bb9317f418cb3184c04",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "opening-9",
+      "metadata": "captures/opening-9.json",
+      "origin": "CI run 41271145099 at 5c61f18dbf66f05b0757e53fb39fe32b41a7170a"
     }
   ],
   "unexpected_errors": [],
-  "inspection": "Main opened every selected PNG before publication. Synthetic game only; no private content.",
+  "inspection": "Main visually inspected all changed/new PNGs; remaining PNGs are byte-identical to individually inspected prior captures. Synthetic game only; no private content.",
   "commands": [
     "NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=chromium --grep-invert ACT1_NORMAL",
     "NIGHTMAN_BUILD=build/normal NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=chromium --grep ACT1_NORMAL",
-    "NIGHTMAN_BUILD=build/normal NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'",
-    "NIGHTMAN_BUILD=/tmp/nightman-m5-fixture-v3 NIGHTMAN_EVIDENCE=/tmp/nightman-m5-final-captures npx playwright test --project=chromium --trace off --grep ACT2_MOTION"
+    "NIGHTMAN_BUILD=build/normal NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'"
   ],
   "limitations": [
-    "Pi mixed suite: motion passed, approach/story failed; do not count mixed suite as pass. CI passed same game source.",
+    "Local Pi browser startup timed out; these captures and passing interactions ran in CI Chromium/Firefox. Independent E2E remains pending.",
     "No listening or physical USB acceptance; final three full-game runs deferred."
   ],
   "builds": {
     "fixture": {
-      "source_fingerprint": "9029eb4ff6544158b45647224653f4a1e0b9476985e3adec7d7dbb3480d2d178",
+      "source_fingerprint": "0868a08af14d06cde178f6200e6dfd0f64a56b5d843036aa8e164396086eedc9",
       "python": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
       "files": {
         "boot-state.js": "c8d028b2ea02fab3b724acec7d326226c37d5efcb63a2898b0e41b27c51598cd",
@@ -588,13 +620,13 @@
         "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
         "index.html": "1d9b7f24e1bab506056fa76e1ce9c059b594bad41bd6eca339653136bf93c9d1",
         "loader.js": "6ceaae0a806e51e2aae42aef2810c0805759860afe9b68208a134af29473575b",
-        "nightman.apk": "e224ae4ed6751ae91ff1dc2d56756f2d70d28e15a5eb0d8b6485e21cefb477b5",
-        "nightman.tar.gz": "9254cb319097ecc38eb975a49f5fb9ebca559f3881864d12052fcf2cca508077",
+        "nightman.apk": "8c591df375e6fdc5bd910f8fc748ca7751761f4416b39b6f93638be61b600cc5",
+        "nightman.tar.gz": "a0fda56fb3ef696764afd063ed05c52e64c52a2d2f6534f2127bb66a40620c95",
         "style.css": "98e3d4b1b80fa5a62cf02204f2591b94a03c8687aec275aad48250e702967e6d"
       }
     },
     "normal": {
-      "source_fingerprint": "9029eb4ff6544158b45647224653f4a1e0b9476985e3adec7d7dbb3480d2d178",
+      "source_fingerprint": "0868a08af14d06cde178f6200e6dfd0f64a56b5d843036aa8e164396086eedc9",
       "python": "3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]",
       "files": {
         "boot-state.js": "c8d028b2ea02fab3b724acec7d326226c37d5efcb63a2898b0e41b27c51598cd",
@@ -603,8 +635,8 @@
         "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
         "index.html": "1d9b7f24e1bab506056fa76e1ce9c059b594bad41bd6eca339653136bf93c9d1",
         "loader.js": "6ceaae0a806e51e2aae42aef2810c0805759860afe9b68208a134af29473575b",
-        "nightman.apk": "98015452a808a8058488498ffe4604c336d96b2e5ce1fa8861eed63d4ff8d47d",
-        "nightman.tar.gz": "97346325d3a7bccef448ed84fae52e522ec9d04ef5f845701c6d8e8604a8d95a",
+        "nightman.apk": "b7e1c7bb682a8ea19953ca4bcd598adbd5d452d9be2aecdc9875986e54d2ffef",
+        "nightman.tar.gz": "412fccca7463e802cac86b731bf50489e014506f9a79f446378d16f3f763fe44",
         "style.css": "98e3d4b1b80fa5a62cf02204f2591b94a03c8687aec275aad48250e702967e6d"
       }
     }

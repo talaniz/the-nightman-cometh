@@ -18,7 +18,7 @@
     "story": {
       "count": 4,
       "speaker": "DENNIS",
-      "text": "Dee\u2014er\u2014Waitress! Stop getting kidnapped, you bird!"
+      "text": "Dee—er—Waitress! Stop getting kidnapped, you bird!"
     },
     "world": {
       "player": {
@@ -132,8 +132,8 @@
     },
     "fixture_id": 15,
     "loops": 1,
-    "frames": 39,
-    "frame_ms_mean": 23.52307694871794,
+    "frames": 36,
+    "frame_ms_mean": 25.802777749999994,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

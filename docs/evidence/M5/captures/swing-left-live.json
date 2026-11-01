@@ -20,7 +20,7 @@
     "story": {
       "count": 10,
       "speaker": "CHARLIE",
-      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see\u2014"
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
     },
     "world": {
       "player": {
@@ -44,74 +44,74 @@
         {
           "id": 0,
           "kind": "rat",
-          "x": 535,
+          "x": 538.75,
           "y": 398,
           "home": 580,
           "alive": true,
-          "direction": -1,
+          "direction": 1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 181
+          "animation_step": 188
         },
         {
           "id": 1,
           "kind": "ghoul",
-          "x": 788.1000000000008,
+          "x": 784.9500000000005,
           "y": 328,
           "home": 780,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 181
+          "animation_step": 188
         },
         {
           "id": 2,
           "kind": "rat",
-          "x": 1395,
+          "x": 1398.75,
           "y": 398,
           "home": 1440,
           "alive": true,
-          "direction": -1,
+          "direction": 1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 181
+          "animation_step": 188
         },
         {
           "id": 3,
           "kind": "ghoul",
-          "x": 1998.1000000000008,
+          "x": 1994.9500000000005,
           "y": 398,
           "home": 1990,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 181
+          "animation_step": 188
         },
         {
           "id": 4,
           "kind": "ghoul",
-          "x": 2348.9999999999964,
+          "x": 2345.8499999999976,
           "y": 268,
           "home": 2340,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 181
+          "animation_step": 188
         },
         {
           "id": 5,
           "kind": "rat",
-          "x": 2815,
+          "x": 2818.75,
           "y": 318,
           "home": 2860,
           "alive": true,
-          "direction": -1,
+          "direction": 1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 181
+          "animation_step": 188
         },
         {
           "id": 6,
@@ -123,12 +123,12 @@
           "direction": 1,
           "state": "waiting",
           "timer": 0,
-          "animation_step": 181
+          "animation_step": 188
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 182,
+      "steps": 189,
       "act": "act1",
       "boss_active": false,
       "complete": false
@@ -146,8 +146,8 @@
     },
     "fixture_id": null,
     "loops": 1,
-    "frames": 173,
-    "frame_ms_mean": 16.690833325000003,
+    "frames": 183,
+    "frame_ms_mean": 16.664166666666674,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

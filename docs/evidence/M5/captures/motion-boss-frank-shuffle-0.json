@@ -6,16 +6,15 @@
   "state": {
     "id": 100,
     "kind": "frank",
-    "x": 3301.566666666664,
+    "x": 3306.699999999999,
     "y": 382,
     "alive": true,
     "hp": 5,
     "direction": -1,
     "state": "shuffle",
-    "timer": 0.6166666666666655,
+    "timer": 0.8499999999999995,
     "immune": 0,
-    "animation_step": 22
+    "animation_step": 8
   },
-  "kind": "live browser canvas crop",
-  "build": "/tmp/nightman-m5-fixture-v3"
+  "kind": "live browser canvas crop"
 }

@@ -12,9 +12,8 @@
     "alive": true,
     "direction": -1,
     "state": "windup",
-    "timer": 0.6333333333333333,
-    "animation_step": 60
+    "timer": 0.65,
+    "animation_step": 59
   },
-  "kind": "live browser canvas crop",
-  "build": "/tmp/nightman-m5-fixture-v3"
+  "kind": "live browser canvas crop"
 }

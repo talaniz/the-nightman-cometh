@@ -59,14 +59,14 @@
           "hp": 0,
           "direction": -1,
           "state": "defeated",
-          "timer": 0.03333333333333316,
+          "timer": 0.11666666666666647,
           "immune": 0.75,
-          "animation_step": 410
+          "animation_step": 414
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 411,
+      "steps": 415,
       "act": "act2",
       "boss_active": true,
       "complete": true
@@ -84,8 +84,8 @@
     },
     "fixture_id": null,
     "loops": 1,
-    "frames": 444,
-    "frame_ms_mean": 18.483333333333327,
+    "frames": 445,
+    "frame_ms_mean": 19.050000000000004,
     "test_build": false,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

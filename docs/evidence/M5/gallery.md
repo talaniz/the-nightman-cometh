@@ -1,6 +1,6 @@
 # M5 actual browser evidence
 
-Source and reproduction metadata: [manifest](manifest.json). Each image was opened and inspected by main. CI captures are from run 41250831919; motion crops are from a passing Pi ACT2_MOTION test on the same game source. This is implementation evidence, not final human listening or full-game acceptance.
+[Manifest and reproduction commands](manifest.json). All 54 captures come from successful CI run [41271145099](https://github.com/talaniz/the-nightman-cometh/actions/runs/41271145099) at runtime revision `5c61f18dbf66f05b0757e53fb39fe32b41a7170a`. Main inspected changed/new images; unchanged PNGs match previously inspected bytes. Includes all four em-dash dialogue states. This is implementation evidence, not final human listening or full-game acceptance.
 
 ## frank-extra-kidnapping
 
@@ -307,3 +307,21 @@ Source and reproduction metadata: [manifest](manifest.json). Each image was open
 ![motion-boss-frank-windup](captures/motion-boss-frank-windup.png)
 
 [State metadata](captures/motion-boss-frank-windup.json)
+
+## opening-0
+
+![opening-0](captures/opening-0.png)
+
+[State metadata](captures/opening-0.json)
+
+## opening-8
+
+![opening-8](captures/opening-8.png)
+
+[State metadata](captures/opening-8.json)
+
+## opening-9
+
+![opening-9](captures/opening-9.png)
+
+[State metadata](captures/opening-9.json)

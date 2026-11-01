@@ -26,7 +26,7 @@
     },
     "world": {
       "player": {
-        "x": 142.33333333333337,
+        "x": 131.3333333333334,
         "y": 386,
         "hearts": 3,
         "dayman": 0,
@@ -46,74 +46,74 @@
         {
           "id": 0,
           "kind": "rat",
-          "x": 580,
+          "x": 585.25,
           "y": 398,
           "home": 580,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 121
+          "animation_step": 114
         },
         {
           "id": 1,
           "kind": "ghoul",
-          "x": 815.1000000000035,
+          "x": 818.2500000000039,
           "y": 328,
           "home": 780,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 121
+          "animation_step": 114
         },
         {
           "id": 2,
           "kind": "rat",
-          "x": 1440,
+          "x": 1445.25,
           "y": 398,
           "home": 1440,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 121
+          "animation_step": 114
         },
         {
           "id": 3,
           "kind": "ghoul",
-          "x": 2025.1000000000035,
+          "x": 2028.2500000000039,
           "y": 398,
           "home": 1990,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 121
+          "animation_step": 114
         },
         {
           "id": 4,
           "kind": "ghoul",
-          "x": 2375.9999999999854,
+          "x": 2379.149999999984,
           "y": 268,
           "home": 2340,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 121
+          "animation_step": 114
         },
         {
           "id": 5,
           "kind": "rat",
-          "x": 2860,
+          "x": 2865.25,
           "y": 318,
           "home": 2860,
           "alive": true,
           "direction": -1,
           "state": "patrol",
           "timer": 0,
-          "animation_step": 121
+          "animation_step": 114
         },
         {
           "id": 6,
@@ -125,12 +125,12 @@
           "direction": 1,
           "state": "waiting",
           "timer": 0,
-          "animation_step": 121
+          "animation_step": 114
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 122,
+      "steps": 115,
       "act": "act1",
       "boss_active": false,
       "complete": false
@@ -148,8 +148,8 @@
     },
     "fixture_id": null,
     "loops": 1,
-    "frames": 135,
-    "frame_ms_mean": 19.92333333333333,
+    "frames": 126,
+    "frame_ms_mean": 19.710833333333326,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"
