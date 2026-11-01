@@ -3,6 +3,8 @@ from game.world import World
 
 def apply(session,request):
     name=request.get('name')
+    if name.startswith('act2-'):
+        return act2_fixture(session,name)
     if name.startswith('act1-'):
         return act1_fixture(session,name)
     if name=='clear':session.enter_screen('title');return
@@ -58,3 +60,28 @@ def act1_fixture(session,name):
     else:raise ValueError('Unknown Act1 fixture')
     # Visual-pose fixtures freeze only test-build simulation; live interaction tests are separate.
     if frozen:w.paused=True
+
+def act2_fixture(session,name):
+    from game.levels.act2 import Act2
+    from game.scenes.opening import FRANK,NIGHTMAN
+    session.world=Act2();session.qa=True;session.qa_label='AUTOMATED ACT2 FIXTURE';session.enter_screen('training')
+    w=session.world;suffix=name[5:]
+    if suffix.startswith('frank-story-') or suffix.startswith('nightman-story-'):
+        session.sequence=FRANK if suffix.startswith('frank-story-') else NIGHTMAN
+        session.dialogue=int(suffix.rsplit('-',1)[1]);session.replaying=False;session.enter_screen('dialogue');return
+    if suffix=='approach':w.player.x=120
+    elif suffix=='crew':w.player.x=1170
+    elif suffix=='gun':w.player.x=660
+    elif suffix=='meal':w.player.x=1520
+    elif suffix=='mid':w.player.x=1460;w.player.hearts=1
+    elif suffix=='preboss':w.player.x=2760;w.player.hearts=1
+    elif suffix=='death':w.flag('preboss',2800);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
+    elif suffix=='complete':w.complete=True;session.enter_screen('complete')
+    elif suffix.startswith('platform-'):
+        w.targets=[];w.pickups=[];w.player.x=590 if suffix=='platform-first' else 1770
+    elif suffix.startswith('boss'):
+        w.flag('preboss',2800);w.player.x=3200;w.enter_boss();b=w.targets[0]
+        if suffix=='boss-close':b['x']=3250;b['timer']=10
+        elif suffix=='boss-stomp':w.player.x=b['x'];w.player.y=b['y']-64;w.player.vy=100;w.player.grounded=False
+        elif suffix=='boss-beam':w.meal()
+    else:raise ValueError('Unknown Act2 fixture')

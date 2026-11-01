@@ -1,0 +1,19 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "id": 0,
+    "kind": "duncan",
+    "x": 446.79999999999984,
+    "y": 398,
+    "home": 450,
+    "alive": true,
+    "direction": -1,
+    "state": "patrol",
+    "timer": 0.8999999999999997,
+    "animation_step": 5
+  },
+  "kind": "live browser canvas crop"
+}

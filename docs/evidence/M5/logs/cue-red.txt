@@ -1,0 +1,19 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+________ test_kidnapping_music_never_advances_a_player_controlled_scene ________
+
+    def test_kidnapping_music_never_advances_a_player_controlled_scene():
+        from game.audio import gameplay_manifest
+        manifest=json.loads(Path('assets/audio/production/manifest.json').read_text())
+        audio=Director(gameplay_manifest(manifest),Backend());audio.unlock();audio.set_scene('nightman-kidnap')
+        audio.tick(120)
+>       assert audio.scene=='nightman-kidnap'
+E       AssertionError: assert 'rooftop' == 'nightman-kidnap'
+E
+E         - nightman-kidnap
+E         + rooftop
+
+tests/unit/test_game_audio.py:27: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_game_audio.py::test_kidnapping_music_never_advances_a_player_controlled_scene
+1 failed, 1 passed in 0.10s

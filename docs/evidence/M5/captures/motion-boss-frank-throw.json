@@ -1,0 +1,20 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "id": 100,
+    "kind": "frank",
+    "x": 3312.9333333333343,
+    "y": 382,
+    "alive": true,
+    "hp": 5,
+    "direction": -1,
+    "state": "throw",
+    "timer": 0.3,
+    "immune": 0,
+    "animation_step": 110
+  },
+  "kind": "live browser canvas crop"
+}

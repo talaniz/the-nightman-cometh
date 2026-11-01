@@ -8,7 +8,7 @@ permissions:
 jobs:
   foundation:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -28,6 +28,8 @@ jobs:
           SDL_VIDEODRIVER: dummy
       - run: python tools/build_web.py --output build/web --test-fixtures
       - name: Actual browser workflows
+        env:
+          NIGHTMAN_EVIDENCE: build/review-captures
         run: |
           export CHROMIUM_PATH="$(node -e "process.stdout.write(require('@playwright/test').chromium.executablePath())")"
           npx playwright test --project=chromium --grep-invert ACT1_NORMAL
@@ -35,6 +37,13 @@ jobs:
           export NIGHTMAN_BUILD=build/normal
           npx playwright test --project=chromium --grep ACT1_NORMAL
           npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'
+      - name: Stage branch screenshots for inspection
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: branch-review-captures
+          path: build/review-captures/
+          if-no-files-found: warn
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

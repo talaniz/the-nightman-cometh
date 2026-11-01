@@ -1,0 +1,141 @@
+{
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "state": {
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "AUTOMATED ACT2 FIXTURE",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 0,
+    "story": {
+      "count": 10,
+      "speaker": "CHARLIE",
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
+    },
+    "world": {
+      "player": {
+        "x": 1170,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "kind": "duncan",
+          "x": 436.13333333333264,
+          "y": 398,
+          "home": 450,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0.5666666666666653,
+          "animation_step": 25
+        },
+        {
+          "id": 1,
+          "kind": "gun",
+          "x": 839.6000000000006,
+          "y": 398,
+          "home": 850,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0.5666666666666653,
+          "animation_step": 25
+        },
+        {
+          "id": 2,
+          "kind": "z",
+          "x": 1276.1333333333341,
+          "y": 398,
+          "home": 1290,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0.5666666666666653,
+          "animation_step": 25
+        },
+        {
+          "id": 3,
+          "kind": "gun",
+          "x": 1799.5999999999976,
+          "y": 398,
+          "home": 1810,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0.5666666666666653,
+          "animation_step": 25
+        },
+        {
+          "id": 4,
+          "kind": "duncan",
+          "x": 2406.133333333334,
+          "y": 398,
+          "home": 2420,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0.5666666666666653,
+          "animation_step": 25
+        },
+        {
+          "id": 5,
+          "kind": "z",
+          "x": 2616.133333333334,
+          "y": 398,
+          "home": 2630,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0.5666666666666653,
+          "animation_step": 25
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 26,
+      "act": "act2",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "troll-toll",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": 10,
+    "loops": 1,
+    "frames": 731,
+    "frame_ms_mean": 16.975833341666657,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

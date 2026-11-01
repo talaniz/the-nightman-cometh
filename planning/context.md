@@ -1,3 +1,17 @@
+# M5 implementation — initial browser verification
+
+Both phases implemented on codex/m5-underbridge, base d27ca3e643dcacf7c511ceeb6ce50c9c10282f87. User approved the amended contract including exact Frank escape dialogue. Native suite: 179 passed; observed progression/bridge/projectile/Frank/cue red records in docs/evidence/M5/logs. Browser verification and final screenshots are in progress; no independent reviews or acceptance yet. First browser route failed because the driver held movement while waiting for upper-ledge landing; driver now releases at destination. Tracing disabled on Pi due resource pressure; all outcome assertions retained. Next: complete actual-browser flows/evidence, then per-commit code reviews followed by separate E2E. No merge/deploy authorized.
+
+# M5 execution authorized
+
+User approved both phases and added one still after Frank kidnaps Dee: Frank runs off with Dee; Dennis: “Dee—er—Waitress! Stop getting kidnapped, you bird!” Retain existing stills. Implementation/reviews authorized; merge/deployment not authorized. Next: phase 5.1 behavioral red.
+
+# Current execution status — M5 planning (2026-10-31)
+
+Polish PR #18 is merged at d27ca3e643dcacf7c511ceeb6ce50c9c10282f87. M5 planning is prepared for user implementation sign-off; no executable phase has started. Main owns branch codex/m5-underbridge and worktree /home/palpatine/projects/the-nightman-cometh-m5 at that base. Contract: [M5-underbridge](milestones/M5-underbridge.md); tracker: https://github.com/talaniz/the-nightman-cometh/issues/6. One PR across phases 5.1 and 5.2 after implementation approval. No PR or commit yet. Existing source/tests were inspected; commands in the contract are future verification, not passes. No merge/deployment authority. Next action: obtain contract sign-off, then observe phase 5.1 behavioral failures before implementation. Historical status below is superseded where it conflicts.
+
+---
+
 # Current execution status — Act 1 polish (2026-10-30)
 
 M4 is merged through PR15 at `5e982162e2a68969cd0434a821e8417d80389e3d`. Earlier pending M4 statements below are historical. User authorized all seven issue17 observations: “Ok, let's make those changes, remember to finish with an e2e review”.

@@ -25,4 +25,10 @@ FRANK=(
  Still('DEE','Finally. Can we leave?','kidnapping',3,'frank-kidnap'),
  Still('FRANK','Not so fast. You gotta pay the troll toll.','kidnapping',4,'frank-kidnap'),
  Still('DENNIS','Seriously? We just did this.','kidnapping',5,'frank-kidnap'),
+ Still('DENNIS','Dee—er—Waitress! Stop getting kidnapped, you bird!','bridge-story',0,'frank-kidnap'),
+)
+
+NIGHTMAN=(
+ Still('NIGHTMAN','Confound your lousy toll, troll','bridge-story',1,'nightman-kidnap'),
+ Still('DEE','Not again!','bridge-story',3,'nightman-kidnap'),
 )

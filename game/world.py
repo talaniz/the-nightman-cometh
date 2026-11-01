@@ -63,6 +63,8 @@ class World:
         if p.dayman<=0 or p.beam_cooldown>0 or self.paused or self.dead:return
         self.beams.append({'x':p.x+12+p.facing*18,'y':p.y+19,'dx':p.facing*600,'dy':0,'life':1.8})
         p.beam_cooldown=.25;self.events.append('beam')
+    def target_rect(self,target):
+        return (target['x'],target['y'],30,32)
     def contact_hurts(self,target):
         return True
     def target_active(self,target):
@@ -114,7 +116,7 @@ class World:
                 self.meal() if pickup['kind']=='meal' else self.food()
         for target in self.targets:
             if not self.target_active(target):continue
-            rect=(target['x'],target['y'],30,32)
+            rect=self.target_rect(target)
             hitbox=(p.x+24 if p.facing>0 else p.x-42,p.y+7,42,27)
             if .04<p.swing<.18 and target['id'] not in self.swing_hits and overlap(hitbox,rect):
                 self.swing_hits.add(target['id']);self.hit_target(target,'bat-hit');continue
@@ -127,7 +129,7 @@ class World:
             self.shot_clock=0
             if self.targets[-1]['alive']:self.shots.append({'x':1500.0,'y':410.0,'life':5.0})
         for shot in self.shots:
-            shot['x']-=120*DT;shot['life']-=DT
+            shot['x']+=shot.get('dx',-120)*DT;shot['life']-=DT
             rect=(shot['x']-7,shot['y']-7,14,14)
             hitbox=(p.x+24 if p.facing>0 else p.x-42,p.y+7,42,27)
             if .04<p.swing<.18 and overlap(hitbox,rect):shot['life']=0;self.events.append('bat-hit')
@@ -141,7 +143,7 @@ class World:
         for beam in self.beams:
             beam['x']+=beam['dx']*DT;beam['life']-=DT
             for target in self.targets:
-                if self.target_active(target) and overlap((beam['x']-10,beam['y']-3,20,6),(target['x'],target['y'],30,32)):
+                if self.target_active(target) and overlap((beam['x']-10,beam['y']-3,20,6),self.target_rect(target)):
                     self.hit_target(target,'bat-hit');beam['life']=0;break
         self.beams=[b for b in self.beams if b['life']>0]
     def snapshot(self):

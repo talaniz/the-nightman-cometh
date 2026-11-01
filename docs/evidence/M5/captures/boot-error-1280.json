@@ -1,0 +1,8 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": "boot-error-1280",
+  "note": "Loader error screenshot; no game state exists. Origin CI; see smoke spec for injected failure."
+}
