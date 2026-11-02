@@ -174,9 +174,11 @@ def test_qa_completion_replay_does_not_overwrite_normal_save():
     s.next_dialogue(skip=True)
     assert s.world.act=='act2' and s.qa
     s.world.complete=True;s.update(0,{});s.next_dialogue(skip=True)
-    assert s.menu()==['Replay QA Act 2','Exit QA']
+    assert s.world.act=='act3' and s.qa
+    s.world.complete=True;s.update(0,{});s.next_dialogue(skip=True);s.activate()
+    assert s.menu()==['Replay ending','Exit QA']
     s.activate();assert s.qa and store.raw==before
-    s.next_dialogue(skip=True);s.back();s.selection=s.menu().index('Exit QA');s.activate()
+    s.next_dialogue(skip=True);s.activate();s.selection=s.menu().index('Exit QA');s.activate()
     assert not s.qa and s.world is normal and store.raw==before
 
 def test_knocked_out_cricket_does_not_hurt_player_on_contact():

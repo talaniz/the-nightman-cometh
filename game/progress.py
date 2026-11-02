@@ -4,6 +4,7 @@ import math
 from game.world import FLAGS
 from game.levels.act1 import Act1
 from game.levels.act2 import Act2
+from game.levels.act3 import Act3
 
 class Progress:
     def __init__(self,storage):
@@ -22,14 +23,14 @@ class Progress:
             for value in settings.values():
                 if type(value) not in (int,float) or not math.isfinite(value) or not 0<=value<=1:raise ValueError('volume')
             stage=data.get('stage','rehearsal') if data['v']==2 else 'rehearsal'
-            if stage not in ('act1','act2','rehearsal'):raise ValueError('unknown stage')
-            positions={'act1':Act1.flag_positions,'act2':Act2.flag_positions,'rehearsal':FLAGS}[stage]
+            if stage not in ('act1','act2','act3','rehearsal'):raise ValueError('unknown stage')
+            positions={'act1':Act1.flag_positions,'act2':Act2.flag_positions,'act3':Act3.flag_positions,'rehearsal':FLAGS}[stage]
             checkpoint=data.get('checkpoint');flags=data.get('flags')
             if type(checkpoint)!=int or checkpoint not in (80,*positions.values()):raise ValueError('checkpoint')
             if not isinstance(flags,list) or len(flags)>2 or any(not isinstance(f,str) or f not in positions for f in flags) or len(set(flags))!=len(flags):raise ValueError('flags')
             if checkpoint!=80 and checkpoint not in [positions[f] for f in flags]:raise ValueError('unactivated checkpoint')
             complete=data.get('complete',False)
-            if type(complete)!=bool or (complete and stage not in ('act1','act2')):raise ValueError('completion')
+            if type(complete)!=bool or (complete and stage not in ('act1','act2','act3')):raise ValueError('completion')
             self.settings=dict(settings)
             if data['v']==1:
                 data=dict(v=2,stage='act1',checkpoint=80,flags=[],complete=False,settings=dict(settings))
@@ -54,4 +55,4 @@ class Progress:
     def restore(self,world):
         if self.saved and self.saved.get('stage')==world.act:
             world.checkpoint=self.saved['checkpoint'];world.flags=set(self.saved['flags']);world.retry()
-            if world.act in ('act1','act2'):world.complete=self.saved.get('complete',False)
+            if world.act in ('act1','act2','act3'):world.complete=self.saved.get('complete',False)

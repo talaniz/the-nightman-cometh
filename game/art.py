@@ -10,7 +10,7 @@ class Art:
     def panel(self,name,index,columns=2,rows=3):
         key=(name,index,columns,rows)
         if key in self.cache:return self.cache[key]
-        path=self.root/('sprites/cast.png' if name=='cast' else ('scenes/act2/story.png' if name=='bridge-story' else 'scenes/act1/'+name+'.png'))
+        path=self.root/('scenes/act3/finale.png' if name=='finale' else 'sprites/cast.png' if name=='cast' else ('scenes/act2/story.png' if name=='bridge-story' else 'scenes/act1/'+name+'.png'))
         image=pygame.image.load(str(path)).convert_alpha()
         x=index%columns;y=index//columns
         rect=pygame.Rect(x*image.get_width()//columns,y*image.get_height()//rows,
@@ -26,7 +26,7 @@ class Art:
     def image(self,name,index,size,flip=False):
         key=(name,index,size,flip)
         if key not in self.scaled:
-            source=self.panel(name,index,4,4) if name=='cast' else (self.panel(name,index,2,2) if name=='bridge-story' else self.panel(name,index))
+            source=self.panel(name,index,2,4) if name=='finale' else self.panel(name,index,4,4) if name=='cast' else (self.panel(name,index,2,2) if name=='bridge-story' else self.panel(name,index))
             result=pygame.transform.scale(source,size)
             if flip:result=pygame.transform.flip(result,True,False)
             self.scaled[key]=result
@@ -57,4 +57,23 @@ class Art:
             cell=source.subsurface(((index%columns)*cw,row*ch,cw,ch)).subsurface(rect)
             frame=pygame.transform.scale(cell,size)
             self.scaled[key]=pygame.transform.flip(frame,True,False) if flip else frame
+        return self.scaled[key]
+
+    def nightman(self,index,flip=False):
+        """Explicit atlas regions retain wide kicks/glows without clipping neighbors."""
+        key=('nightman',index,flip)
+        if key not in self.scaled:
+            source_key=('source','sprites/nightman.png')
+            if source_key not in self.cache:
+                self.cache[source_key]=pygame.image.load(str(self.root/'sprites/nightman.png')).convert_alpha()
+            source=self.cache[source_key];width,height=source.get_size();row=index//2
+            splits=(.5,.51,.59,.54);split=round(width*splits[row])
+            left=0 if index%2==0 else split;right=split if index%2==0 else width
+            top=row*height//4;bottom=(row+1)*height//4
+            cell=source.subsurface((left,top,right-left,bottom-top))
+            scale=88/(height/4)
+            result=pygame.transform.scale(cell,(round(cell.get_width()*scale),88))
+            anchor=((width*.25 if index%2==0 else width*.75)-left)*scale
+            if flip:result=pygame.transform.flip(result,True,False);anchor=result.get_width()-anchor
+            self.scaled[key]=(result,anchor)
         return self.scaled[key]

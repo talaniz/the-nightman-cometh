@@ -1,0 +1,165 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "156.0.8078.4",
+  "project": "chromium",
+  "test": "ACT1 BEAM transformed sprite and horizontal shot",
+  "state_after_capture": true,
+  "state": {
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "ACT1 AUTOMATED FIXTURE",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 0,
+    "story": {
+      "count": 10,
+      "speaker": "CHARLIE",
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
+    },
+    "world": {
+      "player": {
+        "x": 3310,
+        "y": 386,
+        "hearts": 1,
+        "dayman": 9.449999999999973,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "kind": "rat",
+          "x": 618.25,
+          "y": 398,
+          "home": 580,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 1,
+          "kind": "ghoul",
+          "x": 802.9500000000023,
+          "y": 328,
+          "home": 780,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 2,
+          "kind": "rat",
+          "x": 1478.25,
+          "y": 398,
+          "home": 1440,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 3,
+          "kind": "ghoul",
+          "x": 2012.9500000000023,
+          "y": 398,
+          "home": 1990,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 4,
+          "kind": "ghoul",
+          "x": 2362.9499999999907,
+          "y": 268,
+          "home": 2340,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 5,
+          "kind": "rat",
+          "x": 2898.25,
+          "y": 318,
+          "home": 2860,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 6,
+          "kind": "chicken",
+          "x": 2200,
+          "y": 160,
+          "home": 2200,
+          "alive": true,
+          "direction": 1,
+          "state": "waiting",
+          "timer": 0,
+          "animation_step": 50
+        }
+      ],
+      "beams": [
+        {
+          "x": 3520,
+          "y": 405,
+          "dx": 600,
+          "dy": 0,
+          "life": 1.500000000000001
+        }
+      ],
+      "shots": [],
+      "steps": 51,
+      "act": "act1",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "dayman-fast",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": null,
+    "loops": 1,
+    "frames": 71,
+    "frame_ms_mean": 19.863380267605642,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

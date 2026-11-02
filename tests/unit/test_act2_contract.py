@@ -74,9 +74,9 @@ def test_abduction_play_skip_and_completed_reload_agree():
         if skip:s.next_dialogue(skip=True)
         else:
             for _ in NIGHTMAN:s.next_dialogue()
-        assert s.screen=='complete' and s.world.act=='act2'
-        q=Session(store);q.selection=q.menu().index('Continue Act 2');q.activate()
-        assert q.screen=='complete' and q.world.complete
+        assert s.screen=='training' and s.world.act=='act3'
+        q=Session(store);q.selection=q.menu().index('Continue Act 3');q.activate()
+        assert q.screen=='training' and q.world.act=='act3' and not q.world.complete
 
 @pytest.mark.parametrize('index,x',[(3,590),(4,790),(5,1770),(6,1970)])
 def test_all_bridge_raised_platforms_have_reachable_launch(index,x):

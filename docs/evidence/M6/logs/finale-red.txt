@@ -1,0 +1,46 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_______________ test_finale_exact_sequence_and_distinct_waitress _______________
+
+    def test_finale_exact_sequence_and_distinct_waitress():
+        s=finish()
+>       assert [still.text for still in s.sequence][-5:]==LINES
+E       assert ['Confound yo... 'Not again!'] == ["I'm not goi... to go here!"]
+E         
+E         At index 0 diff: 'Confound your lousy toll, troll' != "I'm not going to marry you, Charlie."
+E         Right contains 3 more items, first extra item: 'I told you no one writes a musical for no reason!'
+E         Use -v to get more diff
+
+tests/unit/test_finale_contract.py:15: AssertionError
+_____________ test_play_and_skip_end_at_ending_then_silent_credits _____________
+
+    def test_play_and_skip_end_at_ending_then_silent_credits():
+        for skip in (False,True):
+            s=finish()
+            if skip:s.next_dialogue(skip=True)
+            else:
+                for _ in s.sequence:s.next_dialogue()
+>           assert s.screen=='ending' and s.world.act=='act3'
+E           AssertionError: assert ('training' == 'ending'
+E             
+E             - ending
+E             + training)
+
+tests/unit/test_finale_contract.py:25: AssertionError
+__________ test_completed_save_replay_is_non_mutating_and_reload_safe __________
+
+    def test_completed_save_replay_is_non_mutating_and_reload_safe():
+        s=finish();stored=s.progress.storage.raw;s=Session(s.progress.storage)
+        s.selection=s.menu().index('Continue Act 3');s.activate()
+>       assert s.screen=='credits'
+E       AssertionError: assert 'complete' == 'credits'
+E         
+E         - credits
+E         + complete
+
+tests/unit/test_finale_contract.py:33: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_finale_contract.py::test_finale_exact_sequence_and_distinct_waitress
+FAILED tests/unit/test_finale_contract.py::test_play_and_skip_end_at_ending_then_silent_credits
+FAILED tests/unit/test_finale_contract.py::test_completed_save_replay_is_non_mutating_and_reload_safe
+3 failed in 0.35s

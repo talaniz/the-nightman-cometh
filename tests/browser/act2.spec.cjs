@@ -61,8 +61,8 @@ test('ACT2_STORY exact extra kidnapping screen abduction and endpoint',async({pa
  expect((await state(page)).story.text).toBe('Dee—er—Waitress! Stop getting kidnapped, you bird!');await capture(page,'frank-extra-kidnapping');
  await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen,{timeout:30000}).toBe('training');expect((await state(page)).world.act).toBe('act2');
  for(let i=0;i<2;i++){await fixture(page,'nightman-story-'+i);await capture(page,'nightman-abduction-'+i);}
- await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen,{timeout:30000}).toBe('complete');await capture(page,'act2-preview-end');
- expect((await state(page)).menu).toContain('Replay QA Act 2');expect(faults).toEqual([]);
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen,{timeout:30000}).toBe('training');await capture(page,'act3-handoff');
+ expect((await state(page)).world.act).toBe('act3');expect((await state(page)).qa).toBe(true);expect(faults).toEqual([]);
 });
 
 test('ACT2_MOTION live crew gun and Frank pose evidence',async({page})=>{

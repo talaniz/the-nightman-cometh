@@ -3,6 +3,8 @@ from game.world import World
 
 def apply(session,request):
     name=request.get('name')
+    if name.startswith('act3-'):
+        return act3_fixture(session,name)
     if name.startswith('act2-'):
         return act2_fixture(session,name)
     if name.startswith('act1-'):
@@ -85,3 +87,30 @@ def act2_fixture(session,name):
         elif suffix=='boss-stomp':w.player.x=b['x'];w.player.y=b['y']-64;w.player.vy=100;w.player.grounded=False
         elif suffix=='boss-beam':w.meal()
     else:raise ValueError('Unknown Act2 fixture')
+
+
+def act3_fixture(session,name):
+    from game.levels.act3 import Act3
+    from game.scenes.finale import FINALE
+    session.world=Act3();session.qa=True;session.qa_label='AUTOMATED ACT3 FIXTURE'
+    session.replaying=False;session.enter_screen('training');w=session.world;suffix=name[5:]
+    if suffix.startswith('finale-'):
+        session.sequence=FINALE;session.dialogue=int(suffix.rsplit('-',1)[1]);session.enter_screen('dialogue')
+    elif suffix in ('ending','credits'):
+        w.complete=True;session.sequence=FINALE;session.dialogue=len(FINALE)-1;session.enter_screen(suffix)
+    elif suffix=='approach':pass
+    elif suffix=='poster':w.player.x=2640
+    elif suffix in ('mid','preboss'):
+        w.player.x=w.flag_positions[suffix]-40;w.player.hearts=1
+    elif suffix=='meal':w.player.x=1620
+    elif suffix=='death':w.flag('preboss',3000);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
+    elif suffix.startswith('platform-'):
+        w.targets=[];w.pickups=[];w.player.x=680 if suffix=='platform-first' else 1880
+    elif suffix.startswith('boss'):
+        w.flag('preboss',3000);w.player.x=3400;w.enter_boss();b=w.targets[0]
+        if suffix=='boss-close':b['x']=3450;b['timer']=10
+        elif suffix=='boss-stomp':w.player.x=b['x'];w.player.y=b['y']-64;w.player.vy=100;w.player.grounded=False
+        elif suffix=='boss-beam':b['x']=3500;b['timer']=10;w.meal()
+        elif suffix=='boss-summons':w.invincible=True;w.player.x=3220;w.summon_clock=0
+        elif suffix=='boss-expiry':w.player.dayman=.1
+    else:raise ValueError('Unknown Act3 fixture')

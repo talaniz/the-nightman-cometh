@@ -40,7 +40,7 @@ automatic sound before that gesture. Short music stings must not trap dialogue.
 Charlie proposes; actual Waitress refuses. Charlie: "Well, see you tomorrow."
 Dee: "I told you no one writes a musical for no reason!"
 Charlie, hand low: "Dee, I'm right here right now"; hand high:
-"but I'm about to go here!" End. Credits with Dayman.
+"but I'm about to go here!" End with Dayman, then silent credits. Future credits music remains issue #12.
 
 ## Listening gates
 
