@@ -119,6 +119,13 @@ def export(output):
         with wave.open(str(path),'rb') as wav:pcm=wav.readframes(wav.getnframes())
         name=cue['scene']
         add(name,pcm,'kidnap' not in name,'composition approved; runtime loop/codec audition pending','originals/'+cue['file'])
+    credits = sources/'sunny-credits-approved.wav'
+    if hashlib.sha256(credits.read_bytes()).hexdigest() != '3ae10eb062973dbd4fb25ca535d3a0ce9fbc873080274e507f6b187e9b3d3259':
+        raise ValueError('Approved credits master hash mismatch')
+    with wave.open(str(credits), 'rb') as wav:
+        pcm = wav.readframes(wav.getnframes())
+    add('sunny-credits', pcm, False, '61-second audition approved by user; integrated hearing pending',
+        'sources/sunny-credits-approved.wav')
     for name,r in recipe.items():add(name,synth_effect(r),False,'effect awaiting listening','sources/effects.json#'+name)
     # One clearly ordered effects audition with a 350 ms gap between events.
     reel=b''
@@ -130,7 +137,7 @@ def export(output):
         'title':'dayman','narration':'proposal','level1':'little-boy','cricket':'cricket-boss',
         'frank-kidnap':'frank-kidnap','bridge':'troll-toll','frank':'frank-boss',
         'nightman-kidnap':'nightman-kidnap','rooftop':'rooftop','nightman':'nightman-boss',
-        'proposal':'proposal','ending':'dayman','credits':None},
+        'proposal':'proposal','ending':'dayman','credits':'sunny-credits','dialogue-silence':None},
         'next':{'frank-kidnap':'bridge','nightman-kidnap':'rooftop','proposal':'ending'},
         'mix':{'music_gain_cap':.65,'sfx_gain_cap':.5,'sfx_voices':4},
         'approval':'New arrangements/effects and browser hearing pending; original six compositions approved'}

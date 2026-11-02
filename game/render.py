@@ -384,7 +384,8 @@ class Renderer:
             self.center('ENTER for credits',400,CREAM)
         else:
             self.panel('CREDITS')
-            for i,line in enumerate(('The Nightman Cometh','A fan-made musical adventure','Inspired by It’s Always Sunny in Philadelphia','Built with Python, pygame-ce and pygbag')):
+            for i,line in enumerate(('The Nightman Cometh','A fan-made musical adventure','Inspired by It’s Always Sunny in Philadelphia','Built with Python, pygame-ce and pygbag',
+                                    'Credits theme: Heinz Kiessling · retro arrangement')):
                 self.center(line,218+i*28,CREAM,self.small)
             for i,choice in enumerate(session.menu()):
                 self.center(('> ' if i==session.selection else '')+choice,365+i*36,GOLD if i==session.selection else CREAM)

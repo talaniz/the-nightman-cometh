@@ -345,6 +345,21 @@
         0,
         0
       ]
+    },
+    "sunny-credits": {
+      "file": "sunny-credits.ogg",
+      "master": "sunny-credits.wav",
+      "duration": 61.0,
+      "loop": false,
+      "approval": "61-second audition approved by user; integrated hearing pending",
+      "source": "sources/sunny-credits-approved.wav",
+      "sha256": "f3e721f9f310a3a37e6851d01294153c309bcee7b535ce14ca56c1680c37371c",
+      "master_sha256": "3ae10eb062973dbd4fb25ca535d3a0ce9fbc873080274e507f6b187e9b3d3259",
+      "peak": 15762,
+      "endpoints": [
+        0,
+        0
+      ]
     }
   },
   "effects": [
@@ -374,7 +389,8 @@
     "nightman": "nightman-boss",
     "proposal": "proposal",
     "ending": "dayman",
-    "credits": null
+    "credits": "sunny-credits",
+    "dialogue-silence": null
   },
   "next": {
     "frank-kidnap": "bridge",

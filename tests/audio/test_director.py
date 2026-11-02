@@ -52,7 +52,7 @@ def test_invalid_scene_rejected(rig,scene):
     with pytest.raises(ValueError):rig[0].set_scene(scene)
 
 
-def test_production_finale_plays_dayman_then_silent_credits():
+def test_production_finale_plays_dayman_then_approved_credits():
     import json
     from pathlib import Path
     manifest = json.loads((Path(__file__).resolve().parents[2] / 'assets/audio/production/manifest.json').read_text())
@@ -64,6 +64,26 @@ def test_production_finale_plays_dayman_then_silent_credits():
     assert director.scene == 'ending'
     assert backend.current == 'dayman'
     director.set_scene('credits')
-    assert backend.current is None
+    assert backend.current == 'sunny-credits'
     director.retry()
-    assert backend.current is None and not director.error
+    assert backend.current == 'sunny-credits' and not director.error
+
+
+def test_final_spoken_joke_stays_silent_with_credits_music():
+    import json
+    from pathlib import Path
+    from game.scenes.finale import FINALE
+    from game.audio import gameplay_manifest
+    manifest = gameplay_manifest(json.loads((Path(__file__).resolve().parents[2] / 'assets/audio/production/manifest.json').read_text()))
+    backend = Backend(); director = Director(manifest, backend); director.unlock()
+    assert manifest['scenes']['credits'] == 'sunny-credits'
+    for still in FINALE[2:]:
+        director.set_scene(still.music)
+        assert backend.current is None
+    director.set_scene('credits')
+    starts = backend.starts
+    director.volumes(muted=True); assert backend.gains == (0, 0)
+    director.volumes(muted=False); director.tick(62)
+    assert director.scene == 'credits' and backend.starts == starts
+    assert manifest['cues']['sunny-credits']['loop'] is False
+    assert manifest['cues']['sunny-credits']['duration'] == 61

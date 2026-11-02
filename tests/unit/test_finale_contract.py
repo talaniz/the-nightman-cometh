@@ -14,9 +14,9 @@ def test_finale_exact_sequence_and_distinct_waitress():
     s=finish()
     assert [still.text for still in s.sequence][-5:]==LINES
     assert s.sequence[-5].speaker=='WAITRESS' and s.sequence[-3].speaker=='DEE'
-    assert s.sequence[-5].music=='credits' # silence beneath final spoken joke
+    assert s.sequence[-5].music=='dialogue-silence' # silence beneath final spoken joke
 
-def test_play_and_skip_end_at_ending_then_silent_credits():
+def test_play_and_skip_end_at_ending_then_credits():
     for skip in (False,True):
         s=finish()
         if skip:s.next_dialogue(skip=True)

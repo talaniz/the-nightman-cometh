@@ -1,0 +1,389 @@
+{
+  "source_revision": "50f394fadf90ceded138469fda76055c216d3ec5",
+  "source_fingerprint": "e949560a589e64c6873a67aae11bd32be70cbaa74deca7085c61f310f7930308",
+  "ci_run": "https://github.com/talaniz/the-nightman-cometh/actions/runs/41390062136",
+  "environment": "Ubuntu24.04 GitHub runner; pinned Chromium/Firefox and pygame-web runtime",
+  "commands": [
+    "npx playwright test --project=chromium --grep-invert ACT1_NORMAL",
+    "NIGHTMAN_BUILD=build/normal npx playwright test --project=chromium --grep ACT1_NORMAL",
+    "NIGHTMAN_BUILD=build/normal npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'"
+  ],
+  "captures": [
+    {
+      "file": "captures/musical-credits.png",
+      "sha256": "38065dfcb62c9c47fb8b0f743ebc5904fe970e7bf46656051b0b442c3bb05a31",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "musical-credits",
+      "fixture": true,
+      "metadata": "captures/musical-credits.json"
+    },
+    {
+      "file": "captures/credits-1920.png",
+      "sha256": "e8484f158bd32e021f377c65c38b792390036cc0338ff1d8ed218ff3557ca167",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": "credits-1920",
+      "fixture": true,
+      "metadata": "captures/credits-1920.json"
+    },
+    {
+      "file": "captures/credits-narrow.png",
+      "sha256": "3477c622eeb01fc86569490a327a9be6e79e4c6fa2a775bb4571d91fd8e60614",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "credits-narrow",
+      "fixture": true,
+      "metadata": "captures/credits-narrow.json"
+    },
+    {
+      "file": "captures/credits-audio-error.png",
+      "sha256": "f14ab0a3d1dc0ed9f25a670b1d5ea7fa1e2b7cf8397e7f6c6c65d2f125c542d7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "credits-audio-error",
+      "fixture": true,
+      "metadata": "captures/credits-audio-error.json"
+    },
+    {
+      "file": "captures/credits-finished.png",
+      "sha256": "38065dfcb62c9c47fb8b0f743ebc5904fe970e7bf46656051b0b442c3bb05a31",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "credits-finished",
+      "fixture": true,
+      "metadata": "captures/credits-finished.json"
+    },
+    {
+      "file": "captures/credits-muted.png",
+      "sha256": "7e1d60aded3eb9b114bcf1fe06c7676f10caa12005c9aa1210d294e37e9c86da",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "credits-muted",
+      "fixture": true,
+      "metadata": "captures/credits-muted.json"
+    },
+    {
+      "file": "captures/credits-recovered.png",
+      "sha256": "38065dfcb62c9c47fb8b0f743ebc5904fe970e7bf46656051b0b442c3bb05a31",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "credits-recovered",
+      "fixture": true,
+      "metadata": "captures/credits-recovered.json"
+    },
+    {
+      "file": "captures/dayman-ending.png",
+      "sha256": "9f1192a2659bda922a878936bb01d7afcc6eddd2c5fb36f6e1f1dfb0f83a18e2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "dayman-ending",
+      "fixture": true,
+      "metadata": "captures/dayman-ending.json"
+    },
+    {
+      "file": "captures/normal-complete.png",
+      "sha256": "d0c15c90aa08edb8ac9021d26126024654a29cf88e6ca9fc390dbcb2ccf8a9c0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "normal-complete",
+      "fixture": false,
+      "metadata": "captures/normal-complete.json"
+    },
+    {
+      "file": "captures/finale-0.png",
+      "sha256": "bba2d0257d859f1c9b15b8511726fbb4d160422325975038b8593a00b3a867da",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-0",
+      "fixture": true,
+      "metadata": "captures/finale-0.json"
+    },
+    {
+      "file": "captures/finale-1.png",
+      "sha256": "4d01452d007d265fede6080586fd948630f1d6426259936c7f6f872c362b61e4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-1",
+      "fixture": true,
+      "metadata": "captures/finale-1.json"
+    },
+    {
+      "file": "captures/finale-2.png",
+      "sha256": "7fcd41130ace545d683a48e7d5c2075ab1c7e009328516c9db80143b463b0c97",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-2",
+      "fixture": true,
+      "metadata": "captures/finale-2.json"
+    },
+    {
+      "file": "captures/finale-3.png",
+      "sha256": "624d68d4f9233460d642f9529d47cf80d76d688100e9ed43d4157d89ea7cb945",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-3",
+      "fixture": true,
+      "metadata": "captures/finale-3.json"
+    },
+    {
+      "file": "captures/finale-4.png",
+      "sha256": "af4825ad02b34ed56db1dada972367c0945e5ec9f8a0200b6bb0d5a742e73bb6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-4",
+      "fixture": true,
+      "metadata": "captures/finale-4.json"
+    },
+    {
+      "file": "captures/finale-5.png",
+      "sha256": "b3e566c813a6346c7adb19adb9af7ed4aa427e387695c04d59a7d0b70cab656f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-5",
+      "fixture": true,
+      "metadata": "captures/finale-5.json"
+    },
+    {
+      "file": "captures/finale-6.png",
+      "sha256": "859a03b5011f58e55fcf2dd2d360fda075ea00ea85fb1b06dff3c3983bd9c794",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "finale-6",
+      "fixture": true,
+      "metadata": "captures/finale-6.json"
+    },
+    {
+      "file": "captures/title-1280.png",
+      "sha256": "e4e2038d0cc7c0417828860147d2609708a320bcdcbb8c89a45864c7f112a449",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "title-1280",
+      "fixture": false,
+      "metadata": "captures/title-1280.json"
+    },
+    {
+      "file": "captures/opening-0.png",
+      "sha256": "ec683d1bd4e40b72903312b5bed0df710c270a02ba16f563f4faee9c3ba7e4c5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "opening-0",
+      "fixture": false,
+      "metadata": "captures/opening-0.json"
+    },
+    {
+      "file": "captures/opening-8.png",
+      "sha256": "16187d235e3b51c10523019979c595a23614dc0cb46edb9d1ac5b1db1a86764f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "opening-8",
+      "fixture": false,
+      "metadata": "captures/opening-8.json"
+    },
+    {
+      "file": "captures/act1-approach.png",
+      "sha256": "6f938adb2810141aa29e714e0a3811cb5a3d21592b03f51a3d469dc525d4c186",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act1-approach",
+      "fixture": true,
+      "metadata": "captures/act1-approach.json"
+    },
+    {
+      "file": "captures/cricket-charge.png",
+      "sha256": "5f4de81c9e8c2f63d92d485f558db3bcd108d1fe03cfd62f71cf717f432b892a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "cricket-charge",
+      "fixture": true,
+      "metadata": "captures/cricket-charge.json"
+    },
+    {
+      "file": "captures/frank-extra-kidnapping.png",
+      "sha256": "1ce0472018999a10bef1d71398f2dbab0f56fb13a5dfb0add9053e9ccd0dc9bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "frank-extra-kidnapping",
+      "fixture": true,
+      "metadata": "captures/frank-extra-kidnapping.json"
+    },
+    {
+      "file": "captures/bridge-entrance.png",
+      "sha256": "abc205f71b59ad5982f999bf93fb6a173ae5906d1f05cb6bf24c4de11341058a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "bridge-entrance",
+      "fixture": true,
+      "metadata": "captures/bridge-entrance.json"
+    },
+    {
+      "file": "captures/frank-bat.png",
+      "sha256": "37e8bb939ec0e928516aa5190bf762a40db6548853c353c674199c5852d1db7e",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "frank-bat",
+      "fixture": true,
+      "metadata": "captures/frank-bat.json"
+    },
+    {
+      "file": "captures/frank-sandwich.png",
+      "sha256": "f388a67d21303e6c3dcf1b92bcf8c1ac8aeceb63a9fb4e863a0031acbbdeae8d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "frank-sandwich",
+      "fixture": true,
+      "metadata": "captures/frank-sandwich.json"
+    },
+    {
+      "file": "captures/nightman-abduction-0.png",
+      "sha256": "3b40b6865e778c21685448cf8a1013a478d92280161109685e8d9220d159f6b2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-abduction-0",
+      "fixture": true,
+      "metadata": "captures/nightman-abduction-0.json"
+    },
+    {
+      "file": "captures/nightman-abduction-1.png",
+      "sha256": "d8d835323c8a90b092c4855981ba873ed8d725c3915f88a6afc4e8f8d9fc7140",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-abduction-1",
+      "fixture": true,
+      "metadata": "captures/nightman-abduction-1.json"
+    },
+    {
+      "file": "captures/rooftop-entrance.png",
+      "sha256": "ece1cab14f3864551092ad545d851f5beb4da10fc614c874d0215a4956cae2c4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-entrance",
+      "fixture": true,
+      "metadata": "captures/rooftop-entrance.json"
+    },
+    {
+      "file": "captures/rooftop-poster.png",
+      "sha256": "e34ed07136ae40ab112577ebcaa87d300b255755d0a6508216d277300db57298",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "rooftop-poster",
+      "fixture": true,
+      "metadata": "captures/rooftop-poster.json"
+    },
+    {
+      "file": "captures/nightman-summons.png",
+      "sha256": "1b01c90af8410e7d301a070626f6a8e6b3d70ca5caf7945625d5ae472d53e56a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "nightman-summons",
+      "fixture": true,
+      "metadata": "captures/nightman-summons.json"
+    },
+    {
+      "file": "captures/normal-death.png",
+      "sha256": "d1b1bfc3d436b80e260f49b64a09e4734bc56d9203997faeb0b975588eee8d45",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "normal-death",
+      "fixture": false,
+      "metadata": "captures/normal-death.json"
+    },
+    {
+      "file": "captures/normal-retry.png",
+      "sha256": "f9a38fbac870f4a99ba47b3441854f547941eb29ab93efb2143912373f80cda6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "normal-retry",
+      "fixture": false,
+      "metadata": "captures/normal-retry.json"
+    },
+    {
+      "file": "captures/act3-normal-retry.png",
+      "sha256": "a7e365da182db5531d4826fc9584d9c815be1314019aec908a3a4cd763ed2fd3",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "act3-normal-retry",
+      "fixture": false,
+      "metadata": "captures/act3-normal-retry.json"
+    },
+    {
+      "file": "captures/ending-1920.png",
+      "sha256": "8ba2727bdc1be008ed26e3a80c4f1997a7bffee9afba44f48f2499462cd3a80c",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": "ending-1920",
+      "fixture": true,
+      "metadata": "captures/ending-1920.json"
+    }
+  ],
+  "unexpected_errors": [],
+  "hearing": "Standalone 61-second audition user-approved. Integrated browser hearing pending; mixer state is not a listening pass."
+}

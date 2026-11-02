@@ -70,15 +70,28 @@ test('ACT3_MOTION live boss telegraphs and capped summons',async({page})=>{
  expect(faults).toEqual([]);
 });
 
-test('FINALE exact dialogue ending and credits silence survive retry and replay',async({page})=>{
+test('FINALE exact dialogue and approved credits survive retry completion and replay',async({page})=>{
  const faults=errors(page);await boot(page);
  const lines=['The Dayman saves the day.','Will you marry me?',"I'm not going to marry you, Charlie.",'Well, see you tomorrow.','I told you no one writes a musical for no reason!',"Dee, I'm right here right now","but I'm about to go here!"];
  for(let i=0;i<lines.length;i++){
   await fixture(page,'finale-'+i);expect((await state(page)).story.text).toBe(lines[i]);expect((await state(page)).audio.playing).toBe(i<2?'proposal':null);await capture(page,'finale-'+i);
  }
  await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('ending');expect((await state(page)).audio.playing).toBe('dayman');await capture(page,'dayman-ending');
- await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe(null);await capture(page,'silent-credits');
- for(const key of ['m','m','r']){await page.keyboard.press(key);await page.waitForTimeout(100);expect((await state(page)).audio.playing).toBe(null);}
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');
+ await expect.poll(async()=>(await state(page)).audio.music_busy).toBe(1);await capture(page,'musical-credits');
+ await page.keyboard.press('m');await expect.poll(async()=>(await state(page)).audio.gains[0]).toBe(0);await capture(page,'credits-muted');
+ await page.keyboard.press('m');await expect.poll(async()=>(await state(page)).audio.gains[0]).toBeGreaterThan(0);
+ const errorId=++fixtureId;
+ await page.evaluate(id=>window.__nightmanFixture=JSON.stringify({name:'audio-error',id}),errorId);
+ await page.waitForFunction(id=>JSON.parse(window.__nightmanGame).fixture_id===id,errorId);
+ expect((await state(page)).audio.error).toContain('Audio unavailable');await capture(page,'credits-audio-error');
+ await page.keyboard.press('r');await expect.poll(async()=>(await state(page)).audio.error).toBe('');
+ await expect.poll(async()=>(await state(page)).audio.music_busy).toBe(1);await capture(page,'credits-recovered');
+ await expect.poll(async()=>(await state(page)).audio.music_busy,{timeout:70000,intervals:[500]}).toBe(0);
+ expect((await state(page)).screen).toBe('credits');await capture(page,'credits-finished');
+ await page.setViewportSize({width:1920,height:1080});await capture(page,'credits-1920');
+ await page.setViewportSize({width:390,height:844});await capture(page,'credits-narrow');
+ await page.setViewportSize({width:1280,height:720});
  await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('dialogue');await page.keyboard.press('Escape');await expect.poll(async()=>(await state(page)).screen).toBe('ending');
  await page.setViewportSize({width:1920,height:1080});await capture(page,'ending-1920');await page.setViewportSize({width:390,height:844});await capture(page,'ending-narrow');expect(faults).toEqual([]);
 });
