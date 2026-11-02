@@ -148,7 +148,7 @@ for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '
  await driveRooftop(page,{recovery,restart,choose,capture});
  while((await state(page)).screen==='dialogue')await press(page,'Enter');
  expect((await state(page)).screen).toBe('ending');expect((await state(page)).audio.playing).toBe('dayman');await capture(page,'normal-ending');
- await press(page,'Enter');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe(null);await capture(page,'normal-complete');
+ await press(page,'Enter');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');await capture(page,'normal-complete');
  const saved=JSON.parse(await page.evaluate(()=>localStorage.getItem('nightman.progress.v1')));expect(saved.complete).toBe(true);expect(saved.flags).toContain('preboss');if(recovery)expect(forcedRecovery).toBe(true);expect(faults).toEqual([]);
- await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).screen).toBe('credits');expect(faults).toEqual([]);
+ await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');expect(faults).toEqual([]);
 });

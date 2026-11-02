@@ -1,3 +1,9 @@
+# Current: approved credits and journey polish
+
+Base 6b507797820a9893cb9f412438073f01dcaea0e2, branch codex/credits-polish, worktree /home/palpatine/projects/the-nightman-cometh-credits-polish. User approved the 61-second credits track and this focused phase. Contract: [credits-polish](milestones/credits-polish.md). Main owns implementation and triage; independent per-commit code review then separate E2E. No merge/deployment or M7/M8 execution. Next: observe audio-routing red, integrate approved bytes, verify browser journey and publish evidence. Exact-head results live on the PR. Historical context follows.
+
+---
+
 # M5 implementation — initial browser verification
 
 Both phases implemented on codex/m5-underbridge, base d27ca3e643dcacf7c511ceeb6ce50c9c10282f87. User approved the amended contract including exact Frank escape dialogue. Native suite: 179 passed; observed progression/bridge/projectile/Frank/cue red records in docs/evidence/M5/logs. Browser verification and final screenshots are in progress; no independent reviews or acceptance yet. First browser route failed because the driver held movement while waiting for upper-ledge landing; driver now releases at destination. Tracing disabled on Pi due resource pressure; all outcome assertions retained. Next: complete actual-browser flows/evidence, then per-commit code reviews followed by separate E2E. No merge/deploy authorized.

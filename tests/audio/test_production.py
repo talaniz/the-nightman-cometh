@@ -61,3 +61,14 @@ def test_ensemble_boundary_snap_ends_at_zero():
 ])
 def test_production_scores_reject_unbounded_or_invalid_data(score):
     with pytest.raises(ValueError):render_score(score)
+
+
+def test_credits_master_preserves_user_approved_bytes_and_export_hashes():
+    import hashlib
+    manifest=json.loads((ROOT/'assets/audio/production/manifest.json').read_text())
+    cue=manifest['cues']['sunny-credits']
+    expected='3ae10eb062973dbd4fb25ca535d3a0ce9fbc873080274e507f6b187e9b3d3259'
+    assert hashlib.sha256((ROOT/'assets/audio/sources/sunny-credits-approved.wav').read_bytes()).hexdigest()==expected
+    assert hashlib.sha256((ROOT/'assets/audio/production'/cue['master']).read_bytes()).hexdigest()==expected==cue['master_sha256']
+    assert hashlib.sha256((ROOT/'assets/audio/production'/cue['file']).read_bytes()).hexdigest()==cue['sha256']
+    assert cue['duration']==61 and cue['loop'] is False

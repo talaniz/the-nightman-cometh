@@ -1,0 +1,53 @@
+.......FFF..                                                             [100%]
+=================================== FAILURES ===================================
+__________ test_production_finale_plays_dayman_then_approved_credits ___________
+
+    def test_production_finale_plays_dayman_then_approved_credits():
+        import json
+        from pathlib import Path
+        manifest = json.loads((Path(__file__).resolve().parents[2] / 'assets/audio/production/manifest.json').read_text())
+        backend = Backend()
+        director = Director(manifest, backend)
+        director.unlock()
+        director.set_scene('proposal')
+        director.tick(manifest['cues']['proposal']['duration'])
+        assert director.scene == 'ending'
+        assert backend.current == 'dayman'
+        director.set_scene('credits')
+>       assert backend.current == 'sunny-credits'
+E       AssertionError: assert None == 'sunny-credits'
+E        +  where None = <test_director.Backend object at 0x7f98f0c590>.current
+
+tests/audio/test_director.py:67: AssertionError
+____________ test_final_spoken_joke_stays_silent_with_credits_music ____________
+
+    def test_final_spoken_joke_stays_silent_with_credits_music():
+        import json
+        from pathlib import Path
+        from game.scenes.finale import FINALE
+        from game.audio import gameplay_manifest
+        manifest = gameplay_manifest(json.loads((Path(__file__).resolve().parents[2] / 'assets/audio/production/manifest.json').read_text()))
+        backend = Backend(); director = Director(manifest, backend); director.unlock()
+>       assert manifest['scenes']['credits'] == 'sunny-credits'
+E       AssertionError: assert None == 'sunny-credits'
+
+tests/audio/test_director.py:79: AssertionError
+_______________ test_finale_exact_sequence_and_distinct_waitress _______________
+
+    def test_finale_exact_sequence_and_distinct_waitress():
+        s=finish()
+        assert [still.text for still in s.sequence][-5:]==LINES
+        assert s.sequence[-5].speaker=='WAITRESS' and s.sequence[-3].speaker=='DEE'
+>       assert s.sequence[-5].music=='dialogue-silence' # silence beneath final spoken joke
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'credits' == 'dialogue-silence'
+E         
+E         - dialogue-silence
+E         + credits
+
+tests/unit/test_finale_contract.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED tests/audio/test_director.py::test_production_finale_plays_dayman_then_approved_credits
+FAILED tests/audio/test_director.py::test_final_spoken_joke_stays_silent_with_credits_music
+FAILED tests/unit/test_finale_contract.py::test_finale_exact_sequence_and_distinct_waitress
+3 failed, 9 passed in 0.35s

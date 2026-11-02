@@ -1,6 +1,6 @@
 # Full implementation plan
 
-Status: user authorized proceeding with the plan on 2026-10-11. M1 is in progress; later milestones remain pending their dependencies. One branch/worktree and draft PR per milestone, phases committed separately when each provides a coherent reviewable result. EACH commit receives a distinct code reviewer; each PR receives a separate E2E reviewer after code sign-off. Do not merge automatically.
+Status: M6 complete keyboard implementation merged through PR20. User authorized focused credits/journey polish before M7; see [active contract](milestones/credits-polish.md). M7 USB and M8 final acceptance remain planned. One branch/worktree and PR per bounded phase; distinct per-commit code reviews followed by separate E2E.
 
 | Milestone | User-visible result | Build phases | Dependencies |
 | --- | --- | --- | --- |

@@ -5,8 +5,10 @@ painted as stage scenery, the Rat Bat, Dayman and three story acts.
 
 The M6 candidate connects the coffee-shop rescue, underbridge Troll Toll and
 rooftop Nightman encounter into a complete keyboard journey. It includes Charlie's
-proposal/rejection finale, Dayman on the ending screen and silent credits.
-M6 independent review and human visual/listening acceptance remain separate gates.
+proposal/rejection finale, Dayman on the ending screen and the approved 61-second retro Sunny credits theme.
+M6 is merged. The focused credits polish candidate preserves silence beneath the final
+spoken joke; the credits theme plays once per visit and navigation stays available.
+Integrated visual/listening acceptance remains separate from automated checks.
 Physical USB controller support is M7; three final-candidate playthroughs and release
 acceptance are M8. This candidate is not a final release.
 
@@ -67,7 +69,7 @@ this browser origin. Storage failure permits in-memory play. Clear browser data
 or use Start Act1 to begin fresh; New Game confirms before discarding a save.
 Legacy rehearsal saves retain volumes and start Act 1. Continue from a completed
 Act 1 or Act 2 save plays the kidnapping transition into the next act. Completed
-Act 3 saves open silent credits with Replay ending and Title controls; replay does
+Act 3 saves open musical credits with Replay ending and Title controls; replay does
 not erase progress. The finale uses Enter to advance and Escape to skip safely.
 Changing the preview port changes the browser origin, so existing saves are not
 shared automatically between ports.

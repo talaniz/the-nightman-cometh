@@ -18,7 +18,7 @@ approvals establish musical direction, not full-length cue approval.
 | Nightman boss | Original | Faster/intense final-boss theme, distinct from approach |
 | Final rescue / Charlie proposal | Proposal Song | Finite cue, readable stills; duck/stop for final joke |
 | Ending | Dayman | Approved production cue |
-| Credits | Silence | Future original Sunny-style cue deferred: [issue #12](https://github.com/talaniz/the-nightman-cometh/issues/12) |
+| Credits | Sunny theme, approved retro arrangement | 61-second audition approved; play once, then stop. Integrated hearing pending; [issue #12](https://github.com/talaniz/the-nightman-cometh/issues/12). |
 | Dayman power-up | Faster Dayman variant | Slightly faster requested; 1.10x pitch-preserving audition proposed |
 
 Original music may draw broad rhythmic/timbral inspiration from TMNT arcade and
@@ -40,7 +40,7 @@ automatic sound before that gesture. Short music stings must not trap dialogue.
 Charlie proposes; actual Waitress refuses. Charlie: "Well, see you tomorrow."
 Dee: "I told you no one writes a musical for no reason!"
 Charlie, hand low: "Dee, I'm right here right now"; hand high:
-"but I'm about to go here!" End with Dayman, then silent credits. Future credits music remains issue #12.
+"but I'm about to go here!" End with Dayman, then the approved Sunny credits track. Keep the rejection and final spoken joke silent.
 
 ## Listening gates
 
