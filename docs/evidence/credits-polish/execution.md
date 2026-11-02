@@ -22,3 +22,9 @@ Pi Python3.11.2, pygame-ce2.5.8, pinned existing environment /tmp/nightman-m2-to
 ## Pending browser/evidence gates
 
 Remote CI will execute real pygbag Chromium/Firefox full journeys and focused recovery checks. FINALE additionally waits for the actual 61-second music channel to stop, exercises missing-audio recovery/mute and captures changed credits states in three viewports. Screenshot/gallery evidence, independent per-commit reviews and separate E2E must complete before readiness. No final human acceptance, M7 USB, M8 qualifying runs, merge or deployment claimed.
+
+## Browser and visual verification completed
+
+CI41390062136 at source50f394f passed 209 native, 25 focused Chromium, two ordinary full three-act Chromium keyboard routes and four Firefox checks. Final-head CI/review status remains on PR21. Raw result excerpts are logs/browser-summary.txt; full run/artifacts linked in manifest.json. Focused checks observed one music player, mute/recovery, natural 61-second stop and usable replay. Ordinary routes completed all bosses without cheats and restored completed saves to musical credits. Expected Firefox deliberate about:blank unload messages remain explicitly identified by existing tests.
+
+Main opened all34 selected screenshots individually: changed credits in desktop/narrow sizes and mute/error/recovery/finished states; every finale still and Dayman ending; title/opening/kidnappings, each approach/boss and ordinary death/retry/completion. No material clipping, story-order or visual regression observed in these captures. Stage art/gameplay remain unchanged. Source fingerprint is recorded in manifest and matches the served local ordinary candidate. These are browser regression runs, not M8 final acceptance, physical USB or human integrated listening. Independent review remains pending.
