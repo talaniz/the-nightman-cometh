@@ -24,8 +24,14 @@ class Storage:
         if WEB:window.localStorage.setItem('nightman.progress.v1',value)
         else:self.raw=value
 
+def initialize_display():
+    # Browser Gamepad access belongs to our guarded adapter, not SDL joystick.
+    pygame.display.init()
+    pygame.font.init()
+    return pygame.display.set_mode((960,540))
+
 async def main():
-    pygame.init();screen=pygame.display.set_mode((960,540));pygame.display.set_caption('The Nightman Cometh')
+    screen=initialize_display();pygame.display.set_caption('The Nightman Cometh')
     renderer=Renderer(screen);session=Session(Storage());held=set();pending=set();inputs=Controls();session.input_state=inputs.snapshot()
     root=Path('audio') if Path('audio/manifest.json').is_file() else Path(__file__).resolve().parents[1]/'assets/audio/production'
     manifest=json.loads((root/'manifest.json').read_text());mixer=Mixer(manifest,root);audio=Director(gameplay_manifest(manifest),mixer)

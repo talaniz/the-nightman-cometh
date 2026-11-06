@@ -33,7 +33,8 @@ jobs:
           NIGHTMAN_EVIDENCE: build/review-captures
         run: |
           export CHROMIUM_PATH="$(node -e "process.stdout.write(require('@playwright/test').chromium.executablePath())")"
-          npx playwright test --project=chromium --grep-invert ACT1_NORMAL
+          npx playwright test --project=chromium --grep CONTROLLER
+          npx playwright test --project=chromium --grep-invert 'ACT1_NORMAL|CONTROLLER'
           python tools/build_web.py --output build/normal
           export NIGHTMAN_BUILD=build/normal
           npx playwright test --project=chromium --grep ACT1_NORMAL

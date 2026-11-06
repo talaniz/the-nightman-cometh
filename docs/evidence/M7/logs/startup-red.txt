@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_keyboard_startup_does_not_require_native_joystick_subsystem _______
+
+    def test_keyboard_startup_does_not_require_native_joystick_subsystem():
+        pygame.quit()
+        try:
+            screen = initialize_display()
+            assert screen.get_size() == (960, 540)
+            assert pygame.font.get_init()
+            # The browser adapter owns Gamepad access and catches denial/errors.
+            # SDL's second reader must not run first and bypass that fallback.
+>           assert not pygame.joystick.get_init()
+E           AssertionError: assert not True
+E            +  where True = <built-in function get_init>()
+E            +    where <built-in function get_init> = <module 'pygame.joystick' from '/tmp/nightman-m2-tools/lib/python3.11/site-packages/pygame/joystick.cpython-311-aarch64-linux-gnu.so'>.get_init
+E            +      where <module 'pygame.joystick' from '/tmp/nightman-m2-tools/lib/python3.11/site-packages/pygame/joystick.cpython-311-aarch64-linux-gnu.so'> = pygame.joystick
+
+tests/unit/test_input_startup.py:13: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_input_startup.py::test_keyboard_startup_does_not_require_native_joystick_subsystem
+1 failed in 0.97s

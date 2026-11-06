@@ -1,21 +1,21 @@
 const {test,expect}=require('@playwright/test');
 const fs=require('node:fs'),path=require('node:path');
 const state=async p=>JSON.parse(await p.evaluate(()=>window.__nightmanGame));
-async function boot(p){
- await p.addInitScript(()=>{
-  window.testPad={connected:true,mapping:'standard',axes:[0,0],buttons:Array.from({length:17},()=>({pressed:false}))};
-  window.padMode='normal';
+async function boot(p,mode='normal'){
+ await p.addInitScript(mode=>{
+  window.testPad={id:'Synthetic standard USB pad',index:0,timestamp:0,connected:true,mapping:'standard',axes:[0,0,0,0],buttons:Array.from({length:17},()=>({pressed:false,touched:false,value:0}))};
+  window.padMode=mode;
   Object.defineProperty(navigator,'getGamepads',{configurable:true,value:()=>{
    if(window.padMode==='denied')throw new DOMException('Denied','SecurityError');
    return window.padMode==='absent'?[]:[window.testPad];
   }});
- });
+ },mode);
  await p.goto('/');await expect(p.locator('#boot-action')).toBeEnabled({timeout:120000});await p.locator('#boot-action').click();
  await p.waitForFunction(()=>!!window.__nightmanGame,{},{timeout:120000});await p.locator('#canvas').focus();
- await expect.poll(async()=>(await state(p)).input.connected).toBe(true);
+ await expect.poll(async()=>(await state(p)).input.status).toBe(mode==='denied'?'unavailable':'connected');
  await p.waitForTimeout(100);
 }
-async function buttons(p,list){await p.evaluate(list=>window.testPad.buttons.forEach((b,i)=>b.pressed=list.includes(i)),list);await p.waitForTimeout(100);}
+async function buttons(p,list){await p.evaluate(list=>window.testPad.buttons.forEach((b,i)=>{b.pressed=list.includes(i);b.touched=b.pressed;b.value=b.pressed?1:0;}),list);await p.waitForTimeout(100);}
 async function tap(p,b){await buttons(p,[b]);await buttons(p,[]);}
 let id=8000;
 async function fixture(p,name){await buttons(p,[]);const n=++id;await p.evaluate(req=>window.__nightmanFixture=JSON.stringify(req),{name,id:n});await p.waitForFunction(n=>JSON.parse(window.__nightmanGame).fixture_id===n,n);await p.waitForTimeout(100);}
@@ -95,4 +95,14 @@ test('CONTROLLER gameplay all acts attacks death retry and mixed input',async({p
  await fixture(page,'act1-approach');const x=(await state(page)).world.player.x;
  await page.keyboard.down('ArrowLeft');await buttons(page,[15]);const neutral=(await state(page)).world.player.x;await page.waitForTimeout(200);expect((await state(page)).world.player.x).toBe(neutral);
  await page.keyboard.up('ArrowLeft');await expect.poll(async()=>(await state(page)).world.player.x).toBeGreaterThan(neutral);await buttons(page,[]);expect(faults).toEqual([]);
+});
+
+
+test('CONTROLLER blocked API at startup preserves keyboard play',async({page})=>{
+ const faults=errors(page);await boot(page,'denied');
+ await expect(page.locator('#controls')).toContainText('unavailable');await capture(page,'blocked-startup');
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('dialogue');
+ await page.keyboard.press('Escape');await expect.poll(async()=>(await state(page)).screen).toBe('training');
+ const x=(await state(page)).world.player.x;await page.keyboard.down('ArrowRight');
+ await expect.poll(async()=>(await state(page)).world.player.x).toBeGreaterThan(x+10);await page.keyboard.up('ArrowRight');expect(faults).toEqual([]);
 });
