@@ -15,7 +15,7 @@ async function boot(p,mode='normal'){
  await expect.poll(async()=>(await state(p)).input.status).toBe(mode==='denied'?'unavailable':'connected');
  await p.waitForTimeout(100);
 }
-async function buttons(p,list){await p.evaluate(list=>window.testPad.buttons.forEach((b,i)=>{b.pressed=list.includes(i);b.touched=b.pressed;b.value=b.pressed?1:0;}),list);await p.waitForTimeout(100);}
+async function buttons(p,list){const before=(await state(p)).frames;await p.evaluate(list=>window.testPad.buttons.forEach((b,i)=>{b.pressed=list.includes(i);b.touched=b.pressed;b.value=b.pressed?1:0;}),list);await p.waitForFunction(n=>JSON.parse(window.__nightmanGame).frames>=n+2,before);}
 async function tap(p,b){await buttons(p,[b]);await buttons(p,[]);}
 let id=8000;
 async function fixture(p,name){await buttons(p,[]);const n=++id;await p.evaluate(req=>window.__nightmanFixture=JSON.stringify(req),{name,id:n});await p.waitForFunction(n=>JSON.parse(window.__nightmanGame).fixture_id===n,n);await p.waitForTimeout(100);}
@@ -75,7 +75,7 @@ test('CONTROLLER disconnect focus unsupported fallback and deadzone',async({page
  await page.evaluate(()=>{window.testPad.buttons[9].pressed=true;document.hasFocus=window.originalFocus;window.dispatchEvent(new FocusEvent('focus'));});await page.locator('#canvas').focus();
  await page.waitForTimeout(300);expect((await state(page)).screen).toBe('pause');await capture(page,'focus-return');await buttons(page,[]);await tap(page,9);
  await page.evaluate(()=>window.testPad.mapping='');await expect.poll(async()=>(await state(page)).input.status).toBe('unsupported');expect((await state(page)).screen).toBe('pause');await capture(page,'unsupported');
- await page.keyboard.press('Escape');expect((await state(page)).screen).toBe('training');
+ await page.keyboard.press('Escape');await expect.poll(async()=>(await state(page)).screen).toBe('training');
  const x=(await state(page)).world.player.x;await page.keyboard.down('ArrowRight');await expect.poll(async()=>(await state(page)).world.player.x).toBeGreaterThan(x+10);await page.keyboard.up('ArrowRight');
  await page.evaluate(()=>window.padMode='denied');await expect.poll(async()=>(await state(page)).input.status).toBe('unavailable');await capture(page,'unavailable');
  expect(faults).toEqual([]);
