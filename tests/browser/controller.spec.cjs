@@ -90,9 +90,10 @@ test('CONTROLLER gameplay all acts attacks death retry and mixed input',async({p
   await tap(page,0);await expect.poll(async()=>(await state(page)).world.player.grounded).toBe(false);await capture(page,`act${act}-jump`);
   await fixture(page,`act${act}-death`);await capture(page,`act${act}-death`);await tap(page,0);expect((await state(page)).screen).toBe('training');expect((await state(page)).world.player.hearts).toBe(3);await capture(page,`act${act}-retry`);
  }
- for(const act of [2,3]){
-  await fixture(page,`act${act}-boss-close`);const hp=(await state(page)).world.targets[0].hp;await tap(page,2);
+ for(const act of [1,2,3]){
+  await fixture(page,act===1?'act1-boss-stunned':`act${act}-boss-close`);const hp=(await state(page)).world.targets[0].hp;await tap(page,2);
   await expect.poll(async()=>(await state(page)).world.targets[0].hp).toBeLessThan(hp);await capture(page,`act${act}-bat`);
+  if(act===1)continue;
   await fixture(page,`act${act}-boss-beam`);const beamHp=(await state(page)).world.targets[0].hp;await tap(page,3);
   await expect.poll(async()=>(await state(page)).world.targets[0].hp).toBeLessThan(beamHp);await capture(page,`act${act}-beam`);
  }

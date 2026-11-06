@@ -199,7 +199,10 @@ class Renderer:
             text='D-pad move · Bottom jump · Left bat · Top beam · L mute · R audio retry'
         elif session.screen=='dialogue':text='Bottom next · Right skip · L mute · R audio retry'
         elif session.screen=='password':text='D-pad select · Bottom add / GO · Right back'
-        else:text='D-pad choose / adjust · Bottom confirm · Right back · Start pause/resume'
+        elif session.screen=='pause':text='D-pad choose · Bottom confirm · Right / Start resume'
+        elif session.screen=='options':text='D-pad choose / adjust · Bottom confirm · Right back'
+        elif session.screen=='ending':text='Bottom / Right for credits · L mute · R audio retry'
+        else:text='D-pad choose · Bottom confirm · L mute · R audio retry'
         self.rect((24,25,39),(0,508,960,32));self.center(text,517,MUTED,self.small)
 
     def story(self,session):
