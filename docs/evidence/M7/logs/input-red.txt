@@ -1,0 +1,80 @@
+F.FFFFF..                                                                [100%]
+=================================== FAILURES ===================================
+_______________________ test_pad_move_jump_and_held_edge _______________________
+
+    def test_pad_move_jump_and_held_edge():
+        c = ready()
+        held, pressed, lost = c.sample(pad(0, x=1), 'training')
+>       assert held == {'right', 'jump'}
+E       AssertionError: assert set() == {'jump', 'right'}
+E         
+E         Extra items in the right set:
+E         'right'
+E         'jump'
+E         Use -v to get more diff
+
+tests/unit/test_input_controls.py:18: AssertionError
+______ test_union_prevents_duplicate_confirm_and_keeps_other_source_held _______
+
+    def test_union_prevents_duplicate_confirm_and_keeps_other_source_held():
+        c = ready()
+        c.key_down('confirm')
+>       assert c.sample(pad(0), 'title')[1] == {'confirm'}
+E       AssertionError: assert set() == {'confirm'}
+E         
+E         Extra items in the right set:
+E         'confirm'
+E         Use -v to get more diff
+
+tests/unit/test_input_controls.py:34: AssertionError
+______ test_disconnect_pauses_and_clears_then_reconnect_requires_release _______
+
+    def test_disconnect_pauses_and_clears_then_reconnect_requires_release():
+        c = ready()
+        c.sample(pad(x=1), 'training')
+        held, pressed, lost = c.sample({'status': 'absent'}, 'training')
+>       assert lost and not held and not pressed
+E       assert (False)
+
+tests/unit/test_input_controls.py:45: AssertionError
+__________ test_screen_transition_and_focus_cannot_reuse_held_buttons __________
+
+    def test_screen_transition_and_focus_cannot_reuse_held_buttons():
+        c = ready()
+        c.sample(pad(0), 'title')
+        c.quarantine()
+        assert not c.sample(pad(0), 'dialogue')[1]
+        c.sample(pad(), 'dialogue')
+>       assert c.sample(pad(0), 'dialogue')[1] == {'confirm'}
+E       AssertionError: assert set() == {'confirm'}
+E         
+E         Extra items in the right set:
+E         'confirm'
+E         Use -v to get more diff
+
+tests/unit/test_input_controls.py:57: AssertionError
+________ test_unsupported_pad_falls_back_to_keyboard_and_reports_status ________
+
+    def test_unsupported_pad_falls_back_to_keyboard_and_reports_status():
+        c = ready()
+>       assert c.sample(pad(status='unsupported'), 'training')[2]
+E       assert False
+
+tests/unit/test_input_controls.py:66: AssertionError
+______________ test_quick_keyboard_tap_is_not_lost_between_frames ______________
+
+    def test_quick_keyboard_tap_is_not_lost_between_frames():
+        c = ready()
+        c.key_down('jump'); c.key_up('jump')
+>       assert 'jump' in c.sample(pad(), 'training')[1]
+E       AssertionError: assert 'jump' in set()
+
+tests/unit/test_input_controls.py:75: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_input_controls.py::test_pad_move_jump_and_held_edge - ...
+FAILED tests/unit/test_input_controls.py::test_union_prevents_duplicate_confirm_and_keeps_other_source_held
+FAILED tests/unit/test_input_controls.py::test_disconnect_pauses_and_clears_then_reconnect_requires_release
+FAILED tests/unit/test_input_controls.py::test_screen_transition_and_focus_cannot_reuse_held_buttons
+FAILED tests/unit/test_input_controls.py::test_unsupported_pad_falls_back_to_keyboard_and_reports_status
+FAILED tests/unit/test_input_controls.py::test_quick_keyboard_tap_is_not_lost_between_frames
+6 failed, 3 passed in 0.19s

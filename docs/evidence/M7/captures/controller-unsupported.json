@@ -1,0 +1,167 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "input": {
+      "status": "unsupported",
+      "connected": false,
+      "release_required": false,
+      "pad_mode": false,
+      "password_index": 0
+    },
+    "password": "",
+    "screen": "pause",
+    "selection": 0,
+    "menu": [
+      "Resume",
+      "Options",
+      "Replay dialogue",
+      "Title"
+    ],
+    "qa": false,
+    "qa_label": "",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 1,
+    "story": {
+      "count": 10,
+      "speaker": "DEE",
+      "text": "'For ye see'? Come on, Charlie, what's going on here?"
+    },
+    "world": {
+      "player": {
+        "x": 127.66666666666673,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": true,
+      "targets": [
+        {
+          "id": 0,
+          "kind": "rat",
+          "x": 618.25,
+          "y": 398,
+          "home": 580,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 1,
+          "kind": "ghoul",
+          "x": 802.9500000000023,
+          "y": 328,
+          "home": 780,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 2,
+          "kind": "rat",
+          "x": 1478.25,
+          "y": 398,
+          "home": 1440,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 3,
+          "kind": "ghoul",
+          "x": 2012.9500000000023,
+          "y": 398,
+          "home": 1990,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 4,
+          "kind": "ghoul",
+          "x": 2362.9499999999907,
+          "y": 268,
+          "home": 2340,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 5,
+          "kind": "rat",
+          "x": 2898.25,
+          "y": 318,
+          "home": 2860,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 50
+        },
+        {
+          "id": 6,
+          "kind": "chicken",
+          "x": 2200,
+          "y": 160,
+          "home": 2200,
+          "alive": true,
+          "direction": 1,
+          "state": "waiting",
+          "timer": 0,
+          "animation_step": 50
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 51,
+      "act": "act1",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "little-boy",
+      "muted": false,
+      "error": "",
+      "music_busy": 2,
+      "sfx_busy": 0,
+      "gains": [
+        0.375,
+        0.34375
+      ]
+    },
+    "fixture_id": null,
+    "loops": 1,
+    "frames": 195,
+    "frame_ms_mean": 16.68333333333333,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  },
+  "simulated_pad": true
+}
