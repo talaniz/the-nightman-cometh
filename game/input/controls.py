@@ -70,6 +70,8 @@ class Controls:
             self.quarantine()
         self.focused = focused
         self.status, self.slot, self.connected = status, slot, status == 'connected'
+        if status != 'connected':
+            self.pad_mode = False
         if self.release_required:
             if not actions and focused:
                 self.release_required = False

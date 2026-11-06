@@ -88,3 +88,12 @@ def test_malformed_pad_data_fails_closed():
     for bad in [None, [], {'status': 'connected'}, pad(x=float('nan'))]:
         c.sample(bad, 'training')
     assert not c.sample({'status': 'unavailable'}, 'training')[0]
+
+
+def test_lost_or_unsupported_pad_restores_keyboard_hints():
+    for status in ('absent', 'unsupported', 'unavailable'):
+        c = ready()
+        c.sample(pad(2), 'training')
+        assert c.pad_mode
+        c.sample({'status': status}, 'training')
+        assert not c.pad_mode
