@@ -30,11 +30,10 @@ def perform(session, audio, controls, pressed):
             elif key == 'DEL': session.password = session.password[:-1]; session.message = ''
             elif len(session.password) < 16: session.password += key; session.message = ''
         return set()
-    if 'confirm' in pressed:
-        session.activate()
-        return set()
     if 'up' in pressed: session.select(-1)
     elif 'down' in pressed: session.select(1)
     if 'left' in pressed: session.adjust(-1)
     elif 'right' in pressed: session.adjust(1)
+    if 'confirm' in pressed:
+        session.activate()
     return set()

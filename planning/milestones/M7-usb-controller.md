@@ -60,3 +60,6 @@ Focus/error refinement: next remote run passed3controller workflows (menus/passw
 
 #### Recovery hint correction
 On absent, unsupported or unavailable pad status, keyboard fallback hints must immediately replace controller hints. Scope: Controls.sample, native input regression and controller recovery browser evidence. Reproduce with test_lost_or_unsupported_pad_restores_keyboard_hints (expected false pad_mode, currently true), then run input/action/startup tests and remote browser recovery captures. No gameplay or mapping change.
+
+#### Batched menu input regression
+Remote ACT3_SAVE revealed that a quick Down then Enter within one pygame frame discarded navigation and activated Start Act1 instead of Continue. Scope: shared action dispatch and native action regression. Menu navigation/adjustment must precede confirmation within the same sampled frame; pause/back remain dominant and at most one activation occurs. Expected red: saved-game title with Down+confirm should enter training, currently enters confirm. Retain the existing actual-browser saved-game test unchanged and rerun all browser routes.

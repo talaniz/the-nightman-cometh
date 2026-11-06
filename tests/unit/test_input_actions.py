@@ -47,10 +47,21 @@ def test_controller_options_and_pause_do_not_emit_attacks():
 def test_mute_and_menu_confirm_single_action():
     s,c,a=Session(Storage()),Controls(),Audio()
     perform(s,a,c,{'mute'});assert a.muted
-    perform(s,a,c,{'confirm','down'});assert s.screen=='dialogue' and s.dialogue==0
+    perform(s,a,c,{'confirm'});assert s.screen=='dialogue' and s.dialogue==0
 
 
 def test_editing_password_clears_stale_error():
     s,c,a=Session(Storage()),Controls(),Audio();s.enter_screen('password');c.pad_mode=True
     s.message='Unknown password';perform(s,a,c,{'confirm'});assert s.message==''
     s.message='Unknown password';c.password_index=36;perform(s,a,c,{'confirm'});assert s.message==''
+
+
+def test_navigation_and_confirm_in_one_frame_selects_before_activation():
+    # Browser keyboard events can both arrive before the next pygame frame.
+    s,c,a=Session(Storage()),Controls(),Audio()
+    s.progress.saved={'stage':'act1'}
+    c.key_down('down');c.key_up('down')
+    c.key_down('confirm');c.key_up('confirm')
+    _,pressed,_=c.sample({'status':'absent'},'title')
+    perform(s,a,c,pressed)
+    assert s.screen=='training'  # Continue, not Start Act 1's reset confirmation.

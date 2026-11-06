@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_navigation_and_confirm_in_one_frame_selects_before_activation ______
+
+    def test_navigation_and_confirm_in_one_frame_selects_before_activation():
+        # Browser keyboard events can both arrive before the next pygame frame.
+        s,c,a=Session(Storage()),Controls(),Audio()
+        s.progress.saved={'stage':'act1'}
+        c.key_down('down');c.key_up('down')
+        c.key_down('confirm');c.key_up('confirm')
+        _,pressed,_=c.sample({'status':'absent'},'title')
+        perform(s,a,c,pressed)
+>       assert s.screen=='training'  # Continue, not Start Act 1's reset confirmation.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert 'confirm' == 'training'
+E         
+E         - training
+E         + confirm
+
+tests/unit/test_input_actions.py:67: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_input_actions.py::test_navigation_and_confirm_in_one_frame_selects_before_activation
+1 failed, 5 deselected in 0.15s
