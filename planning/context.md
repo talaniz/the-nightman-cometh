@@ -1,6 +1,6 @@
 # M7 authorized — controller integration
 
-User approved refined M7 contract and Pi resource protections. Base96924a5; branch milestone/m7-usb-controller; worktree /home/palpatine/projects/the-nightman-cometh-m7. Phase7.1 starts with observed input red; phase7.2 requires actual USB hardware evidence. One PR; main owns scope and implementation; per-commit independent review then separate E2E. No merge/deploy/M8 acceptance authority. Contract: [M7](milestones/M7-usb-controller.md).
+User approved refined M7 contract and Pi resource protections. Base96924a5; branch milestone/m7-usb-controller; worktree /home/palpatine/projects/the-nightman-cometh-m7. Phase7.1 implemented with recorded red/green input tests; draft PR22 https://github.com/talaniz/the-nightman-cometh/pull/22 awaits final remote browser evidence and independent reviews. Phase7.2 requires actual USB hardware evidence. Preview8799 serves ordinary build 60158d0 (fingerprint 62492865698748481014c549026982863ccf0abb31537809752d2b7030979450). One PR; main owns scope and implementation; per-commit independent review then separate E2E. No merge/deploy/M8 acceptance authority. Contract: [M7](milestones/M7-usb-controller.md).
 
 ---
 

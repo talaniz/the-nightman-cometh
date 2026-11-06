@@ -1,0 +1,6 @@
+Run42286617808, source 60158d05ac9e5cc2f9e28c2a685230fa26d3a6b6
+foundation	Run python -m pytest tests/unit tests/audio -q	2026-11-06T20:15:21.4718519Z 226 passed in 13.13s
+foundation	Actual browser workflows	2026-11-06T20:16:26.4689884Z   4 passed (59.2s)
+foundation	Actual browser workflows	2026-11-06T20:23:03.4295318Z   25 passed (6.6m)
+foundation	Actual browser workflows	2026-11-06T20:27:56.2371943Z   2 passed (4.8m)
+foundation	Actual browser workflows	2026-11-06T20:33:06.2362660Z   4 passed (5.2m)
