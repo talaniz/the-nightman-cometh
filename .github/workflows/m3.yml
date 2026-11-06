@@ -22,6 +22,7 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium firefox
       - run: npm run test:loader
+      - run: node --test tests/browser/gamepad.test.cjs
       - run: python -m pytest tests/unit tests/audio -q
         env:
           SDL_AUDIODRIVER: dummy

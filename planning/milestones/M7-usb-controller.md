@@ -1,12 +1,12 @@
 # M7 — Dedicated USB-controller sprint
 
-Status: planned, not started. Dependency: M6 complete keyboard game; explicit M7 authorization; physical USB pad and operator available before sign-off.
+Status: authorized; phase 7.1 in progress. Dependency: M6 complete keyboard game; explicit M7 authorization; physical USB pad and operator available before sign-off.
 
 - Branch/worktree: reserve `milestone/m7-usb-controller` at authorization; record actual base/head in context/PR. One PR across these phases.
 - Allowed paths: game/input/, game/adapters/browser_gamepad*, game/ui/control*, tests/unit/input*, tests/browser/controller*, docs/controls.md, docs/evidence/M7/
 - Non-goals: everything outside specification and this milestone; no merge/deployment. Fixes to shared systems need an explicit in-scope rationale and regression contract.
 - Review: a distinct code-review agent PER COMMIT (including fixes), complete combined-diff context and final-head revalidation; separate independent E2E reviewer per PR AFTER code sign-off. Main triages all recommendations against AGENTS.md and records acceptance/rejection/defer rationale on PR.
-- Authority: plan only today; execute after explicit milestone authorization. Record user authorization and environment capability before phase 1.
+- Authority: user approved the refined M7 contract and Pi resource limits, then explicitly requested implementation. Record user authorization and environment capability before phase 1.
 
 ## Phase 7.1 — Use controller across the browser game
 
@@ -35,3 +35,21 @@ Status: planned, not started. Dependency: M6 complete keyboard game; explicit M7
 ## Milestone gate
 
 Attach required evidence and release notes before final review. Test actual user workflows; unit tests/source inspection alone do not satisfy E2E. Missing environment/hardware/audio access is explicit blocked evidence. Follow planning/verification.md for screenshot dimensions, artifact fingerprints and final-candidate rules. Mark PR ready only after exact-final-head review gates; no automatic merge. Next milestone starts only with applicable authorization and dependencies satisfied.
+
+## Approved refinement and execution contract (2026-11-06)
+
+Base 96924a51474379180283745e73950203bdb19c36 (merged PR21). One branch milestone/m7-usb-controller and worktree /home/palpatine/projects/the-nightman-cometh-m7. Main owns implementation. Physical pad/desktop/browser details requested; hardware validation cannot be replaced by simulation.
+
+Acceptance: standard-mapped USB pad, d-pad/left-stick movement, bottom face jump/confirm, left face bat, top face beam, right face back/skip, Start pause/resume. Shoulder buttons provide mute/retry audio. Menus/options/death/retry/finale/credits and controller character selection for QA passwords work; keyboard typing retained. No stick drift, duplicate actions, held-button dialogue skipping, transition input leakage or involuntary reconnect resume. Opposing directions neutral. Active-pad loss or tab blur clears input and pauses gameplay. Release controls before rearming. Unsupported/missing/blocked API leaves keyboard usable with guidance. Initial browser click/keyboard audio unlock may be required and clearly explained. No raw device identifiers stored or sent.
+
+Refined integration paths: game/input/, game/web/gamepad.js, game/main.py, game/session.py, game/render.py, game/web/loader.js and style.css, tools/build_web.py (bridge/footer wiring), tests/unit/test_input*, tests/browser/controller*, tests/browser/gamepad*.test.cjs, package.json and existing CI workflow only for focused checks; planning/context.md, this contract, docs/controls.md and docs/evidence/M7. No physics/level/story/audio asset changes, dependencies, backend, telemetry, multiplayer, remapping, rumble, mobile/Bluetooth/native packaging, merge or deployment.
+
+Before implementation, executable Controls interface returns neutral; tests must fail on observable movement/edge/disconnect behavior, not imports. Command: PYTHONDONTWRITEBYTECODE=1 SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy /tmp/nightman-m2-tools/bin/python -m pytest -p no:cacheprovider tests/unit/test_input_controls.py -q. Retain red, same green, full tests/unit tests/audio, npm run test:loader, node --test tests/browser/gamepad.test.cjs. Browser fixture build via python tools/build_web.py --output build/web --test-fixtures, npx playwright test --project=chromium --grep CONTROLLER. Ordinary build --output build/normal with existing ACT1_NORMAL Chromium and SMOKE|ACT1_NORMAL Firefox regressions. Tests/commands added here are planned until results recorded.
+
+Browser contract: actual pygbag loop samples synthetic Gamepad API fixtures for drift/held/duplicate/malformed/unsupported/disconnect/reconnect/blur, navigation, password editing, options/audio recovery and all gameplay actions. Capture 1280x720 and1920x1080 plus390x844 guidance; contextual prompts, title/dialogue/pause/options/password/death/retry/ending/credits, connected/release/disconnected/unsupported states. Durable manifest records revision/fingerprint/viewport/state/hashes; main and E2E open every required screenshot. Tests are simulated-pad checks, not hardware proof.
+
+Hardware contract: identified USB pad on recorded desktop OS/browser/version, exact build hash, timestamped attributable checklist/video demonstrating all menus, three acts/bosses, move/jump/bat/beam, death/retry, pause/blur/unplug/replug, keyboard fallback, story/ending/credits. Only tested configurations listed verified. Physical run required before M7 readiness. M8 still requires three final-candidate no-cheat runs.
+
+Pi protection: check temperature, throttling availability, memory/swap pressure and load before heavy work. Sequential local tests/builds, no overlapping intensive agents; heavy browser suites in remote CI. Monitor local commands; stop at75C, current throttling, or sustained memory pressure threatening responsiveness; resume only after recovery. Record pauses/skipped checks as gaps. Initial44.3C, ~2113MiB available, swap167/199MiB occupied but vmstat showed no churn; firmware throttling query unavailable (/dev/vcio missing). Do not alter kernel devices to work around this. No heavy local browser.
+
+Execution: next observe Controls red, implement bounded bridge/shared actions and targeted tests. Required independent per-commit code review precedes distinct E2E; final-head signoffs plus hardware evidence before non-draft transition. Missing hardware remains an explicit gate, not a pass.

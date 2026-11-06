@@ -1,0 +1,9 @@
+# M7 execution — in progress
+
+Authorized refined M7 controller contract plus Pi resource protection. Base96924a5, branch milestone/m7-usb-controller. Standard mapping only; intended physical pad is SNES-style (such as iBuffalo), exact model/OS/browser and physical evidence pending. No merge/deployment/final acceptance.
+
+Observed behavioral red:6failed/3passed (input-red.txt) against executable neutral interface. Same focused suite green9passed. Added dispatcher/password checks; full native suite222passed in67.11s (native.txt). Browser bridge Node checks3passed (bridge.txt). Python3.11.2/pygame-ce2.5.8 pinned existing /tmp/nightman-m2-tools; sequential nice10 native tests. No new dependency installation. Browser suite/evidence pending remote CI, followed by per-commit independent code review and separate E2E. Physical hardware gate remains mandatory.
+
+Resource observations: initial44.3C, ~2.1GiB available; native run47.2C then46.3C; vmstat showed0 swap-in/out and71% idle during native checks. Swap is near capacity but available memory remains~2GiB; no pressure-induced pause observed. /dev/vcio and /proc/pressure/memory are unavailable, so firmware throttle/PSI readings are gaps, not asserted passes. Stop heavy work at75C/current throttling/sustained memory pressure; all actual browser workloads remote. Do not run overlapping heavy reviewer work on Pi.
+
+Implementation: standard Gamepad snapshot boundary validates mapping/finite axes and bounds slots/buttons; Python shared edge/held input integrates existing loop. Opposite directions neutral; context/focus/disconnect release barriers prevent carryover. Controller supports gameplay/menu actions, password character selector, mute/retry and contextual prompts. No level/physics/story/audio asset changes. Missing or unsupported API retains keyboard fallback. Existing click-to-start audio gesture remains explicit.

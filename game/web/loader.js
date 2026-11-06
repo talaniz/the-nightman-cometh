@@ -38,6 +38,14 @@
     else if(!window.MM || engaged)boot.tick(.25);
     if(boot.state==='error')message='The stage could not load. Check your connection, then retry.';
     else if(window.MM && !engaged)message='The stage is ready. Enter the theatre to begin.';
+    if(window.__nightmanGame){
+      const input=JSON.parse(window.__nightmanGame).input || {};
+      const messages={absent:'Keyboard ready · Connect USB pad, then press and release a button.',
+        unsupported:'Controller mapping unsupported · Use keyboard. Check the controller mode.',
+        unavailable:'Controller access unavailable · Use keyboard or retry in a supported desktop browser.',
+        connected:input.release_required?'Controller connected · Release controls to continue.':'Controller connected · Keyboard also available.'};
+      document.getElementById('controls').textContent=messages[input.status] || messages.absent;
+    }
     render();
   },250);
 })();

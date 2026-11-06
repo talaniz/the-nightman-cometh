@@ -1,3 +1,9 @@
+# M7 authorized — controller integration
+
+User approved refined M7 contract and Pi resource protections. Base96924a5; branch milestone/m7-usb-controller; worktree /home/palpatine/projects/the-nightman-cometh-m7. Phase7.1 starts with observed input red; phase7.2 requires actual USB hardware evidence. One PR; main owns scope and implementation; per-commit independent review then separate E2E. No merge/deploy/M8 acceptance authority. Contract: [M7](milestones/M7-usb-controller.md).
+
+---
+
 # Current: approved credits and journey polish
 
 Base 6b507797820a9893cb9f412438073f01dcaea0e2, branch codex/credits-polish, worktree /home/palpatine/projects/the-nightman-cometh-credits-polish. User approved the 61-second credits track and this focused phase. Contract: [credits-polish](milestones/credits-polish.md). Main owns implementation and triage; independent per-commit code review then separate E2E. No merge/deployment or M7/M8 execution. Next: observe audio-routing red, integrate approved bytes, verify browser journey and publish evidence. Exact-head results live on the PR. Historical context follows.
