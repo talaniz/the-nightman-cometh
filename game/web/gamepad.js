@@ -1,6 +1,8 @@
 /* One bounded snapshot per game frame. No device identifiers are persisted. */
 (() => {
-  let active = null;
+  let active = null, interrupted = false;
+  window.addEventListener('blur', () => { interrupted = true; });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) interrupted = true; });
   function read() {
     const focused = !document.hidden && document.hasFocus();
     try {
@@ -29,5 +31,10 @@
       return {status: 'unavailable', focused};
     }
   }
-  window.nightmanReadPad = () => JSON.stringify(read());
+  window.nightmanReadPad = () => {
+    const snapshot = read();
+    snapshot.interrupted = interrupted;
+    interrupted = false;
+    return JSON.stringify(snapshot);
+  };
 })();

@@ -56,12 +56,14 @@ async def main():
             key=event.key;held.add(key)
             if session.screen=='password' and key not in (pygame.K_ESCAPE,pygame.K_RETURN,pygame.K_UP,pygame.K_DOWN,pygame.K_LEFT,pygame.K_RIGHT):
                 inputs.pad_mode=False
-                if key==pygame.K_BACKSPACE:session.password=session.password[:-1]
-                elif getattr(event,'unicode','').isascii() and event.unicode.isalnum() and len(session.password)<16:session.password+=event.unicode.upper()
+                if key==pygame.K_BACKSPACE:session.password=session.password[:-1];session.message=''
+                elif getattr(event,'unicode','').isascii() and event.unicode.isalnum() and len(session.password)<16:session.password+=event.unicode.upper();session.message=''
                 continue
             action=keymap.get(key)
             if action:inputs.key_down(action)
         pad=json.loads(str(window.nightmanReadPad())) if WEB else {'status':'absent'}
+        if pad.get('interrupted'):
+            held.clear();inputs.keys.clear();inputs.blocked_keys.clear();inputs.quarantine();pending.clear();session.blur()
         focused=pad.get('focused',True)
         directions,pressed,lost=inputs.sample(pad,session.screen,focused)
         if lost or not focused:

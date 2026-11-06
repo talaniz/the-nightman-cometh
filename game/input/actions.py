@@ -27,8 +27,8 @@ def perform(session, audio, controls, pressed):
         if 'confirm' in pressed:
             key = PASSWORD_KEYS[controls.password_index]
             if key == 'GO': session.submit_password()
-            elif key == 'DEL': session.password = session.password[:-1]
-            elif len(session.password) < 16: session.password += key
+            elif key == 'DEL': session.password = session.password[:-1]; session.message = ''
+            elif len(session.password) < 16: session.password += key; session.message = ''
         return set()
     if 'confirm' in pressed:
         session.activate()

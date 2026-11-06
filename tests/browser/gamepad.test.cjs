@@ -2,9 +2,13 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const vm=require('node:vm'),fs=require('node:fs');
 function fixture(getGamepads){
- const context={window:{},navigator:{getGamepads},document:{hidden:false,hasFocus:()=>true}};
+ const handlers={};
+ const listen=(name,fn)=>(handlers[name] ||= []).push(fn);
+ const context={window:{addEventListener:listen},navigator:{getGamepads},document:{hidden:false,hasFocus:()=>true,addEventListener:listen}};
  vm.runInNewContext(fs.readFileSync('game/web/gamepad.js','utf8'),context);
- return ()=>JSON.parse(context.window.nightmanReadPad());
+ const read=()=>JSON.parse(context.window.nightmanReadPad());
+ read.emit=name=>(handlers[name]||[]).forEach(fn=>fn());
+ return read;
 }
 function pad(mapping='standard'){return {connected:true,mapping,axes:[0,0],buttons:Array.from({length:17},()=>({pressed:false}))};}
 test('bounded snapshot no identifiers, dead slot before replacement',()=>{
@@ -21,4 +25,9 @@ test('unsupported, missing and denied API fail safely',()=>{
 test('nonfinite axes and large lists are bounded',()=>{
  const bad=pad();bad.axes[0]=NaN;assert.equal(fixture(()=>[bad])().status,'unavailable');
  const list=Array(16).fill(null).concat([pad()]);assert.equal(fixture(()=>list)().status,'absent');
+});
+
+test('brief blur is latched until the game samples it',()=>{
+ const read=fixture(()=>[pad()]);read();read.emit('blur');
+ assert.equal(read().interrupted,true);assert.equal(read().interrupted,false);
 });
