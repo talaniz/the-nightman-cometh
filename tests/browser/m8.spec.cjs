@@ -43,3 +43,24 @@ test('M8 transformation is automatic and proposal advances by click only once',a
  await page.setViewportSize({width:1920,height:1080});await capture(page,'proposal-1920');
  await page.setViewportSize({width:390,height:844});await capture(page,'story-narrow');
 });
+
+test('M8 live projectile shapes and both charged Nightman bursts',async({page})=>{
+ await boot(page);
+ await fixture(page,'act2-boss');
+ await expect.poll(async()=>(await state(page)).world.targets.some(t=>t.ingredient==='cheese'),{timeout:10000,intervals:[50]}).toBe(true);
+ await capture(page,'frank-ingredients');
+ await fixture(page,'act2-crew');
+ await expect.poll(async()=>(await state(page)).world.shots.some(s=>s.kind==='egg'),{timeout:10000,intervals:[50]}).toBe(true);
+ await capture(page,'crew-egg');
+ await fixture(page,'act2-gun');
+ await expect.poll(async()=>(await state(page)).world.shots.some(s=>s.kind==='alcohol'),{timeout:10000,intervals:[50]}).toBe(true);
+ await capture(page,'gun-alcohol');
+ // This focused visual fixture uses invincibility; it is never a qualifying run.
+ await fixture(page,'act3-boss-summons');
+ await expect.poll(async()=>(await state(page)).world.targets[0].state,{timeout:20000,intervals:[50]}).toBe('charge');
+ await capture(page,'nightman-charge');
+ for(const kind of ['crucifix','chimichanga']){
+  await expect.poll(async()=>(await state(page)).world.shots.some(s=>s.kind===kind),{timeout:30000,intervals:[50]}).toBe(true);
+  await capture(page,'nightman-'+kind);
+ }
+});
