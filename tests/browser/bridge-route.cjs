@@ -17,7 +17,7 @@ async function driveBridge(page,{recovery=false,restart,choose,capture=async()=>
    await expect.poll(async()=>(await state(page)).world.player.hearts).toBe(3);
    expect((await state(page)).world.player.dayman).toBe(0);await capture(page,'act2-normal-retry');
    await restart(page);await choose(page,'Continue Act 2');
-   expect((await state(page)).world.checkpoint).toBe(2800);expect((await state(page)).world.flags).toContain('preboss');forced=true;continue;
+   expect((await state(page)).world.checkpoint).toBe(3550);expect((await state(page)).world.flags).toContain('preboss');forced=true;continue;
   }
   if(w.boss_active){
    const b=w.targets.find(t=>t.kind==='frank'),dx=b.x-p.x;
@@ -30,7 +30,7 @@ async function driveBridge(page,{recovery=false,restart,choose,capture=async()=>
     if(p.grounded&&w.targets.some(t=>t.kind==='sandwich'&&t.x-p.x>0&&t.x-p.x<110))await page.keyboard.press('Space');
    }
   }else{
-   const edge=[1000,2200].find(edge=>edge-p.x>0&&edge-p.x<180);
+   const edge=[1000,2200,3050].find(edge=>edge-p.x>0&&edge-p.x<180);
    if(edge&&p.grounded&&edge-p.x<85){
     await Promise.all([page.keyboard.down('ArrowRight'),page.keyboard.press('Space')]);await page.waitForTimeout(650);await page.keyboard.up('ArrowRight');
    }else{

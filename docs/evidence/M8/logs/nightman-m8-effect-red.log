@@ -1,0 +1,22 @@
+...F                                                                     [100%]
+=================================== FAILURES ===================================
+____ test_transformation_runs_automatically_with_exactly_three_effect_cues _____
+
+    def test_transformation_runs_automatically_with_exactly_three_effect_cues():
+        session = Session(Memory())
+        session.sequence = FINALE
+        session.dialogue = 0
+        session.enter_screen('dialogue')
+        session.next_dialogue()
+        assert session.sequence[session.dialogue].effect == 'dayman'
+        # Pressing next during the effect must not skip its reveal or jump into lyrics.
+        session.next_dialogue()
+>       assert session.sequence[session.dialogue].effect == 'dayman'
+E       AssertionError: assert '' == 'dayman'
+E
+E         - dayman
+
+tests/unit/test_m8_story.py:48: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_story.py::test_transformation_runs_automatically_with_exactly_three_effect_cues
+1 failed, 3 passed in 0.13s

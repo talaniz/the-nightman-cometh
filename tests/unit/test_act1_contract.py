@@ -42,7 +42,7 @@ def test_checkpoint_retry_uses_act1_flags():
 
 def test_boss_isolated_and_only_stunned_hits_count():
     from game.levels.act1 import Act1
-    w=Act1();w.player.x=3500;w.step({})
+    w=Act1();w.player.x=4400;w.step({})
     assert getattr(w,'boss_active',False),'Crossing arena threshold starts Cricket'
     assert all(t.get('kind')=='cricket' for t in w.targets)
     boss=w.targets[0];health=boss['hp']
@@ -52,9 +52,9 @@ def test_boss_isolated_and_only_stunned_hits_count():
 
 def test_boss_retry_clears_battle_and_transformation():
     from game.levels.act1 import Act1
-    w=Act1();w.flag('preboss',3350);w.player.x=3500;w.step({});w.meal();w.retry()
+    w=Act1();w.flag('preboss',4250);w.player.x=4400;w.step({});w.meal();w.retry()
     assert not getattr(w,'boss_active',True)
-    assert w.player.dayman==0 and w.player.x==3350
+    assert w.player.dayman==0 and w.player.x==4250
 
 def test_legacy_save_migrates_settings_without_fake_story_progress():
     import json
@@ -74,9 +74,9 @@ def test_act1_save_roundtrip_retains_completed_flag():
         raw=None
         def read(self):return self.raw
         def write(self,value):self.raw=value
-    store=Store();w=Act1();w.flag('preboss',3350);w.complete=True
+    store=Store();w=Act1();w.flag('preboss',4250);w.complete=True
     Progress(store).save(w);p=Progress(store);p.load();restored=Act1();p.restore(restored)
-    assert restored.complete and restored.checkpoint==3350
+    assert restored.complete and restored.checkpoint==4250
 
 def test_replay_completed_act_preserves_completion():
     s=Session(Memory());s.world.complete=True;s.progress.save(s.world);s.enter_screen('complete')
@@ -108,7 +108,7 @@ def test_normal_input_route_can_win_without_beams():
         if w.complete:break
         if not w.boss_active:
             keys['right']=True
-            gap=any(0<edge-p.x<55 for edge in (1050,2500))
+            gap=any(0<edge-p.x<55 for edge in (1050,2500,3600))
             enemy=any(t['alive'] and 0<t['x']-p.x<80 and abs(t['y']-p.y)<60 for t in w.targets)
             avoid_meal=0<1810-p.x<65
             keys['jump']=p.grounded and (gap or enemy or avoid_meal)
@@ -128,15 +128,15 @@ def test_normal_input_route_can_win_without_beams():
 def test_boss_telegraph_crash_stun_and_pause():
     from game.levels.act1 import Act1
     from game.world import DT
-    w=Act1();w.player.x=3500;w.step({});boss=w.targets[0]
+    w=Act1();w.player.x=4400;w.step({});boss=w.targets[0]
     assert boss['state']=='warning' and boss['timer']>.5
     w.paused=True;before=w.snapshot();w.advance(3,{});assert w.snapshot()==before
-    w.paused=False;w.player.x=4100
+    w.paused=False;w.player.x=5000
     for _ in range(200):
         w.step({})
         if boss['state']=='stunned':break
     assert boss['state']=='stunned' and boss['timer']==1.5
-    assert boss['x'] in (3540,4050)
+    assert boss['x'] in (4440,4950)
 
 def test_missing_required_art_fails_before_packaging(tmp_path,monkeypatch):
     import pytest
@@ -175,16 +175,16 @@ def test_qa_completion_replay_does_not_overwrite_normal_save():
     assert s.world.act=='act2' and s.qa
     s.world.complete=True;s.update(0,{});s.next_dialogue(skip=True)
     assert s.world.act=='act3' and s.qa
-    s.world.complete=True;s.update(0,{});s.next_dialogue(skip=True);s.activate()
+    s.world.complete=True;s.update(0,{});s.next_dialogue(skip=True)
     assert s.menu()==['Replay ending','Exit QA']
     s.activate();assert s.qa and store.raw==before
-    s.next_dialogue(skip=True);s.activate();s.selection=s.menu().index('Exit QA');s.activate()
+    s.next_dialogue(skip=True);s.selection=s.menu().index('Exit QA');s.activate()
     assert not s.qa and s.world is normal and store.raw==before
 
 def test_knocked_out_cricket_does_not_hurt_player_on_contact():
     from game.levels.act1 import Act1
-    w=Act1();w.player.x=3500;w.step({});boss=w.targets[0]
-    boss.update(state='stunned',timer=1.5,x=3700);w.player.x=3700
+    w=Act1();w.player.x=4400;w.step({});boss=w.targets[0]
+    boss.update(state='stunned',timer=1.5,x=4600);w.player.x=4600
     w.step({})
     assert w.player.hearts==3,'A stunned Cricket is an opening, not a contact hazard'
 
@@ -199,12 +199,12 @@ def test_cricket_actual_stomp_and_beam_collision_windows():
     from game.levels.act1 import Act1
     for attack in ('stomp','beam'):
         for vulnerable in (False,True):
-            w=Act1();w.player.x=3500;w.step({});boss=w.targets[0]
-            boss.update(x=3750,state='stunned' if vulnerable else 'warning',timer=1.5)
+            w=Act1();w.player.x=4400;w.step({});boss=w.targets[0]
+            boss.update(x=4650,state='stunned' if vulnerable else 'warning',timer=1.5)
             if attack=='stomp':
-                w.player.x=3750;w.player.y=345;w.player.vy=200;w.player.grounded=False
+                w.player.x=4650;w.player.y=345;w.player.vy=200;w.player.grounded=False
             else:
-                w.player.x=3700;w.meal();w.shoot()
+                w.player.x=4600;w.meal();w.shoot()
             for _ in range(12):w.step({})
             assert boss['hp']==(2 if vulnerable else 3),(attack,vulnerable,boss)
 

@@ -50,7 +50,7 @@ test('ACT3_MOTION live boss telegraphs and capped summons',async({page})=>{
    const log=window.__nightmanMotion;if(!log.active)return;
    const s=JSON.parse(window.__nightmanGame),w=s.world,b=w.targets.find(t=>t.kind==='nightman');
    log.max=Math.max(log.max,w.targets.filter(t=>t.summoned&&t.alive).length);
-   const c=document.querySelector('#canvas'),camera=Math.max(0,Math.min(4000-960,w.player.x-350));
+   const c=document.querySelector('#canvas'),camera=Math.max(0,Math.min(4850-960,w.player.x-350));
    if(b&&!log.frames[b.state]){
     const crop=document.createElement('canvas');crop.width=130;crop.height=140;
     crop.getContext('2d').drawImage(c,(b.x-camera-45)*c.width/960,(b.y-50)*c.height/540,130*c.width/960,140*c.height/540,0,0,130,140);
@@ -72,12 +72,22 @@ test('ACT3_MOTION live boss telegraphs and capped summons',async({page})=>{
 
 test('FINALE exact dialogue and approved credits survive retry completion and replay',async({page})=>{
  const faults=errors(page);await boot(page);
- const lines=['The Dayman saves the day.','Will you marry me?',"I'm not going to marry you, Charlie.",'Well, see you tomorrow.','I told you no one writes a musical for no reason!',"Dee, I'm right here right now","but I'm about to go here!"];
+ const lines=[
+  'I was a boy, now I am…','','The Dayman!',
+  'ah ah ah ah ah ah ah ah','ah ah ah ah ah ah ah ah','ah ah ah ah ah ah ah ooh','oo oo oo oooh',
+  'I was that little boy that little','baby boy was meee','I once was a boy but','now I am a Man',
+  'I fought the nightman lived as dayman',"Now I'm here to ask for your hand",'so if you want to marry man,',
+  'will you marry me?',"Won't you come on stage and join me?",'In this thing called matrimony?',
+  'Please say yes and do not bone me','please just marry','Me!',
+  'You said if I came to the show, you’d leave me alone. So, no….','…','So…see you tomorrow…?',
+  'I told you no one writes a musical for no reason!','Dee, I’m right here right now…','…but I’m about to go here!'];
  for(let i=0;i<lines.length;i++){
-  await fixture(page,'finale-'+i);expect((await state(page)).story.text).toBe(lines[i]);expect((await state(page)).audio.playing).toBe(i<2?'proposal':null);await capture(page,'finale-'+i);
+  await fixture(page,'finale-'+i);expect((await state(page)).story.text).toBe(lines[i]);
+  expect((await state(page)).audio.playing).toBe(i<3?'dayman':i<20?'proposal':null);
+  await capture(page,'finale-'+i);
  }
- await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('ending');expect((await state(page)).audio.playing).toBe('dayman');await capture(page,'dayman-ending');
- await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('credits');
+ expect((await state(page)).audio.playing).toBe('sunny-credits');
  await expect.poll(async()=>(await state(page)).audio.music_busy).toBe(1);await capture(page,'musical-credits');
  await page.keyboard.press('m');await expect.poll(async()=>(await state(page)).audio.gains[0]).toBe(0);await capture(page,'credits-muted');
  await page.keyboard.press('m');await expect.poll(async()=>(await state(page)).audio.gains[0]).toBeGreaterThan(0);
@@ -92,7 +102,7 @@ test('FINALE exact dialogue and approved credits survive retry completion and re
  await page.setViewportSize({width:1920,height:1080});await capture(page,'credits-1920');
  await page.setViewportSize({width:390,height:844});await capture(page,'credits-narrow');
  await page.setViewportSize({width:1280,height:720});
- await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('dialogue');await page.keyboard.press('Escape');await expect.poll(async()=>(await state(page)).screen).toBe('ending');
+ await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).screen).toBe('dialogue');await page.keyboard.press('Escape');await expect.poll(async()=>(await state(page)).screen).toBe('credits');
  await page.setViewportSize({width:1920,height:1080});await capture(page,'ending-1920');await page.setViewportSize({width:390,height:844});await capture(page,'ending-narrow');expect(faults).toEqual([]);
 });
 

@@ -1,0 +1,37 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+___ test_longer_approach_preserves_existing_checkpoint_save[Act1-3350-4250] ____
+
+level = <class 'game.levels.act1.Act1'>, old = 3350, expected = 4250
+
+    @pytest.mark.parametrize('level,old,expected',[(Act1,3350,4250),(Act2,2800,3550),(Act3,3000,3850)])
+    def test_longer_approach_preserves_existing_checkpoint_save(level,old,expected):
+>       assert level.flag_positions['preboss']==expected
+E       assert 3350 == 4250
+
+tests/unit/test_m8_routes.py:12: AssertionError
+___ test_longer_approach_preserves_existing_checkpoint_save[Act2-2800-3550] ____
+
+level = <class 'game.levels.act2.Act2'>, old = 2800, expected = 3550
+
+    @pytest.mark.parametrize('level,old,expected',[(Act1,3350,4250),(Act2,2800,3550),(Act3,3000,3850)])
+    def test_longer_approach_preserves_existing_checkpoint_save(level,old,expected):
+>       assert level.flag_positions['preboss']==expected
+E       assert 2800 == 3550
+
+tests/unit/test_m8_routes.py:12: AssertionError
+___ test_longer_approach_preserves_existing_checkpoint_save[Act3-3000-3850] ____
+
+level = <class 'game.levels.act3.Act3'>, old = 3000, expected = 3850
+
+    @pytest.mark.parametrize('level,old,expected',[(Act1,3350,4250),(Act2,2800,3550),(Act3,3000,3850)])
+    def test_longer_approach_preserves_existing_checkpoint_save(level,old,expected):
+>       assert level.flag_positions['preboss']==expected
+E       assert 3000 == 3850
+
+tests/unit/test_m8_routes.py:12: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_routes.py::test_longer_approach_preserves_existing_checkpoint_save[Act1-3350-4250]
+FAILED tests/unit/test_m8_routes.py::test_longer_approach_preserves_existing_checkpoint_save[Act2-2800-3550]
+FAILED tests/unit/test_m8_routes.py::test_longer_approach_preserves_existing_checkpoint_save[Act3-3000-3850]
+3 failed in 0.14s

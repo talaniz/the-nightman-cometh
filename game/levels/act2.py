@@ -1,28 +1,33 @@
 """Bridge simulation; implemented against the milestone's behavior contracts."""
+import math
 from game.world import World
 
 class Act2(World):
     act='act2'
     launcher=False
-    width=3600
-    flag_positions={'mid':1500,'preboss':2800}
-    platforms=((0,430,1000,110),(1072,430,1128,110),(2272,430,1328,110),
-               (560,360,160,18),(760,300,160,18),(1740,360,160,18),(1940,300,160,18))
+    width=4350
+    flag_positions={'mid':1500,'preboss':3550}
+    platforms=((0,430,1000,110),(1072,430,1128,110),(2272,430,778,110),
+               (560,360,160,18),(760,300,160,18),(1740,360,160,18),(1940,300,160,18),(2670,360,160,18),(2870,300,160,18),
+               (3122,430,1228,110))
 
     def reset_encounter(self):
         self.complete=False;self.boss_active=False;self.next_id=1000
         self.targets=[]
-        for i,(kind,x) in enumerate((('duncan',450),('gun',850),('z',1290),('gun',1810),('duncan',2420),('z',2630))):
+        for i,(kind,x) in enumerate((('duncan',450),('gun',850),('z',1290),('gun',1810),('duncan',2420),('z',2630),('gun',3300),('z',3460))):
             self.targets.append(dict(id=i,kind=kind,x=float(x),y=398.,home=float(x),alive=True,
                                      direction=-1,state='patrol',timer=1.,animation_step=0))
+        for i,x in enumerate((650,1550,2450,3150)):
+            self.targets.append(dict(id=50+i,kind='chicken',x=float(x),y=155.,home=float(x),
+                                     alive=True,direction=-1,state='waiting',timer=0.,animation_step=0))
         self.pickups=[dict(id='food1',kind='cat-food',x=950,y=412,taken=False),
                       dict(id='meal',kind='meal',x=1560,y=412,taken=False),
-                      dict(id='food2',kind='cat-food',x=2710,y=412,taken=False)]
+                      dict(id='food2',kind='cat-food',x=3460,y=412,taken=False)]
         self.beams=[];self.shots=[];self.shot_clock=0;self.impacts=[]
 
     def enter_boss(self):
         self.boss_active=True;self.beams=[];self.shots=[];self.swing_hits.clear()
-        self.targets=[dict(id=100,kind='frank',x=3310.,y=382.,alive=True,hp=5,
+        self.targets=[dict(id=100,kind='frank',x=4060.,y=382.,alive=True,hp=5,
                            direction=-1,state='shuffle',timer=1.,immune=0.,animation_step=0)]
         self.events.append('boss-start')
 
@@ -30,6 +35,9 @@ class Act2(World):
         if target['kind']=='frank':return (target['x'],target['y'],38,48)
         if target['kind']=='sandwich':return (target['x'],target['y'],30,16)
         return super().target_rect(target)
+
+    def target_active(self,target):
+        return target['alive'] and not (target['kind']=='chicken' and target['state'] in ('waiting','warning'))
 
     def hit_target(self,target,event):
         if target['kind']!='frank':return super().hit_target(target,event)
@@ -50,29 +58,52 @@ class Act2(World):
         if target['state']=='shuffle':
             # Two short steps, forward then backward, before the readable windup.
             target['x']+=target['direction']*(22 if target['timer']>.55 else -22)*DT
-            target['x']=max(3070,min(3430,target['x']))
+            target['x']=max(3820,min(4180,target['x']))
             if target['timer']<=0:target['state']='windup';target['timer']=.85
         elif target['state']=='windup' and target['timer']<=0:
             target['state']='throw';target['timer']=.3
-            self.targets.append(dict(id=self.next_id,kind='sandwich',x=target['x']+19+target['direction']*34,
-                                     y=398.,alive=True,direction=target['direction'],state='flight',timer=3.,animation_step=0))
-            self.next_id+=1;self.events.append('hoagie')
-        elif target['state']=='throw' and target['timer']<=0:target['state']='recover';target['timer']=.6
-        elif target['state']=='recover' and target['timer']<=0:target['state']='shuffle';target['timer']=1.1
+            self.throw_sandwich(target,'whole')
+            target['piece']=0
+        elif target['state']=='throw' and target['timer']<=0:
+            # Distinct second tell before the fast ingredient burst.
+            target['state']='ingredients';target['timer']=.45
+        elif target['state']=='ingredients' and target['timer']<=0:
+            self.throw_sandwich(target,('meat','cheese','bread','lettuce')[target['piece']])
+            target['piece']+=1;target['timer']=.22
+            if target['piece']==4:target['state']='recover';target['timer']=.85
+        elif target['state']=='recover' and target['timer']<=0:target['state']='shuffle';target['timer']=.8
+
+    def throw_sandwich(self,target,ingredient):
+        self.targets.append(dict(id=self.next_id,kind='sandwich',ingredient=ingredient,
+                                 x=target['x']+19+target['direction']*34,y=398.,alive=True,
+                                 direction=target['direction'],state='flight',timer=3.,animation_step=0))
+        self.next_id+=1;self.events.append('hoagie')
+
+    def update_chicken(self,target):
+        from game.world import DT
+        if target['state']=='waiting' and abs(self.player.x-target['home'])<180:
+            target['state']='warning';target['timer']=1.2;target['x']=self.player.x+420
+        elif target['state']=='warning' and target['timer']<=0:
+            target['state']='swoop';target['timer']=2.4
+        elif target['state']=='swoop':
+            target['x']-=210*DT
+            target['y']=155+235*math.sin(min(1,(2.4-target['timer'])/2.4)*math.pi)
+            if target['timer']<=0:target['alive']=False
 
     def step(self,inputs=None):
         from game.world import DT
         if self.paused or self.dead or self.complete:return
-        if self.player.x>=2950 and not self.boss_active:self.enter_boss()
+        if self.player.x>=3700 and not self.boss_active:self.enter_boss()
         for target in list(self.targets):
             if not target['alive']:continue
             target['animation_step']=self.steps
             target['timer']-=DT
             near=abs(self.player.x-target['x'])<380
             if target['kind']=='frank':self.update_frank(target)
+            elif target['kind']=='chicken':self.update_chicken(target)
             elif target['kind']=='sandwich':
                 target['x']+=target['direction']*170*DT
-                if target['timer']<=0 or not 2930<target['x']<3550:target['alive']=False
+                if target['timer']<=0 or not 3680<target['x']<4300:target['alive']=False
             elif target['kind']=='gun':
                 if target['state']=='patrol':
                     target['x']+=target['direction']*24*DT
@@ -82,18 +113,20 @@ class Act2(World):
                         target['direction']=1 if self.player.x>target['x'] else -1
                 elif target['state']=='windup' and target['timer']<=0:
                     target['state']='recover';target['timer']=1.2
-                    self.shots.append(dict(x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
+                    self.shots.append(dict(kind='alcohol',x=target['x']+15+target['direction']*24,y=410.,dx=target['direction']*150,life=2.8))
                 elif target['state']=='recover' and target['timer']<=0:
                     target['state']='patrol';target['timer']=1.0
             else:
                 if target['state']=='patrol':
                     target['x']+=target['direction']*32*DT
                     if abs(target['x']-target['home'])>42:target['direction']*=-1
-                    if abs(self.player.x-target['x'])<90 and target['timer']<=0:
+                    if abs(self.player.x-target['x'])<280 and target['timer']<=0:
                         target['direction']=1 if self.player.x>target['x'] else -1
                         target['state']='windup';target['timer']=.65
                 elif target['state']=='windup' and target['timer']<=0:
                     target['state']='lunge';target['timer']=.3
+                    self.shots.append(dict(kind='egg',x=target['x']+15+target['direction']*24,
+                                           y=402.,dx=target['direction']*160,life=2.))
                 elif target['state']=='lunge':
                     target['x']+=target['direction']*80*DT
                     if target['timer']<=0:target['state']='recover';target['timer']=.7
@@ -101,7 +134,7 @@ class Act2(World):
                     target['state']='patrol';target['timer']=1.2
                 target['x']=max(target['home']-70,min(target['home']+70,target['x']))
         super().step(inputs)
-        if self.boss_active:self.player.x=max(2960,min(3520,self.player.x))
+        if self.boss_active:self.player.x=max(3710,min(4270,self.player.x))
         self.targets=[t for t in self.targets if t['kind']!='sandwich' or t['alive']]
 
     def snapshot(self):

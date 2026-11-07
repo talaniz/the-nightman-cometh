@@ -53,7 +53,7 @@ test('ACT1 CRICKET state fixtures attacks recovery and evidence',async({page})=>
    await page.keyboard.down('ArrowRight');await page.waitForTimeout(220);await page.keyboard.up('ArrowRight');expect((await state(page)).world.player.hearts).toBe(2);await capture(page,'act1-flag-first');
    await page.keyboard.down('ArrowLeft');await page.waitForTimeout(220);await page.keyboard.up('ArrowLeft');await page.keyboard.down('ArrowRight');await page.waitForTimeout(220);await page.keyboard.up('ArrowRight');expect((await state(page)).world.player.hearts).toBe(2);await capture(page,'act1-flag-repeat');
    await page.keyboard.down('ArrowLeft');await page.waitForTimeout(650);await page.keyboard.up('ArrowLeft');await capture(page,'wolf-cola');}
-  if(name==='death'){await press(page,'Enter');expect((await state(page)).world.checkpoint).toBe(3350);await capture(page,'act1-retry');}
+  if(name==='death'){await press(page,'Enter');expect((await state(page)).world.checkpoint).toBe(4250);await capture(page,'act1-retry');}
  }
  await fixture(page,'act1-pose-boss-warning');let s=await state(page);expect(s.world.targets.map(t=>t.kind)).toEqual(['cricket']);expect(s.audio.playing).toBe('cricket-boss');await capture(page,'cricket-warning');
  await fixture(page,'act1-pose-boss-charge');await capture(page,'cricket-charge');
@@ -97,14 +97,14 @@ for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '
    await page.keyboard.down('ArrowRight');await page.waitForTimeout(650);await page.keyboard.up('ArrowRight');
    await expect.poll(async()=>(await state(page)).screen,{timeout:45000}).toBe('dead');
    await capture(page,'normal-death');await press(page,'Enter');
-   let retry=await state(page);expect(retry.world.player.hearts).toBe(3);expect(retry.world.player.dayman).toBe(0);expect(retry.world.checkpoint).toBe(3350);await capture(page,'normal-retry');
+   let retry=await state(page);expect(retry.world.player.hearts).toBe(3);expect(retry.world.player.dayman).toBe(0);expect(retry.world.checkpoint).toBe(4250);await capture(page,'normal-retry');
    await restart(page);await choose(page,'Continue Act 1');
-   let restored=await state(page);expect(restored.world.checkpoint).toBe(3350);expect(restored.world.flags).toContain('preboss');forcedRecovery=true;continue;
+   let restored=await state(page);expect(restored.world.checkpoint).toBe(4250);expect(restored.world.flags).toContain('preboss');forcedRecovery=true;continue;
   }
   if(s.screen==='dead'){deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.up('ArrowLeft');await page.keyboard.up('ArrowRight');await press(page,'Enter');held='';continue;}
   // Stop before approaching a pit: driver round trips on the Pi can exceed400ms.
   // Keyboard pulses and a stationary read avoid walking off while awaiting observations.
-  const edge=[1050,2500].find(edge=>edge-p.x>0&&edge-p.x<300);
+  const edge=[1050,2500,3600].find(edge=>edge-p.x>0&&edge-p.x<300);
   if(!w.boss_active&&edge&&p.grounded){
    if(held){await page.keyboard.up(held);held='';}
    p=(await state(page)).world.player;
@@ -118,22 +118,22 @@ for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '
    // Camp beside the left can. Chasing the opposite stun window takes longer
    // than the window itself; release movement before IPC/readback can overshoot.
    if(held){await page.keyboard.up(held);held='';continue;}
-   const b=w.targets[0],distance=p.x-3598;
+   const b=w.targets[0],distance=p.x-4498;
    if(Math.abs(distance)>14){
     await page.keyboard.press(distance>0?'ArrowLeft':'ArrowRight',{delay:Math.min(180,Math.abs(distance)/220*1000)});continue;
    }
    // Jump within the flight window, rather than early enough to land before contact.
    const incoming=b.state==='charge'&&b.direction<0&&b.x-p.x>0&&b.x-p.x<140;
-   const leaving=b.state==='warning'&&b.direction>0&&b.x<3600&&b.timer<.45;
+   const leaving=b.state==='warning'&&b.direction>0&&b.x<4500&&b.timer<.45;
    if(p.grounded&&(incoming||leaving))await page.keyboard.press('Space');
-   if(b.state==='stunned'&&b.x<3600){
+   if(b.state==='stunned'&&b.x<4500){
     if(p.facing>0)await page.keyboard.press('ArrowLeft',{delay:25});
     await page.keyboard.press('j');
    }
    await page.waitForTimeout(50);continue;
   }
   const direction='ArrowRight',bat=true;
-  const jump=p.grounded&&([1050,2500].some(edge=>edge-p.x>0&&edge-p.x<70)||w.targets.some(t=>t.alive&&t.x-p.x>0&&t.x-p.x<110&&Math.abs(t.y-p.y)<65));
+  const jump=p.grounded&&([1050,2500,3600].some(edge=>edge-p.x>0&&edge-p.x<70)||w.targets.some(t=>t.alive&&t.x-p.x>0&&t.x-p.x<110&&Math.abs(t.y-p.y)<65));
   if(direction!==held){if(held)await page.keyboard.up(held);if(direction)await page.keyboard.down(direction);held=direction;}
   if(jump)await page.keyboard.press('Space');if(bat)await page.keyboard.press('j');
   await page.waitForTimeout(50);
@@ -147,8 +147,7 @@ for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '
  expect((await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act3');
  await driveRooftop(page,{recovery,restart,choose,capture});
  while((await state(page)).screen==='dialogue')await press(page,'Enter');
- expect((await state(page)).screen).toBe('ending');expect((await state(page)).audio.playing).toBe('dayman');await capture(page,'normal-ending');
- await press(page,'Enter');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');await capture(page,'normal-complete');
+ expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');await capture(page,'normal-complete');
  const saved=JSON.parse(await page.evaluate(()=>localStorage.getItem('nightman.progress.v1')));expect(saved.complete).toBe(true);expect(saved.flags).toContain('preboss');if(recovery)expect(forcedRecovery).toBe(true);expect(faults).toEqual([]);
  await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');expect(faults).toEqual([]);
 });

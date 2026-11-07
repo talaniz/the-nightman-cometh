@@ -13,6 +13,7 @@ class Session:
     def __init__(self,storage):
         self.progress=Progress(storage);self.progress.load();self.world={'act1':Act1,'act2':Act2,'act3':Act3}.get((self.progress.saved or {}).get('stage'),Act1)();self.progress.restore(self.world)
         self.screen='title';self.selection=0;self.return_screen='title';self.qa=False;self.qa_label=''
+        self.story_elapsed=0.;self.story_events=[]
         self.normal_world=None;self.password='';self.message='';self.dialogue=0;self.replaying=False;self.sequence=OPENING
     def menu(self):
         if self.screen=='title':return ['Start Act 1']+(['Continue Act '+self.world.act[-1]] if self.progress.saved else [])+['Options','Password','Replay dialogue']
@@ -85,10 +86,14 @@ class Session:
         if not self.qa:self.normal_world=self.world
         self.world=Act1() if code=='PAINTDOG' else (Act2() if code=='TROLLTOLL' else Act3());self.qa=True;self.qa_label=CODES[code];self.message='';self.enter_screen('training')
     def next_dialogue(self,skip=False):
+        if self.sequence[self.dialogue].effect and not skip:return
+        self.story_elapsed=0.
         self.dialogue+=1
+        if not skip and self.dialogue<len(self.sequence) and self.sequence[self.dialogue].effect:
+            self.story_events.append('beam')
         if skip or self.dialogue>=len(self.sequence):
             if self.replaying:self.enter_screen(self.return_screen)
-            elif self.sequence is FINALE:self.enter_screen('ending')
+            elif self.sequence is FINALE:self.enter_screen('credits')
             elif self.sequence is FRANK:
                 self.world=Act2();self.progress.save(self.world,qa=self.qa);self.enter_screen('training')
             elif self.sequence is NIGHTMAN:
@@ -105,6 +110,14 @@ class Session:
     def blur(self):
         if self.screen=='training':self.enter_screen('pause')
     def update(self,dt,controls):
+        if self.screen=='dialogue' and self.sequence[self.dialogue].effect:
+            previous=self.story_elapsed
+            self.story_elapsed+=max(0,min(.1,dt))
+            for threshold,cue in ((.7,'meal'),(3.7,'beam')):
+                if previous<threshold<=self.story_elapsed:self.story_events.append(cue)
+            if self.story_elapsed>=4.4:
+                self.dialogue+=1;self.story_elapsed=0.
+            return
         if self.screen!='training':return
         self.world.advance(dt,controls)
         if 'checkpoint' in self.world.events:self.progress.save(self.world,qa=self.qa)

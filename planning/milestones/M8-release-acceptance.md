@@ -1,37 +1,45 @@
-# M8 — Release candidate and three full playthroughs
+# M8 — Final polish and release-candidate acceptance
 
-Status: planned, not started. Dependency: M1–M7 complete; explicit M8 authorization; same final build available to reviewers and physical pad operator.
+Status: execution authorized by user after consolidated plan, including Cricket direction changes and realistic dumpsters. Base 43032c4c3253b49b97beac41da7997ae670e9914; branch milestone/m8-release-acceptance; worktree /home/palpatine/projects/the-nightman-cometh-m8. One PR. No merge or deployment authorization.
 
-- Branch/worktree: reserve `milestone/m8-release-acceptance` at authorization; record actual base/head in context/PR. One PR across these phases.
-- Allowed paths: game/ and assets/ ONLY for accepted in-scope defects, tests/, tools/, docs/evidence/M8/, docs/releases/, build packaging config
-- Non-goals: everything outside specification and this milestone; no merge/deployment. Fixes to shared systems need an explicit in-scope rationale and regression contract.
-- Review: a distinct code-review agent PER COMMIT (including fixes), complete combined-diff context and final-head revalidation; separate independent E2E reviewer per PR AFTER code sign-off. Main triages all recommendations against AGENTS.md and records acceptance/rejection/defer rationale on PR.
-- Authority: plan only today; execute after explicit milestone authorization. Record user authorization and environment capability before phase 1.
+## Scope and acceptance
 
-## Phase 8.1 — Prepare a reviewable final candidate
+- Title: user-provided Nightman artwork, remove Reddit frame/margins, preserve composition; functional menus without duplicate labels.
+- Animation: bat follows running hand and facing; nailed bat only; slightly larger animated rats with fair hitboxes; Cricket running poses, readable crash/stun/recovery; Shadynasty signs integrated into scenery.
+- Approaches: target 25–35% longer, moderately harder, no empty padding/unreachable platforms/unavoidable damage. Bridge crew throw eggs; more telegraphed denim chickens; walking guns recoil and fire alcohol shots.
+- Cricket: occasional mid-charge direction changes with a visible braking tell, bounded reversals so a dumpster crash and punish window always follow. No instant reversal into unavoidable contact. Realistic industrial dumpsters replace cylindrical crash cans; visible impact faces match crash coordinates. Preserve stun-only damage, pause/retry and no ordinary boss enemies.
+- Frank: straight whole sandwiches then rapid four-piece meat/cheese/bread/lettuce burst; jump/bat/beam interception; clear tells and recovery.
+- Nightman: hardest boss, back-and-forth running and karate, charged three-crucifix or two-chimichanga bursts; fair openings, capped existing ghoul summons. All bosses beatable without Dayman.
+- First rescue Dee: “Don’t you ever leave me with that looney—I mean, my hero…I guess…”; Nightman abduction Dee: “I hate this storyyyy!!!!”.
+- Finale: Dennis “I was a boy, now I am…”; same Superman pose/position/background in two stills. White flash + short sound, fade to original outfit, slow color washes for three seconds + single onset sound, second white flash + short sound, fade to Dayman outfit; “The Dayman!”. No continuously repeating effect sound.
+- Charlie in suit before sunburst, all supplied proposal lyrics verbatim in manually advanced bubbles, approved instrumental only; then kneeling before skeptical Waitress. Waitress: “You said if I came to the show, you’d leave me alone. So, no….” Charlie thinks, shrugs: “So…see you tomorrow…?” Retain Dee “I told you no one writes a musical for no reason!” and Charlie hand-low “Dee, I’m right here right now…” / hand-high “…but I’m about to go here!”. Direct credits with approved Sunny theme; no extra end screen. Keyboard/controller and pointer story advance, no double advance.
 
-**Deliverable:** Triage visual/audio/control/performance defects against AGENTS scope. Resolve straight-projectile and latest-ad requirements, packaging and runtime dependency handling, privacy/secrets scan, third-party asset provenance/release permissions. Produce pinned build, release notes/install/recovery/rollback instructions, evidence manifest.
+## Phases and verification contracts
 
-**Acceptance and failure/recovery contract:** RC: all required tests pass, no missing assets/console errors, cold/warm load and audio unlock/recovery work, user-approved tracks hash-linked, supported browser smoke checks and actual screenshots complete. No unresolved material finding. Production deployment still unapproved.
+1. Story/presentation: game/scenes, session, render/art, input/main, relevant assets and tests. Exact dialogue/order, manual advance, replay/skip/completed-save, automatic effect timing and one-shot sound; screenshots all revised states and effect recording with audio. Red: finale order/credits route and new dialogue fail old behavior.
+2. Animation/environment: game/render, art, relevant sprites/backgrounds/UI, collision if required. Fixed-position distinct poses, paused stability, facing/hand alignment; actual motion clips and screenshots. Red: missing motion/size/sign evidence; never substitute image existence for visual acceptance.
+3. Encounters/difficulty: game/levels, world, relevant rendering/assets/tests. Telegraphed and bounded attacks, exact burst counts/directions/interception, route reachability, unpowered victories and retry reset. Red: Cricket currently never brakes/reverses mid-charge; later features get their own observed behavioral red before implementation.
+4. Frozen candidate: build/package fingerprint, native/audio checks, actual Chromium/Firefox, cold/warm loading, focus/audio recovery, keyboard/controller regression. Three complete ordinary runs: keyboard normal, keyboard failure/recovery, physical USB. No skips/invincibility. Any runtime/game/asset fix resets all three runs.
+5. Recorded handoff: additional complete final run with audible game music/SFX, inspect full video and sync; durable PR recording, screenshots, manifests, release notes. Exact-head per-commit code reviewers then separate independent E2E reviewer exercises implementation and inspects evidence. Main triages findings against AGENTS. Ready only with all final-head sign-offs/checks and verified non-draft state.
 
-**Verification / expected red:** Full unit, audio, build, headless browser, evidence and diff checks from verification.md; capture actual commands/results. Fixes each get distinct code reviewer; code sign-off before final E2E.
+Baseline commands (existing tools, not claimed passes):
+```
+npm run test:loader
+node --test tests/browser/gamepad.test.cjs
+SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy python -m pytest tests/unit tests/audio -q
+python tools/build_web.py --output build/web --test-fixtures
+npx playwright test --project=chromium --grep CONTROLLER
+npx playwright test --project=chromium --grep-invert 'ACT1_NORMAL|CONTROLLER'
+python tools/build_web.py --output build/normal
+NIGHTMAN_BUILD=build/normal npx playwright test --project=chromium --grep ACT1_NORMAL
+NIGHTMAN_BUILD=build/normal npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'
+```
+Browser executables/environment follow existing CI. Extend focused assertions/routes as mechanics change, not to suppress product failures. Record exact commands, expected/observed red, green/regression outcomes and fixture details in docs/evidence/M8/execution.md before each phase. Screenshots: 1280x720, 1920x1080, 390x844 (scaling/unsupported device only); revision, viewport, state, command and source fingerprint recorded. Unit/dummy audio/mock pad checks are not browser/listening/physical evidence.
 
-**Evidence:** Final screenshot set, packaged artifact hash and provenance, browser traces/performance observations, known minor limitations. Verify ready conditions without declaring final acceptance yet.
+## Bounds and resources
 
-**Execution record (pending):** exact commands and versions; observed red assertion/exit; green and regression results; refactor rationale; commit SHA; assigned independent code reviewer; findings and main triage; final-head revalidation; E2E reviewer/result; evidence URLs. None run yet. Refactor only where it clarifies this phase's responsibilities, then rerun affected checks.
+Allowed: scoped game/assets changes above; tests/tools; planning spec/context/contracts; docs/evidence/M8; docs/releases; necessary build packaging/evidence configuration. No new songs/vocals, levels/story arcs, services, telemetry, databases, mobile touch, framework migration, unrelated rewrites or deployment. Preserve existing approved audio bytes and health/checkpoint/power-up behavior.
 
-## Phase 8.2 — Perform three qualifying complete runs and final review
+Heavy browser jobs remote where possible. Pi checks sequential/low priority; inspect temperature, RAM/swap/load before/during heavy work. Stop heavy jobs at 75C, observed throttling or sustained memory pressure. Missing sensors are evidence gaps. Full swap alone is a caution, not proof of current thrashing.
 
-**Deliverable:** Execute all three final runs exactly as verification.md: keyboard normal, independent keyboard recovery, physical USB. All on same candidate, no cheats/skips. Main investigates every recommendation within AGENTS boundaries; independent E2E evaluates runs plus its own real workflows and all screenshots.
-
-**Acceptance and failure/recovery contract:** All three runs reach end title with story/music/three bosses; specified failure/recovery exercised; no unresolved material user-visible defects. Any game/runtime/asset fix resets three-run requirement on new candidate. User music acceptance and real hardware evidence cannot be waived.
-
-**Verification / expected red:** Run log command or manual record for each route with build/hash and trace/video; final evidence checker, headless regression and audio checks as relevant. Docs-only edits may preserve runs with identical build hash and documentary revalidation.
-
-**Evidence:** Exact final-head per-commit sign-offs, independent E2E sign-off, three run logs, final screenshots, checks and release notes. Transition PR non-draft and verify; report no material defects observed, not universal bug-free. Merge/deployment/final human acceptance separately authorized.
-
-**Execution record (pending):** exact commands and versions; observed red assertion/exit; green and regression results; refactor rationale; commit SHA; assigned independent code reviewer; findings and main triage; final-head revalidation; E2E reviewer/result; evidence URLs. None run yet. Refactor only where it clarifies this phase's responsibilities, then rerun affected checks.
-
-## Milestone gate
-
-Attach required evidence and release notes before final review. Test actual user workflows; unit tests/source inspection alone do not satisfy E2E. Missing environment/hardware/audio access is explicit blocked evidence. Follow planning/verification.md for screenshot dimensions, artifact fingerprints and final-candidate rules. Mark PR ready only after exact-final-head review gates; no automatic merge. Next milestone starts only with applicable authorization and dependencies satisfied.
+Physical USB full-run participation and actual listening remain mandatory; previous M7 responsiveness approval does not cover changed M8 content. Report no material defects observed with limitations, never universal zero defects. No final sign-off until qualifying evidence is complete.

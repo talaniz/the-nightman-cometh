@@ -26,6 +26,10 @@ class Progress:
             if stage not in ('act1','act2','act3','rehearsal'):raise ValueError('unknown stage')
             positions={'act1':Act1.flag_positions,'act2':Act2.flag_positions,'act3':Act3.flag_positions,'rehearsal':FLAGS}[stage]
             checkpoint=data.get('checkpoint');flags=data.get('flags')
+            # M8 extends approaches; translate only known old pre-boss checkpoints.
+            legacy={'act1':3350,'act2':2800,'act3':3000}
+            if type(checkpoint)==int and checkpoint==legacy.get(stage):
+                checkpoint=positions['preboss'];data={**data,'checkpoint':checkpoint}
             if type(checkpoint)!=int or checkpoint not in (80,*positions.values()):raise ValueError('checkpoint')
             if not isinstance(flags,list) or len(flags)>2 or any(not isinstance(f,str) or f not in positions for f in flags) or len(set(flags))!=len(flags):raise ValueError('flags')
             if checkpoint!=80 and checkpoint not in [positions[f] for f in flags]:raise ValueError('unactivated checkpoint')

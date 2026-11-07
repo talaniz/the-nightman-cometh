@@ -74,7 +74,7 @@ test('ACT2_MOTION live crew gun and Frank pose evidence',async({page})=>{
    const sample=()=>{
     const log=window.__motion;if(!log.active)return;
     const s=JSON.parse(window.__nightmanGame),w=s.world,c=document.querySelector('#canvas');
-    const camera=Math.max(0,Math.min(3600-960,w.player.x-350));
+    const camera=Math.max(0,Math.min(4350-960,w.player.x-350));
     for(const t of w.targets){
      if(!t.alive||!['duncan','z','gun','frank'].includes(t.kind))continue;
      const x=t.x-camera;if(x<60||x>850)continue;
@@ -89,7 +89,7 @@ test('ACT2_MOTION live crew gun and Frank pose evidence',async({page})=>{
    };requestAnimationFrame(sample);
   });
   // Real keyboard input exercises scene motion; observer reads pixels only.
-  await page.keyboard.press('j');if(name==='crew')await page.keyboard.press('ArrowRight',{delay:200});await page.waitForTimeout(name==='boss'?3500:2800);
+  await page.keyboard.press('j');if(name==='crew')await page.keyboard.press('ArrowRight',{delay:200});await page.waitForTimeout(name==='boss'?4250:3550);
   const frames=await page.evaluate(()=>{window.__motion.active=false;return window.__motion.frames;});
   const kind=name==='crew'?'z':name==='gun'?'gun':'frank';
   expect(Object.keys(frames).filter(k=>k.startsWith(kind)).length).toBeGreaterThanOrEqual(2);

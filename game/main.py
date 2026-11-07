@@ -44,8 +44,10 @@ async def main():
         keymap={pygame.K_LEFT:'left',pygame.K_a:'left',pygame.K_RIGHT:'right',pygame.K_d:'right',
                 pygame.K_UP:'up',pygame.K_DOWN:'down',pygame.K_RETURN:'confirm',pygame.K_ESCAPE:'back',
                 pygame.K_SPACE:'jump',pygame.K_j:'bat',pygame.K_k:'beam',pygame.K_m:'mute',pygame.K_r:'retry'}
+        clicked=False
         for event in pygame.event.get():
             if event.type==pygame.QUIT:return
+            if event.type==pygame.MOUSEBUTTONUP and event.button==1:clicked=True
             if event.type==pygame.WINDOWFOCUSLOST:
                 held.clear();pending.clear();inputs.keys.clear();inputs.blocked_keys.clear();inputs.quarantine();session.blur()
             if event.type==pygame.KEYUP:
@@ -70,6 +72,8 @@ async def main():
             held.clear();inputs.keys.clear();inputs.blocked_keys.clear();pending.clear();session.blur()
         else:
             pending.update(perform(session,audio,inputs,pressed))
+        if clicked and focused and session.screen=='dialogue' and context==(session.screen,session.dialogue):
+            session.next_dialogue()
         if context!=(session.screen,session.dialogue):
             inputs.quarantine();pending.clear();directions=set()
         session.input_state=inputs.snapshot()
@@ -90,7 +94,7 @@ async def main():
         before=session.world.steps
         controls={'left':'left' in directions,'right':'right' in directions,**{k:True for k in pending}}
         before_screen=session.screen
-        session.update(dt,controls)
+        session.update(dt if focused else 0,controls)
         if session.screen!=before_screen:inputs.quarantine();pending.clear()
         if session.world.steps!=before:pending.clear()
         desired=session.music_scene() or audio.scene
@@ -105,6 +109,8 @@ async def main():
             if event=='meal':audio.transform()
             audio.effect('boss-defeat' if event=='defeat' else event) if event!='boss-start' else None
         session.world.events.clear()
+        for cue in session.story_events:audio.effect(cue)
+        session.story_events.clear()
         audio.tick((session.world.steps-before)*DT if session.screen=='training' else dt)
         renderer.draw(session,audio);frame_count+=1
         if WEB:

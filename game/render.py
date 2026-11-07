@@ -130,9 +130,7 @@ class Renderer:
             x=int(impact['x']-camera);y=int(impact['y']);radius=int(5+impact['life']*30)
             for dx,dy in ((1,0),(0,1),(1,1),(1,-1)):
                 pygame.draw.line(self.screen,CREAM,(x-dx*radius,y-dy*radius),(x+dx*radius,y+dy*radius),2)
-        for shot in w.shots:
-            pygame.draw.circle(self.screen,(207,98,76),(int(shot['x']-camera),int(shot['y'])),7)
-            pygame.draw.circle(self.screen,GOLD,(int(shot['x']-camera)-2,int(shot['y'])-2),3)
+        for shot in w.shots:self.projectile(shot,camera)
         for b in w.beams:
             self.rect((255,242,164),(b['x']-camera-12,b['y']-3,26,6));self.rect(GOLD,(b['x']-camera-10,b['y']-1,23,2))
         self.rect((24,25,39),(0,0,960,70));self.rect(GOLD,(0,68,960,2));self.screen.blit(self.art.asset('sprites/nail-bat.png',(96,30),trim=True),(20,14)) if w.act in ('act1','act2','act3') else self.bat(25,18,2);self.text('RAT BAT',130,18,GOLD);self.text('DENNIS AS CHARLIE',130,42,MUTED,self.small)
@@ -163,7 +161,9 @@ class Renderer:
             self.center('THREE ACTS  ·  A MUSICAL ADVENTURE',126,MUTED,self.small)
         if session.screen in ('ending','credits'):
             self.ending(session)
-        elif session.screen in ('title','pause','options','confirm','dead','complete'):
+        elif session.screen=='title':
+            self.title(session)
+        elif session.screen in ('pause','options','confirm','dead','complete'):
             headings={'title':'ENTER THE THEATRE','pause':'TAKE FIVE','options':'OPTIONS','confirm':'START A NEW RUN?','dead':'CURTAIN CALL','complete':'ACT 2 COMPLETE' if session.world.act=='act2' else 'ACT 1 COMPLETE'}
             self.panel(headings[session.screen])
             if session.screen=='complete':self.center('End of preview · Rooftops come next.' if session.world.act=='act2' else 'Under the bridge comes next.',195,MUTED,self.small)
@@ -192,6 +192,34 @@ class Renderer:
         self.controller_prompts(session)
         pygame.display.flip()
 
+    def projectile(self,shot,camera):
+        x=int(shot['x']-camera);y=int(shot['y']);kind=shot.get('kind')
+        if kind=='egg':
+            pygame.draw.ellipse(self.screen,(240,228,194),(x-6,y-8,12,16))
+            pygame.draw.ellipse(self.screen,(255,248,222),(x-4,y-6,5,7))
+        elif kind=='alcohol':
+            pygame.draw.polygon(self.screen,(205,224,224),[(x-7,y-8),(x+7,y-8),(x+5,y+8),(x-5,y+8)],2)
+            self.rect((185,102,35),(x-4,y,8,6));self.rect((244,217,164),(x-4,y,8,2))
+        elif kind=='crucifix':
+            self.rect((95,61,31),(x-3,y-11,6,22));self.rect((220,173,80),(x-2,y-10,4,20))
+            self.rect((220,173,80),(x-9,y-6,18,5))
+        elif kind=='chimichanga':
+            pygame.draw.ellipse(self.screen,(199,128,52),(x-10,y-6,20,12))
+            pygame.draw.line(self.screen,(241,183,95),(x-7,y-3),(x+6,y-3),2)
+            for dx in (-4,2,6):pygame.draw.line(self.screen,(111,68,36),(x+dx,y),(x+dx+2,y+3),1)
+        else:
+            pygame.draw.circle(self.screen,(207,98,76),(x,y),7)
+            pygame.draw.circle(self.screen,GOLD,(x-2,y-2),3)
+
+    def title(self,session):
+        self.screen.fill((0,0,0))
+        self.screen.blit(self.art.asset('ui/title-m8.png',(810,540)),(75,0))
+        for i,choice in enumerate(session.menu()):
+            label='START' if choice=='Start Act 1' else choice.upper()
+            self.text(('> ' if i==session.selection else '  ')+label,575,234+i*29,
+                      GOLD if i==session.selection else CREAM,self.font)
+        self.center('UP / DOWN choose · ENTER confirm',520,MUTED,self.small)
+
     def controller_prompts(self,session):
         state=getattr(session,'input_state',{})
         if not state.get('pad_mode'):return
@@ -208,7 +236,17 @@ class Renderer:
     def story(self,session):
         still=session.sequence[min(session.dialogue,len(session.sequence)-1)]
         self.screen.fill(INK)
-        self.screen.blit(self.art.image(still.atlas,still.panel,(960,420)),(0,0))
+        if still.atlas=='transformation' and still.panel<2:
+            # Shared backdrop and atlas bounds lock camera, pose anchor and scale.
+            self.screen.blit(self.art.asset('backgrounds/act3/rooftop.png',(960,420)),(0,0))
+            pose=1 if still.panel==1 or still.effect and session.story_elapsed>=3.7 else 0
+            sprite=self.art.sequence('sprites/dennis-transformation.png',pose,2,1,(170,350),trim_row=True)
+            self.screen.blit(sprite,(395,15))
+        else:
+            self.screen.blit(self.art.image(still.atlas,still.panel,(960,420)),(0,0))
+        if still.effect:
+            self.transformation(session.story_elapsed)
+            return
         self.rect(CREAM,(24,368,912,140));self.rect(GOLD,(24,368,912,140),3)
         pygame.draw.polygon(self.screen,CREAM,[(110,370),(140,342),(157,370)])
         self.text(still.speaker,43,380,(104,58,28),self.small)
@@ -224,7 +262,22 @@ class Renderer:
                 left=43+self.font.size(line.split('and words')[0])[0]
                 pygame.draw.line(self.screen,(130,78,28),(left,428+i*26),(left+self.font.size('and words')[0],428+i*26),2)
         if whisper:self.text(whisper,43,410+len(lines)*26,(87,80,69),self.small)
-        self.center('ENTER next    ESC skip    Replay from the menu',519,MUTED,self.small)
+        self.center('CLICK / ENTER next    ESC skip    Replay from the menu',519,MUTED,self.small)
+
+    def transformation(self,elapsed):
+        # Slow washes preserve the fixed pose; only two discrete white flashes.
+        overlay=pygame.Surface((960,540),pygame.SRCALPHA)
+        if elapsed<.7 or elapsed>=3.7:
+            local=elapsed if elapsed<.7 else elapsed-3.7
+            alpha=255 if local<.1 else max(0,round(255*(.7-local)/.6))
+            overlay.fill((255,255,255,alpha))
+        else:
+            progress=(elapsed-.7)/3
+            colors=((220,160,40),(80,120,220),(190,80,160),(220,160,40))
+            section=min(2,int(progress*3));blend=progress*3-section
+            rgb=tuple(round(a+(b-a)*blend) for a,b in zip(colors[section],colors[section+1]))
+            overlay.fill((*rgb,round(90*math.sin(progress*math.pi))))
+        self.screen.blit(overlay,(0,0))
 
     def actor(self,p,camera,steps):
         if p.swing:
@@ -244,9 +297,11 @@ class Renderer:
             sprite=sprite.copy();sprite.fill((180,180,180,0),special_flags=pygame.BLEND_RGB_ADD)
         self.screen.blit(sprite,(int(p.x-camera-8),int(p.y-20)))
         # Per-pose hand anchors keep the bat attached to the atlas animation.
-        hand_x,hand_y=((23,17),(29,3),(29,3),(29,-8))[frame%4]
+        hand_x,hand_y=((23,17),(29,3),(25,8),(29,-8))[frame%4]
         bat_x=p.x-camera+hand_x if p.facing>0 else p.x-camera+24-hand_x-43
         bat=self.art.asset('sprites/nail-bat.png',(43,13),trim=True)
+        if moving and p.grounded:
+            bat=pygame.transform.rotate(bat,(-12,10)[(steps//8)%2])
         if p.facing<0:bat=pygame.transform.flip(bat,True,False)
         self.screen.blit(bat,(int(bat_x),int(p.y+hand_y)))
 
@@ -257,7 +312,7 @@ class Renderer:
         if t['kind'] in ('rat','ghoul'):
             row=0 if t['kind']=='rat' else 1
             frame=(t.get('animation_step',0)//8)%4+row*4
-            size=(44,23) if row==0 else (38,42)
+            size=(50,27) if row==0 else (38,42)
             sprite=self.art.sequence('sprites/enemy-walk.png',frame,4,2,size,t.get('direction',1)<0,trim_row=True)
             self.screen.blit(sprite,(int(t['x']-camera+(30-size[0])/2),int(t['y']+32-size[1])))
             return
@@ -265,9 +320,14 @@ class Renderer:
         if t['kind']=='cricket' and t['state'] in ('stunned','defeated'):index=12
         size=(44,48) if t['kind']=='cricket' else (38,36)
         if t['kind']=='chicken' and t['state']=='waiting':return
-        if t['state']=='warning':self.text('!',t['x']-camera+12,t['y']-26,GOLD,self.large)
+        if t['state'] in ('warning','brake'):self.text('!',t['x']-camera+12,t['y']-26,GOLD,self.large)
         if t['state']=='stunned':self.text('* * *',t['x']-camera-7,t['y']-30,GOLD)
-        self.screen.blit(self.art.image('cast',index,size,(t.get('direction',1)>0 if t['kind']=='cricket' else t.get('direction',1)<0)),(int(t['x']-camera-5),int(t['y']+32-size[1])))
+        if t['kind']=='cricket' and t['state']=='charge':
+            sprite=self.art.sequence('sprites/cricket-run.png',(t.get('animation_step',0)//6)%4,
+                                     4,1,(50,48),t.get('direction',1)>0,trim_row=True)
+        else:
+            sprite=self.art.image('cast',index,size,(t.get('direction',1)>0 if t['kind']=='cricket' else t.get('direction',1)<0))
+        self.screen.blit(sprite,(int(t['x']-camera-5),int(t['y']+32-size[1])))
         if t['kind']=='cricket':
             self.text('CRICKET',675,83,GOLD)
             for i in range(t['hp']):self.rect((204,86,78),(790+i*27,84,20,12))
@@ -285,7 +345,7 @@ class Renderer:
             for yy in range(y+16,min(506,y+height),18):
                 pygame.draw.line(self.screen,(47,35,36),(x-camera,yy),(x+width-camera,yy),2)
                 for xx in range(x,x+width,44):self.rect((47,35,36),(xx-camera+(22 if yy%36 else 0),yy-16,2,16))
-        for x,label in ((1700,'MIDPOINT'),(3350,'PRE-BOSS')):
+        for x,label in ((1700,'MIDPOINT'),(4250,'PRE-BOSS')):
             pygame.draw.line(self.screen,CREAM,(x-camera,430),(x-camera,360),3)
             self.text(label,x-camera-40,447,GOLD,self.small)
         # Storefront fascia shares the painted flat's parallax, not the camera/HUD layer.
@@ -301,30 +361,37 @@ class Renderer:
             self.screen.blit(self.art.asset('ui/'+asset,(width,height)),(int(sx),top))
         # Existing later-route venue remains an enamel mounted sign, not a floating HUD label.
         sx=2730-camera
-        self.rect((58,38,35),(sx,220,220,105));self.rect((174,129,69),(sx+4,224,212,97),3)
-        lettering=pygame.font.Font(None,31).render("SHADYNASTY'S",False,(232,205,151))
-        self.screen.blit(lettering,(int(sx+(220-lettering.get_width())/2),240))
-        self.text('JAZZ CLUB',sx+67,282,(190,160,107),self.small)
+        self.screen.blit(self.art.asset('ui/shadynasty-sign.png',(220,110)),(int(sx),215))
         if w.boss_active:
-            for x in (3530,4090):
-                self.rect((116,135,137),(x-camera,393,34,37))
-                for rib in (5,12,20,27):self.rect((65,85,91),(x-camera+rib,397,2,29))
-                pygame.draw.ellipse(self.screen,(184,193,185),(int(x-camera-3),388,40,10))
-                self.rect((218,218,193),(x-camera+10,385,14,4))
-            self.screen.blit(self.art.image('cast',13,(38,62)),(4140-camera,368))
+            # Inner steel faces meet Cricket's collision limits (30px body).
+            for x in (4350,4980):
+                self.screen.blit(self.art.asset('sprites/dumpster.png',(90,55),trim=True),
+                                 (int(x-camera),375))
+            self.screen.blit(self.art.image('cast',13,(38,62)),(5040-camera,368))
 
     def bridge_enemy(self,t,camera):
         x=t['x']-camera;y=t['y'];kind=t['kind']
         if kind=='sandwich':
+            ingredient=t.get('ingredient','whole')
+            if ingredient!='whole':
+                colors={'meat':(174,77,69),'cheese':(239,190,51),'bread':(211,158,85),'lettuce':(96,153,55)}
+                pygame.draw.ellipse(self.screen,colors[ingredient],(x,y+3,30,10))
+                if ingredient=='cheese':
+                    for dx in (7,20):pygame.draw.circle(self.screen,(192,136,35),(int(x+dx),int(y+8)),2)
+                elif ingredient=='lettuce':
+                    pygame.draw.lines(self.screen,(154,192,89),False,[(x,y+8),(x+7,y+4),(x+15,y+10),(x+22,y+5),(x+30,y+8)],2)
+                return
             pygame.draw.ellipse(self.screen,(231,176,91),(x,y,30,7))
             self.rect((99,145,62),(x+1,y+6,28,3));self.rect((170,66,48),(x+2,y+9,26,3))
             pygame.draw.ellipse(self.screen,(203,139,67),(x,y+11,30,5));return
         row={'duncan':0,'z':1,'gun':2,'frank':3}[kind]
         state=t['state'];step=t.get('animation_step',0)
-        if kind=='frank':pose=2 if state=='windup' else 3 if state=='throw' else (step//10)%2 if state=='shuffle' else 0
+        if kind=='frank':pose=2 if state in ('windup','ingredients') else 3 if state=='throw' else (step//10)%2 if state=='shuffle' else 0
         elif kind=='gun':pose=3 if state=='recover' and t['timer']>1.1 else 0 if state in ('windup','recover') else 1+(step//9)%2
         else:pose=3 if state=='lunge' else 0 if state in ('windup','recover') else 1+(step//9)%2
         size=(76,62) if kind=='frank' else (68,43) if kind=='gun' else (66,59)
+        if kind=='gun' and state=='recover' and t['timer']>1.05:
+            x-=t['direction']*6
         sprite=self.art.sequence('sprites/bridge.png',row*4+pose,4,4,size,t['direction']<0,trim_row=True)
         if t.get('immune',0)>0 and int(t['immune']*14)%2:
             sprite=sprite.copy();sprite.fill((100,100,100,0),special_flags=pygame.BLEND_RGB_ADD)
@@ -363,11 +430,11 @@ class Renderer:
 
     def nightman(self,t,camera):
         state=t['state']
-        pose={'idle':0,'windup':3,'leap':4,'recover':5,'summon':6,'defeated':7}.get(state,1+(t.get('animation_step',0)//7)%2)
+        pose={'idle':0,'windup':3,'leap':4,'recover':5,'summon':6,'charge':6,'fire':3,'karate':4,'defeated':7}.get(state,1+(t.get('animation_step',0)//7)%2)
         if t.get('immune',0)>0:pose=7
         sprite,anchor=self.art.nightman(pose,t['direction']<0)
         self.screen.blit(sprite,(int(t['x']-camera+16-anchor),int(t['y']+56-sprite.get_bounding_rect().bottom)))
-        if state in ('windup','summon'):self.text('!' if state=='windup' else '*',t['x']-camera+10,t['y']-30,GOLD,self.large)
+        if state in ('windup','summon','charge'):self.text('!' if state=='windup' else '*',t['x']-camera+10,t['y']-30,GOLD,self.large)
         self.text('NIGHTMAN',640,83,GOLD)
         for i in range(t['hp']):self.rect((204,86,78),(790+i*25,84,18,12))
 
@@ -394,7 +461,7 @@ class Renderer:
             for dx in (18,width-24):self.rect((74,67,61),(sx+dx,top+height,6,430-top-height))
             pygame.draw.line(self.screen,(124,104,70),(sx+18,top+height+12),(sx+width-24,top+height+32),4)
             self.screen.blit(self.art.sequence('ui/rooftop-ads.png',index,2,1,(width,height)),(int(sx),top))
-        if w.boss_active:self.screen.blit(self.art.image('cast',13,(38,62)),(3940-camera,368))
+        if w.boss_active:self.screen.blit(self.art.image('cast',13,(38,62)),(4790-camera,368))
 
     def ending(self,session):
         self.screen.blit(self.art.image('finale',7,(960,540)),(0,0))

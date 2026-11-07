@@ -48,13 +48,13 @@ test('CONTROLLER menus password dialogue options and credits',async({page})=>{
  await selectCharacter(page,36);expect((await state(page)).password).toBe('');
  for(const ch of 'NIGHTMAN')await selectCharacter(page,'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.indexOf(ch));
  expect((await state(page)).message).toBe('');await capture(page,'password');await page.setViewportSize({width:1920,height:1080});await capture(page,'password-1920');await page.setViewportSize({width:1280,height:720});await selectCharacter(page,37);expect((await state(page)).world.act).toBe('act3');expect((await state(page)).qa).toBe(true);
- await fixture(page,'act3-finale-6');await tap(page,0);expect((await state(page)).screen).toBe('ending');await capture(page,'ending');
- await tap(page,0);expect((await state(page)).screen).toBe('credits');await capture(page,'credits');
+ await fixture(page,'act3-finale-25');await tap(page,0);expect((await state(page)).screen).toBe('credits');await capture(page,'credits-direct');
+ await capture(page,'credits');
  await tap(page,4);expect((await state(page)).audio.muted).toBe(true);await capture(page,'muted');await tap(page,4);
  await fixture(page,'audio-error');expect((await state(page)).audio.error).toContain('Audio unavailable');await capture(page,'audio-error');await tap(page,5);
  await expect.poll(async()=>(await state(page)).audio.error).toBe('');await capture(page,'audio-recovered');
  await page.setViewportSize({width:1920,height:1080});await capture(page,'credits-1920');await page.setViewportSize({width:390,height:844});await capture(page,'narrow');
- await page.setViewportSize({width:1280,height:720});await tap(page,0);expect((await state(page)).screen).toBe('dialogue');await tap(page,1);expect((await state(page)).screen).toBe('ending');expect(faults).toEqual([]);
+ await page.setViewportSize({width:1280,height:720});await tap(page,0);expect((await state(page)).screen).toBe('dialogue');await tap(page,1);expect((await state(page)).screen).toBe('credits');expect(faults).toEqual([]);
 });
 
 test('CONTROLLER disconnect focus unsupported fallback and deadzone',async({page})=>{

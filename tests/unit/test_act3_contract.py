@@ -35,7 +35,7 @@ def test_nightman_password_real_level_isolates_progress():
     s.exit_qa();assert s.world.act=='act1' and not s.qa
 
 def test_rooftop_flags_and_retry():
-    w=Act3();assert w.flag_positions=={'mid':1600,'preboss':3000}
+    w=Act3();assert w.flag_positions=={'mid':1600,'preboss':3850}
     w.player.hearts=1;w.flag('mid',1600);assert w.player.hearts==2
     w.player.hearts=1;w.flag('mid',1600);assert w.player.hearts==1
     w.meal();w.retry();assert w.player.hearts==3 and w.player.dayman==0 and w.flags=={'mid'}
@@ -65,7 +65,7 @@ def test_unpowered_rooftop_route_wins_without_cheats():
         keys={'bat':tick%16==0}
         if not w.boss_active:
             keys['right']=True
-            keys['jump']=p.grounded and (any(0<edge-p.x<65 for edge in (1100,2350,1660)) or any(t['alive'] and 0<t['x']-p.x<90 and abs(t['y']-p.y)<65 for t in w.targets))
+            keys['jump']=p.grounded and (any(0<edge-p.x<65 for edge in (1100,2350,3300,1660)) or any(t['alive'] and 0<t['x']-p.x<90 and abs(t['y']-p.y)<65 for t in w.targets))
         else:
             b=w.targets[0];dx=b['x']-p.x
             keys.update(right=dx>42,left=dx<-42,jump=p.grounded and abs(dx)<170)

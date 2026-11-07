@@ -77,7 +77,7 @@ def test_final_spoken_joke_stays_silent_with_credits_music():
     manifest = gameplay_manifest(json.loads((Path(__file__).resolve().parents[2] / 'assets/audio/production/manifest.json').read_text()))
     backend = Backend(); director = Director(manifest, backend); director.unlock()
     assert manifest['scenes']['credits'] == 'sunny-credits'
-    for still in FINALE[2:]:
+    for still in FINALE[-6:]:
         director.set_scene(still.music)
         assert backend.current is None
     director.set_scene('credits')

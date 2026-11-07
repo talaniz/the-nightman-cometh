@@ -64,6 +64,7 @@ class World:
         self.beams.append({'x':p.x+12+p.facing*18,'y':p.y+19,'dx':p.facing*600,'dy':0,'life':1.8})
         p.beam_cooldown=.25;self.events.append('beam')
     def target_rect(self,target):
+        if target.get('kind')=='rat':return (target['x']-6,target['y']+8,42,24)
         return (target['x'],target['y'],30,32)
     def contact_hurts(self,target):
         return True

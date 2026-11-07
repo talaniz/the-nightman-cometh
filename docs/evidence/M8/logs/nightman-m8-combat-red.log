@@ -1,0 +1,63 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_______ test_frank_follows_whole_sandwich_with_four_ordered_ingredients ________
+
+    def test_frank_follows_whole_sandwich_with_four_ordered_ingredients():
+        w=Act2();w.player.x=3000;w.enter_boss();b=w.targets[0]
+        emitted=[];seen=set()
+        for _ in range(300):
+            b['timer']-=DT;w.update_frank(b)
+            for t in w.targets[1:]:
+                if t['id'] not in seen:
+                    seen.add(t['id']);emitted.append(t.get('ingredient','whole'))
+            if b['state']=='recover':break
+>       assert emitted==['whole','meat','cheese','bread','lettuce']
+E       AssertionError: assert ['whole'] == ['whole', 'me...d', 'lettuce']
+E
+E         Right contains 4 more items, first extra item: 'meat'
+E         Use -v to get more diff
+
+tests/unit/test_m8_combat.py:16: AssertionError
+__________________ test_bridge_crew_throw_eggs_after_warning ___________________
+
+    def test_bridge_crew_throw_eggs_after_warning():
+        w=Act2();t=next(t for t in w.targets if t['kind']=='duncan')
+        w.targets=[t];w.player.x=t['x']-160
+        for _ in range(150):
+            w.step({})
+            if w.shots:break
+>       assert w.shots and w.shots[0].get('kind')=='egg'
+E       assert ([])
+E        +  where [] = <game.levels.act2.Act2 object at 0x7f938b92d0>.shots
+
+tests/unit/test_m8_combat.py:27: AssertionError
+____ test_bridge_guns_shoot_alcohol_and_multiple_chickens_wait_in_approach _____
+
+    def test_bridge_guns_shoot_alcohol_and_multiple_chickens_wait_in_approach():
+>       w=Act2();assert sum(t['kind']=='chicken' for t in w.targets)>=3
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 0 >= 3
+E        +  where 0 = sum(<generator object test_bridge_guns_shoot_alcohol_and_multiple_chickens_wait_in_approach.<locals>.<genexpr> at 0x7f9387cad0>)
+
+tests/unit/test_m8_combat.py:31: AssertionError
+_________ test_nightman_charges_then_fires_bounded_alternating_bursts __________
+
+    def test_nightman_charges_then_fires_bounded_alternating_bursts():
+        w=Act3();w.player.x=3200;w.enter_boss();b=w.targets[0]
+        bursts=[];current=[];seen=set()
+        for _ in range(3000):
+            previous=b['state'];w.update_boss(b);seen.add(b['state'])
+            current.extend(shot.get('kind') for shot in w.shots);w.shots=[]
+            if previous=='fire' and b['state']=='recover':
+                bursts.append(current);current=[]
+                if len(bursts)==2:break
+>       assert 'charge' in seen and 'karate' in seen
+E       AssertionError: assert ('charge' in {'dash', 'idle', 'leap', 'recover', 'windup'})
+
+tests/unit/test_m8_combat.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_combat.py::test_frank_follows_whole_sandwich_with_four_ordered_ingredients
+FAILED tests/unit/test_m8_combat.py::test_bridge_crew_throw_eggs_after_warning
+FAILED tests/unit/test_m8_combat.py::test_bridge_guns_shoot_alcohol_and_multiple_chickens_wait_in_approach
+FAILED tests/unit/test_m8_combat.py::test_nightman_charges_then_fires_bounded_alternating_bursts
+4 failed in 0.22s
