@@ -6,11 +6,16 @@ on:
         description: 'Record an additional ordinary full walkthrough with game audio'
         type: boolean
         default: false
+      candidate_run:
+        description: 'Completed CI run containing the same ordinary build used for the three accepted runs'
+        type: string
+        default: ''
   pull_request:
   push:
     branches: [main]
 permissions:
   contents: read
+  actions: read
 jobs:
   foundation:
     runs-on: ubuntu-24.04
@@ -48,10 +53,19 @@ jobs:
       - name: Install isolated recording tools
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.record }}
         run: sudo apt-get update && sudo apt-get install -y ffmpeg pulseaudio xvfb
+      - name: Fetch the frozen candidate used for physical acceptance
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.record }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CANDIDATE_RUN: ${{ inputs.candidate_run }}
+        run: |
+          [[ "$CANDIDATE_RUN" =~ ^[0-9]+$ ]] || { echo 'A completed candidate run ID is required'; exit 1; }
+          gh run download "$CANDIDATE_RUN" --repo "$GITHUB_REPOSITORY" --name ordinary-game-candidate --dir build/recording-candidate
+          python -c "import json; from pathlib import Path; load=lambda p: json.loads(Path(p).read_text()); assert load('build/normal/build-manifest.json')['source_fingerprint']==load('build/recording-candidate/build-manifest.json')['source_fingerprint'], 'Candidate source differs from reviewed source'"
       - name: Record additional full walkthrough with audio
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.record }}
         env:
-          NIGHTMAN_BUILD: build/normal
+          NIGHTMAN_BUILD: build/recording-candidate
           NIGHTMAN_EVIDENCE: build/recording-captures
         run: |
           export CHROMIUM_PATH="$(node -e "process.stdout.write(require('@playwright/test').chromium.executablePath())")"
