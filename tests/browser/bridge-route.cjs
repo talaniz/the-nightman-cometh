@@ -9,7 +9,8 @@ async function driveBridge(page,{recovery=false,restart,choose,capture=async()=>
   if(s.screen==='dialogue')break;
   if(!extensionCaptured&&s.screen==='training'&&!w.boss_active&&p.x>2650){await capture(page,'act2-extended-approach');extensionCaptured=true;}
   if(s.screen==='dead'){
-   deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.press('Enter');continue;
+   deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.press('Enter');
+   await expect.poll(async()=>(await state(page)).screen).toBe('training');continue;
   }
   if(recovery&&!forced&&w.boss_active){
    await page.keyboard.press('ArrowRight',{delay:650});
@@ -35,8 +36,10 @@ async function driveBridge(page,{recovery=false,restart,choose,capture=async()=>
    if(edge&&p.grounded&&edge-p.x<85){
     await Promise.all([page.keyboard.down('ArrowRight'),page.keyboard.press('Space')]);await page.waitForTimeout(650);await page.keyboard.up('ArrowRight');
    }else{
-    const nearby=w.targets.some(t=>t.alive&&t.x-p.x>0&&t.x-p.x<115);
-    if(p.grounded&&(nearby||Math.abs(1560-p.x)<70))await page.keyboard.press('Space');
+    const nearby=w.targets.some(t=>t.alive&&t.x-p.x>0&&t.x-p.x<115&&Math.abs(t.y-p.y)<70);
+    // Do not jump up into an overhead dive; stay low and use the bat.
+    const overhead=w.targets.some(t=>t.alive&&t.kind==='chicken'&&t.state==='swoop'&&Math.abs(t.x-p.x)<180&&t.y<p.y);
+    if(p.grounded&&!overhead&&(nearby||Math.abs(1560-p.x)<70))await page.keyboard.press('Space');
     await page.keyboard.press('j');await page.keyboard.press('ArrowRight',{delay:edge?50:170});
    }
   }

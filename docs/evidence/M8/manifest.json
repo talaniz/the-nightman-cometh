@@ -1,0 +1,206 @@
+{
+  "status": "initial focused evidence; full-route evidence and independent acceptance pending",
+  "code_revision": "6af33fb69ab73ffef6bf8ae617b4774fabf1cb75",
+  "source_fingerprint": "bf84387abbedcd111874090ea7e18661a70008863720ff6a50bca5219340f5d9",
+  "environment": "Raspberry Pi Chromium, Playwright 1.64.1, one worker, nice 10, guarded at 75C / 400MiB available",
+  "command": "NODE_PATH=/home/palpatine/projects/the-nightman-cometh-m3/node_modules NIGHTMAN_BUILD=/tmp/nightman-m8-fixtures-6af33fb NIGHTMAN_EVIDENCE=/tmp/nightman-m8-local-captures node /home/palpatine/projects/the-nightman-cometh-m3/node_modules/@playwright/test/cli.js test tests/browser/m8.spec.cjs --project=chromium --workers=1",
+  "notes": [
+    "Projectile test passed; two timing-sensitive tests then passed with read-only in-browser observation as committed with this evidence.",
+    "No game/runtime/asset changes after capture. Test-only observer changes are included in this evidence commit.",
+    "These focused tests use fixtures; Nightman projectile fixture explicitly uses invincibility. None is a qualifying full run.",
+    "Temporal canvas frames supplement full viewport captures; first-flash is intentionally white.",
+    "Main inspected every listed image. Audio listening is not established. The gun-alcohol frame visibly includes both an egg and an alcohol shot."
+  ],
+  "captures": [
+    {
+      "image": "captures/m8-color-wash.png",
+      "state": "captures/m8-color-wash.json",
+      "sha256": "0fddccd23cead848fec4d725eadd21467146a41b30cfb5641eecffbbf3ec050d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "captures/m8-cricket-braking.png",
+      "state": "captures/m8-cricket-braking.json",
+      "sha256": "c71ca1397041e8ff4d7f43575e58fcfd0dada00750a383b2634f66693d217f57",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "captures/m8-cricket-reversed.png",
+      "state": "captures/m8-cricket-reversed.json",
+      "sha256": "ec3e7a2d94dd35858c7cd3174a876227e5c2d89963a972ffad60d1d221926af4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "captures/m8-dayman-revealed.png",
+      "state": "captures/m8-dayman-revealed.json",
+      "sha256": "0606df7de838bc10ceeba87e81e5bb8d2c6d5532fea3cbcbef6ef756adc67b70",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-dennis-before.png",
+      "state": "captures/m8-dennis-before.json",
+      "sha256": "b54e3ed1eeb15861f431ae59fb8d950414a9dc027fb02f56e2264050fc7bc2a7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-dumpster-1920.png",
+      "state": "captures/m8-dumpster-1920.json",
+      "sha256": "c42910eeb0281154b403a51b55b3c7210efb02059e1d08cfecbbb2fa227a006a",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-dumpster-crash.png",
+      "state": "captures/m8-dumpster-crash.json",
+      "sha256": "a5ff2513e84f8160299d27fa20cdd564f6835b0b065a97e02dc55edd2a7d44c6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "captures/m8-first-flash.png",
+      "state": "captures/m8-first-flash.json",
+      "sha256": "a349c823d9e7b1019f61f4376dee39cd867ff8e3f7b26120260bca276ce558c7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "captures/m8-frank-ingredients.png",
+      "state": "captures/m8-frank-ingredients.json",
+      "sha256": "6d75d3eb891d754c22e281e9659916072522fc4d045685e571ddfafb8267d185",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-gun-alcohol.png",
+      "state": "captures/m8-gun-alcohol.json",
+      "sha256": "170f8eb78471247ee5fba268619e55ba12b98e698f6e7eb381907675714c1cf3",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-nightman-charge.png",
+      "state": "captures/m8-nightman-charge.json",
+      "sha256": "0feb3d4ee0cf1f1a3ab80afd0b856b5d14614080b0ace3930e1832bccd0df1ef",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-nightman-chimichanga.png",
+      "state": "captures/m8-nightman-chimichanga.json",
+      "sha256": "0560c00604f7b84bcdc0eb9b90ebf76582fd07a585896257ad807790d83f51a8",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-nightman-crucifix.png",
+      "state": "captures/m8-nightman-crucifix.json",
+      "sha256": "c21a0c1c8f8447ec7c17f6bc0893688cb28f9e8d5bd5b0589f28e9795991c85f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-proposal-1920.png",
+      "state": "captures/m8-proposal-1920.json",
+      "sha256": "7eb93bce791ac2420893d399693b33a86650c693795ac6d05fc9b07fba81fdae",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-proposal-sunburst.png",
+      "state": "captures/m8-proposal-sunburst.json",
+      "sha256": "6a9686301159ce36f321af836227e85bdd6e890cbb4a8c3cb6f15bf23d3bdfb5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-story-narrow.png",
+      "state": "captures/m8-story-narrow.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-title-1280.png",
+      "state": "captures/m8-title-1280.json",
+      "sha256": "1f1b32204b802d72be439c53026f24577cc175dfe7196cc63766d7da6a09c6ca",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-title-1920.png",
+      "state": "captures/m8-title-1920.json",
+      "sha256": "441a09492d6c2260bc411343eef895f6857df503be296c40b1ac4a561a257b03",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "full browser viewport"
+    },
+    {
+      "image": "captures/m8-title-narrow.png",
+      "state": "captures/m8-title-narrow.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "kind": "full browser viewport"
+    }
+  ]
+}

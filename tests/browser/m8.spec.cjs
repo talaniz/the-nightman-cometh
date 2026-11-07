@@ -14,27 +14,60 @@ async function capture(page,name){
  fs.writeFileSync(path.join(dir,'m8-'+name+'.json'),JSON.stringify({viewport:page.viewportSize(),state:await state(page)},null,2));
 }
 
+// Observe transient states in the browser, without IPC/screenshot delays between them.
+// This reads game state and canvas pixels only; it never changes the simulation.
+async function observe(page,kind){
+ await page.evaluate(kind=>{
+  const observation=window.__m8Observation={frames:{},active:true,start:null};
+  function tick(){
+   if(!observation.active)return;
+   const state=JSON.parse(window.__nightmanGame),b=state.world.targets.find(t=>t.kind==='cricket');
+   let key;
+   if(kind==='cricket'&&state.screen==='training'&&b){
+    if(b.state==='brake')key='cricket-braking';
+    else if(observation.frames['cricket-braking']&&b.state==='charge'&&b.direction===1)key='cricket-reversed';
+    else if(observation.frames['cricket-reversed']&&b.state==='stunned')key='dumpster-crash';
+   }else if(kind==='transformation'&&state.screen==='dialogue'&&state.dialogue===1){
+    observation.start??=performance.now();
+    key=performance.now()-observation.start<100?'first-flash':performance.now()-observation.start>1100?'color-wash':null;
+   }
+   if(key&&!observation.frames[key])observation.frames[key]={state,png:document.querySelector('#canvas').toDataURL('image/png')};
+   requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+ },kind);
+}
+async function observedFrames(page){
+ const frames=await page.evaluate(()=>{window.__m8Observation.active=false;return window.__m8Observation.frames;});
+ const dir=process.env.NIGHTMAN_EVIDENCE;
+ if(dir){fs.mkdirSync(dir,{recursive:true});for(const [name,frame] of Object.entries(frames)){
+  fs.writeFileSync(path.join(dir,'m8-'+name+'.png'),Buffer.from(frame.png.split(',')[1],'base64'));
+  fs.writeFileSync(path.join(dir,'m8-'+name+'.json'),JSON.stringify({viewport:page.viewportSize(),kind:'actual browser canvas',state:frame.state},null,2));
+ }}
+ return frames;
+}
+
 test('M8 Cricket brakes reverses and crashes into the dumpster',async({page})=>{
  await boot(page);await capture(page,'title-1280');
  await page.setViewportSize({width:1920,height:1080});await capture(page,'title-1920');
  await page.setViewportSize({width:390,height:844});await capture(page,'title-narrow');
  await page.setViewportSize({width:1280,height:720});await fixture(page,'act1-boss-warning');
- await expect.poll(async()=>(await state(page)).world.targets[0].state,{timeout:10000,intervals:[50]}).toBe('brake');
- const braking=(await state(page)).world.targets[0];expect(braking.direction).toBe(-1);
- await capture(page,'cricket-braking');
- await expect.poll(async()=>(await state(page)).world.targets[0].direction,{intervals:[50]}).toBe(1);
- await capture(page,'cricket-reversed');
- await expect.poll(async()=>(await state(page)).world.targets[0].state,{intervals:[50]}).toBe('stunned');
- expect((await state(page)).world.targets[0].x).toBe(4950);await capture(page,'dumpster-crash');
+ await observe(page,'cricket');
+ await page.waitForFunction(()=>!!window.__m8Observation.frames['dumpster-crash'],{},{timeout:15000});
+ const frames=await observedFrames(page);
+ expect(frames['cricket-braking'].state.world.targets[0].direction).toBe(-1);
+ expect(frames['cricket-reversed'].state.world.targets[0].direction).toBe(1);
+ expect(frames['dumpster-crash'].state.world.targets[0].x).toBe(4950);
  await page.setViewportSize({width:1920,height:1080});await capture(page,'dumpster-1920');
 });
 
 test('M8 transformation is automatic and proposal advances by click only once',async({page})=>{
  await boot(page);await fixture(page,'act3-finale-0');await capture(page,'dennis-before');
+ await observe(page,'transformation');
  await page.keyboard.press('Enter');await expect.poll(async()=>(await state(page)).dialogue).toBe(1);
- await capture(page,'first-flash');await page.waitForTimeout(1100);await capture(page,'color-wash');
  await page.keyboard.press('Enter');expect((await state(page)).dialogue).toBe(1);
  await expect.poll(async()=>(await state(page)).dialogue,{timeout:7000}).toBe(2);
+ const frames=await observedFrames(page);expect(Object.keys(frames)).toEqual(['first-flash','color-wash']);
  expect((await state(page)).story.text).toBe('The Dayman!');await capture(page,'dayman-revealed');
  await page.locator('#canvas').click();await expect.poll(async()=>(await state(page)).dialogue).toBe(3);
  expect((await state(page)).audio.playing).toBe('proposal');await capture(page,'proposal-sunburst');

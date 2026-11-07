@@ -1,0 +1,26 @@
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:22] "GET / HTTP/1.1" 200 -
+
+Running 2 tests using 1 worker
+
+(node:1960774) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:27] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:27] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:27] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:27] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:27] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:27] "GET /gamepad.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:28] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:53:45] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/m8.spec.cjs:50:1 › M8 Cricket brakes reverses and crashes into the dumpster (51.1s)
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:18] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:18] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:18] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:18] "GET /gamepad.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:18] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:18] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:19] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [07/Nov/2026 15:54:34] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  2 [chromium] › tests/browser/m8.spec.cjs:64:1 › M8 transformation is automatic and proposal advances by click only once (52.0s)
+
+  2 passed (1.8m)
