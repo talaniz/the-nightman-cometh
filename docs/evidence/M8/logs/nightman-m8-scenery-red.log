@@ -1,0 +1,31 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_bridge_captive_is_beyond_frank_and_inside_the_visible_arena _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fb66202d0>
+
+    def test_bridge_captive_is_beyond_frank_and_inside_the_visible_arena(monkeypatch):
+        import pygame
+        from game.levels.act2 import Act2
+        from game.render import Renderer
+        pygame.display.init();pygame.font.init();pygame.display.set_mode((960,540))
+        world=Act2();world.enter_boss()
+        renderer=Renderer(pygame.Surface((960,540)))
+        marker=pygame.Surface((38,62));marker.fill((255,0,255))
+        monkeypatch.setattr(renderer.art,'image',lambda *args,**kwargs:marker)
+        camera=world.width-960
+        renderer.bridge_scenery(world,camera)
+        rects=pygame.mask.from_threshold(renderer.screen,(255,0,255),(1,1,1,255)).get_bounding_rects()
+        assert len(rects)==1
+        captive=rects[0]
+>       assert captive.left > world.targets[0]['x']-camera+38, 'Dee must remain beyond Frank, not behind the player approach'
+E       AssertionError: Dee must remain beyond Frank, not behind the player approach
+E       assert 150 > ((4060.0 - 3390) + 38)
+E        +  where 150 = Rect(150, 368, 38, 62).left
+
+tests/unit/test_m8_scenery.py:16: AssertionError
+----------------------------- Captured stdout call -----------------------------
+pygame-ce 2.5.8 (SDL 2.32.10, Python 3.11.2)
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_scenery.py::test_bridge_captive_is_beyond_frank_and_inside_the_visible_arena
+1 failed in 0.90s

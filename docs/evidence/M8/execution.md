@@ -37,3 +37,5 @@ Initial real browser CI 42424915146: four controller groups passed; focused Chro
 These accepted findings are within the approved difficulty/recovery boundaries. The changed game candidate invalidates earlier qualifying runs; no such runs are claimed. Latest full unit suite result is recorded with this commit. Independent reviews and final E2E remain pending actual final-candidate browser evidence.
 
 Latest unit result: 150 passed in 15.45s.
+
+Visual follow-up: extending the bridge left the captive and Troll Crossing label at their old world positions. A rendered-scene test failed because Dee appeared behind Frank. Shift both with the arena; require the captive to be beyond Frank and inside the visible arena. This is a game-rendering change, so prior candidate runs are not qualifying final runs. Title scaling and extended-route captures have also been added without changing route inputs.

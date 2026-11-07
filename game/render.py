@@ -425,8 +425,8 @@ class Renderer:
             asset=self.art.asset('ui/wolf-billboard.png',(width,height)) if ad==2 else self.art.sequence('ui/bridge-ads.png',ad,2,1,(width,height))
             self.screen.blit(asset,(int(sx),top))
         if w.boss_active:
-            self.text('TROLL CROSSING',3190-camera,250,GOLD,self.small)
-            self.screen.blit(self.art.image('cast',13,(38,62)),(3540-camera,368))
+            self.text('TROLL CROSSING',3940-camera,250,GOLD,self.small)
+            self.screen.blit(self.art.image('cast',13,(38,62)),(4290-camera,368))
 
     def nightman(self,t,camera):
         state=t['state']
