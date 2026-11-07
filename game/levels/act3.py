@@ -17,7 +17,7 @@ class Act3(World):
         self.complete=False;self.boss_active=False;self.next_id=1000;self.summon_clock=6.
         self.targets=[]
         for i,(kind,x,y) in enumerate((('rat',460,398),('ghoul',720,328),('rat',1320,398),
-                                      ('ghoul',1790,398),('ghoul',2110,268),('rat',2690,398),('chicken',2210,150),('ghoul',3120,268),('rat',3600,398),('ghoul',3780,398))):
+                                      ('ghoul',1790,398),('ghoul',2110,268),('rat',2690,398),('chicken',2210,150),('ghoul',3120,268),('rat',3600,398),('ghoul',3700,398))):
             self.targets.append(dict(id=i,kind=kind,x=float(x),y=float(y),home=float(x),alive=True,
                                      direction=1,state='waiting' if kind=='chicken' else 'patrol',timer=0.,animation_step=0))
         self.pickups=[dict(id='food1',kind='cat-food',x=960,y=412,taken=False),
@@ -27,7 +27,7 @@ class Act3(World):
 
     def enter_boss(self):
         self.boss_active=True;self.beams=[];self.shots=[];self.swing_hits.clear();self.summon_clock=6.
-        self.targets=[dict(id=100,kind='nightman',x=4530.,y=374.,alive=True,hp=6,immune=0.,
+        self.targets=[dict(id=100,kind='nightman',x=4530.,y=374.,alive=True,hp=8,immune=0.,
                            direction=-1,state='idle',timer=1.,turn=0,burst=0,remaining=0,vy=0.,animation_step=0)]
         self.events.append('boss-start')
 
@@ -58,7 +58,7 @@ class Act3(World):
     def hit_target(self,target,event):
         if target['kind']!='nightman':return super().hit_target(target,event)
         if not target['alive'] or target['immune']>0:return False
-        target['hp']-=1;target['immune']=.75;self.events.append(event)
+        target['hp']-=1;target['immune']=.85;self.events.append(event)
         self.impacts.append(dict(x=target['x']+16,y=target['y']+25,life=.25))
         if target['hp']==0:
             self.complete=True;target['state']='defeated'
@@ -79,7 +79,7 @@ class Act3(World):
             self.summon();self.summon_clock=6.;b['state']='recover';b['timer']=.8
         elif state=='windup' and b['timer']<=0:
             b['turn']+=1
-            b['state']='charge' if b['turn']%3==0 else 'leap' if b['turn']%3==2 else 'dash'
+            b['state']='charge' if b['turn']%2==0 else 'leap' if b['turn']%4==3 else 'dash'
             b['timer']=.9 if b['state']=='charge' else .65
             if b['state']=='leap':b['vy']=-380.
         elif state in ('dash','leap'):

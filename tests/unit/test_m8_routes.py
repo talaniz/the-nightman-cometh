@@ -15,3 +15,10 @@ def test_longer_approach_preserves_existing_checkpoint_save(level,old,expected):
     assert s.world.act==level.act and s.world.checkpoint==expected
     assert s.world.player.x==expected and s.world.flags=={'mid','preboss'}
     assert s.progress.settings==dict(music=.3,effects=.6)
+
+
+def test_preboss_flag_approach_has_a_safe_moment_to_accept_input():
+    from game.fixtures import apply
+    s=Session(Memory());apply(s,{'name':'act3-preboss'})
+    s.update(1/60,{})
+    assert s.screen=='training' and s.world.player.hearts==1

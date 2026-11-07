@@ -26,3 +26,14 @@ PR23 https://github.com/talaniz/the-nightman-cometh/pull/23 is draft at first im
 Added focused actual-browser tests for Cricket's stationary tell/reversal/dumpster crash and automatic Dayman reveal/pointer lyric advance, with screenshots. Added opt-in remote Xvfb/PulseAudio/FFmpeg recording of the ordinary keyboard route, with readable story pacing, full credits and separate video/audio stream validation. Syntax checks pass; recording execution is pending. An uploaded CI recording is staging evidence only: inspect and publish a durable PR link before acceptance. It is not a substitute for the physical USB run.
 
 Packaging contract: every new required M8 image must be validated before building. Observed six failures when each new image was omitted from the asset inventory, then six passes after adding the required paths. No game/audio bytes changed in this increment. Any final evidence must still identify the build fingerprint.
+
+## In-scope balance and browser findings
+
+Initial real browser CI 42424915146: four controller groups passed; focused Chromium 23 passed / 2 failed, so ordinary full runs did not start. Failures were retained, not waived:
+- Act 1 sign screenshot driver walked left from the relocated pre-boss flag through new enemies with one heart. Replace that obsolete positioning route with a dedicated sign camera fixture; ordinary combat routes still cover those enemies.
+- Rooftop pre-boss fixture took immediate contact damage from the new nearby ghoul before accepting input. Native reproduction failed (screen dead instead of training). Move that ghoul farther from the checkpoint; retain the one-heart flag test.
+- Ordinary native Nightman diagnostic finished in 7.27 seconds without charge/fire. A new ordinary-input regression failed. Move charged bursts earlier, raise health from six to eight with 0.85-second hit immunity, and fit all health markers on screen. Focused Nightman/Act3 checks: 29 passed, including unpowered completion with charge/fire observed.
+
+These accepted findings are within the approved difficulty/recovery boundaries. The changed game candidate invalidates earlier qualifying runs; no such runs are claimed. Latest full unit suite result is recorded with this commit. Independent reviews and final E2E remain pending actual final-candidate browser evidence.
+
+Latest unit result: 150 passed in 15.45s.

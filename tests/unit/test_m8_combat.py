@@ -49,3 +49,16 @@ def test_nightman_charges_then_fires_bounded_alternating_bursts():
             if len(bursts)==2:break
     assert 'charge' in seen and 'karate' in seen
     assert bursts==[['crucifix']*3,['chimichanga']*2]
+
+
+def test_ordinary_unpowered_nightman_fight_exercises_charge_before_victory():
+    w=Act3();w.player.x=w.arena_left;w.enter_boss();seen=set()
+    for tick in range(2400):
+        if w.complete or w.dead:break
+        p=w.player;b=w.targets[0];dx=b['x']-p.x;seen.add(b['state'])
+        keys=dict(bat=tick%16==0,right=dx>42,left=dx<-42,
+                  jump=p.grounded and abs(dx)<170)
+        if abs(dx)<42 and (p.facing>0)!=(dx>0):keys.update(right=dx>0,left=dx<0)
+        w.step(keys)
+    assert {'charge','fire'}<=seen, 'new attack must matter in an ordinary fight'
+    assert w.complete and not w.dead and not w.player.dayman

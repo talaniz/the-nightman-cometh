@@ -35,7 +35,7 @@ test('NIGHTMAN_BOSS collision attacks expiry and arena exclusion',async({page})=
  const faults=errors(page);await boot(page);
  for(const [name,key] of [['close','j'],['stomp',null],['beam','k']]){
   await fixture(page,'boss-'+name);if(key)await page.keyboard.press(key);
-  await expect.poll(async()=>(await state(page)).world.targets[0].hp).toBe(5);await capture(page,'nightman-'+name);
+  await expect.poll(async()=>(await state(page)).world.targets[0].hp).toBe(7);await capture(page,'nightman-'+name);
  }
  await fixture(page,'boss-expiry');await expect.poll(async()=>(await state(page)).audio.playing,{timeout:10000}).toBe('nightman-boss');
  expect((await state(page)).world.player.dayman).toBe(0);await capture(page,'nightman-expiry');

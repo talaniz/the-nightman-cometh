@@ -436,7 +436,7 @@ class Renderer:
         self.screen.blit(sprite,(int(t['x']-camera+16-anchor),int(t['y']+56-sprite.get_bounding_rect().bottom)))
         if state in ('windup','summon','charge'):self.text('!' if state=='windup' else '*',t['x']-camera+10,t['y']-30,GOLD,self.large)
         self.text('NIGHTMAN',640,83,GOLD)
-        for i in range(t['hp']):self.rect((204,86,78),(790+i*25,84,18,12))
+        for i in range(t['hp']):self.rect((204,86,78),(790+i*18,84,14,12))
 
     def rooftop_scenery(self,w,camera):
         self.screen.fill(INK)

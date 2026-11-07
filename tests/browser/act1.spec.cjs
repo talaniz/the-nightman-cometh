@@ -71,7 +71,7 @@ test('ACT1 BEAM transformed sprite and horizontal shot',async({page})=>{
  const faults=errors(page);await boot(page);await fixture(page,'act1-preboss');await press(page,'Escape');await choose(page,'QA Dayman');await press(page,'k',40);
  const beams=(await state(page)).world.beams;expect(beams.length).toBe(1);expect(beams[0].dy).toBe(0);
  await capture(page,'act1-beam');
- await fixture(page,'act1-preboss');await page.keyboard.down('ArrowLeft');await page.waitForTimeout(1800);await page.keyboard.up('ArrowLeft');
+ await fixture(page,'act1-sign');
  expect((await state(page)).screen).toBe('training');await capture(page,'act1-shadynastys');expect(faults).toEqual([]);
 });
 

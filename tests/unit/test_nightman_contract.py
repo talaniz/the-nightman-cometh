@@ -32,14 +32,14 @@ def test_attacks_hit_nightman_once(attack):
     if attack=='bat':p.x=4190;p.y=386;p.facing=1;p.swing=.14
     elif attack=='stomp':p.x=4230;p.y=b['y']-44;p.vy=100;p.grounded=False
     else:w.beams=[dict(x=4220.,y=b['y']+10,dx=600.,dy=0,life=1)]
-    w.step({});assert b['hp']==5
-    assert not w.hit_target(b,'bat-hit') and b['hp']==5
+    w.step({});assert b['hp']==7
+    assert not w.hit_target(b,'bat-hit') and b['hp']==7
     if attack=='stomp':assert p.vy<0
 
 def test_victory_cleans_summons_and_paused_state_frozen():
     w=arena();w.summon();w.paused=True;before=w.snapshot();w.advance(1,{});assert w.snapshot()==before
     w.paused=False;b=w.targets[0]
-    for _ in range(6):b['immune']=0;w.hit_target(b,'bat-hit')
+    for _ in range(8):b['immune']=0;w.hit_target(b,'bat-hit')
     assert w.complete and not any(t['alive'] for t in w.targets)
 
 def test_no_supported_spawn_position_defers():
