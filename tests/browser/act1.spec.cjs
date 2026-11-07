@@ -95,13 +95,14 @@ async function advanceStory(page){
 for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '+(recovery?'death checkpoint reload recovery':'full three-act keyboard journey and ending'),async({page})=>{
  test.setTimeout(Number(process.env.NIGHTMAN_TEST_MS||900000));const faults=errors(page);await boot(page);expect((await state(page)).test_build).toBe(false);await choose(page,'Start Act 1');
  await advanceStory(page);
- let held='';let deaths=0;let forcedRecovery=false;
+ let held='';let deaths=0;let forcedRecovery=false;let extensionCaptured=false;
  // A read-count cap runs out sooner on faster hosts despite ongoing gameplay.
  // Bound elapsed route time instead; success still requires the full rescue.
  const routeDeadline=Date.now()+Number(process.env.NIGHTMAN_ROUTE_MS||180000);
  while(Date.now()<routeDeadline){
   let s=await state(page),w=s.world,p=w.player;
   if(s.screen==='dialogue'||s.screen==='complete')break;
+  if(!extensionCaptured&&s.screen==='training'&&!w.boss_active&&p.x>3150){await capture(page,'act1-extended-approach');extensionCaptured=true;}
   if(recovery&&!forcedRecovery&&w.boss_active){
    if(held)await page.keyboard.up(held);held='';
    await page.keyboard.down('ArrowRight');await page.waitForTimeout(650);await page.keyboard.up('ArrowRight');

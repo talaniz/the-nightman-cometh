@@ -15,7 +15,10 @@ async function capture(page,name){
 }
 
 test('M8 Cricket brakes reverses and crashes into the dumpster',async({page})=>{
- await boot(page);await fixture(page,'act1-boss-warning');
+ await boot(page);await capture(page,'title-1280');
+ await page.setViewportSize({width:1920,height:1080});await capture(page,'title-1920');
+ await page.setViewportSize({width:390,height:844});await capture(page,'title-narrow');
+ await page.setViewportSize({width:1280,height:720});await fixture(page,'act1-boss-warning');
  await expect.poll(async()=>(await state(page)).world.targets[0].state,{timeout:10000,intervals:[50]}).toBe('brake');
  const braking=(await state(page)).world.targets[0];expect(braking.direction).toBe(-1);
  await capture(page,'cricket-braking');

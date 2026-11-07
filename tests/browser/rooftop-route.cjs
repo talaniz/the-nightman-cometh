@@ -3,11 +3,12 @@ const {expect}=require('@playwright/test');
 const state=async p=>JSON.parse(await p.evaluate(()=>window.__nightmanGame));
 async function driveRooftop(page,{recovery=false,restart,choose,capture=async()=>{}}={}){
  const deadline=Date.now()+Number(process.env.NIGHTMAN_ROUTE_MS||240000);
- let forced=false,deaths=0;
+ let forced=false,deaths=0,extensionCaptured=false;
  while(Date.now()<deadline){
   const s=await state(page),w=s.world,p=w.player;
   expect(s.qa).toBe(false);
   if(s.screen==='dialogue')break;
+  if(!extensionCaptured&&s.screen==='training'&&!w.boss_active&&p.x>2800){await capture(page,'act3-extended-approach');extensionCaptured=true;}
   if(s.screen==='dead'){
    deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.press('Enter');
    await expect.poll(async()=>(await state(page)).screen).toBe('training');continue;

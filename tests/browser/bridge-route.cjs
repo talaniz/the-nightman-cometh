@@ -3,10 +3,11 @@ const {expect}=require('@playwright/test');
 const state=async page=>JSON.parse(await page.evaluate(()=>window.__nightmanGame));
 async function driveBridge(page,{recovery=false,restart,choose,capture=async()=>{}}={}){
  const deadline=Date.now()+Number(process.env.NIGHTMAN_ROUTE_MS||240000);
- let forced=false,deaths=0;
+ let forced=false,deaths=0,extensionCaptured=false;
  while(Date.now()<deadline){
   const s=await state(page),w=s.world,p=w.player;
   if(s.screen==='dialogue')break;
+  if(!extensionCaptured&&s.screen==='training'&&!w.boss_active&&p.x>2650){await capture(page,'act2-extended-approach');extensionCaptured=true;}
   if(s.screen==='dead'){
    deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.press('Enter');continue;
   }
