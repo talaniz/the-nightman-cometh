@@ -1,5 +1,11 @@
 name: Game browser verification
 on:
+  workflow_dispatch:
+    inputs:
+      record:
+        description: 'Record an additional ordinary full walkthrough with game audio'
+        type: boolean
+        default: false
   pull_request:
   push:
     branches: [main]
@@ -39,6 +45,26 @@ jobs:
           export NIGHTMAN_BUILD=build/normal
           npx playwright test --project=chromium --grep ACT1_NORMAL
           npx playwright test --project=firefox --grep 'SMOKE|ACT1_NORMAL'
+      - name: Install isolated recording tools
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.record }}
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg pulseaudio xvfb
+      - name: Record additional full walkthrough with audio
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.record }}
+        env:
+          NIGHTMAN_BUILD: build/normal
+          NIGHTMAN_EVIDENCE: build/recording-captures
+        run: |
+          export CHROMIUM_PATH="$(node -e "process.stdout.write(require('@playwright/test').chromium.executablePath())")"
+          xvfb-run -a -s '-screen 0 1280x800x24' bash tools/record_walkthrough.sh
+      - name: Retain recording for inspection and durable PR publication
+        uses: actions/upload-artifact@v4
+        if: ${{ always() && github.event_name == 'workflow_dispatch' && inputs.record }}
+        with:
+          name: full-walkthrough-with-audio
+          path: |
+            build/walkthrough/
+            build/recording-captures/
+          if-no-files-found: error
       - name: Stage branch screenshots for inspection
         uses: actions/upload-artifact@v4
         if: always()

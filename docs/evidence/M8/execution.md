@@ -18,3 +18,11 @@ First behavioral increment (phase 8.3 Cricket brought forward to verify latest r
 Final local increment checks: 142 unit tests passed in 3.63s after composing both Dennis costumes over one shared backdrop and using one fixed atlas anchor. JavaScript syntax checks and git diff --check passed. Prior complete 240 native/audio tests include the same approved audio bytes; no audio production source/assets changed. Node boot-state and gamepad checks passed. Native title, Cricket/dumpsters and revised finale frames inspected under /tmp/nightman-m8-render; these are explicitly not browser evidence.
 
 Browser next: push the single coherent implementation commit, create draft PR, run remote CI and inspect actual screenshots. Capture changed states missing from existing browser suites before requesting independent code review. Hardware/listening and recorded full-run gates remain open.
+
+## Browser/recording verification increment
+
+PR23 https://github.com/talaniz/the-nightman-cometh/pull/23 is draft at first implementation commit 5e1929a47f900fb10bc7effa688d934f55e0ffbc. Remote CI 42424915146 exercises actual browser workflows; results pending.
+
+Added focused actual-browser tests for Cricket's stationary tell/reversal/dumpster crash and automatic Dayman reveal/pointer lyric advance, with screenshots. Added opt-in remote Xvfb/PulseAudio/FFmpeg recording of the ordinary keyboard route, with readable story pacing, full credits and separate video/audio stream validation. Syntax checks pass; recording execution is pending. An uploaded CI recording is staging evidence only: inspect and publish a durable PR link before acceptance. It is not a substitute for the physical USB run.
+
+Packaging contract: every new required M8 image must be validated before building. Observed six failures when each new image was omitted from the asset inventory, then six passes after adding the required paths. No game/audio bytes changed in this increment. Any final evidence must still identify the build fingerprint.

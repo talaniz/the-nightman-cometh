@@ -82,9 +82,19 @@ test('SAVE ACT1 legacy migration keeps volumes and resets coordinates',async({pa
 
 // Ordinary full route uses only keyboard actions and read-only observations.
 // No test fixtures, passwords, invincibility or skipped story states.
+async function advanceStory(page){
+ while((await state(page)).screen==='dialogue'){
+  if(process.env.NIGHTMAN_RECORD==='1'){
+   const text=(await state(page)).story.text;
+   await page.waitForTimeout(Math.min(6000,Math.max(1500,text.length*45)));
+  }
+  await press(page,'Enter',70);
+ }
+}
+
 for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '+(recovery?'death checkpoint reload recovery':'full three-act keyboard journey and ending'),async({page})=>{
  test.setTimeout(Number(process.env.NIGHTMAN_TEST_MS||900000));const faults=errors(page);await boot(page);expect((await state(page)).test_build).toBe(false);await choose(page,'Start Act 1');
- while((await state(page)).screen==='dialogue')await press(page,'Enter',70);
+ await advanceStory(page);
  let held='';let deaths=0;let forcedRecovery=false;
  // A read-count cap runs out sooner on faster hosts despite ongoing gameplay.
  // Bound elapsed route time instead; success still requires the full rescue.
@@ -140,14 +150,15 @@ for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '
  }
  if(held)await page.keyboard.up(held);
  expect((await state(page)).screen).toBe('dialogue');expect((await state(page)).world.complete).toBe(true);
- for(let i=0;i<4;i++)await press(page,'Enter');
+ await advanceStory(page);
  expect((await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act2');
  await driveBridge(page,{recovery,restart,choose,capture});
- while((await state(page)).screen==='dialogue')await press(page,'Enter');
+ await advanceStory(page);
  expect((await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act3');
  await driveRooftop(page,{recovery,restart,choose,capture});
- while((await state(page)).screen==='dialogue')await press(page,'Enter');
+ await advanceStory(page);
  expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');await capture(page,'normal-complete');
  const saved=JSON.parse(await page.evaluate(()=>localStorage.getItem('nightman.progress.v1')));expect(saved.complete).toBe(true);expect(saved.flags).toContain('preboss');if(recovery)expect(forcedRecovery).toBe(true);expect(faults).toEqual([]);
+ if(process.env.NIGHTMAN_RECORD==='1'){await page.waitForTimeout(63000);return;}
  await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');expect(faults).toEqual([]);
 });

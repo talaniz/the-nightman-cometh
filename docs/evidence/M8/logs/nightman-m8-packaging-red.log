@@ -1,0 +1,108 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+____ test_new_required_art_is_validated_before_build[sprites/dumpster.png] _____
+
+relative = 'sprites/dumpster.png'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f9e2f0c10>
+
+    @pytest.mark.parametrize('relative',[
+     'sprites/dumpster.png','sprites/cricket-run.png','sprites/dennis-transformation.png',
+     'scenes/act3/transformation.png','ui/shadynasty-sign.png','ui/title-m8.png',
+    ])
+    def test_new_required_art_is_validated_before_build(relative,monkeypatch):
+        files=build.art_files();missing=build.ROOT/'assets'/relative
+        monkeypatch.setattr(build,'art_files',lambda:[p for p in files if p!=missing])
+>       with pytest.raises(ValueError,match='Missing required art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_m8_packaging.py:12: Failed
+----------------------------- Captured stdout call -----------------------------
+pygame-ce 2.5.8 (SDL 2.32.10, Python 3.11.2)
+___ test_new_required_art_is_validated_before_build[sprites/cricket-run.png] ___
+
+relative = 'sprites/cricket-run.png'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f92ae4cd0>
+
+    @pytest.mark.parametrize('relative',[
+     'sprites/dumpster.png','sprites/cricket-run.png','sprites/dennis-transformation.png',
+     'scenes/act3/transformation.png','ui/shadynasty-sign.png','ui/title-m8.png',
+    ])
+    def test_new_required_art_is_validated_before_build(relative,monkeypatch):
+        files=build.art_files();missing=build.ROOT/'assets'/relative
+        monkeypatch.setattr(build,'art_files',lambda:[p for p in files if p!=missing])
+>       with pytest.raises(ValueError,match='Missing required art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_m8_packaging.py:12: Failed
+_ test_new_required_art_is_validated_before_build[sprites/dennis-transformation.png] _
+
+relative = 'sprites/dennis-transformation.png'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f9230a710>
+
+    @pytest.mark.parametrize('relative',[
+     'sprites/dumpster.png','sprites/cricket-run.png','sprites/dennis-transformation.png',
+     'scenes/act3/transformation.png','ui/shadynasty-sign.png','ui/title-m8.png',
+    ])
+    def test_new_required_art_is_validated_before_build(relative,monkeypatch):
+        files=build.art_files();missing=build.ROOT/'assets'/relative
+        monkeypatch.setattr(build,'art_files',lambda:[p for p in files if p!=missing])
+>       with pytest.raises(ValueError,match='Missing required art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_m8_packaging.py:12: Failed
+_ test_new_required_art_is_validated_before_build[scenes/act3/transformation.png] _
+
+relative = 'scenes/act3/transformation.png'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f923150d0>
+
+    @pytest.mark.parametrize('relative',[
+     'sprites/dumpster.png','sprites/cricket-run.png','sprites/dennis-transformation.png',
+     'scenes/act3/transformation.png','ui/shadynasty-sign.png','ui/title-m8.png',
+    ])
+    def test_new_required_art_is_validated_before_build(relative,monkeypatch):
+        files=build.art_files();missing=build.ROOT/'assets'/relative
+        monkeypatch.setattr(build,'art_files',lambda:[p for p in files if p!=missing])
+>       with pytest.raises(ValueError,match='Missing required art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_m8_packaging.py:12: Failed
+___ test_new_required_art_is_validated_before_build[ui/shadynasty-sign.png] ____
+
+relative = 'ui/shadynasty-sign.png'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f92317910>
+
+    @pytest.mark.parametrize('relative',[
+     'sprites/dumpster.png','sprites/cricket-run.png','sprites/dennis-transformation.png',
+     'scenes/act3/transformation.png','ui/shadynasty-sign.png','ui/title-m8.png',
+    ])
+    def test_new_required_art_is_validated_before_build(relative,monkeypatch):
+        files=build.art_files();missing=build.ROOT/'assets'/relative
+        monkeypatch.setattr(build,'art_files',lambda:[p for p in files if p!=missing])
+>       with pytest.raises(ValueError,match='Missing required art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_m8_packaging.py:12: Failed
+_______ test_new_required_art_is_validated_before_build[ui/title-m8.png] _______
+
+relative = 'ui/title-m8.png'
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f92317610>
+
+    @pytest.mark.parametrize('relative',[
+     'sprites/dumpster.png','sprites/cricket-run.png','sprites/dennis-transformation.png',
+     'scenes/act3/transformation.png','ui/shadynasty-sign.png','ui/title-m8.png',
+    ])
+    def test_new_required_art_is_validated_before_build(relative,monkeypatch):
+        files=build.art_files();missing=build.ROOT/'assets'/relative
+        monkeypatch.setattr(build,'art_files',lambda:[p for p in files if p!=missing])
+>       with pytest.raises(ValueError,match='Missing required art'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/unit/test_m8_packaging.py:12: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_packaging.py::test_new_required_art_is_validated_before_build[sprites/dumpster.png]
+FAILED tests/unit/test_m8_packaging.py::test_new_required_art_is_validated_before_build[sprites/cricket-run.png]
+FAILED tests/unit/test_m8_packaging.py::test_new_required_art_is_validated_before_build[sprites/dennis-transformation.png]
+FAILED tests/unit/test_m8_packaging.py::test_new_required_art_is_validated_before_build[scenes/act3/transformation.png]
+FAILED tests/unit/test_m8_packaging.py::test_new_required_art_is_validated_before_build[ui/shadynasty-sign.png]
+FAILED tests/unit/test_m8_packaging.py::test_new_required_art_is_validated_before_build[ui/title-m8.png]
+6 failed in 10.58s
