@@ -3,6 +3,7 @@ import math
 import pygame
 from game.world import FLAGS, PLATFORMS, WIDTH
 from game.art import Art
+from game.input.actions import PASSWORD_KEYS
 
 INK=(15,18,32);GOLD=(231,185,87);CREAM=(238,227,199);MUTED=(166,174,192)
 
@@ -139,7 +140,7 @@ class Renderer:
             x=365+i*33;color=(205,83,86) if i<p.hearts else (60,53,65)
             pygame.draw.polygon(self.screen,color,[(x,24),(x+7,19),(x+14,24),(x+21,19),(x+28,24),(x+28,32),(x+14,46),(x,32)])
         self.text(('DAYMAN  '+str(max(0,math.ceil(p.dayman)))+'s') if p.dayman else ({'act1':'COFFEE-SHOP RESCUE','act2':'THE TROLL TOLL','act3':'ROOFTOP SHOWDOWN'}.get(w.act,'REHEARSAL / RAT BAT')),520,27,GOLD)
-        self.text('ESC PAUSE',810,28,MUTED,self.small)
+        self.text('START PAUSE' if getattr(session,'input_state',{}).get('pad_mode') else 'ESC PAUSE',810,28,MUTED,self.small)
         self.rect((24,25,39),(0,506,960,34));self.text('SPACE jump    J bat    K sunbeam    M mute    R retry audio',24,515,MUTED,self.small)
         if w.act=='act3' and w.steps<45:
             width=int(120*(1-w.steps/45))
@@ -171,18 +172,38 @@ class Renderer:
                 if session.screen=='options' and i<2:choice+='   < '+str(round(session.progress.settings[['music','effects'][i]]*100))+'% >'
                 if i==session.selection:self.rect((64,61,67),(238,y-4,484,30))
                 self.text(('> ' if i==session.selection else '  ')+choice,255,y,GOLD if i==session.selection else CREAM)
-            self.center('UP / DOWN choose · ENTER confirm · ESC back',480,MUTED,self.small)
+            self.center('D-pad choose · Bottom confirm · Right back' if getattr(session,'input_state',{}).get('pad_mode') else 'UP / DOWN choose · ENTER confirm · ESC back',480,MUTED,self.small)
         elif session.screen=='password':
-            self.panel('PASSWORD');self.center('PAINTDOG · TROLLTOLL · NIGHTMAN',220,MUTED);self.center(session.password+'_',270,GOLD,self.large)
-            self.center(session.message or 'Type a code. Enter confirms. Esc returns.',350,CREAM,self.small)
+            self.panel('PASSWORD');self.center('PAINTDOG · TROLLTOLL · NIGHTMAN',210,MUTED,self.small)
+            self.center(session.password+'_',240,GOLD,self.large)
+            index=getattr(session,'input_state',{}).get('password_index',0)
+            for i,key in enumerate(PASSWORD_KEYS):
+                x=246+(i%10)*47;y=295+(i//10)*29
+                if i==index:self.rect((64,61,67),(x-5,y-3,43,27))
+                self.text(key,x,y,GOLD if i==index else CREAM,self.small)
+            self.center(session.message or 'Type + Enter, or pad: choose a letter, Bottom adds; GO submits.',425,CREAM,self.small)
         elif session.screen=='dialogue':
             self.story(session)
         message=session.progress.message or session.message
-        if audio.error:message='Audio unavailable · R retries · play can continue'
-        elif audio.muted:message='MUTED · press M to restore audio'
+        if audio.error:message='Audio unavailable · Right shoulder retries · play can continue' if getattr(session,'input_state',{}).get('pad_mode') else 'Audio unavailable · R retries · play can continue'
+        elif audio.muted:message='MUTED · Left shoulder restores audio' if getattr(session,'input_state',{}).get('pad_mode') else 'MUTED · press M to restore audio'
         if message and session.screen!='password':
             self.rect((54,39,43),(10,478,940,26));self.text(message,20,482,(242,191,139),self.small)
+        self.controller_prompts(session)
         pygame.display.flip()
+
+    def controller_prompts(self,session):
+        state=getattr(session,'input_state',{})
+        if not state.get('pad_mode'):return
+        if session.screen=='training':
+            text='D-pad move · Bottom jump · Left bat · Top beam · L mute · R audio retry'
+        elif session.screen=='dialogue':text='Bottom next · Right skip · L mute · R audio retry'
+        elif session.screen=='password':text='D-pad select · Bottom add / GO · Right back'
+        elif session.screen=='pause':text='D-pad choose · Bottom confirm · Right / Start resume'
+        elif session.screen=='options':text='D-pad choose / adjust · Bottom confirm · Right back'
+        elif session.screen=='ending':text='Bottom / Right for credits · L mute · R audio retry'
+        else:text='D-pad choose · Bottom confirm · L mute · R audio retry'
+        self.rect((24,25,39),(0,508,960,32));self.center(text,517,MUTED,self.small)
 
     def story(self,session):
         still=session.sequence[min(session.dialogue,len(session.sequence)-1)]
@@ -381,7 +402,7 @@ class Renderer:
         if session.screen=='ending':
             self.panel('THE DAYMAN');self.center('The Nightman Cometh',235,CREAM)
             self.center('THE END',295,GOLD,self.large)
-            self.center('ENTER for credits',400,CREAM)
+            self.center('Bottom button for credits' if getattr(session,'input_state',{}).get('pad_mode') else 'ENTER for credits',400,CREAM)
         else:
             self.panel('CREDITS')
             for i,line in enumerate(('The Nightman Cometh','A fan-made musical adventure','Inspired by It’s Always Sunny in Philadelphia','Built with Python, pygame-ce and pygbag',
@@ -389,4 +410,4 @@ class Renderer:
                 self.center(line,218+i*28,CREAM,self.small)
             for i,choice in enumerate(session.menu()):
                 self.center(('> ' if i==session.selection else '')+choice,365+i*36,GOLD if i==session.selection else CREAM)
-            self.center('UP / DOWN choose · ENTER confirm · ESC title',490,CREAM,self.small)
+            self.center('D-pad choose · Bottom confirm · Right title' if getattr(session,'input_state',{}).get('pad_mode') else 'UP / DOWN choose · ENTER confirm · ESC title',490,CREAM,self.small)

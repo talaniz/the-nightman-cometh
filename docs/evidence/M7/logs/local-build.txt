@@ -1,0 +1,296 @@
+SOURCE 60158d05ac9e5cc2f9e28c2a685230fa26d3a6b6
+PI_GUARD temperature=45.8C available=2150MiB
+PI_GUARD temperature=45.8C available=1993MiB
+/tmp/nightman-m2-tools/lib/python3.11/site-packages/pygbag/optimizing.py:62: UserWarning: Black not found for processing folder=PosixPath('/tmp/nightman-build-i7cp2b61/nightman')
+  warnings.warn(f"Black not found for processing {folder=}")
+PI_GUARD temperature=46.7C available=1998MiB
+PI_GUARD temperature=47.2C available=1982MiB
+PI_GUARD temperature=45.8C available=1986MiB
+ *pygbag 0.9.3*
+
+Serving python files from [/tmp/nightman-build-i7cp2b61/nightman/build/web]
+
+with no security/performance in mind, i'm just a test tool : don't rely on me
+
+
+SUMMARY
+________________________
+
+# the app folder
+app_folder=/tmp/nightman-build-i7cp2b61/nightman
+
+# artefacts directory
+build_dir=/tmp/nightman-build-i7cp2b61/nightman/build/web
+
+# cache directory
+cache=/tmp/nightman-build-i7cp2b61/nightman/build/web-cache
+
+# the window title and icon name
+app_name=nightman
+
+# package name, better make it unique
+package=web.pygame.nightman-1793996131
+
+# icons:  96x96 for desktop, 16x16 for web
+icon=favicon.png
+
+# js/wasm provider
+cdn=https://pygame-web.github.io/cdn/0.9.3/
+
+now packing application ....
+
+
+WARNING: No pygbag.ini found! See: https://pygame-web.github.io/wiki/pygbag-configuration
+Ignored dirs: []
+Ignored files: []
+Now in /
+     /main.py
+Now in /assets/sprites
+     /assets/sprites/nightman.png
+     /assets/sprites/bridge.png
+     /assets/sprites/cast.png
+     /assets/sprites/bat-attack.png
+     /assets/sprites/nail-bat.png
+     /assets/sprites/enemy-walk.png
+Now in /assets/ui
+     /assets/ui/polish-provenance.json
+     /assets/ui/rooftop-ads.png
+     /assets/ui/sherwin-sign.png
+     /assets/ui/kitten-billboard.png
+     /assets/ui/bridge-ads.png
+     /assets/ui/wolf-billboard.png
+     /assets/ui/kitten-mittens.png
+Now in /assets/scenes/act2
+     /assets/scenes/act2/story.png
+Now in /assets/scenes/act3
+     /assets/scenes/act3/finale.png
+Now in /assets/scenes/act1
+     /assets/scenes/act1/opening.png
+     /assets/scenes/act1/kidnapping.png
+     /assets/scenes/act1/provenance.json
+Now in /assets/backgrounds/act2
+     /assets/backgrounds/act2/bridge.png
+Now in /assets/backgrounds/act3
+     /assets/backgrounds/act3/rooftop.png
+Now in /assets/backgrounds/act1
+     /assets/backgrounds/act1/street.png
+Now in /audio
+     /audio/little-boy.ogg
+     /audio/frank-kidnap.ogg
+     /audio/hoagie.ogg
+     /audio/nightman-kidnap.ogg
+     /audio/bat-hit.ogg
+     /audio/sunny-credits.ogg
+     /audio/troll-toll.ogg
+     /audio/boss-defeat.ogg
+     /audio/stomp.ogg
+     /audio/dayman-fast.ogg
+     /audio/dayman.ogg
+     /audio/nightman-boss.ogg
+     /audio/cat-food.ogg
+     /audio/rooftop.ogg
+     /audio/checkpoint.ogg
+     /audio/manifest.json
+     /audio/frank-boss.ogg
+     /audio/hurt.ogg
+     /audio/meal.ogg
+     /audio/bat-swing.ogg
+     /audio/jump.ogg
+     /audio/menu.ogg
+     /audio/cricket-boss.ogg
+     /audio/beam.ogg
+     /audio/proposal.ogg
+Now in /game
+     /game/world.py
+     /game/audio.py
+     /game/progress.py
+     /game/art.py
+     /game/render.py
+     /game/session.py
+     /game/__init__.py
+     /game/main.py
+Now in /game/scenes
+     /game/scenes/opening.py
+     /game/scenes/finale.py
+Now in /game/web
+     /game/web/style.css
+     /game/web/loader.js
+     /game/web/boot-state.js
+     /game/web/gamepad.js
+Now in /game/levels
+     /game/levels/act1.py
+     /game/levels/act3.py
+     /game/levels/act2.py
+Now in /game/input
+     /game/input/actions.py
+     /game/input/__init__.py
+     /game/input/controls.py
+Now in /tools/audio/audition_app
+     /tools/audio/audition_app/backend.py
+     /tools/audio/audition_app/director.py
+NOT optimizing /tmp/nightman-build-i7cp2b61/nightman
+	/tmp/nightman-build-i7cp2b61/nightman : main.py
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/nightman.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/bridge.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/cast.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/bat-attack.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/nail-bat.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/enemy-walk.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/polish-provenance.json
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/rooftop-ads.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/sherwin-sign.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/kitten-billboard.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/bridge-ads.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/wolf-billboard.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/kitten-mittens.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act2/story.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act3/finale.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act1/opening.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act1/kidnapping.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act1/provenance.json
+	/tmp/nightman-build-i7cp2b61/nightman : assets/backgrounds/act2/bridge.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/backgrounds/act3/rooftop.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/backgrounds/act1/street.png
+	/tmp/nightman-build-i7cp2b61/nightman : audio/little-boy.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/frank-kidnap.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/hoagie.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/nightman-kidnap.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/bat-hit.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/sunny-credits.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/troll-toll.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/boss-defeat.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/stomp.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/dayman-fast.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/dayman.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/nightman-boss.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/cat-food.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/rooftop.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/checkpoint.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/manifest.json
+	/tmp/nightman-build-i7cp2b61/nightman : audio/frank-boss.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/hurt.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/meal.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/bat-swing.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/jump.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/menu.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/cricket-boss.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/beam.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/proposal.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : game/world.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/audio.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/progress.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/art.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/render.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/session.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/__init__.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/main.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/scenes/opening.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/scenes/finale.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/style.css
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/loader.js
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/boot-state.js
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/gamepad.js
+	/tmp/nightman-build-i7cp2b61/nightman : game/levels/act1.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/levels/act3.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/levels/act2.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/input/actions.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/input/__init__.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/input/controls.py
+	/tmp/nightman-build-i7cp2b61/nightman : tools/audio/audition_app/backend.py
+	/tmp/nightman-build-i7cp2b61/nightman : tools/audio/audition_app/director.py
+	/tmp/nightman-build-i7cp2b61/nightman : main.py
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/nightman.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/bridge.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/cast.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/bat-attack.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/nail-bat.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/sprites/enemy-walk.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/polish-provenance.json
+PI_GUARD temperature=47.2C available=2024MiB
+PI_GUARD temperature=46.3C available=2027MiB
+PI_GUARD temperature=45.3C available=2010MiB
+PI_GUARD temperature=45.8C available=2014MiB
+PI_GUARD temperature=45.3C available=2019MiB
+PI_GUARD temperature=45.3C available=2025MiB
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/rooftop-ads.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/sherwin-sign.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/kitten-billboard.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/bridge-ads.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/wolf-billboard.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/ui/kitten-mittens.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act2/story.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act3/finale.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act1/opening.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act1/kidnapping.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/scenes/act1/provenance.json
+	/tmp/nightman-build-i7cp2b61/nightman : assets/backgrounds/act2/bridge.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/backgrounds/act3/rooftop.png
+	/tmp/nightman-build-i7cp2b61/nightman : assets/backgrounds/act1/street.png
+	/tmp/nightman-build-i7cp2b61/nightman : audio/little-boy.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/frank-kidnap.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/hoagie.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/nightman-kidnap.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/bat-hit.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/sunny-credits.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/troll-toll.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/boss-defeat.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/stomp.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/dayman-fast.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/dayman.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/nightman-boss.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/cat-food.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/rooftop.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/checkpoint.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/manifest.json
+	/tmp/nightman-build-i7cp2b61/nightman : audio/frank-boss.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/hurt.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/meal.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/bat-swing.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/jump.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/menu.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/cricket-boss.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/beam.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : audio/proposal.ogg
+	/tmp/nightman-build-i7cp2b61/nightman : game/world.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/audio.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/progress.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/art.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/render.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/session.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/__init__.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/main.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/scenes/opening.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/scenes/finale.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/style.css
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/loader.js
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/boot-state.js
+	/tmp/nightman-build-i7cp2b61/nightman : game/web/gamepad.js
+	/tmp/nightman-build-i7cp2b61/nightman : game/levels/act1.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/levels/act3.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/levels/act2.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/input/actions.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/input/__init__.py
+	/tmp/nightman-build-i7cp2b61/nightman : game/input/controls.py
+	/tmp/nightman-build-i7cp2b61/nightman : tools/audio/audition_app/backend.py
+	/tmp/nightman-build-i7cp2b61/nightman : tools/audio/audition_app/director.py
+packing 69 files complete
+
+    caching template https://pygame-web.github.io/cdn/0.9.3/default.tmpl
+    cached locally at /tmp/nightman-build-i7cp2b61/nightman/build/web-cache/27613e24ba16d44f2a5c88150c6d64e5.tmpl
+    result files will be in /tmp/nightman-build-i7cp2b61/nightman/build/web
+
+urllib.request.urlretrieve("https://pygame-web.github.io/cdn/0.9.3/default.tmpl", "/tmp/nightman-build-i7cp2b61/nightman/build/web-cache/27613e24ba16d44f2a5c88150c6d64e5.tmpl")
+urllib.request.urlretrieve("https://pygame-web.github.io/cdn/0.9.3/favicon.png", "/tmp/nightman-build-i7cp2b61/nightman/build/web-cache/29a2a48092f8c1a6595a20019f830691.png")
+
+        caching icon https://pygame-web.github.io/cdn/0.9.3/favicon.png
+        cached locally at /tmp/nightman-build-i7cp2b61/nightman/build/web-cache/29a2a48092f8c1a6595a20019f830691.png
+        
+
+    build only requested, not running testserver, files ready here :
+
+build_dir = /tmp/nightman-build-i7cp2b61/nightman/build/web
+
+
+PI_GUARD temperature=45.8C available=2067MiB
+pygame-ce 2.5.8 (SDL 2.32.10, Python 3.11.2)
+Built /tmp/nightman-m7-normal-v4

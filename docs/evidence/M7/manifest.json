@@ -1,0 +1,422 @@
+{
+  "revision": "60158d05ac9e5cc2f9e28c2a685230fa26d3a6b6",
+  "source_fingerprint": "62492865698748481014c549026982863ccf0abb31537809752d2b7030979450",
+  "ci_run": "https://github.com/talaniz/the-nightman-cometh/actions/runs/42286617808",
+  "capture_command": "NIGHTMAN_EVIDENCE=build/review-captures npx playwright test --project=chromium --grep CONTROLLER",
+  "build_command": "python tools/build_web.py --output build/web --test-fixtures",
+  "captures": [
+    {
+      "file": "captures/controller-act1-bat.png",
+      "sha256": "7253a78044794b769619464ca16ae011b02303e60d024747a57c119cadb72f5f",
+      "metadata": "captures/controller-act1-bat.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act1-bat",
+      "fixture_id": 8009,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act1-death.png",
+      "sha256": "642d43457098849b16f3a23c2475a340537555ff901effb4f1ed28efc4202005",
+      "metadata": "captures/controller-act1-death.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act1-death",
+      "fixture_id": 8004,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act1-jump.png",
+      "sha256": "5b1beeb0f8eda6aa167948a67b0e479a196d5161ac1447eecf11d659adb02ea6",
+      "metadata": "captures/controller-act1-jump.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act1-jump",
+      "fixture_id": 8003,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act1-retry.png",
+      "sha256": "efcc3ce07a632d36a8f0c6f78368811d0de785b2cf463b323b1d168451becfcf",
+      "metadata": "captures/controller-act1-retry.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act1-retry",
+      "fixture_id": 8004,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act2-bat.png",
+      "sha256": "b169bcf48ca6eb9af626ff54184e094fd30671ca343129de0f80ba931f12b993",
+      "metadata": "captures/controller-act2-bat.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act2-bat",
+      "fixture_id": 8010,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act2-beam.png",
+      "sha256": "2080f2728c59803b9efeb0e8eb8ecf46a0c66bc98d1a393591622d8bc4852288",
+      "metadata": "captures/controller-act2-beam.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act2-beam",
+      "fixture_id": 8011,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act2-death.png",
+      "sha256": "d2b604d70b6cbea3ce44d25b5f782f68ff3ca780d10d0e0d7acb98016c0776ba",
+      "metadata": "captures/controller-act2-death.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act2-death",
+      "fixture_id": 8006,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act2-jump.png",
+      "sha256": "8e9c964c6b083c8659514bb7f41e83def9baab5b12e7e001f728638cc77c5293",
+      "metadata": "captures/controller-act2-jump.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act2-jump",
+      "fixture_id": 8005,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act2-retry.png",
+      "sha256": "0ac70f657458a5e15d91b77975ad3428b8bdc2d0740488d0e3496e216b330daa",
+      "metadata": "captures/controller-act2-retry.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act2-retry",
+      "fixture_id": 8006,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act3-bat.png",
+      "sha256": "309ca59619c33b8dc637f1f54ff33f4f6e1b1346bae6c832c149b3f1c4089695",
+      "metadata": "captures/controller-act3-bat.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act3-bat",
+      "fixture_id": 8012,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act3-beam.png",
+      "sha256": "a1f99cad5ac0ceddd706665a15980d1a27ce811a2a66ab86b4c97cba0627adf6",
+      "metadata": "captures/controller-act3-beam.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act3-beam",
+      "fixture_id": 8013,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act3-death.png",
+      "sha256": "c0f5f8404f30496276163c0eff0ca6cb6841388e6f9fe8de03f1206522793e72",
+      "metadata": "captures/controller-act3-death.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act3-death",
+      "fixture_id": 8008,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act3-jump.png",
+      "sha256": "238a2fe0be9b0c79af40caefadc9d2f87819ddd05c43e020dffae5b4e981d1f1",
+      "metadata": "captures/controller-act3-jump.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act3-jump",
+      "fixture_id": 8007,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-act3-retry.png",
+      "sha256": "42339bdab3aec4288e8f92384e1c2076c7e4d508290700cff8205f2ef3b7d7d4",
+      "metadata": "captures/controller-act3-retry.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-act3-retry",
+      "fixture_id": 8008,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-audio-error.png",
+      "sha256": "dc6fdd5175a353568d2303a01f4d3b8e9f4bf7c35fa4eedf55e3bce9623881f1",
+      "metadata": "captures/controller-audio-error.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-audio-error",
+      "fixture_id": 8002,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-audio-recovered.png",
+      "sha256": "0466d0f33571fe2c9d343da5166ad8d8245ebe3537825407e02cf043f922314a",
+      "metadata": "captures/controller-audio-recovered.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-audio-recovered",
+      "fixture_id": 8002,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-blocked-startup.png",
+      "sha256": "f3740e99cde8b9a13694ae0b93aac6a1462baa9ccf7ed13b2d4e58f6e211f2fd",
+      "metadata": "captures/controller-blocked-startup.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-blocked-startup",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-connected-title.png",
+      "sha256": "0d441ada9cf081161ec234b950a54f783249623458f8b166a05986940dd9f7c9",
+      "metadata": "captures/controller-connected-title.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-connected-title",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-credits-1920.png",
+      "sha256": "d8b3c6d2b0ee41c42553464ee43c122f6791d2778104a11e7aa677061d5b15e8",
+      "metadata": "captures/controller-credits-1920.json",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": "controller-credits-1920",
+      "fixture_id": 8002,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-credits.png",
+      "sha256": "0466d0f33571fe2c9d343da5166ad8d8245ebe3537825407e02cf043f922314a",
+      "metadata": "captures/controller-credits.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-credits",
+      "fixture_id": 8001,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-dialogue.png",
+      "sha256": "f85b2d5de2d4ba164ca1ad560ddf2a651272886105b320fc3e3718bdfa682178",
+      "metadata": "captures/controller-dialogue.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-dialogue",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-disconnected.png",
+      "sha256": "f3c96cb09b24f7c850bbb8da66525551660721f9e142bc24eb1c4382d75b338e",
+      "metadata": "captures/controller-disconnected.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-disconnected",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-ending.png",
+      "sha256": "4d5b04631c6a54d47f24e972e0316cc37b2c9367e45d3eb44bee13e25ef1b95d",
+      "metadata": "captures/controller-ending.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-ending",
+      "fixture_id": 8001,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-focus-return.png",
+      "sha256": "4e712e5b140dcb07a2b30fbd95330f8f48c1e37165a3b00e522e9aca5acfb1a3",
+      "metadata": "captures/controller-focus-return.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-focus-return",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-muted.png",
+      "sha256": "9b3d6004797c4c5c9888e2059420f50b45fa8d0a47f5b25f6b7cd48f438bf9ca",
+      "metadata": "captures/controller-muted.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-muted",
+      "fixture_id": 8001,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-narrow.png",
+      "sha256": "1ac95b61c8a9c416def6ed763d7b4061fb28d8f6eb3364e521db46a1ae0b8b0a",
+      "metadata": "captures/controller-narrow.json",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "controller-narrow",
+      "fixture_id": 8002,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-options.png",
+      "sha256": "8460fc0f0be640afaaffe25551d375f147e6b24dea74c0aa8b3d8980baa7a6ba",
+      "metadata": "captures/controller-options.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-options",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-password-1920.png",
+      "sha256": "11181a875a672c94f3161727a2983149a58fc8eba06572ada74f865b00bbbb35",
+      "metadata": "captures/controller-password-1920.json",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "state": "controller-password-1920",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-password-invalid.png",
+      "sha256": "4706fe40c493184971672d24bbd3912440a3c833315dc33038b58f9d46df8af4",
+      "metadata": "captures/controller-password-invalid.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-password-invalid",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-password.png",
+      "sha256": "90ed213d5175cd84f47d230114db7df99b9401dff2997716351803099456f8d7",
+      "metadata": "captures/controller-password.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-password",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-pause.png",
+      "sha256": "9d722d4178a1186301d2a60e9d3655a970bd8df7d5c611ffca0681ddf9a82328",
+      "metadata": "captures/controller-pause.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-pause",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-release-required.png",
+      "sha256": "49264bf1938725516a6a467ebe01afea2489724c4ac16ff26fb70aba6fe03829",
+      "metadata": "captures/controller-release-required.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-release-required",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-unavailable.png",
+      "sha256": "2149e642945b4d6891c24d602f11a7cb329e09e6cc459de1bf542df57ab619be",
+      "metadata": "captures/controller-unavailable.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-unavailable",
+      "fixture_id": null,
+      "simulated_pad": true
+    },
+    {
+      "file": "captures/controller-unsupported.png",
+      "sha256": "ed9292fb1a2112adb057535e47cb743660cfb48a15fd4302d16ef7e313b0c67b",
+      "metadata": "captures/controller-unsupported.json",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "state": "controller-unsupported",
+      "fixture_id": null,
+      "simulated_pad": true
+    }
+  ],
+  "limitations": [
+    "Synthetic Gamepad API and injected focus signals; no physical USB or OS focus acceptance.",
+    "Narrow viewport validates unsupported-touch guidance, not mobile play.",
+    "QA fixtures are not M8 qualifying full playthroughs."
+  ]
+}

@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_lost_or_unsupported_pad_restores_keyboard_hints _____________
+
+    def test_lost_or_unsupported_pad_restores_keyboard_hints():
+        for status in ('absent', 'unsupported', 'unavailable'):
+            c = ready()
+            c.sample(pad(2), 'training')
+            assert c.pad_mode
+            c.sample({'status': status}, 'training')
+>           assert not c.pad_mode
+E           assert not True
+E            +  where True = <game.input.controls.Controls object at 0x7f923ba3d0>.pad_mode
+
+tests/unit/test_input_controls.py:99: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_input_controls.py::test_lost_or_unsupported_pad_restores_keyboard_hints
+1 failed, 9 deselected in 0.13s

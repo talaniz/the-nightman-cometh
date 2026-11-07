@@ -78,10 +78,10 @@ def build(output,test_fixtures=False):
         shutil.copyfile(ROOT/'tools/audio/browserfs-LICENSE.txt',web/'browserfs-LICENSE.txt')
         for p in (ROOT/'game/web').iterdir():shutil.copyfile(p,web/p.name)
         html=(web/'index.html').read_text()
-        early='''<script>if(location.hostname==='localhost'){const u=new URL(location.href);u.hostname='127.0.0.1';location.replace(u.href);}</script><script src="boot-state.js"></script><script src="loader.js"></script>'''
+        early='''<script>if(location.hostname==='localhost'){const u=new URL(location.href);u.hostname='127.0.0.1';location.replace(u.href);}</script><script src="boot-state.js"></script><script src="loader.js"></script><script src="gamepad.js"></script>'''
         html=html.replace('<script src=',early+'<script src=',1)
         html=html.replace('</head>','<link rel="stylesheet" href="style.css"></head>')
-        html=html.replace('<body>','''<body><section id="loader" aria-live="polite"><h1>The Nightman Cometh</h1><p id="boot-status">Loading the stage…</p><button id="boot-action" disabled>Loading runtime…</button><p>Desktop keyboard · Internet required for runtime</p></section><aside id="narrow"><h1>The Nightman Cometh</h1><p>Use a desktop browser and keyboard to play. Touch controls are not available.</p></aside><p id="controls">Arrows / A,D move · Space jump · J bat · K sunbeam · Enter confirm · Esc pause</p>''')
+        html=html.replace('<body>','''<body><section id="loader" aria-live="polite"><h1>The Nightman Cometh</h1><p id="boot-status">Loading the stage…</p><button id="boot-action" disabled>Loading runtime…</button><p>Click Enter the theatre once to enable audio. Then press and release a controller button. · Internet required for runtime</p></section><aside id="narrow"><h1>The Nightman Cometh</h1><p>Use a desktop browser with a keyboard or supported USB controller. Touch controls are not available.</p></aside><p id="controls">Arrows / A,D move · Space jump · J bat · K sunbeam · Enter confirm · Esc pause</p>''')
         html=html.replace('https://pygame-web.github.io/cdn/0.9.3//browserfs.min.js','browserfs.min.js')
         html=html.replace('src="https://pygame-web.github.io/cdn/0.9.3/empty.html"','src="about:blank"')
         import re
