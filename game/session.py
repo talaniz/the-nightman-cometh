@@ -26,6 +26,7 @@ class Session:
         if self.screen=='dead':return ['Retry checkpoint','Title']
         return []
     def enter_screen(self,screen):
+        if self.screen=='password' and screen!='password':self.message=''
         self.screen=screen;self.selection=0;self.world.paused=screen!='training'
         if screen=='title' and self.world.act=='act3':
             self.world.targets=[t for t in self.world.targets if not t.get('summoned')]

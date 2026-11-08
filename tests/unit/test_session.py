@@ -18,3 +18,18 @@ def test_new_game_confirmation_and_blur_pause():
     s=Session(Memory());s.start();s.next_dialogue(skip=True);s.blur();assert s.screen=='pause' and s.world.paused
     s.enter_screen('title');s.activate();assert s.screen=='confirm'
     s.activate();assert s.screen=='title'
+
+
+def test_leaving_invalid_password_clears_feedback_but_preserves_storage_warning():
+    s=Session(Memory())
+    s.enter_screen('password');s.password='NOTACODE';s.submit_password()
+    assert 'Unknown password' in s.message
+    s.progress.message='Saving unavailable. Progress stays in this session.'
+    warning=s.progress.message
+    s.back()
+    assert s.screen=='title'
+    assert s.message==''
+    assert s.progress.message==warning
+    s.activate()
+    assert s.screen=='dialogue' and s.message==''
+    assert s.progress.message==warning
