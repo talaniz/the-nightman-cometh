@@ -32,9 +32,9 @@
       "player": {
         "x": 3950,
         "y": 386,
-        "hearts": 1,
+        "hearts": 2,
         "dayman": 0,
-        "invulnerable": 0,
+        "invulnerable": 0.09999999999999859,
         "facing": 1,
         "vy": 0,
         "grounded": true,
@@ -52,69 +52,69 @@
         {
           "id": 100,
           "kind": "frank",
-          "x": 4057.7999999999993,
+          "x": 4062.9333333333343,
           "y": 382,
           "alive": true,
           "hp": 5,
           "direction": -1,
-          "state": "shuffle",
-          "timer": 0.566666666666666,
+          "state": "ingredients",
+          "timer": 0.12000000000000002,
           "immune": 0,
-          "animation_step": 264,
-          "piece": 4
+          "animation_step": 191,
+          "piece": 3
+        },
+        {
+          "id": 1000,
+          "kind": "sandwich",
+          "ingredient": "whole",
+          "x": 3818.433333333322,
+          "y": 398,
+          "alive": true,
+          "direction": -1,
+          "state": "flight",
+          "timer": 1.6500000000000048,
+          "animation_step": 191
         },
         {
           "id": 1001,
           "kind": "sandwich",
           "ingredient": "meat",
-          "x": 3744.7666666666514,
+          "x": 3951.599999999996,
           "y": 398,
           "alive": true,
           "direction": -1,
           "state": "flight",
-          "timer": 1.216666666666673,
-          "animation_step": 264
+          "timer": 2.4333333333333353,
+          "animation_step": 191
         },
         {
           "id": 1002,
           "kind": "sandwich",
           "ingredient": "cheese",
-          "x": 3784.43333333332,
+          "x": 3991.2666666666646,
           "y": 398,
           "alive": true,
           "direction": -1,
           "state": "flight",
-          "timer": 1.4500000000000055,
-          "animation_step": 264
+          "timer": 2.666666666666668,
+          "animation_step": 191
         },
         {
           "id": 1003,
           "kind": "sandwich",
           "ingredient": "bread",
-          "x": 3824.099999999989,
+          "x": 4030.9333333333334,
           "y": 398,
           "alive": true,
           "direction": -1,
           "state": "flight",
-          "timer": 1.683333333333338,
-          "animation_step": 264
-        },
-        {
-          "id": 1004,
-          "kind": "sandwich",
-          "ingredient": "lettuce",
-          "x": 3863.766666666658,
-          "y": 398,
-          "alive": true,
-          "direction": -1,
-          "state": "flight",
-          "timer": 1.9166666666666705,
-          "animation_step": 264
+          "timer": 2.9000000000000004,
+          "animation_step": 191
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 265,
+      "steps": 192,
       "act": "act2",
       "boss_active": true,
       "complete": false
@@ -124,16 +124,16 @@
       "muted": false,
       "error": "",
       "music_busy": 1,
-      "sfx_busy": 0,
+      "sfx_busy": 1,
       "gains": [
         0.453125,
         0.34375
       ]
     },
-    "fixture_id": 19001,
+    "fixture_id": 19003,
     "loops": 1,
-    "frames": 73,
-    "frame_ms_mean": 72.70273972602727,
+    "frames": 197,
+    "frame_ms_mean": 16.819166666666668,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

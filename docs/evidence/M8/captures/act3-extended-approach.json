@@ -1,0 +1,204 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "157.0",
+  "project": "firefox",
+  "test": "FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL death checkpoint reload recovery",
+  "build": "build/normal",
+  "state_after_capture": true,
+  "state": {
+    "input": {
+      "status": "absent",
+      "connected": false,
+      "release_required": false,
+      "pad_mode": false,
+      "password_index": 0
+    },
+    "password": "",
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": false,
+    "qa_label": "",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 2,
+    "story": {
+      "count": 2,
+      "speaker": "DEE",
+      "text": "I hate this storyyyy!!!!"
+    },
+    "world": {
+      "player": {
+        "x": 2826.333333333318,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0.016666666666591442,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [
+        "mid"
+      ],
+      "checkpoint": 1600,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "kind": "rat",
+          "x": 451,
+          "y": 398,
+          "home": 460,
+          "alive": false,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 203
+        },
+        {
+          "id": 1,
+          "kind": "ghoul",
+          "x": 708.7499999999989,
+          "y": 328,
+          "home": 720,
+          "alive": false,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 330
+        },
+        {
+          "id": 2,
+          "kind": "rat",
+          "x": 1290,
+          "y": 398,
+          "home": 1320,
+          "alive": false,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 579
+        },
+        {
+          "id": 3,
+          "kind": "ghoul",
+          "x": 1809.800000000002,
+          "y": 398,
+          "home": 1790,
+          "alive": false,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 845
+        },
+        {
+          "id": 4,
+          "kind": "ghoul",
+          "x": 2092.900000000007,
+          "y": 268,
+          "home": 2110,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 1385
+        },
+        {
+          "id": 5,
+          "kind": "rat",
+          "x": 2688.5,
+          "y": 398,
+          "home": 2690,
+          "alive": false,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 1293
+        },
+        {
+          "id": 6,
+          "kind": "chicken",
+          "x": 2161.333333333347,
+          "y": 352.4139469950927,
+          "home": 2210,
+          "alive": false,
+          "direction": 1,
+          "state": "swoop",
+          "timer": 0.7666666666666674,
+          "animation_step": 1019
+        },
+        {
+          "id": 7,
+          "kind": "ghoul",
+          "x": 3102.900000000007,
+          "y": 268,
+          "home": 3120,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 1385
+        },
+        {
+          "id": 8,
+          "kind": "rat",
+          "x": 3613.5,
+          "y": 398,
+          "home": 3600,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 1385
+        },
+        {
+          "id": 9,
+          "kind": "ghoul",
+          "x": 3682.900000000007,
+          "y": 398,
+          "home": 3700,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": 0,
+          "animation_step": 1385
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 1386,
+      "act": "act3",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "rooftop",
+      "muted": false,
+      "error": "",
+      "music_busy": 2,
+      "sfx_busy": 0,
+      "gains": [
+        0,
+        0.34375
+      ]
+    },
+    "fixture_id": null,
+    "loops": 1,
+    "frames": 1815,
+    "frame_ms_mean": 16.908333333333363,
+    "test_build": false,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

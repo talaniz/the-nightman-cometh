@@ -58,18 +58,18 @@
           "hp": 8,
           "immune": 0,
           "direction": -1,
-          "state": "recover",
-          "timer": 0.883333333333333,
+          "state": "charge",
+          "timer": 0.5666666666666657,
           "turn": 2,
-          "burst": 1,
+          "burst": 0,
           "remaining": 0,
           "vy": 0,
-          "animation_step": 430
+          "animation_step": 362
         },
         {
           "id": 1000,
           "kind": "ghoul",
-          "x": 4521.333333333191,
+          "x": 4557.599999999887,
           "y": 398,
           "alive": true,
           "home": 4700,
@@ -77,34 +77,12 @@
           "state": "patrol",
           "timer": 0,
           "summoned": true,
-          "animation_step": 430
+          "animation_step": 362
         }
       ],
       "beams": [],
-      "shots": [
-        {
-          "kind": "crucifix",
-          "x": 4241.166666666677,
-          "y": 405,
-          "dx": -230,
-          "life": 2.4333333333333353
-        },
-        {
-          "kind": "crucifix",
-          "x": 4291.000000000006,
-          "y": 405,
-          "dx": -230,
-          "life": 2.6500000000000012
-        },
-        {
-          "kind": "crucifix",
-          "x": 4340.833333333336,
-          "y": 405,
-          "dx": -230,
-          "life": 2.866666666666667
-        }
-      ],
-      "steps": 431,
+      "shots": [],
+      "steps": 363,
       "act": "act3",
       "boss_active": true,
       "complete": false
@@ -114,16 +92,16 @@
       "muted": false,
       "error": "",
       "music_busy": 1,
-      "sfx_busy": 1,
+      "sfx_busy": 0,
       "gains": [
         0.453125,
         0.34375
       ]
     },
-    "fixture_id": 19004,
+    "fixture_id": 19006,
     "loops": 1,
-    "frames": 273,
-    "frame_ms_mean": 71.09583334166663,
+    "frames": 804,
+    "frame_ms_mean": 16.71666666666667,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

@@ -52,22 +52,22 @@
         {
           "id": 100,
           "kind": "cricket",
-          "x": 4885,
+          "x": 4950,
           "y": 398,
           "alive": true,
           "hp": 3,
-          "state": "charge",
-          "timer": -0.21666666666666726,
+          "state": "stunned",
+          "timer": 0.9333333333333349,
           "direction": -1,
-          "charge_count": 2,
-          "charge_elapsed": 0.21666666666666665,
-          "feinted": false,
-          "animation_step": 360
+          "charge_count": 1,
+          "charge_elapsed": 1.5999999999999992,
+          "feinted": true,
+          "animation_step": 245
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 361,
+      "steps": 246,
       "act": "act1",
       "boss_active": true,
       "complete": false
@@ -85,8 +85,8 @@
     },
     "fixture_id": 19001,
     "loops": 1,
-    "frames": 162,
-    "frame_ms_mean": 73.67583337499993,
+    "frames": 298,
+    "frame_ms_mean": 17.656666658333336,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

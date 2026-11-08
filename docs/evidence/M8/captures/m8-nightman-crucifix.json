@@ -58,18 +58,18 @@
           "hp": 8,
           "immune": 0,
           "direction": -1,
-          "state": "recover",
-          "timer": 0.6999999999999997,
+          "state": "fire",
+          "timer": 0.1166666666666667,
           "turn": 2,
           "burst": 1,
-          "remaining": 0,
+          "remaining": 1,
           "vy": 0,
-          "animation_step": 525
+          "animation_step": 415
         },
         {
           "id": 1000,
           "kind": "ghoul",
-          "x": 4470.666666666484,
+          "x": 4529.3333333331975,
           "y": 398,
           "alive": true,
           "home": 4700,
@@ -77,25 +77,27 @@
           "state": "patrol",
           "timer": 0,
           "summoned": true,
-          "animation_step": 525
-        },
-        {
-          "id": 1001,
-          "kind": "ghoul",
-          "x": 4696.799999999997,
-          "y": 398,
-          "alive": true,
-          "home": 4700,
-          "direction": -1,
-          "state": "patrol",
-          "timer": 0,
-          "summoned": true,
-          "animation_step": 525
+          "animation_step": 415
         }
       ],
       "beams": [],
-      "shots": [],
-      "steps": 526,
+      "shots": [
+        {
+          "kind": "crucifix",
+          "x": 4298.666666666672,
+          "y": 405,
+          "dx": -230,
+          "life": 2.6833333333333345
+        },
+        {
+          "kind": "crucifix",
+          "x": 4348.500000000002,
+          "y": 405,
+          "dx": -230,
+          "life": 2.9000000000000004
+        }
+      ],
+      "steps": 416,
       "act": "act3",
       "boss_active": true,
       "complete": false
@@ -105,16 +107,16 @@
       "muted": false,
       "error": "",
       "music_busy": 1,
-      "sfx_busy": 0,
+      "sfx_busy": 1,
       "gains": [
         0.453125,
         0.34375
       ]
     },
-    "fixture_id": 19004,
+    "fixture_id": 19006,
     "loops": 1,
-    "frames": 297,
-    "frame_ms_mean": 70.16416666666667,
+    "frames": 857,
+    "frame_ms_mean": 16.79666666666666,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

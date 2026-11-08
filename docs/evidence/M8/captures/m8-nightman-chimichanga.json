@@ -58,18 +58,18 @@
           "hp": 8,
           "immune": 0,
           "direction": -1,
-          "state": "summon",
-          "timer": 0.11666666666666647,
+          "state": "recover",
+          "timer": 0.9166666666666664,
           "turn": 4,
           "burst": 2,
           "remaining": 0,
           "vy": 0,
-          "animation_step": 925
+          "animation_step": 841
         },
         {
           "id": 1000,
           "kind": "ghoul",
-          "x": 4257.333333332981,
+          "x": 4302.133333333017,
           "y": 398,
           "alive": true,
           "home": 4700,
@@ -77,12 +77,12 @@
           "state": "patrol",
           "timer": 0,
           "summoned": true,
-          "animation_step": 925
+          "animation_step": 841
         },
         {
           "id": 1001,
           "kind": "ghoul",
-          "x": 4483.466666666494,
+          "x": 4528.26666666653,
           "y": 398,
           "alive": true,
           "home": 4700,
@@ -90,12 +90,27 @@
           "state": "patrol",
           "timer": 0,
           "summoned": true,
-          "animation_step": 925
+          "animation_step": 841
         }
       ],
       "beams": [],
-      "shots": [],
-      "steps": 926,
+      "shots": [
+        {
+          "kind": "chimichanga",
+          "x": 4155.166666666672,
+          "y": 405,
+          "dx": -230,
+          "life": 2.6833333333333345
+        },
+        {
+          "kind": "chimichanga",
+          "x": 4205.000000000002,
+          "y": 405,
+          "dx": -230,
+          "life": 2.9000000000000004
+        }
+      ],
+      "steps": 842,
       "act": "act3",
       "boss_active": true,
       "complete": false
@@ -105,16 +120,16 @@
       "muted": false,
       "error": "",
       "music_busy": 1,
-      "sfx_busy": 0,
+      "sfx_busy": 1,
       "gains": [
         0.453125,
         0.34375
       ]
     },
-    "fixture_id": 19004,
+    "fixture_id": 19006,
     "loops": 1,
-    "frames": 385,
-    "frame_ms_mean": 73.31583335000008,
+    "frames": 1280,
+    "frame_ms_mean": 16.729999991666666,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

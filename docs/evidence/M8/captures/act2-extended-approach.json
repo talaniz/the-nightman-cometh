@@ -1,0 +1,228 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "browser": "157.0",
+  "project": "firefox",
+  "test": "FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL death checkpoint reload recovery",
+  "build": "build/normal",
+  "state_after_capture": true,
+  "state": {
+    "input": {
+      "status": "absent",
+      "connected": false,
+      "release_required": false,
+      "pad_mode": false,
+      "password_index": 0
+    },
+    "password": "",
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": false,
+    "qa_label": "",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 4,
+    "story": {
+      "count": 4,
+      "speaker": "DENNIS",
+      "text": "Dee—er—Waitress! Stop getting kidnapped, you bird!"
+    },
+    "world": {
+      "player": {
+        "x": 2668.666666666658,
+        "y": 386,
+        "hearts": 2,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [
+        "mid"
+      ],
+      "checkpoint": 1500,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 0,
+          "kind": "duncan",
+          "x": 392.66666666666544,
+          "y": 398,
+          "home": 450,
+          "alive": false,
+          "direction": -1,
+          "state": "recover",
+          "timer": 0.01666666666666616,
+          "animation_step": 158
+        },
+        {
+          "id": 1,
+          "kind": "gun",
+          "x": 849.2,
+          "y": 398,
+          "home": 850,
+          "alive": false,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0.8999999999999997,
+          "animation_step": 311
+        },
+        {
+          "id": 2,
+          "kind": "z",
+          "x": 1230.0000000000034,
+          "y": 398,
+          "home": 1290,
+          "alive": false,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 1.2,
+          "animation_step": 508
+        },
+        {
+          "id": 3,
+          "kind": "gun",
+          "x": 1795.1999999999966,
+          "y": 398,
+          "home": 1810,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": -2.3833333333333315,
+          "animation_step": 1112
+        },
+        {
+          "id": 4,
+          "kind": "duncan",
+          "x": 2417.599999999996,
+          "y": 398,
+          "home": 2420,
+          "alive": false,
+          "direction": -1,
+          "state": "recover",
+          "timer": 0.1833333333333328,
+          "animation_step": 993
+        },
+        {
+          "id": 5,
+          "kind": "z",
+          "x": 2596.133333333331,
+          "y": 398,
+          "home": 2630,
+          "alive": false,
+          "direction": -1,
+          "state": "recover",
+          "timer": 0.3666666666666661,
+          "animation_step": 1041
+        },
+        {
+          "id": 6,
+          "kind": "gun",
+          "x": 3277.199999999995,
+          "y": 398,
+          "home": 3300,
+          "alive": true,
+          "direction": -1,
+          "state": "patrol",
+          "timer": -17.55000000000029,
+          "animation_step": 1112
+        },
+        {
+          "id": 7,
+          "kind": "z",
+          "x": 3463.733333333333,
+          "y": 398,
+          "home": 3460,
+          "alive": true,
+          "direction": 1,
+          "state": "patrol",
+          "timer": -17.55000000000029,
+          "animation_step": 1112
+        },
+        {
+          "id": 50,
+          "kind": "chicken",
+          "x": 384.83333333333417,
+          "y": 155.00000000000003,
+          "home": 650,
+          "alive": false,
+          "direction": -1,
+          "state": "swoop",
+          "timer": -0.01666666666666323,
+          "animation_step": 396
+        },
+        {
+          "id": 51,
+          "kind": "chicken",
+          "x": 1283.1666666666695,
+          "y": 155.00000000000003,
+          "home": 1550,
+          "alive": false,
+          "direction": -1,
+          "state": "swoop",
+          "timer": -0.01666666666666323,
+          "animation_step": 780
+        },
+        {
+          "id": 52,
+          "kind": "chicken",
+          "x": 2318.1666666666742,
+          "y": 324.75553108404335,
+          "home": 2450,
+          "alive": true,
+          "direction": -1,
+          "state": "swoop",
+          "timer": 0.6166666666666704,
+          "animation_step": 1112
+        },
+        {
+          "id": 53,
+          "kind": "chicken",
+          "x": 3150,
+          "y": 155,
+          "home": 3150,
+          "alive": true,
+          "direction": -1,
+          "state": "waiting",
+          "timer": -18.550000000000228,
+          "animation_step": 1112
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 1113,
+      "act": "act2",
+      "boss_active": false,
+      "complete": false
+    },
+    "audio": {
+      "playing": "troll-toll",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 4,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": null,
+    "loops": 1,
+    "frames": 2468,
+    "frame_ms_mean": 16.67500000000004,
+    "test_build": false,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

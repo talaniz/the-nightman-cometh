@@ -32,9 +32,9 @@
       "player": {
         "x": 660,
         "y": 386,
-        "hearts": 2,
+        "hearts": 3,
         "dayman": 0,
-        "invulnerable": 0.2333333333333319,
+        "invulnerable": 0,
         "facing": 1,
         "vy": 0,
         "grounded": true,
@@ -50,110 +50,110 @@
         {
           "id": 0,
           "kind": "duncan",
-          "x": 469.9999999999994,
+          "x": 443.3333333333314,
           "y": 398,
           "home": 450,
           "alive": true,
           "direction": 1,
-          "state": "patrol",
-          "timer": 0.36666666666666586,
-          "animation_step": 209
+          "state": "recover",
+          "timer": 0.4499999999999994,
+          "animation_step": 132
         },
         {
           "id": 1,
           "kind": "gun",
-          "x": 816.4000000000019,
+          "x": 826.0000000000014,
           "y": 398,
           "home": 850,
           "alive": true,
           "direction": -1,
-          "state": "patrol",
-          "timer": 0.5999999999999988,
-          "animation_step": 209
+          "state": "recover",
+          "timer": 0.8833333333333336,
+          "animation_step": 132
         },
         {
           "id": 2,
           "kind": "z",
-          "x": 1317.7333333333318,
+          "x": 1276.6666666666674,
           "y": 398,
           "home": 1290,
           "alive": true,
           "direction": 1,
           "state": "patrol",
-          "timer": -2.499999999999998,
-          "animation_step": 209
+          "timer": -1.2166666666666688,
+          "animation_step": 132
         },
         {
           "id": 3,
           "kind": "gun",
-          "x": 1823.600000000003,
+          "x": 1792.799999999996,
           "y": 398,
           "home": 1810,
           "alive": true,
           "direction": 1,
           "state": "patrol",
-          "timer": -2.499999999999998,
-          "animation_step": 209
+          "timer": -1.2166666666666688,
+          "animation_step": 132
         },
         {
           "id": 4,
           "kind": "duncan",
-          "x": 2447.7333333333318,
+          "x": 2406.6666666666674,
           "y": 398,
           "home": 2420,
           "alive": true,
           "direction": 1,
           "state": "patrol",
-          "timer": -2.499999999999998,
-          "animation_step": 209
+          "timer": -1.2166666666666688,
+          "animation_step": 132
         },
         {
           "id": 5,
           "kind": "z",
-          "x": 2657.7333333333318,
+          "x": 2616.6666666666674,
           "y": 398,
           "home": 2630,
           "alive": true,
           "direction": 1,
           "state": "patrol",
-          "timer": -2.499999999999998,
-          "animation_step": 209
+          "timer": -1.2166666666666688,
+          "animation_step": 132
         },
         {
           "id": 6,
           "kind": "gun",
-          "x": 3313.600000000003,
+          "x": 3282.799999999996,
           "y": 398,
           "home": 3300,
           "alive": true,
           "direction": 1,
           "state": "patrol",
-          "timer": -2.499999999999998,
-          "animation_step": 209
+          "timer": -1.2166666666666688,
+          "animation_step": 132
         },
         {
           "id": 7,
           "kind": "z",
-          "x": 3487.7333333333318,
+          "x": 3446.6666666666674,
           "y": 398,
           "home": 3460,
           "alive": true,
           "direction": 1,
           "state": "patrol",
-          "timer": -2.499999999999998,
-          "animation_step": 209
+          "timer": -1.2166666666666688,
+          "animation_step": 132
         },
         {
           "id": 50,
           "kind": "chicken",
-          "x": 600.5,
-          "y": 190.74899575463155,
+          "x": 870,
+          "y": 381.99256917793076,
           "home": 650,
           "alive": true,
           "direction": -1,
           "state": "swoop",
-          "timer": 0.11666666666667008,
-          "animation_step": 209
+          "timer": 1.4000000000000035,
+          "animation_step": 132
         },
         {
           "id": 51,
@@ -164,8 +164,8 @@
           "alive": true,
           "direction": -1,
           "state": "waiting",
-          "timer": -3.4999999999999925,
-          "animation_step": 209
+          "timer": -2.2166666666666637,
+          "animation_step": 132
         },
         {
           "id": 52,
@@ -176,8 +176,8 @@
           "alive": true,
           "direction": -1,
           "state": "waiting",
-          "timer": -3.4999999999999925,
-          "animation_step": 209
+          "timer": -2.2166666666666637,
+          "animation_step": 132
         },
         {
           "id": 53,
@@ -188,13 +188,28 @@
           "alive": true,
           "direction": -1,
           "state": "waiting",
-          "timer": -3.4999999999999925,
-          "animation_step": 209
+          "timer": -2.2166666666666637,
+          "animation_step": 132
         }
       ],
       "beams": [],
-      "shots": [],
-      "steps": 210,
+      "shots": [
+        {
+          "kind": "egg",
+          "x": 550.3333333333316,
+          "y": 402,
+          "dx": 160,
+          "life": 1.4166666666666687
+        },
+        {
+          "kind": "alcohol",
+          "x": 767.0000000000014,
+          "y": 410,
+          "dx": -150,
+          "life": 2.4666666666666677
+        }
+      ],
+      "steps": 133,
       "act": "act2",
       "boss_active": false,
       "complete": false
@@ -210,10 +225,10 @@
         0.34375
       ]
     },
-    "fixture_id": 19003,
+    "fixture_id": 19005,
     "loops": 1,
-    "frames": 169,
-    "frame_ms_mean": 72.19583333333337,
+    "frames": 449,
+    "frame_ms_mean": 16.730000008333334,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"
