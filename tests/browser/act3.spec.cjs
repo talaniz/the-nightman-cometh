@@ -26,9 +26,9 @@ test('ACT3_APPROACH platforms ads meal flags pause retry',async({page})=>{
   await fixture(page,'platform-'+start);const x=start==='first'?650:1850;
   await page.keyboard.press('Space');await expect.poll(async()=>{const p=(await state(page)).world.player;return p.grounded&&p.y===316;},{timeout:10000}).toBe(true);await capture(page,'rooftop-lower-'+start);
   await walkTo(page,x+110);
-  await page.keyboard.down('ArrowRight');
-  try{await page.keyboard.press('Space');await page.waitForTimeout(500);}
-  finally{await page.keyboard.up('ArrowRight');}
+  await Promise.all([page.keyboard.down('Space'),page.keyboard.down('ArrowRight')]);
+  try{await page.waitForTimeout(400);}
+  finally{await Promise.all([page.keyboard.up('ArrowRight'),page.keyboard.up('Space')]);}
   await expect.poll(async()=>{const p=(await state(page)).world.player;return p.grounded&&p.y===256;},{timeout:10000}).toBe(true);await capture(page,'rooftop-upper-'+start);
  }
  for(const name of ['poster','mid','preboss','meal','death']){
