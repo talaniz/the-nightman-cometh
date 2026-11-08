@@ -1,0 +1,16 @@
+{
+  "source_fingerprint": "24165d86f24f3fb262ff12a9f2bbeee0cf992f5f09026b63b25d1e9f267fe917",
+  "python": "3.11.18 (main, Oct 26 2026, 02:48:34) [GCC 13.3.0]",
+  "files": {
+    "boot-state.js": "c8d028b2ea02fab3b724acec7d326226c37d5efcb63a2898b0e41b27c51598cd",
+    "browserfs-LICENSE.txt": "3a7e16fe59c38735309c9df4657cda635cfd7a1bf672f5404b7c7ab5cf949d94",
+    "browserfs.min.js": "ba01fda78db31a7ba579afe74b8b56cf4636381ca1b6c54ffba20467756a627f",
+    "favicon.png": "a86cd9ec127aefce1a3ba06a8f91603e3be940cb3173754dae3f218dc90cbce2",
+    "gamepad.js": "820adbd4d1bb0db0be075ac238fd0f8c60fe250464720b77edc853b738e233cd",
+    "index.html": "17dce7fa6651f0d55b6d3ac1949b35de4e05722767fd515cca5cd116a105b171",
+    "loader.js": "3f93c814212f43bda1fcd31c52b3f653ec936fffc8385657c7bbe44895f21e02",
+    "nightman.apk": "b70abc01bc679dad87f33674838357a5cbadd7fee214a14a2fe40e90749baca3",
+    "nightman.tar.gz": "f44e02afe57e3d89cee37ca5b2de380532eb003cc231eeeb273dd44c36dcab47",
+    "style.css": "98e3d4b1b80fa5a62cf02204f2591b94a03c8687aec275aad48250e702967e6d"
+  }
+}

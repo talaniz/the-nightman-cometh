@@ -1,0 +1,6 @@
+Run42428499356; code ec3a288; source fingerprint 24165d86f24f3fb262ff12a9f2bbeee0cf992f5f09026b63b25d1e9f267fe917
+foundation	Run python -m pytest tests/unit tests/audio -q	2026-11-08T00:11:08.6483188Z 255 passed in 19.41s
+foundation	Actual browser workflows	2026-11-08T00:12:29.2891627Z   4 passed (1.2m)
+foundation	Actual browser workflows	2026-11-08T00:20:59.1510837Z   28 passed (8.5m)
+foundation	Actual browser workflows	2026-11-08T00:27:08.7804783Z   2 passed (6.0m)
+foundation	Actual browser workflows	2026-11-08T00:34:03.3305315Z   4 passed (6.9m)

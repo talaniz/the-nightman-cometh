@@ -8,6 +8,7 @@ class Still:
     atlas: str
     panel: int
     music: str
+    effect: str = ""
 
 OPENING=(
  Still('CHARLIE','Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—','opening',0,'narration'),
@@ -22,7 +23,7 @@ OPENING=(
  Still('DENNIS',"Alright bird—I mean, Waitress. I'll save you!\nIf I have to…",'kidnapping',2,'level1'),
 )
 FRANK=(
- Still('DEE','Finally. Can we leave?','kidnapping',3,'frank-kidnap'),
+ Still('DEE','Don’t you ever leave me with that looney—I mean, my hero…I guess…','kidnapping',3,'frank-kidnap'),
  Still('FRANK','Not so fast. You gotta pay the troll toll.','kidnapping',4,'frank-kidnap'),
  Still('DENNIS','Seriously? We just did this.','kidnapping',5,'frank-kidnap'),
  Still('DENNIS','Dee—er—Waitress! Stop getting kidnapped, you bird!','bridge-story',0,'frank-kidnap'),
@@ -30,5 +31,5 @@ FRANK=(
 
 NIGHTMAN=(
  Still('NIGHTMAN','Confound your lousy toll, troll','bridge-story',1,'nightman-kidnap'),
- Still('DEE','Not again!','bridge-story',3,'nightman-kidnap'),
+ Still('DEE','I hate this storyyyy!!!!','bridge-story',3,'nightman-kidnap'),
 )

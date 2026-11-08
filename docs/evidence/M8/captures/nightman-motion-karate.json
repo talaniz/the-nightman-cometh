@@ -1,0 +1,24 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "id": 100,
+    "kind": "nightman",
+    "x": 4393.5,
+    "y": 374,
+    "alive": true,
+    "hp": 8,
+    "immune": 0,
+    "direction": -1,
+    "state": "karate",
+    "timer": 0.35,
+    "turn": 1,
+    "burst": 0,
+    "remaining": 0,
+    "vy": 0,
+    "animation_step": 224
+  },
+  "kind": "live browser canvas crop"
+}

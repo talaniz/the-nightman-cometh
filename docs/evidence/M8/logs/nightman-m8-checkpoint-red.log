@@ -1,0 +1,18 @@
+...F                                                                     [100%]
+=================================== FAILURES ===================================
+_________ test_preboss_flag_approach_has_a_safe_moment_to_accept_input _________
+
+    def test_preboss_flag_approach_has_a_safe_moment_to_accept_input():
+        from game.fixtures import apply
+        s=Session(Memory());apply(s,{'name':'act3-preboss'})
+        s.update(1/60,{})
+>       assert s.screen=='training' and s.world.player.hearts==1
+E       AssertionError: assert ('dead' == 'training'
+E
+E         - training
+E         + dead)
+
+tests/unit/test_m8_routes.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_routes.py::test_preboss_flag_approach_has_a_safe_moment_to_accept_input
+1 failed, 3 passed in 0.14s

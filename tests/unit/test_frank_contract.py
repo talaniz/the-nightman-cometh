@@ -4,11 +4,11 @@ from game.levels.act2 import Act2
 from game.world import DT
 
 def boss():
-    w=Act2();w.player.x=3100;w.enter_boss();return w
+    w=Act2();w.player.x=3850;w.enter_boss();return w
 
 def test_arena_entry_cleans_ordinary_projectiles():
-    w=Act2();w.shots=[dict(x=3000,y=410,life=2)];w.beams=[dict(x=2900,y=400,life=2)]
-    w.player.x=2950;w.step({})
+    w=Act2();w.shots=[dict(x=3750,y=410,life=2)];w.beams=[dict(x=3650,y=400,life=2)]
+    w.player.x=3700;w.step({})
     assert w.boss_active and all(t['kind']=='frank' for t in w.targets)
     assert w.shots==[] and w.beams==[]
 
@@ -33,13 +33,13 @@ def test_frank_throws_horizontal_sandwich_after_windup():
 def test_attack_matrix_uses_world_collision(kind,attack):
     w=boss();t=w.targets[0]
     if kind=='sandwich':
-        t=dict(id=101,kind='sandwich',x=3200.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+        t=dict(id=101,kind='sandwich',x=3950.,y=398.,alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
         w.targets=[t]
-    t['x']=3200;t['timer']=10
+    t['x']=3950;t['timer']=10
     p=w.player
-    if attack=='bat':p.x=3160;p.y=386;p.facing=1;p.swing=.14
-    elif attack=='stomp':p.x=3200;p.y=t['y']-44;p.vy=100;p.grounded=False
-    else:w.beams=[dict(x=3190.,y=t['y']+10,dx=600.,dy=0,life=1)]
+    if attack=='bat':p.x=3910;p.y=386;p.facing=1;p.swing=.14
+    elif attack=='stomp':p.x=3950;p.y=t['y']-44;p.vy=100;p.grounded=False
+    else:w.beams=[dict(x=3940.,y=t['y']+10,dx=600.,dy=0,life=1)]
     w.step({})
     assert (t.get('hp')==4) if kind=='frank' else not t['alive']
     if attack=='stomp':assert p.vy<0

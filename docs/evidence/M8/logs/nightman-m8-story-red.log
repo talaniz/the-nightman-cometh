@@ -1,0 +1,43 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_____________________ test_rescue_and_abduction_reactions ______________________
+
+    def test_rescue_and_abduction_reactions():
+>       assert FRANK[0].text == 'Don’t you ever leave me with that looney—I mean, my hero…I guess…'
+E       AssertionError: assert 'Finally. Can we leave?' == 'Don’t you ev...hero…I guess…'
+E
+E         - Don’t you ever leave me with that looney—I mean, my hero…I guess…
+E         + Finally. Can we leave?
+
+tests/unit/test_m8_story.py:9: AssertionError
+___________ test_transformation_precedes_manually_advanced_proposal ____________
+
+    def test_transformation_precedes_manually_advanced_proposal():
+        texts = [still.text for still in FINALE]
+>       assert texts[0] == 'I was a boy, now I am…'
+E       AssertionError: assert 'The Dayman saves the day.' == 'I was a boy, now I am…'
+E
+E         - I was a boy, now I am…
+E         + The Dayman saves the day.
+
+tests/unit/test_m8_story.py:15: AssertionError
+______ test_final_joke_goes_directly_to_credits_without_extra_end_screen _______
+
+    def test_final_joke_goes_directly_to_credits_without_extra_end_screen():
+        session = Session(Memory())
+        session.sequence = FINALE
+        session.dialogue = len(FINALE)-1
+        session.enter_screen('dialogue')
+        session.next_dialogue()
+>       assert session.screen == 'credits'
+E       AssertionError: assert 'ending' == 'credits'
+E
+E         - credits
+E         + ending
+
+tests/unit/test_m8_story.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_story.py::test_rescue_and_abduction_reactions - Ass...
+FAILED tests/unit/test_m8_story.py::test_transformation_precedes_manually_advanced_proposal
+FAILED tests/unit/test_m8_story.py::test_final_joke_goes_directly_to_credits_without_extra_end_screen
+3 failed in 0.15s

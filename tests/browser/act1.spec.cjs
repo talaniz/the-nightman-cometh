@@ -53,7 +53,7 @@ test('ACT1 CRICKET state fixtures attacks recovery and evidence',async({page})=>
    await page.keyboard.down('ArrowRight');await page.waitForTimeout(220);await page.keyboard.up('ArrowRight');expect((await state(page)).world.player.hearts).toBe(2);await capture(page,'act1-flag-first');
    await page.keyboard.down('ArrowLeft');await page.waitForTimeout(220);await page.keyboard.up('ArrowLeft');await page.keyboard.down('ArrowRight');await page.waitForTimeout(220);await page.keyboard.up('ArrowRight');expect((await state(page)).world.player.hearts).toBe(2);await capture(page,'act1-flag-repeat');
    await page.keyboard.down('ArrowLeft');await page.waitForTimeout(650);await page.keyboard.up('ArrowLeft');await capture(page,'wolf-cola');}
-  if(name==='death'){await press(page,'Enter');expect((await state(page)).world.checkpoint).toBe(3350);await capture(page,'act1-retry');}
+  if(name==='death'){await press(page,'Enter');expect((await state(page)).world.checkpoint).toBe(4250);await capture(page,'act1-retry');}
  }
  await fixture(page,'act1-pose-boss-warning');let s=await state(page);expect(s.world.targets.map(t=>t.kind)).toEqual(['cricket']);expect(s.audio.playing).toBe('cricket-boss');await capture(page,'cricket-warning');
  await fixture(page,'act1-pose-boss-charge');await capture(page,'cricket-charge');
@@ -71,7 +71,7 @@ test('ACT1 BEAM transformed sprite and horizontal shot',async({page})=>{
  const faults=errors(page);await boot(page);await fixture(page,'act1-preboss');await press(page,'Escape');await choose(page,'QA Dayman');await press(page,'k',40);
  const beams=(await state(page)).world.beams;expect(beams.length).toBe(1);expect(beams[0].dy).toBe(0);
  await capture(page,'act1-beam');
- await fixture(page,'act1-preboss');await page.keyboard.down('ArrowLeft');await page.waitForTimeout(1800);await page.keyboard.up('ArrowLeft');
+ await fixture(page,'act1-sign');
  expect((await state(page)).screen).toBe('training');await capture(page,'act1-shadynastys');expect(faults).toEqual([]);
 });
 
@@ -82,29 +82,40 @@ test('SAVE ACT1 legacy migration keeps volumes and resets coordinates',async({pa
 
 // Ordinary full route uses only keyboard actions and read-only observations.
 // No test fixtures, passwords, invincibility or skipped story states.
+async function advanceStory(page){
+ while((await state(page)).screen==='dialogue'){
+  if(process.env.NIGHTMAN_RECORD==='1'){
+   const text=(await state(page)).story.text;
+   await page.waitForTimeout(Math.min(6000,Math.max(1500,text.length*45)));
+  }
+  await press(page,'Enter',70);
+ }
+}
+
 for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '+(recovery?'death checkpoint reload recovery':'full three-act keyboard journey and ending'),async({page})=>{
  test.setTimeout(Number(process.env.NIGHTMAN_TEST_MS||900000));const faults=errors(page);await boot(page);expect((await state(page)).test_build).toBe(false);await choose(page,'Start Act 1');
- while((await state(page)).screen==='dialogue')await press(page,'Enter',70);
- let held='';let deaths=0;let forcedRecovery=false;
+ await advanceStory(page);
+ let held='';let deaths=0;let forcedRecovery=false;let extensionCaptured=false;
  // A read-count cap runs out sooner on faster hosts despite ongoing gameplay.
  // Bound elapsed route time instead; success still requires the full rescue.
  const routeDeadline=Date.now()+Number(process.env.NIGHTMAN_ROUTE_MS||180000);
  while(Date.now()<routeDeadline){
   let s=await state(page),w=s.world,p=w.player;
   if(s.screen==='dialogue'||s.screen==='complete')break;
+  if(!extensionCaptured&&s.screen==='training'&&!w.boss_active&&p.x>3150){await capture(page,'act1-extended-approach');extensionCaptured=true;}
   if(recovery&&!forcedRecovery&&w.boss_active){
    if(held)await page.keyboard.up(held);held='';
    await page.keyboard.down('ArrowRight');await page.waitForTimeout(650);await page.keyboard.up('ArrowRight');
    await expect.poll(async()=>(await state(page)).screen,{timeout:45000}).toBe('dead');
    await capture(page,'normal-death');await press(page,'Enter');
-   let retry=await state(page);expect(retry.world.player.hearts).toBe(3);expect(retry.world.player.dayman).toBe(0);expect(retry.world.checkpoint).toBe(3350);await capture(page,'normal-retry');
+   let retry=await state(page);expect(retry.world.player.hearts).toBe(3);expect(retry.world.player.dayman).toBe(0);expect(retry.world.checkpoint).toBe(4250);await capture(page,'normal-retry');
    await restart(page);await choose(page,'Continue Act 1');
-   let restored=await state(page);expect(restored.world.checkpoint).toBe(3350);expect(restored.world.flags).toContain('preboss');forcedRecovery=true;continue;
+   let restored=await state(page);expect(restored.world.checkpoint).toBe(4250);expect(restored.world.flags).toContain('preboss');forcedRecovery=true;continue;
   }
   if(s.screen==='dead'){deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.up('ArrowLeft');await page.keyboard.up('ArrowRight');await press(page,'Enter');held='';continue;}
   // Stop before approaching a pit: driver round trips on the Pi can exceed400ms.
   // Keyboard pulses and a stationary read avoid walking off while awaiting observations.
-  const edge=[1050,2500].find(edge=>edge-p.x>0&&edge-p.x<300);
+  const edge=[1050,2500,3600].find(edge=>edge-p.x>0&&edge-p.x<300);
   if(!w.boss_active&&edge&&p.grounded){
    if(held){await page.keyboard.up(held);held='';}
    p=(await state(page)).world.player;
@@ -118,37 +129,37 @@ for(const recovery of [false,true])test('FULL_KEYBOARD ACT1_NORMAL ACT2_NORMAL '
    // Camp beside the left can. Chasing the opposite stun window takes longer
    // than the window itself; release movement before IPC/readback can overshoot.
    if(held){await page.keyboard.up(held);held='';continue;}
-   const b=w.targets[0],distance=p.x-3598;
+   const b=w.targets[0],distance=p.x-4498;
    if(Math.abs(distance)>14){
     await page.keyboard.press(distance>0?'ArrowLeft':'ArrowRight',{delay:Math.min(180,Math.abs(distance)/220*1000)});continue;
    }
    // Jump within the flight window, rather than early enough to land before contact.
    const incoming=b.state==='charge'&&b.direction<0&&b.x-p.x>0&&b.x-p.x<140;
-   const leaving=b.state==='warning'&&b.direction>0&&b.x<3600&&b.timer<.45;
+   const leaving=b.state==='warning'&&b.direction>0&&b.x<4500&&b.timer<.45;
    if(p.grounded&&(incoming||leaving))await page.keyboard.press('Space');
-   if(b.state==='stunned'&&b.x<3600){
+   if(b.state==='stunned'&&b.x<4500){
     if(p.facing>0)await page.keyboard.press('ArrowLeft',{delay:25});
     await page.keyboard.press('j');
    }
    await page.waitForTimeout(50);continue;
   }
   const direction='ArrowRight',bat=true;
-  const jump=p.grounded&&([1050,2500].some(edge=>edge-p.x>0&&edge-p.x<70)||w.targets.some(t=>t.alive&&t.x-p.x>0&&t.x-p.x<110&&Math.abs(t.y-p.y)<65));
+  const jump=p.grounded&&([1050,2500,3600].some(edge=>edge-p.x>0&&edge-p.x<70)||w.targets.some(t=>t.alive&&t.x-p.x>0&&t.x-p.x<110&&Math.abs(t.y-p.y)<65));
   if(direction!==held){if(held)await page.keyboard.up(held);if(direction)await page.keyboard.down(direction);held=direction;}
   if(jump)await page.keyboard.press('Space');if(bat)await page.keyboard.press('j');
   await page.waitForTimeout(50);
  }
  if(held)await page.keyboard.up(held);
  expect((await state(page)).screen).toBe('dialogue');expect((await state(page)).world.complete).toBe(true);
- for(let i=0;i<4;i++)await press(page,'Enter');
+ await advanceStory(page);
  expect((await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act2');
  await driveBridge(page,{recovery,restart,choose,capture});
- while((await state(page)).screen==='dialogue')await press(page,'Enter');
+ await advanceStory(page);
  expect((await state(page)).screen).toBe('training');expect((await state(page)).world.act).toBe('act3');
  await driveRooftop(page,{recovery,restart,choose,capture});
- while((await state(page)).screen==='dialogue')await press(page,'Enter');
- expect((await state(page)).screen).toBe('ending');expect((await state(page)).audio.playing).toBe('dayman');await capture(page,'normal-ending');
- await press(page,'Enter');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');await capture(page,'normal-complete');
+ await advanceStory(page);
+ expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');await capture(page,'normal-complete');
  const saved=JSON.parse(await page.evaluate(()=>localStorage.getItem('nightman.progress.v1')));expect(saved.complete).toBe(true);expect(saved.flags).toContain('preboss');if(recovery)expect(forcedRecovery).toBe(true);expect(faults).toEqual([]);
+ if(process.env.NIGHTMAN_RECORD==='1'){await page.waitForTimeout(63000);return;}
  await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).screen).toBe('credits');expect((await state(page)).audio.playing).toBe('sunny-credits');expect(faults).toEqual([]);
 });

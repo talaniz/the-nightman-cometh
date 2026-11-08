@@ -11,10 +11,25 @@ def test_passwords_are_isolated_and_exit_restores_normal():
     s=Session(Memory());normal=s.world;s.password='bad';s.submit_password();assert s.message and not s.qa
     s.password='PAINTDOG';s.submit_password();assert s.qa and s.world is not normal
     s.enter_screen('pause');s.selection=s.menu().index('QA checkpoint');s.activate()
-    assert s.world.checkpoint==3350 and s.progress.saved is None
+    assert s.world.checkpoint==4250 and s.progress.saved is None
     s.enter_screen('pause');s.selection=s.menu().index('Exit QA');s.activate();assert s.world is normal and not s.qa
 
 def test_new_game_confirmation_and_blur_pause():
     s=Session(Memory());s.start();s.next_dialogue(skip=True);s.blur();assert s.screen=='pause' and s.world.paused
     s.enter_screen('title');s.activate();assert s.screen=='confirm'
     s.activate();assert s.screen=='title'
+
+
+def test_leaving_invalid_password_clears_feedback_but_preserves_storage_warning():
+    s=Session(Memory())
+    s.enter_screen('password');s.password='NOTACODE';s.submit_password()
+    assert 'Unknown password' in s.message
+    s.progress.message='Saving unavailable. Progress stays in this session.'
+    warning=s.progress.message
+    s.back()
+    assert s.screen=='title'
+    assert s.message==''
+    assert s.progress.message==warning
+    s.activate()
+    assert s.screen=='dialogue' and s.message==''
+    assert s.progress.message==warning

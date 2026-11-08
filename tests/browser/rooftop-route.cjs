@@ -3,11 +3,12 @@ const {expect}=require('@playwright/test');
 const state=async p=>JSON.parse(await p.evaluate(()=>window.__nightmanGame));
 async function driveRooftop(page,{recovery=false,restart,choose,capture=async()=>{}}={}){
  const deadline=Date.now()+Number(process.env.NIGHTMAN_ROUTE_MS||240000);
- let forced=false,deaths=0;
+ let forced=false,deaths=0,extensionCaptured=false;
  while(Date.now()<deadline){
   const s=await state(page),w=s.world,p=w.player;
   expect(s.qa).toBe(false);
   if(s.screen==='dialogue')break;
+  if(!extensionCaptured&&s.screen==='training'&&!w.boss_active&&p.x>2800){await capture(page,'act3-extended-approach');extensionCaptured=true;}
   if(s.screen==='dead'){
    deaths++;expect(deaths).toBeLessThan(5);await page.keyboard.press('Enter');
    await expect.poll(async()=>(await state(page)).screen).toBe('training');continue;
@@ -18,13 +19,13 @@ async function driveRooftop(page,{recovery=false,restart,choose,capture=async()=
    await capture(page,'act3-normal-death');await page.keyboard.press('Enter');
    await expect.poll(async()=>(await state(page)).screen).toBe('training');
    const retry=(await state(page)).world;expect(retry.player.hearts).toBe(3);expect(retry.player.dayman).toBe(0);
-   expect(retry.checkpoint).toBe(3000);await capture(page,'act3-normal-retry');
-   await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).world.checkpoint).toBe(3000);
+   expect(retry.checkpoint).toBe(3850);await capture(page,'act3-normal-retry');
+   await restart(page);await choose(page,'Continue Act 3');expect((await state(page)).world.checkpoint).toBe(3850);
    forced=true;continue;
   }
   // A fast route can collect the meal despite the avoidance jump. Wait at
   // the flag for natural expiry, so boss victory remains strictly unpowered.
-  if(!w.boss_active&&p.x>=3000&&p.dayman>0){
+  if(!w.boss_active&&p.x>=3850&&p.dayman>0){
    await expect.poll(async()=>{
     const current=await state(page);
     expect(current.screen).toBe('training');
@@ -42,7 +43,7 @@ async function driveRooftop(page,{recovery=false,restart,choose,capture=async()=
    else if((p.facing>0)!==(dx>0))await page.keyboard.press(dx>0?'ArrowRight':'ArrowLeft',{delay:10});
    else await page.waitForTimeout(45);
   }else{
-   const edge=[1100,2350].find(x=>x-p.x>0&&x-p.x<180);
+   const edge=[1100,2350,3300].find(x=>x-p.x>0&&x-p.x<180);
    if(edge&&p.grounded&&edge-p.x<85){
     await Promise.all([page.keyboard.down('ArrowRight'),page.keyboard.press('Space')]);
     await page.waitForTimeout(650);await page.keyboard.up('ArrowRight');

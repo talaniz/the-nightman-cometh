@@ -1,3 +1,11 @@
+# M8 authorized — final polish and release candidate
+
+User approved the consolidated five-phase plan and added Cricket direction changes and realistic dumpsters. Main owns branch `milestone/m8-release-acceptance`, worktree `/home/palpatine/projects/the-nightman-cometh-m8`, base `43032c4c3253b49b97beac41da7997ae670e9914` (merged M7). One PR across all phases. Contract: [M8](milestones/M8-release-acceptance.md). Implementation, commits, push, draft PR and independent reviews authorized; merge/deployment/final human acceptance remain separate.
+
+Next: establish behavioral red tests, implement approved phases sequentially, gather actual browser/audio evidence before review. Physical USB qualifying run needs user hardware participation; no simulated substitution. Local initial temperature 44.8C, available memory 1514MB, swap full: avoid local browser suites and concurrent heavy jobs.
+
+---
+
 # M7 authorized — controller integration
 
 User approved refined M7 contract and Pi resource protections. Base96924a5; branch milestone/m7-usb-controller; worktree /home/palpatine/projects/the-nightman-cometh-m7. Phase7.1 implemented with recorded red/green input tests; draft PR22 https://github.com/talaniz/the-nightman-cometh/pull/22 awaits final remote browser evidence and independent reviews. Phase7.2 requires actual USB hardware evidence. Preview8799 serves ordinary build 60158d0 (fingerprint 62492865698748481014c549026982863ccf0abb31537809752d2b7030979450). One PR; main owns scope and implementation; per-commit independent review then separate E2E. No merge/deploy/M8 acceptance authority. Contract: [M7](milestones/M7-usb-controller.md).

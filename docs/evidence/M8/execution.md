@@ -1,0 +1,67 @@
+# M8 execution
+
+Base 43032c4; isolated worktree; no prior edits changed. All results below pending unless explicitly recorded.
+
+First behavioral increment (phase 8.3 Cricket brought forward to verify latest request): tests/unit/test_m8_cricket.py, game/levels/act1.py; deterministic first-cycle brake/reversal, subsequent crash within bounded time, safe stationary telegraph, pause/retry reset. Test command: SDL_AUDIODRIVER=dummy SDL_VIDEODRIVER=dummy /tmp/nightman-m2-tools/bin/python -m pytest tests/unit/test_m8_cricket.py -q. Expected red: no brake state/mid-charge reversal exists. No art or visual acceptance implied by this increment. Phase 8.1 follows.
+
+## Observed behavior and regression results
+
+- Cricket red: 2 failures, absent brake/reversal. Green: 25 new+Act1 checks.
+- Story red: 3 failures, old dialogue/extra ending. Effect red: manual advance skipped transformation. Green: 7 story/finale checks.
+- Combat red: 4 failures, missing ingredients/eggs/chickens/Nightman bursts. Green: 26 new+Frank+Nightman contracts.
+- Route red: 3 failures, unchanged pre-boss positions. Extended approaches by 900/750/850 pixels with one additional pit and two raised platforms per act. Migrated known legacy pre-boss saves. Ordinary native bat/stomp routes pass after updating drivers for the added pits.
+- Latest complete native+audio run: 240 passed in 66.06s. Node boot-state/gamepad files passed. This predates final visual refinements; renew affected checks before commit.
+- Rendering checks are supplemental, not browser acceptance. Generated original and edited assets use built-in image_gen; exact prompts in art-prompts.json. Inspected source images; actual-browser screenshots and motion still pending.
+- Initial local telemetry: 44.8C, available RAM ~1514MB, full 199MB swap. Subsequent samples under 50C, vmstat observed no active swap-in/out. No parallel local browser suites run.
+- No independent reviewer sign-off, physical controller playthrough, final video/audio capture or release readiness yet.
+
+Final local increment checks: 142 unit tests passed in 3.63s after composing both Dennis costumes over one shared backdrop and using one fixed atlas anchor. JavaScript syntax checks and git diff --check passed. Prior complete 240 native/audio tests include the same approved audio bytes; no audio production source/assets changed. Node boot-state and gamepad checks passed. Native title, Cricket/dumpsters and revised finale frames inspected under /tmp/nightman-m8-render; these are explicitly not browser evidence.
+
+Browser next: push the single coherent implementation commit, create draft PR, run remote CI and inspect actual screenshots. Capture changed states missing from existing browser suites before requesting independent code review. Hardware/listening and recorded full-run gates remain open.
+
+## Browser/recording verification increment
+
+PR23 https://github.com/talaniz/the-nightman-cometh/pull/23 is draft at first implementation commit 5e1929a47f900fb10bc7effa688d934f55e0ffbc. Remote CI 42424915146 exercises actual browser workflows; results pending.
+
+Added focused actual-browser tests for Cricket's stationary tell/reversal/dumpster crash and automatic Dayman reveal/pointer lyric advance, with screenshots. Added opt-in remote Xvfb/PulseAudio/FFmpeg recording of the ordinary keyboard route, with readable story pacing, full credits and separate video/audio stream validation. Syntax checks pass; recording execution is pending. An uploaded CI recording is staging evidence only: inspect and publish a durable PR link before acceptance. It is not a substitute for the physical USB run.
+
+Packaging contract: every new required M8 image must be validated before building. Observed six failures when each new image was omitted from the asset inventory, then six passes after adding the required paths. No game/audio bytes changed in this increment. Any final evidence must still identify the build fingerprint.
+
+## In-scope balance and browser findings
+
+Initial real browser CI 42424915146: four controller groups passed; focused Chromium 23 passed / 2 failed, so ordinary full runs did not start. Failures were retained, not waived:
+- Act 1 sign screenshot driver walked left from the relocated pre-boss flag through new enemies with one heart. Replace that obsolete positioning route with a dedicated sign camera fixture; ordinary combat routes still cover those enemies.
+- Rooftop pre-boss fixture took immediate contact damage from the new nearby ghoul before accepting input. Native reproduction failed (screen dead instead of training). Move that ghoul farther from the checkpoint; retain the one-heart flag test.
+- Ordinary native Nightman diagnostic finished in 7.27 seconds without charge/fire. A new ordinary-input regression failed. Move charged bursts earlier, raise health from six to eight with 0.85-second hit immunity, and fit all health markers on screen. Focused Nightman/Act3 checks: 29 passed, including unpowered completion with charge/fire observed.
+
+These accepted findings are within the approved difficulty/recovery boundaries. The changed game candidate invalidates earlier qualifying runs; no such runs are claimed. Latest full unit suite result is recorded with this commit. Independent reviews and final E2E remain pending actual final-candidate browser evidence.
+
+Latest unit result: 150 passed in 15.45s.
+
+Visual follow-up: extending the bridge left the captive and Troll Crossing label at their old world positions. A rendered-scene test failed because Dee appeared behind Frank. Shift both with the arena; require the captive to be beyond Frank and inside the visible arena. This is a game-rendering change, so prior candidate runs are not qualifying final runs. Title scaling and extended-route captures have also been added without changing route inputs.
+
+Candidate identity contract: CI retains the exact ordinary `build/normal` artifact used by the keyboard routes. Serve that downloaded artifact for the physical USB run and reuse it for the additional recording. A separately rebuilt Pi preview is exploratory only, even if the source fingerprint matches; it cannot establish the required same-artifact three-run acceptance. Browser candidate manifest and file hashes must accompany run evidence.
+
+Local actual Chromium: projectile test passed. Initial Cricket/transform checks failed because full-page screenshots consumed the transient state window on the Pi. Read-only in-browser frame observation (no simulation writes) preserved the exact assertions and passed both corrected tests. Resource guard peak below 52C and available RAM above 650MiB. See manifest, images and raw local logs. Firefox diagnostic trace showed three real bridge deaths counted five times; retry acknowledgement and overhead-dive input handling are corrected in the driver, pending remote revalidation. No gameplay change or qualifying-run claim in this increment.
+
+Independent review P1 accepted: enlarged rat collision tops were offset from target origin, but stomp classification/bounce still used the origin. Three descending-speed regressions failed; side/ascending controls passed. Fix uses the actual collision rectangle top for both classification and bounce. Full unit regression follows. This changes gameplay and invalidates prior qualifying run candidates. Finding: https://github.com/talaniz/the-nightman-cometh/pull/23#issuecomment-6714779553 .
+
+Rat collision correction validation: the complete unit suite passed (157 tests). Descending contacts now use the actual collision rectangle top for classification and bounce placement; side/ascending contacts retain damage. Browser and final-candidate runs remain pending on this corrected source.
+
+Recovery driver contract correction: Firefox run 42426754751 failed expecting saved checkpoint 3550 but received 1500. Its read-only trace shows Dennis jumping from x3480/y320 across x3557/y323 and landing at x3594/y386; the flag was never touched, and flags remained [mid]. Persistence correctly restored the midpoint. The recovery driver now returns on foot to activate the missed pre-boss flag and asserts activation before deliberately dying. This changes only ordinary keyboard input, not game state, collision, flag rules, or the reload assertion. Red evidence: original CI recovery failure; green contract: repeat actual full ordinary Firefox recovery with unchanged checkpoint assertions. Pending remote execution.
+
+Rooftop input-driver correction: diagnostic run 42427695189 passed 27 focused checks but failed the second upper-platform landing. Trace shows lower-platform grounded x1997.3, then x2015.7/y319.6 airborne before the requested jump: holding Right through remote observation crossed the platform edge at2010. First platform landed correctly. Platform approach now uses bounded key presses released before each observation and leaves50px edge margin; both upper/lower landing assertions and actual physics remain unchanged. Red: diagnostic actual-browser failure; green: focused platform workflow and full CI pending. This is input-driver-only; no fixture teleport added to the jump sequence.
+
+Platform-driver follow-up: the airborne traverse uses one bounded 500ms rightward jump, with key release in finally, rather than alternating movement with observation round trips mid-flight. Ground approach retains bounded pulses. This prevents observation latency from consuming the flight window; landing assertions remain unchanged. Actual-browser verification pending.
+
+Slow-Pi diagnostic initially still failed: separate move then jump commands allowed x768 to advance to1013 before the next observation, leaving the platform. Sending jump/move concurrently and releasing both after400ms passed the complete actual Chromium rooftop approach workflow (both lower/upper platforms, flags, meal, pause and retry), 1 test in1.8minutes. Used existing fixture build6af33fb: platform physics unchanged; this is driver diagnostic evidence, not final candidate acceptance. Final runtime includes the later rat correction and must pass remote verification separately. One nice10 worker; temperature/memory guards active throughout. Log: logs/rooftop-driver-green.log.
+
+Independent E2E resource contract: two guarded local attempts stopped below400MiB available RAM (temperatures49–51C). The second stopped before the observer started, so reduced screenshot retention alone did not resolve headroom. No threshold reduction or unrelated-service termination. Independent reviewer prepared portable ordinary and boss/finale browser probes; main integrates them as review tooling only. Manual CI independent_review mode downloads the exact successful ordinary artifact, verifies source fingerprint and every manifest file hash, runs the reviewer's ordinary probe, then a current-source fixture build for focused boss/finale checks. One browser at a time on disposable remote runner; fixtures never qualify as full playthroughs. Required green: both probe exits0 and reviewer personally inspects resulting logs/screens, reporting limitations. Remote run and review pending. Recording and physical USB gates unchanged.
+
+Passing ordinary candidate: CI42428499356 at ec3a288 passed255 native/audio checks,4 controller workflows,28 focused Chromium workflows,2 complete ordinary Chromium routes,4 Firefox checks including both complete routes. Runtime/source fingerprint24165d86f24f3fb262ff12a9f2bbeee0cf992f5f09026b63b25d1e9f267fe917 remains unchanged through current test-tooling work. Downloaded exact ordinary artifact and verified all10 manifest file hashes; served privately on8800. Physical USB full run and additional recorded walkthrough remain pending; no final acceptance claim.
+
+Current-runtime gallery refresh: independent E2E reviewer opened all69 selected PNGs and parsed68 available state sidecars, including all26 finale pages; no private content or new material visual defect observed. Main additionally inspected actual revised sign, dumpster crash, Frank ingredients, fixed-pose transformation pair and rejection. Manifest supersedes historical6af packet, binds CI42428499356/ec3 source and unchanged current runtime fingerprint, distinguishes ordinary Firefox recovery from fixture captures, records crop dimensions, and labels the pre-runtime asset-error image without sidecar. Publication does not establish physical USB, listening, independent remote probe success or final recorded walkthrough acceptance.
+
+Independent E2E P2 accepted: invalid-password feedback persists after Escape across opening, gameplay, pause and retry (PR comment6715288955 at804416e). Contract: retain feedback on invalid submission, clear it when leaving Password, preserve independent storage warnings, and assert clean title/opening recovery in the actual ordinary browser. Scope: Session screen transition, session regression and independent ordinary probe. This runtime fix invalidates prior qualifying runs; all three must use a new frozen artifact. Native red/green and remote browser evidence pending.
+
+Password recovery red/green: session regression failed on the retained Unknown password message (1 failed,3 passed). Clearing password feedback only when exiting that screen passes all158 unit tests; storage warning preservation is explicitly checked. Independent ordinary browser probe now asserts empty feedback after Escape and on every opening page. Remote verification and new-candidate qualification remain pending.

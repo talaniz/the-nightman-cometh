@@ -1,0 +1,47 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+___ test_charge_brakes_then_reverses_before_dumpster_and_eventually_crashes ____
+
+    def test_charge_brakes_then_reverses_before_dumpster_and_eventually_crashes():
+        world, boss = encounter()
+        initial_direction = boss['direction']
+        braked = reversed_charge = False
+        stationary_frames = 0
+        for _ in range(360):
+            old_x, old_state = boss['x'], boss['state']
+            world.step({})
+            if boss['state'] == 'brake':
+                braked = True
+                assert 3540 < boss['x'] < 4050
+                assert not world.contact_hurts(boss), 'braking tell must not deal contact damage'
+                if old_state == 'brake':
+                    assert boss['x'] == old_x
+                    stationary_frames += 1
+            if boss['state'] == 'charge' and boss['direction'] != initial_direction:
+                reversed_charge = True
+            if boss['state'] == 'stunned':
+                break
+>       assert braked, 'Cricket must telegraph an occasional mid-charge reversal'
+E       AssertionError: Cricket must telegraph an occasional mid-charge reversal
+E       assert False
+
+tests/unit/test_m8_cricket.py:32: AssertionError
+____________ test_brake_pause_is_stable_and_retry_resets_encounter _____________
+
+    def test_brake_pause_is_stable_and_retry_resets_encounter():
+        world, boss = encounter()
+        for _ in range(180):
+            world.step({})
+            if boss['state'] == 'brake':
+                break
+>       assert boss['state'] == 'brake'
+E       AssertionError: assert 'stunned' == 'brake'
+E
+E         - brake
+E         + stunned
+
+tests/unit/test_m8_cricket.py:45: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_cricket.py::test_charge_brakes_then_reverses_before_dumpster_and_eventually_crashes
+FAILED tests/unit/test_m8_cricket.py::test_brake_pause_is_stable_and_retry_resets_encounter
+2 failed in 0.14s

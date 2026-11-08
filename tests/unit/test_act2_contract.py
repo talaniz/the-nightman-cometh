@@ -43,15 +43,15 @@ def test_bridge_crew_and_walk_gun_telegraph_before_fire():
     w.player.x=gun['x']-180;seen=set()
     for _ in range(180):
         w.step({});seen.add(gun['state'])
-        if w.shots:break
+        if any(shot.get('kind')=='alcohol' for shot in w.shots):break
     assert 'windup' in seen and w.shots
-    assert w.shots[0]['dx']<0
+    assert next(shot for shot in w.shots if shot.get('kind')=='alcohol')['dx']<0
 
 def test_act2_save_roundtrip_and_invalid_checkpoint():
     store=Memory();s=Session(store);w=Act2();w.flag('mid',1500);s.progress.save(w)
     resumed=Session(store)
     assert resumed.world.act=='act2' and resumed.world.checkpoint==1500
-    bad=json.loads(store.raw);bad['checkpoint']=3350;store.raw=json.dumps(bad)
+    bad=json.loads(store.raw);bad['checkpoint']=4100;store.raw=json.dumps(bad)
     assert Session(store).progress.saved is None
 
 def test_bridge_flags_are_one_shot_and_retry_clears_dayman():
@@ -100,7 +100,7 @@ def test_unpowered_ordinary_bridge_route_can_win():
         p=w.player;keys={}
         if not w.boss_active:
             keys['right']=True
-            gap=any(0<edge-p.x<55 for edge in (1000,2200))
+            gap=any(0<edge-p.x<55 for edge in (1000,2200,3050))
             enemy=any(t['alive'] and 0<t['x']-p.x<85 and abs(t['y']-p.y)<60 for t in w.targets)
             keys['jump']=p.grounded and (gap or enemy or 0<1560-p.x<65)
         else:

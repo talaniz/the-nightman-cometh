@@ -1,0 +1,1259 @@
+{
+  "status": "current-runtime screenshot packet; physical USB, independent remote probes and recorded handoff pending",
+  "code_revision": "ec3a288da3447dfb2bb88896ece90296d412ddb9",
+  "source_fingerprint": "24165d86f24f3fb262ff12a9f2bbeee0cf992f5f09026b63b25d1e9f267fe917",
+  "ci_run": "https://github.com/talaniz/the-nightman-cometh/actions/runs/42428499356",
+  "environment": "Ubuntu GitHub Actions; locked Playwright; one browser worker",
+  "command": "See .github/workflows/m3.yml Actual browser workflows at recorded code revision; fixture Chromium then ordinary Chromium and Firefox",
+  "notes": [
+    "Supersedes the earlier6af screenshot packet and its historical no-post-capture-runtime-change statement. These captures include the rat collision correction. Subsequent commits change only tests, review tooling and documentation; runtime source fingerprint unchanged.",
+    "Independent E2E reviewer visually inspected every listed image before publication; no private content or new material visual defect observed. Main additionally inspected sign, dumpsters, ingredient attack, transformation pair and rejection.",
+    "Ordinary approach/recovery filenames contain the final Firefox pass, as their sidecars record. Fixture sidecars lacking project/build fields are bound to this successful run and its source revision.",
+    "Canvas frames and motion crops retain both viewport and actual image dimensions. asset-load-error-1280 is a pre-runtime injected asset-failure scenario without a game-state sidecar.",
+    "Fixture images, including invincibility scenarios, do not qualify as complete playthroughs. Audio listening, physical USB and final video remain unverified."
+  ],
+  "captures": [
+    {
+      "image": "captures/m8-color-wash.png",
+      "state": "captures/m8-color-wash.json",
+      "sha256": "35ed35b8629aed13bc8043f103d682697a21cddd189ca8d82c2c29a3c055abce",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 960,
+        "height": 540
+      },
+      "kind": "actual browser canvas or motion crop",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-color-wash"
+    },
+    {
+      "image": "captures/m8-cricket-braking.png",
+      "state": "captures/m8-cricket-braking.json",
+      "sha256": "c71ca1397041e8ff4d7f43575e58fcfd0dada00750a383b2634f66693d217f57",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 960,
+        "height": 540
+      },
+      "kind": "actual browser canvas or motion crop",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-cricket-braking"
+    },
+    {
+      "image": "captures/m8-cricket-reversed.png",
+      "state": "captures/m8-cricket-reversed.json",
+      "sha256": "e21dde1ca0b37382e4b3528fd5d129c916a0de814a140b930bc92aa311eeeb9f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 960,
+        "height": 540
+      },
+      "kind": "actual browser canvas or motion crop",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-cricket-reversed"
+    },
+    {
+      "image": "captures/m8-dayman-revealed.png",
+      "state": "captures/m8-dayman-revealed.json",
+      "sha256": "7c75ad29e4f3869a624fedd4786c40055e6dff87a694346780edbb1c445aa8cd",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-dayman-revealed"
+    },
+    {
+      "image": "captures/m8-dennis-before.png",
+      "state": "captures/m8-dennis-before.json",
+      "sha256": "c8999401fc3e117f6e0151c39bfdc733a485ea2e7c144108a2c1025a236627a4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-dennis-before"
+    },
+    {
+      "image": "captures/m8-dumpster-1920.png",
+      "state": "captures/m8-dumpster-1920.json",
+      "sha256": "19af8ffa3ba13c785ae8c506f0d878fe1ac00f531e15d1300ebdc95347fa4488",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "image_pixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-dumpster-1920"
+    },
+    {
+      "image": "captures/m8-dumpster-crash.png",
+      "state": "captures/m8-dumpster-crash.json",
+      "sha256": "a5ff2513e84f8160299d27fa20cdd564f6835b0b065a97e02dc55edd2a7d44c6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 960,
+        "height": 540
+      },
+      "kind": "actual browser canvas or motion crop",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-dumpster-crash"
+    },
+    {
+      "image": "captures/m8-first-flash.png",
+      "state": "captures/m8-first-flash.json",
+      "sha256": "a349c823d9e7b1019f61f4376dee39cd867ff8e3f7b26120260bca276ce558c7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 960,
+        "height": 540
+      },
+      "kind": "actual browser canvas or motion crop",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-first-flash"
+    },
+    {
+      "image": "captures/m8-frank-ingredients.png",
+      "state": "captures/m8-frank-ingredients.json",
+      "sha256": "396a433e769a60d9a584d33c193040dbcad53208af161ca65797a6a3383710d3",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-frank-ingredients"
+    },
+    {
+      "image": "captures/m8-gun-alcohol.png",
+      "state": "captures/m8-gun-alcohol.json",
+      "sha256": "559dcdc8c40497fe2945a625538252e4e9f52f48f9b84d2a05c006b6ebe37ee0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-gun-alcohol"
+    },
+    {
+      "image": "captures/m8-nightman-charge.png",
+      "state": "captures/m8-nightman-charge.json",
+      "sha256": "8acc5941a6d92af03f6cfacefe467d75298d14a105d49d83240fbc4dffc4a3b2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-nightman-charge"
+    },
+    {
+      "image": "captures/m8-nightman-chimichanga.png",
+      "state": "captures/m8-nightman-chimichanga.json",
+      "sha256": "116f776700bcda1bc7bcc72ab556c98a1c04f142fdab9b6ae10789f631011a0c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-nightman-chimichanga"
+    },
+    {
+      "image": "captures/m8-nightman-crucifix.png",
+      "state": "captures/m8-nightman-crucifix.json",
+      "sha256": "76a4e3f38a478ad1b0f6866e01058dab0ed8452eb00f865f401834f8a760f30a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-nightman-crucifix"
+    },
+    {
+      "image": "captures/m8-proposal-1920.png",
+      "state": "captures/m8-proposal-1920.json",
+      "sha256": "83a7a137256cc22e5c39762a658edb444f2905854499412050befab11fa88048",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "image_pixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-proposal-1920"
+    },
+    {
+      "image": "captures/m8-proposal-sunburst.png",
+      "state": "captures/m8-proposal-sunburst.json",
+      "sha256": "effa80ba76f2893f445d527df3ecbcef6d498ae296369770c93d2b5bcc273526",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-proposal-sunburst"
+    },
+    {
+      "image": "captures/m8-story-narrow.png",
+      "state": "captures/m8-story-narrow.json",
+      "sha256": "1ac95b61c8a9c416def6ed763d7b4061fb28d8f6eb3364e521db46a1ae0b8b0a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image_pixels": {
+        "width": 390,
+        "height": 844
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-story-narrow"
+    },
+    {
+      "image": "captures/m8-title-1280.png",
+      "state": "captures/m8-title-1280.json",
+      "sha256": "ffe35eef0a318344cb6c00601a973bc294083b158b67b2c1dbe6674c3cb7a3ee",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-title-1280"
+    },
+    {
+      "image": "captures/m8-title-1920.png",
+      "state": "captures/m8-title-1920.json",
+      "sha256": "b05808ba9efcdd550e726cd7b4b9ef644aadbaea79b63f68b88688d32da677b2",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "image_pixels": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-title-1920"
+    },
+    {
+      "image": "captures/m8-title-narrow.png",
+      "state": "captures/m8-title-narrow.json",
+      "sha256": "1ac95b61c8a9c416def6ed763d7b4061fb28d8f6eb3364e521db46a1ae0b8b0a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "image_pixels": {
+        "width": 390,
+        "height": 844
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "m8-title-narrow"
+    },
+    {
+      "image": "captures/finale-0.png",
+      "state": "captures/finale-0.json",
+      "sha256": "c8999401fc3e117f6e0151c39bfdc733a485ea2e7c144108a2c1025a236627a4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-0"
+    },
+    {
+      "image": "captures/finale-1.png",
+      "state": "captures/finale-1.json",
+      "sha256": "50af2e2b12a4b5f28d48fee7bd1ecbcd8534fe987f06af5bde9669d4dc4cb77d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-1"
+    },
+    {
+      "image": "captures/finale-2.png",
+      "state": "captures/finale-2.json",
+      "sha256": "f3bed59f73d33738f9a0f0ec99d2c1200bd612b17a5eab5399144867714e7e6a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-2"
+    },
+    {
+      "image": "captures/finale-3.png",
+      "state": "captures/finale-3.json",
+      "sha256": "b4d362ea4f446fd5877c7bad357d121f3c33cdf6e7c49f579658193ecc1846cc",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-3"
+    },
+    {
+      "image": "captures/finale-4.png",
+      "state": "captures/finale-4.json",
+      "sha256": "b4d362ea4f446fd5877c7bad357d121f3c33cdf6e7c49f579658193ecc1846cc",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-4"
+    },
+    {
+      "image": "captures/finale-5.png",
+      "state": "captures/finale-5.json",
+      "sha256": "73ba502e11d4a48f701bfc2a1aa835f251fad8d368945372d844d0c42ca6b0e0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-5"
+    },
+    {
+      "image": "captures/finale-6.png",
+      "state": "captures/finale-6.json",
+      "sha256": "eb28212bbee1737bebd83e8fc804c4420a7df27a57386574c65499b527f94ce0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-6"
+    },
+    {
+      "image": "captures/finale-7.png",
+      "state": "captures/finale-7.json",
+      "sha256": "797b5beefcb957002e6ec5284fb059f16cc3fc433fc5447d46c9099725d7552f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-7"
+    },
+    {
+      "image": "captures/finale-8.png",
+      "state": "captures/finale-8.json",
+      "sha256": "ed96a9ac40f93f1c2d3c068044bc131f3ab4159f314a52046b3e838b6f49a28e",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-8"
+    },
+    {
+      "image": "captures/finale-9.png",
+      "state": "captures/finale-9.json",
+      "sha256": "b5c21423a2ca2bdeafb8efc0c281a4a1fd77e3bfbdbcd084a5697ff4f6a84b71",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-9"
+    },
+    {
+      "image": "captures/finale-10.png",
+      "state": "captures/finale-10.json",
+      "sha256": "2d74963bae249375ddfeb7411f7f236cd07b2d6b6d6797aa73b64e580e4be82a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-10"
+    },
+    {
+      "image": "captures/finale-11.png",
+      "state": "captures/finale-11.json",
+      "sha256": "a2372968be71216500950520c3c46819383f9578abf4dd707f8ec29510b07302",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-11"
+    },
+    {
+      "image": "captures/finale-12.png",
+      "state": "captures/finale-12.json",
+      "sha256": "042a29cd6913ab7f26c78c16998e920981cb66ff9a821ec0c34c43f298d1b2e2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-12"
+    },
+    {
+      "image": "captures/finale-13.png",
+      "state": "captures/finale-13.json",
+      "sha256": "4a37ac821721fe8c76048ee200cfd537e2d846443eb9ce627b4c51647a6ed746",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-13"
+    },
+    {
+      "image": "captures/finale-14.png",
+      "state": "captures/finale-14.json",
+      "sha256": "01396697df99ce0a484ddee043cf2018a458d737b9e7c0b4ad6ddad46aaa7e46",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-14"
+    },
+    {
+      "image": "captures/finale-15.png",
+      "state": "captures/finale-15.json",
+      "sha256": "5eb78d2208628e8b2684288e9f651830b51128eb432a837e767243124874977c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-15"
+    },
+    {
+      "image": "captures/finale-16.png",
+      "state": "captures/finale-16.json",
+      "sha256": "b0426336e5147db7fa6792253436db97d112d8f619161f4b9b8763f4d0ae5376",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-16"
+    },
+    {
+      "image": "captures/finale-17.png",
+      "state": "captures/finale-17.json",
+      "sha256": "7e7c0e8758c8eb90050f3648a2d54eaa1cde1b6057dab1e24f7f9ae6b5d964ac",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-17"
+    },
+    {
+      "image": "captures/finale-18.png",
+      "state": "captures/finale-18.json",
+      "sha256": "e6c53e5c62eae443642a3c15cf98d2dc4aed47775029c69373fba8288342b3c1",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-18"
+    },
+    {
+      "image": "captures/finale-19.png",
+      "state": "captures/finale-19.json",
+      "sha256": "92461be66e69f8ab15de6c82935c6f2c7b929530c186dd6247219ef397f8513d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-19"
+    },
+    {
+      "image": "captures/finale-20.png",
+      "state": "captures/finale-20.json",
+      "sha256": "a3ef007e34b50475ee4293a23b11656ee39cbfd3c5b3ea9d2c4cc1f112591913",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-20"
+    },
+    {
+      "image": "captures/finale-21.png",
+      "state": "captures/finale-21.json",
+      "sha256": "eda4f6f8c95cc398e7921426937b82f9ea41b54af68818cd1013fe9d26141068",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-21"
+    },
+    {
+      "image": "captures/finale-22.png",
+      "state": "captures/finale-22.json",
+      "sha256": "c81e9b5292082898d18fdea531d1580bef218853e574dbf7f5bfe2e3f46646f5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-22"
+    },
+    {
+      "image": "captures/finale-23.png",
+      "state": "captures/finale-23.json",
+      "sha256": "2a5cdb194af5c80a94e99fd100d038ed9b3b332a2e91beeec19d2c39a236fac7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-23"
+    },
+    {
+      "image": "captures/finale-24.png",
+      "state": "captures/finale-24.json",
+      "sha256": "2979aeda48884a51f814aad513a70a0cfb2b125c87a032f9f79a248daf44155c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-24"
+    },
+    {
+      "image": "captures/finale-25.png",
+      "state": "captures/finale-25.json",
+      "sha256": "67e566633cdaee59aa052f5e1cd3a03b2ddd80e0b7c8993893120f4689e469a5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "finale-25"
+    },
+    {
+      "image": "captures/frank-0.png",
+      "state": "captures/frank-0.json",
+      "sha256": "36c2c83e631c4d2545002da2fd3fbd22701ebb52013c946be73ba9e59c29affe",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "156.0.8078.4",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "frank-0"
+    },
+    {
+      "image": "captures/frank-3.png",
+      "state": "captures/frank-3.json",
+      "sha256": "b9c74fc3a5fa05f422c67eec8c3473bed6141ade8b7860d6af4a360036aa8e3f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "156.0.8078.4",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "frank-3"
+    },
+    {
+      "image": "captures/nightman-abduction-1.png",
+      "state": "captures/nightman-abduction-1.json",
+      "sha256": "4d59c3aeba672c32eeb7787aa85ab01b0730fa98da9daab4ed62c8febbf165da",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "nightman-abduction-1"
+    },
+    {
+      "image": "captures/act1-running.png",
+      "state": "captures/act1-running.json",
+      "sha256": "239cac0981ef1e055e473e402c0ca7e615f73d8113977337759ff769ee6566b2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "156.0.8078.4",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "act1-running"
+    },
+    {
+      "image": "captures/act1-bat-pose.png",
+      "state": "captures/act1-bat-pose.json",
+      "sha256": "829b9d8cceb9fe307a7e8dcdc09ebe4a94016a35b13f022c8dabc66806517bc4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "156.0.8078.4",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "act1-bat-pose"
+    },
+    {
+      "image": "captures/act1-shadynastys.png",
+      "state": "captures/act1-shadynastys.json",
+      "sha256": "bbba60367e00d169f56cdd561d6f3c35788edbb4a2eae4916ac4850e32208add",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "156.0.8078.4",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "act1-shadynastys"
+    },
+    {
+      "image": "captures/act1-extended-approach.png",
+      "state": "captures/act1-extended-approach.json",
+      "sha256": "b58aeef980ae30339513b1fd6ff50f16b8314b7f8a4e7606962b6493b524bd7f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "act1-extended-approach"
+    },
+    {
+      "image": "captures/act2-extended-approach.png",
+      "state": "captures/act2-extended-approach.json",
+      "sha256": "16a95a49321d8965f800c7393555dc3d51117a1cd20c53b6f97314813ba3e21f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "act2-extended-approach"
+    },
+    {
+      "image": "captures/act3-extended-approach.png",
+      "state": "captures/act3-extended-approach.json",
+      "sha256": "44aaa73d582ad2485eacabba86bb401a592872f0c598dac32a25da197f32f6be",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "act3-extended-approach"
+    },
+    {
+      "image": "captures/normal-death.png",
+      "state": "captures/normal-death.json",
+      "sha256": "6623286a1739badfd77d157472528132ea9f33270138db316919781d88e9e85c",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "normal-death"
+    },
+    {
+      "image": "captures/normal-retry.png",
+      "state": "captures/normal-retry.json",
+      "sha256": "c4bb4f39898e976961a1ffbef2c088cf65c686f5d920a1fe3be55e3d6affcbec",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "normal-retry"
+    },
+    {
+      "image": "captures/act2-normal-death.png",
+      "state": "captures/act2-normal-death.json",
+      "sha256": "ce7fbaae65d626f4ad7d4735422c45362fe1a6d11cb8c83f4dfe8fe61c596bf2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "act2-normal-death"
+    },
+    {
+      "image": "captures/act2-normal-retry.png",
+      "state": "captures/act2-normal-retry.json",
+      "sha256": "922fba984d18b4a2789c775e30db61d6e5ac4f7fd94c05d2436c03b921b3271a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "act2-normal-retry"
+    },
+    {
+      "image": "captures/act3-normal-death.png",
+      "state": "captures/act3-normal-death.json",
+      "sha256": "0198133621d102614e491373a838124dd3fdbdd4696d240532e26bcf460991f6",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "act3-normal-death"
+    },
+    {
+      "image": "captures/act3-normal-retry.png",
+      "state": "captures/act3-normal-retry.json",
+      "sha256": "663504e481c01f1b7b91c2ddcd958ba49ed483c6906dcefddb90982b137c0efc",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "157.0",
+      "project": "firefox",
+      "build_kind": "ordinary",
+      "scenario": "act3-normal-retry"
+    },
+    {
+      "image": "captures/act1-meal.png",
+      "state": "captures/act1-meal.json",
+      "sha256": "4220891c68a5f4bb1e5bde8903d2207b8d6a6fdcde294f5cfbc15f8b7ca81a3e",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "156.0.8078.4",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "act1-meal"
+    },
+    {
+      "image": "captures/rooftop-mid.png",
+      "state": "captures/rooftop-mid.json",
+      "sha256": "82303250db667edb9c103ae4aee3350d8b5391d90c78555cf21449e086292e43",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "rooftop-mid"
+    },
+    {
+      "image": "captures/nightman-motion-karate.png",
+      "state": "captures/nightman-motion-karate.json",
+      "sha256": "4520ea255ad24c5509557c003855fa7f8bfd98537ff34f15ab25e52c6c1d51c4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 130,
+        "height": 140
+      },
+      "kind": "actual browser canvas or motion crop",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "nightman-motion-karate"
+    },
+    {
+      "image": "captures/nightman-summons.png",
+      "state": "captures/nightman-summons.json",
+      "sha256": "bcc84b0b57219cabc3e8085431a0b2fb3da0746afb1f7ea9ddd15cca277d082a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "nightman-summons"
+    },
+    {
+      "image": "captures/credits-finished.png",
+      "state": "captures/credits-finished.json",
+      "sha256": "4f2739efef313fc6dcca3587783abadea0be95287b39341c98196f7b638bd5ba",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "credits-finished"
+    },
+    {
+      "image": "captures/controller-disconnected.png",
+      "state": "captures/controller-disconnected.json",
+      "sha256": "f6011a26d4ed266ac1cf60dfa23fc97b535bf84e62e6d8097d2c932d43f241ae",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "controller-disconnected"
+    },
+    {
+      "image": "captures/controller-connected-title.png",
+      "state": "captures/controller-connected-title.json",
+      "sha256": "0fc3b30aa0a00301fb733f2d4dd32c82db39f2ab6290178e43563b2e85812cbf",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "controller-connected-title"
+    },
+    {
+      "image": "captures/asset-load-error-1280.png",
+      "state": null,
+      "sha256": "589f9974926d3d6d1182c5bd418672362b4fbe18ad771b6dc19d885bf94ccee4",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "Chromium via locked Playwright CI",
+      "project": "chromium",
+      "build_kind": "pre-runtime loading-error scenario",
+      "scenario": "asset-load-error-1280"
+    },
+    {
+      "image": "captures/options-1280.png",
+      "state": "captures/options-1280.json",
+      "sha256": "9d033807ba8044ba1e11b85d0c5114b56a32ebcf564a28e57db848cc3fcf05cb",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "image_pixels": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser capture",
+      "browser": "156.0.8078.4",
+      "project": "chromium",
+      "build_kind": "fixture-assisted",
+      "scenario": "options-1280"
+    }
+  ]
+}

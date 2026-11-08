@@ -2,6 +2,7 @@
 from game.world import World
 
 def apply(session,request):
+    session.story_elapsed=0.;session.story_events.clear()
     name=request.get('name')
     if name.startswith('act3-'):
         return act3_fixture(session,name)
@@ -38,6 +39,7 @@ def act1_fixture(session,name):
     elif suffix.startswith('frank-'):
         session.sequence=FRANK;session.dialogue=int(suffix.split('-')[1]);session.enter_screen('dialogue')
     elif suffix=='approach':pass
+    elif suffix=='sign':w.player.x=2730
     elif suffix in ('platform-first','platform-second','platform-third'):
         # Isolate geometry from combat while preserving real platforms and jump physics.
         w.player.x={'platform-first':720,'platform-second':2080,'platform-third':2860}[suffix]
@@ -51,12 +53,12 @@ def act1_fixture(session,name):
         chicken=next(t for t in w.targets if t['kind']=='chicken')
         chicken.update(state='warning',timer=1.2,x=2400)
     elif suffix=='mid':w.player.x=1660;w.player.hearts=1
-    elif suffix=='preboss':w.player.x=3310;w.player.hearts=1
-    elif suffix=='death':w.flag('preboss',3350);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
+    elif suffix=='preboss':w.player.x=4210;w.player.hearts=1
+    elif suffix=='death':w.flag('preboss',4250);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
     elif suffix.startswith('boss-'):
-        w.flag('preboss',3350);w.player.x=3700;w.enter_boss();b=w.targets[0]
+        w.flag('preboss',4250);w.player.x=4600;w.enter_boss();b=w.targets[0]
         state=suffix[5:];b['state']=state;b['timer']=1.5
-        if state=='stunned':b['x']=3750
+        if state=='stunned':b['x']=4650
         if state=='defeated':b['alive']=False;b['hp']=0
     elif suffix=='complete':w.complete=True;session.enter_screen('complete')
     else:raise ValueError('Unknown Act1 fixture')
@@ -76,14 +78,14 @@ def act2_fixture(session,name):
     elif suffix=='gun':w.player.x=660
     elif suffix=='meal':w.player.x=1520
     elif suffix=='mid':w.player.x=1460;w.player.hearts=1
-    elif suffix=='preboss':w.player.x=2760;w.player.hearts=1
-    elif suffix=='death':w.flag('preboss',2800);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
+    elif suffix=='preboss':w.player.x=3510;w.player.hearts=1
+    elif suffix=='death':w.flag('preboss',3550);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
     elif suffix=='complete':w.complete=True;session.enter_screen('complete')
     elif suffix.startswith('platform-'):
         w.targets=[];w.pickups=[];w.player.x=590 if suffix=='platform-first' else 1770
     elif suffix.startswith('boss'):
-        w.flag('preboss',2800);w.player.x=3200;w.enter_boss();b=w.targets[0]
-        if suffix=='boss-close':b['x']=3250;b['timer']=10
+        w.flag('preboss',3550);w.player.x=3950;w.enter_boss();b=w.targets[0]
+        if suffix=='boss-close':b['x']=4000;b['timer']=10
         elif suffix=='boss-stomp':w.player.x=b['x'];w.player.y=b['y']-64;w.player.vy=100;w.player.grounded=False
         elif suffix=='boss-beam':w.meal()
     else:raise ValueError('Unknown Act2 fixture')
@@ -103,14 +105,14 @@ def act3_fixture(session,name):
     elif suffix in ('mid','preboss'):
         w.player.x=w.flag_positions[suffix]-40;w.player.hearts=1
     elif suffix=='meal':w.player.x=1620
-    elif suffix=='death':w.flag('preboss',3000);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
+    elif suffix=='death':w.flag('preboss',3850);w.player.hearts=0;w.dead=True;session.enter_screen('dead')
     elif suffix.startswith('platform-'):
         w.targets=[];w.pickups=[];w.player.x=680 if suffix=='platform-first' else 1880
     elif suffix.startswith('boss'):
-        w.flag('preboss',3000);w.player.x=3400;w.enter_boss();b=w.targets[0]
-        if suffix=='boss-close':b['x']=3450;b['timer']=10
+        w.flag('preboss',3850);w.player.x=4250;w.enter_boss();b=w.targets[0]
+        if suffix=='boss-close':b['x']=4300;b['timer']=10
         elif suffix=='boss-stomp':w.player.x=b['x'];w.player.y=b['y']-64;w.player.vy=100;w.player.grounded=False
-        elif suffix=='boss-beam':b['x']=3500;b['timer']=10;w.meal()
-        elif suffix=='boss-summons':w.invincible=True;w.player.x=3220;w.summon_clock=0
+        elif suffix=='boss-beam':b['x']=4350;b['timer']=10;w.meal()
+        elif suffix=='boss-summons':w.invincible=True;w.player.x=4070;w.summon_clock=0
         elif suffix=='boss-expiry':w.player.dayman=.1
     else:raise ValueError('Unknown Act3 fixture')

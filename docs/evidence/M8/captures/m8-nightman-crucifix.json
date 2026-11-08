@@ -1,0 +1,124 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "state": {
+    "input": {
+      "status": "absent",
+      "connected": false,
+      "release_required": false,
+      "pad_mode": false,
+      "password_index": 0
+    },
+    "password": "",
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "AUTOMATED ACT3 FIXTURE",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 0,
+    "story": {
+      "count": 10,
+      "speaker": "CHARLIE",
+      "text": "Come ye of good faith one and all. So I may tell ye a tale of intrigue, and villainy. For ye see—"
+    },
+    "world": {
+      "player": {
+        "x": 4070,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [
+        "preboss"
+      ],
+      "checkpoint": 3850,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 100,
+          "kind": "nightman",
+          "x": 4393.5,
+          "y": 374,
+          "alive": true,
+          "hp": 8,
+          "immune": 0,
+          "direction": -1,
+          "state": "fire",
+          "timer": 0.1166666666666667,
+          "turn": 2,
+          "burst": 1,
+          "remaining": 1,
+          "vy": 0,
+          "animation_step": 415
+        },
+        {
+          "id": 1000,
+          "kind": "ghoul",
+          "x": 4529.3333333331975,
+          "y": 398,
+          "alive": true,
+          "home": 4700,
+          "direction": -1,
+          "state": "patrol",
+          "timer": 0,
+          "summoned": true,
+          "animation_step": 415
+        }
+      ],
+      "beams": [],
+      "shots": [
+        {
+          "kind": "crucifix",
+          "x": 4298.666666666672,
+          "y": 405,
+          "dx": -230,
+          "life": 2.6833333333333345
+        },
+        {
+          "kind": "crucifix",
+          "x": 4348.500000000002,
+          "y": 405,
+          "dx": -230,
+          "life": 2.9000000000000004
+        }
+      ],
+      "steps": 416,
+      "act": "act3",
+      "boss_active": true,
+      "complete": false
+    },
+    "audio": {
+      "playing": "nightman-boss",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 1,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": 19006,
+    "loops": 1,
+    "frames": 857,
+    "frame_ms_mean": 16.79666666666666,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

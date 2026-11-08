@@ -4,7 +4,7 @@ from game.levels.act3 import Act3
 from game.world import DT
 
 def arena():
-    w=Act3();w.player.x=3220;w.enter_boss();return w
+    w=Act3();w.player.x=4070;w.enter_boss();return w
 
 def test_entry_has_only_nightman_and_clears_attacks():
     w=Act3();w.shots=[dict(x=1,y=1,life=1)];w.beams=[dict(x=1,y=1,life=1)]
@@ -27,19 +27,19 @@ def test_retry_removes_summons_and_transformation():
 
 @pytest.mark.parametrize('attack',['bat','stomp','beam'])
 def test_attacks_hit_nightman_once(attack):
-    w=arena();b=w.targets[0];b.update(x=3380.,timer=10)
+    w=arena();b=w.targets[0];b.update(x=4230.,timer=10)
     p=w.player
-    if attack=='bat':p.x=3340;p.y=386;p.facing=1;p.swing=.14
-    elif attack=='stomp':p.x=3380;p.y=b['y']-44;p.vy=100;p.grounded=False
-    else:w.beams=[dict(x=3370.,y=b['y']+10,dx=600.,dy=0,life=1)]
-    w.step({});assert b['hp']==5
-    assert not w.hit_target(b,'bat-hit') and b['hp']==5
+    if attack=='bat':p.x=4190;p.y=386;p.facing=1;p.swing=.14
+    elif attack=='stomp':p.x=4230;p.y=b['y']-44;p.vy=100;p.grounded=False
+    else:w.beams=[dict(x=4220.,y=b['y']+10,dx=600.,dy=0,life=1)]
+    w.step({});assert b['hp']==7
+    assert not w.hit_target(b,'bat-hit') and b['hp']==7
     if attack=='stomp':assert p.vy<0
 
 def test_victory_cleans_summons_and_paused_state_frozen():
     w=arena();w.summon();w.paused=True;before=w.snapshot();w.advance(1,{});assert w.snapshot()==before
     w.paused=False;b=w.targets[0]
-    for _ in range(6):b['immune']=0;w.hit_target(b,'bat-hit')
+    for _ in range(8):b['immune']=0;w.hit_target(b,'bat-hit')
     assert w.complete and not any(t['alive'] for t in w.targets)
 
 def test_no_supported_spawn_position_defers():
@@ -47,7 +47,7 @@ def test_no_supported_spawn_position_defers():
     assert not w.summon()
 
 def test_boss_warning_recovery_and_summon_spacing():
-    w=arena();w.player.x=3170;seen=set();transitions=[];previous=''
+    w=arena();w.player.x=4020;seen=set();transitions=[];previous=''
     # Observe actual AI; stay away from it via ordinary movement/jumps.
     for tick in range(600):
         b=w.targets[0];state=b['state'];seen.add(state)
@@ -60,9 +60,9 @@ def test_boss_warning_recovery_and_summon_spacing():
 
 @pytest.mark.parametrize('attack',['bat','stomp','beam'])
 def test_each_attack_kills_a_summoned_ghoul(attack):
-    w=arena();w.summon();g=w.targets[-1];g['x']=3380.;w.targets=[g];p=w.player
-    if attack=='bat':p.x=3340;p.y=386;p.facing=1;p.swing=.14
-    elif attack=='stomp':p.x=3380;p.y=354;p.vy=100;p.grounded=False
-    else:w.beams=[dict(x=3370.,y=410.,dx=600.,dy=0,life=1)]
+    w=arena();w.summon();g=w.targets[-1];g['x']=4230.;w.targets=[g];p=w.player
+    if attack=='bat':p.x=4190;p.y=386;p.facing=1;p.swing=.14
+    elif attack=='stomp':p.x=4230;p.y=354;p.vy=100;p.grounded=False
+    else:w.beams=[dict(x=4220.,y=410.,dx=600.,dy=0,life=1)]
     w.step({});assert not g['alive']
     if attack=='stomp':assert p.vy<0
