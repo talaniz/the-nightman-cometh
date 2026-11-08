@@ -13,6 +13,7 @@ async function driveBridge(page,{recovery=false,restart,choose,capture=async()=>
    await expect.poll(async()=>(await state(page)).screen).toBe('training');continue;
   }
   if(recovery&&!forced&&w.boss_active){
+   expect(w.checkpoint).toBe(3550);expect(w.flags).toContain("preboss");
    await page.keyboard.press('ArrowRight',{delay:650});
    await expect.poll(async()=>(await state(page)).screen,{timeout:60000}).toBe('dead');
    await capture(page,'act2-normal-death');await page.keyboard.press('Enter');
@@ -32,6 +33,13 @@ async function driveBridge(page,{recovery=false,restart,choose,capture=async()=>
     if(p.grounded&&w.targets.some(t=>t.kind==='sandwich'&&t.x-p.x>0&&t.x-p.x<110))await page.keyboard.press('Space');
    }
   }else{
+   // A jump can pass above a flag without touching it. Walk back to activate
+   // the visible pre-boss flag before testing its death/reload contract.
+   if(recovery&&!w.flags.includes("preboss")&&p.x>=3575){
+    await page.keyboard.press("j");
+    await page.keyboard.press("ArrowLeft",{delay:Math.min(100,(p.x-3550)/220*1000)});
+    await page.waitForTimeout(100);continue;
+   }
    const edge=[1000,2200,3050].find(edge=>edge-p.x>0&&edge-p.x<180);
    if(edge&&p.grounded&&edge-p.x<85){
     await Promise.all([page.keyboard.down('ArrowRight'),page.keyboard.press('Space')]);await page.waitForTimeout(650);await page.keyboard.up('ArrowRight');
