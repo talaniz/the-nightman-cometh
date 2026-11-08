@@ -8,14 +8,25 @@ async function capture(p,name){const dir=process.env.NIGHTMAN_EVIDENCE;if(!dir)r
 function errors(p){const list=[];p.on('pageerror',e=>list.push(String(e)));p.on('console',m=>{if(m.type()==='error'&&!m.text().includes('MEDIA USER ACTION REQUIRED'))list.push(m.text());});p.on('requestfailed',r=>list.push(r.url()));return list;}
 async function pressUntil(p,key,check){await p.keyboard.down(key);try{await expect.poll(check,{timeout:15000,intervals:[50]}).toBe(true);}finally{await p.keyboard.up(key);}}
 
+// Release movement before each browser round trip near a platform edge.
+async function walkTo(p,x){
+ const deadline=Date.now()+15000;
+ while(Date.now()<deadline){
+  const current=(await state(p)).world.player.x;
+  if(current>=x)return;
+  await p.keyboard.press('ArrowRight',{delay:Math.min(60,Math.max(16,(x-current)/220*1000))});
+ }
+ expect((await state(p)).world.player.x).toBeGreaterThanOrEqual(x);
+}
+
 test('ACT3_APPROACH platforms ads meal flags pause retry',async({page})=>{
  const faults=errors(page);await boot(page);await fixture(page,'approach');
  expect((await state(page)).audio.playing).toBe('rooftop');await capture(page,'rooftop-entrance');
  for(const start of ['first','second']){
   await fixture(page,'platform-'+start);const x=start==='first'?650:1850;
   await page.keyboard.press('Space');await expect.poll(async()=>{const p=(await state(page)).world.player;return p.grounded&&p.y===316;},{timeout:10000}).toBe(true);await capture(page,'rooftop-lower-'+start);
-  await pressUntil(page,'ArrowRight',async()=>(await state(page)).world.player.x>=x+130);
-  await page.keyboard.press('Space');await pressUntil(page,'ArrowRight',async()=>(await state(page)).world.player.x>=x+220);
+  await walkTo(page,x+110);
+  await page.keyboard.press('Space');await walkTo(page,x+220);
   await expect.poll(async()=>{const p=(await state(page)).world.player;return p.grounded&&p.y===256;},{timeout:10000}).toBe(true);await capture(page,'rooftop-upper-'+start);
  }
  for(const name of ['poster','mid','preboss','meal','death']){
