@@ -122,8 +122,8 @@ class World:
             if .04<p.swing<.18 and target['id'] not in self.swing_hits and overlap(hitbox,rect):
                 self.swing_hits.add(target['id']);self.hit_target(target,'bat-hit');continue
             if overlap(p.rect,rect):
-                if self.contact(old_bottom,target['y'],p.vy>0)=='stomp':
-                    self.hit_target(target,'stomp');p.y=target['y']-44;p.vy=-350
+                if self.contact(old_bottom,rect[1],p.vy>0)=='stomp':
+                    self.hit_target(target,'stomp');p.y=rect[1]-44;p.vy=-350
                 elif self.contact_hurts(target):self.hurt()
         self.shot_clock+=DT
         if self.launcher and self.shot_clock>=2:

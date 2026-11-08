@@ -1,0 +1,55 @@
+FFF...                                                                   [100%]
+=================================== FAILURES ===================================
+___________ test_clean_descent_onto_rat_bounces_without_damage[100] ____________
+
+speed = 100
+
+    @pytest.mark.parametrize('speed',[100,200,350])
+    def test_clean_descent_onto_rat_bounces_without_damage(speed):
+        world,rat=rat_encounter();p=world.player
+        p.x=300;p.y=354;p.vy=speed;p.grounded=False
+        for _ in range(12):
+            world.step({})
+            if 'stomp' in world.events or 'hurt' in world.events:break
+>       assert 'stomp' in world.events and 'hurt' not in world.events
+E       AssertionError: assert ('stomp' in ['hurt'])
+E        +  where ['hurt'] = <game.world.World object at 0x7f921e6c50>.events
+
+tests/unit/test_m8_rat_collision.py:19: AssertionError
+___________ test_clean_descent_onto_rat_bounces_without_damage[200] ____________
+
+speed = 200
+
+    @pytest.mark.parametrize('speed',[100,200,350])
+    def test_clean_descent_onto_rat_bounces_without_damage(speed):
+        world,rat=rat_encounter();p=world.player
+        p.x=300;p.y=354;p.vy=speed;p.grounded=False
+        for _ in range(12):
+            world.step({})
+            if 'stomp' in world.events or 'hurt' in world.events:break
+>       assert 'stomp' in world.events and 'hurt' not in world.events
+E       AssertionError: assert ('stomp' in ['hurt'])
+E        +  where ['hurt'] = <game.world.World object at 0x7f927c5e10>.events
+
+tests/unit/test_m8_rat_collision.py:19: AssertionError
+___________ test_clean_descent_onto_rat_bounces_without_damage[350] ____________
+
+speed = 350
+
+    @pytest.mark.parametrize('speed',[100,200,350])
+    def test_clean_descent_onto_rat_bounces_without_damage(speed):
+        world,rat=rat_encounter();p=world.player
+        p.x=300;p.y=354;p.vy=speed;p.grounded=False
+        for _ in range(12):
+            world.step({})
+            if 'stomp' in world.events or 'hurt' in world.events:break
+>       assert 'stomp' in world.events and 'hurt' not in world.events
+E       AssertionError: assert ('stomp' in ['hurt'])
+E        +  where ['hurt'] = <game.world.World object at 0x7f9216b9d0>.events
+
+tests/unit/test_m8_rat_collision.py:19: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_m8_rat_collision.py::test_clean_descent_onto_rat_bounces_without_damage[100]
+FAILED tests/unit/test_m8_rat_collision.py::test_clean_descent_onto_rat_bounces_without_damage[200]
+FAILED tests/unit/test_m8_rat_collision.py::test_clean_descent_onto_rat_bounces_without_damage[350]
+3 failed, 3 passed in 0.15s
