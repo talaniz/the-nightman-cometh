@@ -374,12 +374,32 @@ class Renderer:
         if kind=='sandwich':
             ingredient=t.get('ingredient','whole')
             if ingredient!='whole':
-                colors={'meat':(174,77,69),'cheese':(239,190,51),'bread':(211,158,85),'lettuce':(96,153,55)}
-                pygame.draw.ellipse(self.screen,colors[ingredient],(x,y+3,30,10))
-                if ingredient=='cheese':
-                    for dx in (7,20):pygame.draw.circle(self.screen,(192,136,35),(int(x+dx),int(y+8)),2)
+                # Draw within the existing 30x16 projectile bounds.
+                if ingredient=='bread':
+                    pygame.draw.ellipse(self.screen,(137,79,35),(x,y+1,30,14))
+                    pygame.draw.ellipse(self.screen,(222,163,78),(x+1,y+2,28,11))
+                    for dx in (7,14,21):
+                        pygame.draw.line(self.screen,(115,66,30),(x+dx,y+5),(x+dx-3,y+10),2)
+                        pygame.draw.line(self.screen,(255,218,143),(x+dx+1,y+4),(x+dx-2,y+9),2)
+                elif ingredient=='cheese':
+                    self.rect((192,129,22),(x+7,y,16,16))
+                    self.rect((255,216,54),(x+7,y,15,14))
+                    pygame.draw.line(self.screen,(255,242,139),(x+8,y+1),(x+20,y+1))
+                    for dx,dy in ((11,5),(18,10)):
+                        pygame.draw.circle(self.screen,(218,161,25),(int(x+dx),int(y+dy)),2)
                 elif ingredient=='lettuce':
-                    pygame.draw.lines(self.screen,(154,192,89),False,[(x,y+8),(x+7,y+4),(x+15,y+10),(x+22,y+5),(x+30,y+8)],2)
+                    points=[(0,7),(3,3),(7,4),(10,0),(14,3),(18,1),(21,4),(26,2),(29,7),(26,10),(28,14),(22,13),(18,15),(14,12),(10,15),(6,12),(2,13)]
+                    pygame.draw.polygon(self.screen,(62,113,38),[(x+dx,y+dy) for dx,dy in points])
+                    pygame.draw.lines(self.screen,(154,199,79),False,[(x+2,y+7),(x+10,y+6),(x+19,y+8),(x+26,y+6)],2)
+                    for dx in (8,16,23):
+                        pygame.draw.line(self.screen,(116,167,57),(x+dx,y+7),(x+dx-2,y+3))
+                        pygame.draw.line(self.screen,(116,167,57),(x+dx,y+8),(x+dx+2,y+12))
+                elif ingredient=='meat':
+                    pygame.draw.ellipse(self.screen,(112,46,42),(x,y+1,30,14))
+                    pygame.draw.ellipse(self.screen,(190,89,77),(x+1,y+2,28,11))
+                    pygame.draw.lines(self.screen,(237,160,132),False,[(x+4,y+8),(x+9,y+5),(x+13,y+9),(x+19,y+6),(x+25,y+8)],2)
+                    for dx,dy in ((7,10),(16,4),(22,10)):
+                        pygame.draw.circle(self.screen,(137,56,49),(int(x+dx),int(y+dy)),1)
                 return
             pygame.draw.ellipse(self.screen,(231,176,91),(x,y,30,7))
             self.rect((99,145,62),(x+1,y+6,28,3));self.rect((170,66,48),(x+2,y+9,26,3))

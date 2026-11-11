@@ -97,3 +97,24 @@ test('M8 live projectile shapes and both charged Nightman bursts',async({page})=
   await capture(page,'nightman-'+kind);
  }
 });
+
+
+test('POLISH ingredient readability and revised closing lines at supported viewport sizes',async({page})=>{
+ await boot(page);
+ for(const [width,height] of [[1280,720],[1920,1080],[390,844]]){
+  await page.setViewportSize({width,height});
+  await fixture(page,'act2-boss');
+  await expect.poll(async()=>(await state(page)).world.targets.some(t=>t.ingredient==='lettuce'),{timeout:10000,intervals:[50]}).toBe(true);
+  const shots=(await state(page)).world.targets.filter(t=>t.kind==='sandwich');
+  expect(shots.length).toBeGreaterThan(0);
+  expect(shots.every(t=>[366,382,398].includes(t.y))).toBe(true);
+  await capture(page,'polish-ingredients-'+width);
+  for(const [index,text] of [[21,'Well, technically I didn’t sign anything'],[22,'So, I guess I’ll see you tomorrow?…']]){
+   await fixture(page,'act3-finale-'+index);
+   expect((await state(page)).story.text).toBe(text);
+   await capture(page,'polish-finale-'+index+'-'+width);
+   await page.keyboard.press('Enter');
+   await expect.poll(async()=>(await state(page)).dialogue).toBe(index+1);
+  }
+ }
+});

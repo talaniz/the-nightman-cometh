@@ -50,3 +50,21 @@ def test_unpowered_boss_victory_and_cleanup():
         b['immune']=0;w.hit_target(b,'stomp')
     assert w.complete and not b['alive'] and w.shots==[]
     w.retry();assert not w.complete and not w.boss_active and w.player.dayman==0
+
+
+@pytest.mark.parametrize('height',[366.,382.,398.])
+@pytest.mark.parametrize('attack',['bat','stomp','beam'])
+def test_ingredient_counters_at_each_launch_height(height,attack):
+    w=boss()
+    t=dict(id=101,kind='sandwich',ingredient='bread',x=3950.,y=height,
+           alive=True,direction=-1,state='flight',timer=3.,animation_step=0)
+    w.targets=[t];p=w.player
+    if attack=='bat':
+        p.x=3910;p.y=height-12;p.facing=1;p.swing=.14;p.grounded=False
+    elif attack=='stomp':
+        p.x=3950;p.y=height-44;p.vy=100;p.grounded=False
+    else:
+        w.beams=[dict(x=3940.,y=height+10,dx=600.,dy=0,life=1)]
+    w.step({})
+    assert not t['alive']
+    if attack=='stomp':assert p.vy<0
