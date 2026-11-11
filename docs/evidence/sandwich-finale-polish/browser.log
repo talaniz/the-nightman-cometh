@@ -1,0 +1,18 @@
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:07] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:3018072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:21] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:21] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:21] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:21] "GET /gamepad.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:21] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:21] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:22] code 404, message File not found
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:22] "GET /favicon.png HTTP/1.1" 404 -
+[WebServer] 127.0.0.1 - - [11/Nov/2026 14:40:38] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/m8.spec.cjs:102:1 › POLISH ingredient readability and revised closing lines at supported viewport sizes (1.2m)
+
+  1 passed (1.4m)
