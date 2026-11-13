@@ -4,6 +4,33 @@ from game.world import World
 def apply(session,request):
     session.story_elapsed=0.;session.story_events.clear()
     name=request.get('name')
+    if name.startswith('motion-boss-'):
+        from game.levels.act1 import Act1
+        from game.levels.act2 import Act2
+        from game.levels.act3 import Act3
+        level={'cricket':Act1,'frank':Act2,'nightman':Act3}[name.removeprefix('motion-boss-')]
+        session.world=level();session.qa=True;session.qa_label='MOTION FIXTURE'
+        session.enter_screen('training');w=session.world;w.enter_boss();b=w.targets[0]
+        b['hp']=1;b['immune']=0;b['timer']=10
+        b['state']='stunned' if w.act=='act1' else 'shuffle' if w.act=='act2' else 'idle'
+        w.player.x=b['x']-45;w.player.facing=1
+        return
+    if name=='motion-run-dayman':
+        from game.levels.act1 import Act1
+        session.world=Act1();session.qa=True;session.qa_label='DAYMAN RUN FIXTURE'
+        session.enter_screen('training');session.world.targets=[]
+        session.world.player.x=720;session.world.player.dayman=30
+        return
+    if name=='motion-shots':
+        from game.levels.act3 import Act3
+        session.world=Act3();session.qa=True;session.qa_label='PROJECTILE VISUAL FIXTURE'
+        session.enter_screen('training');w=session.world;w.targets=[]
+        # A paused visual fixture isolates orientation; normal attacks are also checked live.
+        w.paused=True;w.steps=100
+        w.shots=[dict(kind=kind,x=600.+i*110,y=y,dx=direction*170.,life=10.)
+                 for i,kind in enumerate(('alcohol','crucifix','chimichanga'))
+                 for y,direction in ((200.,1),(260.,-1))]
+        return
     if name.startswith('act3-'):
         return act3_fixture(session,name)
     if name.startswith('act2-'):

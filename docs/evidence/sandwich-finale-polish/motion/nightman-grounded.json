@@ -1,0 +1,96 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "kind": "synchronized browser canvas/state",
+  "state": {
+    "input": {
+      "status": "absent",
+      "connected": false,
+      "release_required": false,
+      "pad_mode": false,
+      "password_index": 0
+    },
+    "password": "",
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "MOTION FIXTURE",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 0,
+    "story": {
+      "count": 2,
+      "speaker": "NIGHTMAN",
+      "text": "Confound your lousy toll, troll"
+    },
+    "world": {
+      "player": {
+        "x": 4485,
+        "y": 386,
+        "hearts": 3,
+        "dayman": 0,
+        "invulnerable": 0,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [],
+      "checkpoint": 80,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 100,
+          "kind": "nightman",
+          "x": 4530,
+          "y": 374,
+          "alive": false,
+          "hp": 0,
+          "immune": 0.85,
+          "direction": -1,
+          "state": "defeated",
+          "timer": 9.166666666666625,
+          "turn": 0,
+          "burst": 0,
+          "remaining": 0,
+          "vy": 0,
+          "animation_step": 49,
+          "defeat_elapsed": 0.9187999980000142
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 50,
+      "act": "act3",
+      "boss_active": true,
+      "complete": true
+    },
+    "audio": {
+      "playing": "nightman-boss",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 1,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": 22005,
+    "loops": 1,
+    "frames": 333,
+    "frame_ms_mean": 71.25916663333342,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

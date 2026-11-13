@@ -129,6 +129,8 @@ class Renderer:
             color=(126,202,139) if name in w.flags else GOLD
             pygame.draw.polygon(self.screen,color,[(x-camera+2,362),(x-camera+35,371),(x-camera+2,382)])
         for t in w.targets:
+            if t.get('state')=='defeated':
+                self.defeated_boss(t,camera);continue
             if t['alive']:
                 x=t['x']-camera;y=t['y']
                 if w.act in ('act1','act2','act3'):
@@ -219,15 +221,32 @@ class Renderer:
             pygame.draw.ellipse(self.screen,(240,228,194),(x-6,y-8,12,16))
             pygame.draw.ellipse(self.screen,(255,248,222),(x-4,y-6,5,7))
         elif kind=='alcohol':
-            pygame.draw.polygon(self.screen,(205,224,224),[(x-7,y-8),(x+7,y-8),(x+5,y+8),(x-5,y+8)],2)
-            self.rect((185,102,35),(x-4,y,8,6));self.rect((244,217,164),(x-4,y,8,2))
+            direction=1 if shot.get('dx',1)>0 else -1
+            def point(dx,dy):return (x+direction*dx,y+dy)
+            # Narrow closed base trails; the wide open rim leads the projectile.
+            pygame.draw.polygon(self.screen,(99,133,148),[point(-9,-5),point(8,-8),point(8,8),point(-9,5)])
+            pygame.draw.polygon(self.screen,(193,111,39),[point(-7,-3),point(4,-5),point(4,5),point(-7,3)])
+            pygame.draw.lines(self.screen,(211,237,240),False,[point(8,-8),point(-9,-5),point(-9,5),point(8,8)],2)
+            pygame.draw.ellipse(self.screen,(229,247,247),(x+direction*8-2,y-8,4,16),1)
+            pygame.draw.line(self.screen,(255,216,143),point(-6,-2),point(3,-4),1)
         elif kind=='crucifix':
-            self.rect((95,61,31),(x-3,y-11,6,22));self.rect((220,173,80),(x-2,y-10,4,20))
-            self.rect((220,173,80),(x-9,y-6,18,5))
+            direction=1 if shot.get('dx',1)>0 else -1
+            # A short rainbow flare trails the long foot of the horizontal cross.
+            for i,color in enumerate(((239,93,91),(241,177,66),(225,213,84),(93,187,118),(89,152,217))):
+                pygame.draw.line(self.screen,color,(x-direction*10,y+i-2),(x-direction*(17-abs(i-2)),y+i-2))
+            self.rect((95,61,31),(x-11,y-3,22,6));self.rect((220,173,80),(x-10,y-2,20,4))
+            self.rect((95,61,31),(x+direction*5-3,y-9,6,18))
+            self.rect((246,208,118),(x+direction*5-2,y-8,4,16))
         elif kind=='chimichanga':
-            pygame.draw.ellipse(self.screen,(199,128,52),(x-10,y-6,20,12))
-            pygame.draw.line(self.screen,(241,183,95),(x-7,y-3),(x+6,y-3),2)
-            for dx in (-4,2,6):pygame.draw.line(self.screen,(111,68,36),(x+dx,y),(x+dx+2,y+3),1)
+            # Fried folded tortilla: tucked ends, blistered crust and exposed filling.
+            pygame.draw.polygon(self.screen,(114,65,29),[(x-11,y-3),(x-7,y-7),(x+7,y-7),(x+11,y-3),(x+10,y+4),(x+6,y+7),(x-7,y+6),(x-11,y+2)])
+            pygame.draw.polygon(self.screen,(211,150,68),[(x-9,y-2),(x-6,y-5),(x+6,y-5),(x+9,y-2),(x+8,y+3),(x+5,y+5),(x-6,y+4)])
+            pygame.draw.lines(self.screen,(247,195,104),False,[(x-8,y-1),(x-4,y+2),(x+5,y+2),(x+8,y-1)],1)
+            pygame.draw.line(self.screen,(137,79,31),(x-6,y-4),(x-8,y+2),1)
+            pygame.draw.ellipse(self.screen,(91,45,25),(x+6,y-3,4,6))
+            self.rect((181,59,33),(x+7,y-1,2,2));self.rect((91,134,51),(x+6,y+1,2,2))
+            for dx,dy in ((-4,-2),(0,-3),(3,-1),(-2,2),(4,3)):
+                pygame.draw.line(self.screen,(156,89,35),(x+dx,y+dy),(x+dx+1,y+dy))
         else:
             pygame.draw.circle(self.screen,(207,98,76),(x,y),7)
             pygame.draw.circle(self.screen,GOLD,(x-2,y-2),3)
@@ -311,7 +330,15 @@ class Renderer:
             self.screen.blit(sprite,(int(p.x-camera+12-anchor),int(p.y+44-90)))
             return
         moving=getattr(p,'moving',False)
-        frame=3 if not p.grounded else (1+(steps//8)%2 if moving else 0)
+        if moving and p.grounded:
+            # Arm, hand and bat are authored together; no independently bobbing prop.
+            phase=(steps//6)%4+(4 if p.dayman else 0)
+            sprite=self.art.sequence('sprites/dennis-run.png',phase,4,2,(68,68),p.facing<0)
+            if p.invulnerable and int(p.invulnerable*12)%2:
+                sprite=sprite.copy();sprite.fill((180,180,180,0),special_flags=pygame.BLEND_RGB_ADD)
+            self.screen.blit(sprite,(int(p.x-camera+12-(38 if p.facing<0 else 30)),int(p.y-22)))
+            return
+        frame=3 if not p.grounded else 0
         if p.dayman:frame+=4
         sprite=self.art.image('cast',frame,(40,64),p.facing<0)
         if p.invulnerable and int(p.invulnerable*12)%2:
@@ -320,7 +347,7 @@ class Renderer:
         # Grip coordinates follow the visible fist in the trimmed 40x64 cast art.
         hand_x,hand_y=((27,22),(29,9),(28,9),(28,-4))[frame%4]
         bat=self.art.asset('sprites/nail-bat.png',(43,13),trim=True)
-        angle=(-12,10)[(steps//8)%2] if moving and p.grounded else 0
+        angle=0
         # Rotate the texture AND its grip offset; place that grip on the hand.
         # Blitting a rotated texture by its corner makes the handle orbit/jitter.
         offset=(pygame.Vector2(7,7)-pygame.Vector2(bat.get_size())/2).rotate(-angle)
@@ -331,6 +358,26 @@ class Renderer:
             grip.x=bat.get_width()-grip.x
             hand_x=24-hand_x
         self.screen.blit(bat,(round(p.x-camera+hand_x-grip.x),round(p.y+hand_y-grip.y)))
+
+    def defeated_boss(self,t,camera):
+        elapsed=t.get('defeat_elapsed',0.);kind=t['kind']
+        if kind=='cricket':sprite=self.art.image('cast',12,(44,48),t.get('direction',-1)>0)
+        elif kind=='frank':sprite=self.art.sequence('sprites/bridge.png',12,4,4,(76,62),t['direction']<0,trim_row=True)
+        else:
+            sprite,_=self.art.nightman(7,t['direction']<0)
+        sprite=sprite.subsurface(sprite.get_bounding_rect()).copy()
+        direction=-t.get('direction',-1)
+        fall=min(1.,elapsed/.9)
+        angle=-direction*(25*min(1.,elapsed/.35)+65*max(0.,min(1.,(elapsed-.35)/.55)))
+        sprite=pygame.transform.rotate(sprite,angle)
+        if elapsed>=.9:
+            sprite.set_alpha(105 if int((elapsed-.9)/.2)%2 else 255)
+        center=t['x']-camera+15+direction*18*min(1.,elapsed/.4)
+        initial_bottom=t['y']+({'cricket':32,'frank':48,'nightman':56}[kind])
+        bottom=initial_bottom+(430-initial_bottom)*fall
+        self.screen.blit(sprite,(round(center-sprite.get_width()/2),round(bottom-sprite.get_height())))
+        if elapsed>=.9:
+            self.text('*  *',center-18,430-sprite.get_height()-18,GOLD,self.small)
 
     def enemy(self,t,camera):
         if t['kind']=='nightman':self.nightman(t,camera);return

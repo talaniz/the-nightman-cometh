@@ -1,0 +1,321 @@
+{
+  "captured_base_commit": "d26dcfa197cb3c3b56e4f5f0fda30f66e6b9647f",
+  "source_fingerprint": "37cf34b3ba2d55a438917b5e0dbe7d6ff4d8d9c9254e2a2efa854bae103a54ab",
+  "revision_note": "Runtime captured from working tree; code/assets and evidence committed together. Fingerprint unchanged after capture.",
+  "command": "playwright test tests/browser/motion-polish.spec.cjs --project=chromium --workers=1 --grep MOTION",
+  "environment": "Pi Debian Chromium; isolated QA fixtures, no final-route qualification",
+  "peak_c": 50.634,
+  "minimum_available_mib": 502,
+  "captures": [
+    {
+      "image": "cricket-blink.png",
+      "state": "cricket-blink.json",
+      "sha256": "60c7e10e0dfb7e504c00c29c81d0b0b15becde4b3582757804fecc81003be5ac",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "cricket-fall.png",
+      "state": "cricket-fall.json",
+      "sha256": "196362ddc97c5d61c4c97bf2706a79daa108e6f99169e08f4cb378b49cf59723",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "cricket-grounded.png",
+      "state": "cricket-grounded.json",
+      "sha256": "846b8b5e22b06ced6db32af7588a3c9e493f1f0659eaa8373718893f845485b8",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "cricket-recoil.png",
+      "state": "cricket-recoil.json",
+      "sha256": "110d0de7269ea33ef5c1f33d1d72fc141b4768c5f5a40b3164848aa70e34c0c2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-left-0.png",
+      "state": "dayman-left-0.json",
+      "sha256": "2e594dc5d4044b8d9d917a65c48e803037bb5a227a0312519dcfe22559357948",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-left-1.png",
+      "state": "dayman-left-1.json",
+      "sha256": "8aff67de2e995fa3f5bd53c782868ab4302cf1d1d0b1724585980569029b0e7d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-left-2.png",
+      "state": "dayman-left-2.json",
+      "sha256": "874e78d1aa04ce23957e49a060bab0555c42b0aaa09b740ff1c9a22ad6199d81",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-left-3.png",
+      "state": "dayman-left-3.json",
+      "sha256": "9aeb431f2ffd04d12a9a559f69bd50c86a33e63813d1b1e33a5bd5698d3077c2",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-right-0.png",
+      "state": "dayman-right-0.json",
+      "sha256": "6d8503638e3407ecd4403899b3867d8b29c2a55a7b0576c90ed30b9d5c023c1f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-right-1.png",
+      "state": "dayman-right-1.json",
+      "sha256": "64d7377006ed77c3704eb412707d19cb17a449166cb48d497e68f1bd327aeb5e",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-right-2.png",
+      "state": "dayman-right-2.json",
+      "sha256": "d0116d52adf9c5659f93e0c19916aaa9cc6f478aedcad2062272d501e0b068e0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dayman-right-3.png",
+      "state": "dayman-right-3.json",
+      "sha256": "03cbe68317c3b3c76ced916c897c83f5b075531d38935abb023e26f83f3ca6ed",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-left-0.png",
+      "state": "dennis-left-0.json",
+      "sha256": "cb6eccaaa4e7dee8b3eb3d8bbe0eea34ad3dd4bd652c01a6644b5a10327968c0",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-left-1.png",
+      "state": "dennis-left-1.json",
+      "sha256": "a4b9478f446d16abac4a1f5e0b1ef9fdab9b9bb8f105dfa101d3b4414a21b989",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-left-2.png",
+      "state": "dennis-left-2.json",
+      "sha256": "4e542586c8099572db759cd09f0b1bdd30bc025479d8bdfe865b96813dc5a30d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-left-3.png",
+      "state": "dennis-left-3.json",
+      "sha256": "7bcebe8f7ad3f6644aa8c91a407004e98ab934826cb7111cd91a14a73e7a2fa7",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-right-0.png",
+      "state": "dennis-right-0.json",
+      "sha256": "79adb8b8f8fad5128a5c80114e94aab695ccce83b3110f4bcfb680a6ddf10c6e",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-right-1.png",
+      "state": "dennis-right-1.json",
+      "sha256": "218a9f103d0adf874bf6eca67ce896a09780a2496df9aefaaceb282a02f87184",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-right-2.png",
+      "state": "dennis-right-2.json",
+      "sha256": "9bdd99c02bf1c0ede928c238ae095c741b1c89c8aa25e25b025497b8cd510d71",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "dennis-right-3.png",
+      "state": "dennis-right-3.json",
+      "sha256": "9733331ca065db7a30ac081c6c5d19e92afaea05ad550a0fb17fc08077a81909",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "frank-blink.png",
+      "state": "frank-blink.json",
+      "sha256": "09ad93376eb2fc109749ae6508a00063ceba24f9ac86803593b1e9ade178d671",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "frank-fall.png",
+      "state": "frank-fall.json",
+      "sha256": "20fc4d849ea2dcdc1c49bbef8e621f0d71c696e337a94e9560a4a882163f7a16",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "frank-grounded.png",
+      "state": "frank-grounded.json",
+      "sha256": "7059a709c42d968d1d11e86337940de01d62ac5b69b5fa00e6beb2034088270b",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "frank-recoil.png",
+      "state": "frank-recoil.json",
+      "sha256": "e456874ccc41e08e6bfa8b8a2495ab19932d56d3fd66be447cf6a28dc42b259d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "nightman-blink.png",
+      "state": "nightman-blink.json",
+      "sha256": "4424c2844981e3febe48d17388265783a18b5da7bd96aa337d2c4bf9783c4653",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "nightman-fall.png",
+      "state": "nightman-fall.json",
+      "sha256": "ab28e15ee390383f1a381626567c64c4c426df705d1afd0d2f46cb5364276f10",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "nightman-grounded.png",
+      "state": "nightman-grounded.json",
+      "sha256": "688bb63213e3d4c8b6bacdf3cc69da1636398aadc1ea74d82a6786fe1af0bb9b",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "nightman-recoil.png",
+      "state": "nightman-recoil.json",
+      "sha256": "007c55d3e45fd367e26b59f4f9589678824db762ffc0e3a6ad6490f1d92a167a",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "synchronized browser canvas/state"
+    },
+    {
+      "image": "projectiles-1280.png",
+      "state": "projectiles-1280.json",
+      "sha256": "4b735baad80d6955540e1cb579eed6fb259ab2dfed3b3fb3e009c75b40842559",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "viewport screenshot"
+    },
+    {
+      "image": "projectiles-1920.png",
+      "state": "projectiles-1920.json",
+      "sha256": "88c4c427723ca7d95b34c8893db118eed1c5fdd99e9135c0cb2baa65fe3f52d8",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "viewport screenshot"
+    },
+    {
+      "image": "projectiles-390.png",
+      "state": "projectiles-390.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "kind": "viewport screenshot"
+    }
+  ]
+}

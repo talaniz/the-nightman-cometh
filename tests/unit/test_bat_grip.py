@@ -13,14 +13,14 @@ class MarkerArt:
         return bat
 
 @pytest.mark.parametrize('facing',[1,-1])
-@pytest.mark.parametrize('steps',[0,8])
+@pytest.mark.parametrize('grounded',[False,True])
 @pytest.mark.parametrize('dayman',[False,True])
-def test_running_handle_tracks_the_visible_fist(facing,steps,dayman):
+def test_idle_and_jump_handle_tracks_the_visible_hand(facing,grounded,dayman):
     screen=pygame.Surface((300,200),pygame.SRCALPHA)
     renderer=Renderer.__new__(Renderer);renderer.screen=screen;renderer.art=MarkerArt()
-    p=SimpleNamespace(x=100,y=100,swing=0,moving=True,grounded=True,dayman=dayman,invulnerable=0,facing=facing)
-    renderer.actor(p,0,steps)
+    p=SimpleNamespace(x=100,y=100,swing=0,moving=False,grounded=grounded,dayman=dayman,invulnerable=0,facing=facing)
+    renderer.actor(p,0,0)
     # Hand locations in the trimmed/scaled cast art, relative to player origin.
-    hx,hy=(29,9) if steps==0 else (28,9)
+    hx,hy=(27,22) if grounded else (28,-4)
     if facing<0:hx=24-hx
-    assert screen.get_at((100+hx,100+hy)).g==255,'bat grip detached from running fist'
+    assert screen.get_at((100+hx,100+hy)).g==255,'bat grip detached from hand'
