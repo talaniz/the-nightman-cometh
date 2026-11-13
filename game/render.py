@@ -102,6 +102,27 @@ class Renderer:
         self.text('BAT PRACTICE',490-camera,350,GOLD,self.small)
         self.text('MIND THE GAP',1050-camera,472,MUTED,self.small)
         self.text('END OF REHEARSAL',1510-camera,355,GOLD,self.small)
+    def cat_food_can(self,x,y):
+        # The oval rims and side shading distinguish the pickup from a crate.
+        metal=(126,157,168);edge=(53,77,89);shine=(211,225,222)
+        pygame.draw.ellipse(self.screen,edge,(x-14,y+1,28,7))
+        self.rect(edge,(x-14,y-12,28,16))
+        self.rect(metal,(x-12,y-11,24,16))
+        pygame.draw.arc(self.screen,shine,(x-12,y,24,6),math.pi,2*math.pi,1)
+        self.rect(CREAM,(x-12,y-8,24,10))
+        self.rect((193,178,139),(x+10,y-8,2,10))
+        pygame.draw.ellipse(self.screen,edge,(x-14,y-15,28,7))
+        pygame.draw.ellipse(self.screen,shine,(x-12,y-14,24,5))
+        pygame.draw.ellipse(self.screen,metal,(x-9,y-13,18,3),1)
+        # Fish skeleton: tail, spine, paired ribs, head and eye.
+        fish=(42,72,82)
+        pygame.draw.polygon(self.screen,fish,[(x-10,y-6),(x-6,y-3),(x-10,y)])
+        pygame.draw.line(self.screen,fish,(x-6,y-3),(x+5,y-3),1)
+        for dx in (-3,0,3):
+            pygame.draw.line(self.screen,fish,(x+dx-1,y-6),(x+dx+1,y),1)
+        pygame.draw.circle(self.screen,fish,(int(x+7),int(y-3)),3)
+        self.rect(CREAM,(x+7,y-4,1,1))
+
     def training(self,session):
         w=session.world;p=w.player;camera=max(0,min(w.width-960,p.x-350));self.act_scenery(w,camera) if w.act in ("act1","act2","act3") else self.scenery(camera)
         for name,x in w.flag_positions.items():
@@ -124,7 +145,7 @@ class Renderer:
                 pygame.draw.ellipse(self.screen,CREAM,(x-18,y-6,38,12));pygame.draw.ellipse(self.screen,(142,75,64),(x-12,y-10,20,12))
                 for dx,c in ((10,(177,211,117)),(15,GOLD),(6,(191,99,143))):pygame.draw.circle(self.screen,c,(int(x+dx),int(y-5)),3)
             else:
-                self.rect((122,159,173),(x-14,y-15,28,22));self.rect(CREAM,(x-14,y-10,28,12));self.text('CAT',x-11,y-10,INK,self.item_font)
+                self.cat_food_can(x,y)
         if w.act in ('act1','act2','act3') or not (p.invulnerable>0 and int(p.invulnerable*12)%2):self.actor(p,camera,w.steps) if w.act in ('act1','act2','act3') else self.person(p.x-camera,p.y,p.dayman>0,p.facing,p.swing>0,w.steps*.22 if p.grounded else 0)
         for impact in w.impacts:
             x=int(impact['x']-camera);y=int(impact['y']);radius=int(5+impact['life']*30)

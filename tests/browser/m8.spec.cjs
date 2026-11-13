@@ -118,3 +118,20 @@ test('POLISH ingredient readability and revised closing lines at supported viewp
   }
  }
 });
+
+
+test('CAT_FOOD can appearance and unchanged collection',async({page})=>{
+ await boot(page);
+ for(const [width,height] of [[1280,720],[1920,1080],[390,844]]){
+  await page.setViewportSize({width,height});await fixture(page,'act1-platform-first');
+  await capture(page,'cat-food-can-'+width);
+ }
+ await page.setViewportSize({width:1280,height:720});await fixture(page,'act1-platform-first');
+ for(let i=0;i<20 && (await state(page)).world.player.x<920;i++){
+  await page.keyboard.press('ArrowRight',{delay:100});
+ }
+ const collected=await state(page);expect(collected.world.player.x).toBeGreaterThanOrEqual(920);
+ expect(collected.screen).toBe('training');expect(collected.world.player.hearts).toBe(3);
+ await capture(page,'cat-food-collected');
+ expect((await state(page)).screen).toBe('training');
+});

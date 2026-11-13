@@ -1,0 +1,47 @@
+{
+  "captured_base_commit": "f52635874b6f0ca66ba23bf9af6af9e393f6fca6",
+  "source_fingerprint": "0cad70e5e175aa50360107ade01f44e9485716bbcae20b3f2accf05838de90c4",
+  "revision_note": "Working-tree runtime captured before committing code and evidence together; fingerprint verified unchanged after capture.",
+  "command": "playwright test tests/browser/m8.spec.cjs --project=chromium --workers=1 --grep CAT_FOOD",
+  "environment": "Pi Debian Chromium, guarded fixture build",
+  "peak_c": 47.712,
+  "minimum_available_mib": 1271,
+  "captures": [
+    {
+      "image": "m8-cat-food-can-1280.png",
+      "state": "m8-cat-food-can-1280.json",
+      "sha256": "78976dbbbec1518243883e462357f47b4efc8a3cba4d2d45e21c8fb9986ef622",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "image": "m8-cat-food-can-1920.png",
+      "state": "m8-cat-food-can-1920.json",
+      "sha256": "e69171e258fd8793eeb476717ee29eda7ce4387c12e1ef8dee4abc998b53b80a",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "image": "m8-cat-food-can-390.png",
+      "state": "m8-cat-food-can-390.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "image": "m8-cat-food-collected.png",
+      "state": "m8-cat-food-collected.json",
+      "sha256": "d662ba6723313e8663883203df42415d29929025637ad72398dafdecafdf8aaf",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      }
+    }
+  ]
+}
