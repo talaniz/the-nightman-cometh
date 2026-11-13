@@ -62,3 +62,22 @@ def test_ordinary_unpowered_nightman_fight_exercises_charge_before_victory():
         w.step(keys)
     assert {'charge','fire'}<=seen, 'new attack must matter in an ordinary fight'
     assert w.complete and not w.dead and not w.player.dayman
+
+
+def test_ingredients_launch_at_bounded_random_heights_and_fly_straight(monkeypatch):
+    import random
+    for height in (366.,382.,398.):
+        def choose(options):
+            assert options==(366.,382.,398.)
+            return height
+        monkeypatch.setattr(random,'choice',choose)
+        w=Act2();w.player.x=3750;w.enter_boss();boss=w.targets[0]
+        for ingredient in ('bread','lettuce','meat','cheese'):
+            w.throw_sandwich(boss,ingredient)
+            shot=w.targets[-1]
+            assert shot['y']==height
+            x=shot['x']
+            w.step({})
+            assert shot['y']==height and shot['x']<x
+        w.throw_sandwich(boss,'whole')
+        assert w.targets[-1]['y']==398.

@@ -4,7 +4,7 @@ from game.levels.act3 import Act3
 from test_progress import Memory
 
 LINES=['You said if I came to the show, you’d leave me alone. So, no….',
-       '…', 'So…see you tomorrow…?', 'I told you no one writes a musical for no reason!',
+       'Well, technically I didn’t sign anything', 'So, I guess I’ll see you tomorrow?…', 'I told you no one writes a musical for no reason!',
        'Dee, I’m right here right now…', '…but I’m about to go here!']
 
 def finish():

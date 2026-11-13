@@ -1,0 +1,141 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "state": {
+    "input": {
+      "status": "absent",
+      "connected": false,
+      "release_required": false,
+      "pad_mode": false,
+      "password_index": 0
+    },
+    "password": "",
+    "screen": "training",
+    "selection": 0,
+    "menu": [],
+    "qa": true,
+    "qa_label": "AUTOMATED ACT2 FIXTURE",
+    "message": "",
+    "settings": {
+      "music": 0.7,
+      "effects": 0.7
+    },
+    "dialogue": 23,
+    "story": {
+      "count": 26,
+      "speaker": "DEE",
+      "text": "I told you no one writes a musical for no reason!"
+    },
+    "world": {
+      "player": {
+        "x": 3950,
+        "y": 386,
+        "hearts": 1,
+        "dayman": 0,
+        "invulnerable": 0.09999999999999859,
+        "facing": 1,
+        "vy": 0,
+        "grounded": true,
+        "moving": false,
+        "swing": 0,
+        "beam_cooldown": 0
+      },
+      "flags": [
+        "preboss"
+      ],
+      "checkpoint": 3550,
+      "dead": false,
+      "paused": false,
+      "targets": [
+        {
+          "id": 100,
+          "kind": "frank",
+          "x": 4062.5666666666675,
+          "y": 382,
+          "alive": true,
+          "hp": 5,
+          "direction": -1,
+          "state": "shuffle",
+          "timer": 0.7833333333333333,
+          "immune": 0,
+          "animation_step": 251,
+          "piece": 4
+        },
+        {
+          "id": 1001,
+          "kind": "sandwich",
+          "ingredient": "meat",
+          "x": 3781.5999999999867,
+          "y": 398,
+          "alive": true,
+          "direction": -1,
+          "state": "flight",
+          "timer": 1.433333333333339,
+          "animation_step": 251
+        },
+        {
+          "id": 1002,
+          "kind": "sandwich",
+          "ingredient": "cheese",
+          "x": 3821.2666666666555,
+          "y": 382,
+          "alive": true,
+          "direction": -1,
+          "state": "flight",
+          "timer": 1.6666666666666714,
+          "animation_step": 251
+        },
+        {
+          "id": 1003,
+          "kind": "sandwich",
+          "ingredient": "bread",
+          "x": 3860.9333333333243,
+          "y": 366,
+          "alive": true,
+          "direction": -1,
+          "state": "flight",
+          "timer": 1.900000000000004,
+          "animation_step": 251
+        },
+        {
+          "id": 1004,
+          "kind": "sandwich",
+          "ingredient": "lettuce",
+          "x": 3900.599999999993,
+          "y": 366,
+          "alive": true,
+          "direction": -1,
+          "state": "flight",
+          "timer": 2.1333333333333364,
+          "animation_step": 251
+        }
+      ],
+      "beams": [],
+      "shots": [],
+      "steps": 252,
+      "act": "act2",
+      "boss_active": true,
+      "complete": false
+    },
+    "audio": {
+      "playing": "frank-boss",
+      "muted": false,
+      "error": "",
+      "music_busy": 1,
+      "sfx_busy": 0,
+      "gains": [
+        0.453125,
+        0.34375
+      ]
+    },
+    "fixture_id": 19007,
+    "loops": 1,
+    "frames": 365,
+    "frame_ms_mean": 71.86249996666673,
+    "test_build": true,
+    "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+    "pygame": "2.5.7"
+  }
+}

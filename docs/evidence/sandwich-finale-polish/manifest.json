@@ -1,0 +1,90 @@
+{
+  "code_revision": "bbe6ca30ffac35467e8e5d78919b48359e64aab6",
+  "source_fingerprint": "e8772b9334411d49b72213eab9779f39ac05b9e1aef36fa0494f22a6cda4e0d6",
+  "environment": "Pi Debian Chromium, one worker, guarded fixture build",
+  "command": "NIGHTMAN_BUILD=/tmp/nightman-polish-fixtures-bbe6ca3 NIGHTMAN_EVIDENCE=<captures> playwright test tests/browser/m8.spec.cjs --project=chromium --grep POLISH",
+  "limitations": "Focused fixture evidence; not a full game walkthrough, physical USB or listening acceptance. Narrow view checks unsupported-device messaging.",
+  "captures": [
+    {
+      "image": "captures/m8-polish-finale-21-1280.png",
+      "state": "captures/m8-polish-finale-21-1280.json",
+      "sha256": "3cf9ffbc5b22b4f0a0d088b18169416b79cebe620800acd0e08d5f2e78464092",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "image": "captures/m8-polish-finale-21-1920.png",
+      "state": "captures/m8-polish-finale-21-1920.json",
+      "sha256": "0f660a18fcdfff9f7bbb6171f39424d072ecf968fa0e0f0a3a11c610e10d6a56",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "image": "captures/m8-polish-finale-21-390.png",
+      "state": "captures/m8-polish-finale-21-390.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "image": "captures/m8-polish-finale-22-1280.png",
+      "state": "captures/m8-polish-finale-22-1280.json",
+      "sha256": "7a37101cde0df76e1451df8d46db155193c913668cb0af9c7e270f34fbd90af5",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "image": "captures/m8-polish-finale-22-1920.png",
+      "state": "captures/m8-polish-finale-22-1920.json",
+      "sha256": "609198de8a5b55045d755020f23cd55f0f4b3bbaaf0bd2eded343e552c792c69",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "image": "captures/m8-polish-finale-22-390.png",
+      "state": "captures/m8-polish-finale-22-390.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "image": "captures/m8-polish-ingredients-1280.png",
+      "state": "captures/m8-polish-ingredients-1280.json",
+      "sha256": "a065266553cd517b9a4b737ce9b07de7e496456eb20f74365b5244496bd4f9db",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "image": "captures/m8-polish-ingredients-1920.png",
+      "state": "captures/m8-polish-ingredients-1920.json",
+      "sha256": "efcfdf658556a4a98ffec9ed9e551a30e751f8f0d136157e7d06f4a1c564a321",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "image": "captures/m8-polish-ingredients-390.png",
+      "state": "captures/m8-polish-ingredients-390.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 """Bridge simulation; implemented against the milestone's behavior contracts."""
 import math
+import random
 from game.world import World
 
 class Act2(World):
@@ -75,7 +76,7 @@ class Act2(World):
 
     def throw_sandwich(self,target,ingredient):
         self.targets.append(dict(id=self.next_id,kind='sandwich',ingredient=ingredient,
-                                 x=target['x']+19+target['direction']*34,y=398.,alive=True,
+                                 x=target['x']+19+target['direction']*34,y=398. if ingredient=='whole' else random.choice((366.,382.,398.)),alive=True,
                                  direction=target['direction'],state='flight',timer=3.,animation_step=0))
         self.next_id+=1;self.events.append('hoagie')
 

@@ -124,6 +124,12 @@ class Session:
         if 'checkpoint' in self.world.events:self.progress.save(self.world,qa=self.qa)
         if self.world.dead:self.enter_screen('dead')
         elif getattr(self.world,'complete',False):
+            defeated=next((t for t in self.world.targets if t.get('state')=='defeated'),None)
+            if defeated is not None:
+                defeated['defeat_elapsed']=min(3.,defeated.get('defeat_elapsed',0.)+max(0,min(.1,dt)))
+                self.world.player.moving=False;self.world.player.swing=0
+                self.world.shots=[];self.world.beams=[];self.world.impacts=[]
+                if defeated['defeat_elapsed']<3.-1e-9:return
             self.progress.save(self.world,qa=self.qa)
             self.sequence={'act1':FRANK,'act2':NIGHTMAN,'act3':FINALE}[self.world.act];self.dialogue=0;self.replaying=False;self.enter_screen('dialogue')
 

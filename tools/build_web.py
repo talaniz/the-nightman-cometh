@@ -29,7 +29,7 @@ def art_files():
 def validate_art():
     import pygame
     files=art_files()
-    required=('sprites/cast.png','scenes/act1/opening.png',
+    required=('sprites/dennis-run.png','sprites/cast.png','scenes/act1/opening.png',
               'scenes/act1/kidnapping.png','backgrounds/act1/street.png','ui/kitten-mittens.png',
               'ui/kitten-billboard.png','ui/wolf-billboard.png','ui/sherwin-sign.png',
               'sprites/enemy-walk.png','sprites/nail-bat.png','sprites/bat-attack.png',

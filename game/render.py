@@ -102,12 +102,35 @@ class Renderer:
         self.text('BAT PRACTICE',490-camera,350,GOLD,self.small)
         self.text('MIND THE GAP',1050-camera,472,MUTED,self.small)
         self.text('END OF REHEARSAL',1510-camera,355,GOLD,self.small)
+    def cat_food_can(self,x,y):
+        # The oval rims and side shading distinguish the pickup from a crate.
+        metal=(126,157,168);edge=(53,77,89);shine=(211,225,222)
+        pygame.draw.ellipse(self.screen,edge,(x-14,y+1,28,7))
+        self.rect(edge,(x-14,y-12,28,16))
+        self.rect(metal,(x-12,y-11,24,16))
+        pygame.draw.arc(self.screen,shine,(x-12,y,24,6),math.pi,2*math.pi,1)
+        self.rect(CREAM,(x-12,y-8,24,10))
+        self.rect((193,178,139),(x+10,y-8,2,10))
+        pygame.draw.ellipse(self.screen,edge,(x-14,y-15,28,7))
+        pygame.draw.ellipse(self.screen,shine,(x-12,y-14,24,5))
+        pygame.draw.ellipse(self.screen,metal,(x-9,y-13,18,3),1)
+        # Fish skeleton: tail, spine, paired ribs, head and eye.
+        fish=(42,72,82)
+        pygame.draw.polygon(self.screen,fish,[(x-10,y-6),(x-6,y-3),(x-10,y)])
+        pygame.draw.line(self.screen,fish,(x-6,y-3),(x+5,y-3),1)
+        for dx in (-3,0,3):
+            pygame.draw.line(self.screen,fish,(x+dx-1,y-6),(x+dx+1,y),1)
+        pygame.draw.circle(self.screen,fish,(int(x+7),int(y-3)),3)
+        self.rect(CREAM,(x+7,y-4,1,1))
+
     def training(self,session):
         w=session.world;p=w.player;camera=max(0,min(w.width-960,p.x-350));self.act_scenery(w,camera) if w.act in ("act1","act2","act3") else self.scenery(camera)
         for name,x in w.flag_positions.items():
             color=(126,202,139) if name in w.flags else GOLD
             pygame.draw.polygon(self.screen,color,[(x-camera+2,362),(x-camera+35,371),(x-camera+2,382)])
         for t in w.targets:
+            if t.get('state')=='defeated':
+                self.defeated_boss(t,camera);continue
             if t['alive']:
                 x=t['x']-camera;y=t['y']
                 if w.act in ('act1','act2','act3'):
@@ -124,7 +147,7 @@ class Renderer:
                 pygame.draw.ellipse(self.screen,CREAM,(x-18,y-6,38,12));pygame.draw.ellipse(self.screen,(142,75,64),(x-12,y-10,20,12))
                 for dx,c in ((10,(177,211,117)),(15,GOLD),(6,(191,99,143))):pygame.draw.circle(self.screen,c,(int(x+dx),int(y-5)),3)
             else:
-                self.rect((122,159,173),(x-14,y-15,28,22));self.rect(CREAM,(x-14,y-10,28,12));self.text('CAT',x-11,y-10,INK,self.item_font)
+                self.cat_food_can(x,y)
         if w.act in ('act1','act2','act3') or not (p.invulnerable>0 and int(p.invulnerable*12)%2):self.actor(p,camera,w.steps) if w.act in ('act1','act2','act3') else self.person(p.x-camera,p.y,p.dayman>0,p.facing,p.swing>0,w.steps*.22 if p.grounded else 0)
         for impact in w.impacts:
             x=int(impact['x']-camera);y=int(impact['y']);radius=int(5+impact['life']*30)
@@ -198,15 +221,32 @@ class Renderer:
             pygame.draw.ellipse(self.screen,(240,228,194),(x-6,y-8,12,16))
             pygame.draw.ellipse(self.screen,(255,248,222),(x-4,y-6,5,7))
         elif kind=='alcohol':
-            pygame.draw.polygon(self.screen,(205,224,224),[(x-7,y-8),(x+7,y-8),(x+5,y+8),(x-5,y+8)],2)
-            self.rect((185,102,35),(x-4,y,8,6));self.rect((244,217,164),(x-4,y,8,2))
+            direction=1 if shot.get('dx',1)>0 else -1
+            def point(dx,dy):return (x+direction*dx,y+dy)
+            # Narrow closed base trails; the wide open rim leads the projectile.
+            pygame.draw.polygon(self.screen,(99,133,148),[point(-9,-5),point(8,-8),point(8,8),point(-9,5)])
+            pygame.draw.polygon(self.screen,(193,111,39),[point(-7,-3),point(4,-5),point(4,5),point(-7,3)])
+            pygame.draw.lines(self.screen,(211,237,240),False,[point(8,-8),point(-9,-5),point(-9,5),point(8,8)],2)
+            pygame.draw.ellipse(self.screen,(229,247,247),(x+direction*8-2,y-8,4,16),1)
+            pygame.draw.line(self.screen,(255,216,143),point(-6,-2),point(3,-4),1)
         elif kind=='crucifix':
-            self.rect((95,61,31),(x-3,y-11,6,22));self.rect((220,173,80),(x-2,y-10,4,20))
-            self.rect((220,173,80),(x-9,y-6,18,5))
+            direction=1 if shot.get('dx',1)>0 else -1
+            # A short rainbow flare trails the long foot of the horizontal cross.
+            for i,color in enumerate(((239,93,91),(241,177,66),(225,213,84),(93,187,118),(89,152,217))):
+                pygame.draw.line(self.screen,color,(x-direction*10,y+i-2),(x-direction*(17-abs(i-2)),y+i-2))
+            self.rect((95,61,31),(x-11,y-3,22,6));self.rect((220,173,80),(x-10,y-2,20,4))
+            self.rect((95,61,31),(x+direction*5-3,y-9,6,18))
+            self.rect((246,208,118),(x+direction*5-2,y-8,4,16))
         elif kind=='chimichanga':
-            pygame.draw.ellipse(self.screen,(199,128,52),(x-10,y-6,20,12))
-            pygame.draw.line(self.screen,(241,183,95),(x-7,y-3),(x+6,y-3),2)
-            for dx in (-4,2,6):pygame.draw.line(self.screen,(111,68,36),(x+dx,y),(x+dx+2,y+3),1)
+            # Fried folded tortilla: tucked ends, blistered crust and exposed filling.
+            pygame.draw.polygon(self.screen,(114,65,29),[(x-11,y-3),(x-7,y-7),(x+7,y-7),(x+11,y-3),(x+10,y+4),(x+6,y+7),(x-7,y+6),(x-11,y+2)])
+            pygame.draw.polygon(self.screen,(211,150,68),[(x-9,y-2),(x-6,y-5),(x+6,y-5),(x+9,y-2),(x+8,y+3),(x+5,y+5),(x-6,y+4)])
+            pygame.draw.lines(self.screen,(247,195,104),False,[(x-8,y-1),(x-4,y+2),(x+5,y+2),(x+8,y-1)],1)
+            pygame.draw.line(self.screen,(137,79,31),(x-6,y-4),(x-8,y+2),1)
+            pygame.draw.ellipse(self.screen,(91,45,25),(x+6,y-3,4,6))
+            self.rect((181,59,33),(x+7,y-1,2,2));self.rect((91,134,51),(x+6,y+1,2,2))
+            for dx,dy in ((-4,-2),(0,-3),(3,-1),(-2,2),(4,3)):
+                pygame.draw.line(self.screen,(156,89,35),(x+dx,y+dy),(x+dx+1,y+dy))
         else:
             pygame.draw.circle(self.screen,(207,98,76),(x,y),7)
             pygame.draw.circle(self.screen,GOLD,(x-2,y-2),3)
@@ -290,20 +330,47 @@ class Renderer:
             self.screen.blit(sprite,(int(p.x-camera+12-anchor),int(p.y+44-90)))
             return
         moving=getattr(p,'moving',False)
-        frame=3 if not p.grounded else (1+(steps//8)%2 if moving else 0)
+        if moving and p.grounded:
+            # Arm, hand and bat are authored together; no independently bobbing prop.
+            phase=(steps//6)%4+(4 if p.dayman else 0)
+            sprite=self.art.sequence('sprites/dennis-run.png',phase,4,2,(68,68),p.facing<0)
+            if p.invulnerable and int(p.invulnerable*12)%2:
+                sprite=sprite.copy();sprite.fill((180,180,180,0),special_flags=pygame.BLEND_RGB_ADD)
+            self.screen.blit(sprite,(int(p.x-camera+12-(38 if p.facing<0 else 30)),int(p.y-22)))
+            return
+        frame=3 if not p.grounded else 0
         if p.dayman:frame+=4
         sprite=self.art.image('cast',frame,(40,64),p.facing<0)
         if p.invulnerable and int(p.invulnerable*12)%2:
             sprite=sprite.copy();sprite.fill((180,180,180,0),special_flags=pygame.BLEND_RGB_ADD)
         self.screen.blit(sprite,(int(p.x-camera-8),int(p.y-20)))
-        # Per-pose hand anchors keep the bat attached to the atlas animation.
-        hand_x,hand_y=((23,17),(29,3),(25,8),(29,-8))[frame%4]
-        bat_x=p.x-camera+hand_x if p.facing>0 else p.x-camera+24-hand_x-43
+        # Grip coordinates follow the visible fist in the trimmed 40x64 cast art.
+        hand_x,hand_y=((27,22),(29,9),(28,9),(28,-4))[frame%4]
         bat=self.art.asset('sprites/nail-bat.png',(43,13),trim=True)
-        if moving and p.grounded:
-            bat=pygame.transform.rotate(bat,(-12,10)[(steps//8)%2])
-        if p.facing<0:bat=pygame.transform.flip(bat,True,False)
-        self.screen.blit(bat,(int(bat_x),int(p.y+hand_y)))
+        angle=55 if not p.grounded else 0
+        # Rotate the texture AND its grip offset; place that grip on the hand.
+        # Blitting a rotated texture by its corner makes the handle orbit/jitter.
+        offset=(pygame.Vector2(7,7)-pygame.Vector2(bat.get_size())/2).rotate(-angle)
+        if angle:bat=pygame.transform.rotate(bat,angle)
+        grip=pygame.Vector2(bat.get_size())/2+offset
+        if p.facing<0:
+            bat=pygame.transform.flip(bat,True,False)
+            grip.x=bat.get_width()-grip.x
+            hand_x=24-hand_x
+        self.screen.blit(bat,(round(p.x-camera+hand_x-grip.x),round(p.y+hand_y-grip.y)))
+
+    def defeated_boss(self,t,camera):
+        elapsed=t.get('defeat_elapsed',0.);kind=t['kind']
+        if kind=='cricket':sprite=self.art.image('cast',12,(44,48),t.get('direction',-1)>0)
+        elif kind=='frank':sprite=self.art.sequence('sprites/bridge.png',12,4,4,(76,62),t['direction']<0,trim_row=True)
+        else:
+            sprite,_=self.art.nightman(7,t['direction']<0)
+        sprite=sprite.subsurface(sprite.get_bounding_rect(min_alpha=20)).copy()
+        # Hold the authored hurt pose in place; no sideways fall or slide.
+        sprite.set_alpha(105 if int(elapsed/.2)%2 else 255)
+        center=t['x']-camera+15
+        self.screen.blit(sprite,(round(center-sprite.get_width()/2),430-sprite.get_height()))
+        self.text('*  *',center-18,430-sprite.get_height()-18,GOLD,self.small)
 
     def enemy(self,t,camera):
         if t['kind']=='nightman':self.nightman(t,camera);return
@@ -374,12 +441,32 @@ class Renderer:
         if kind=='sandwich':
             ingredient=t.get('ingredient','whole')
             if ingredient!='whole':
-                colors={'meat':(174,77,69),'cheese':(239,190,51),'bread':(211,158,85),'lettuce':(96,153,55)}
-                pygame.draw.ellipse(self.screen,colors[ingredient],(x,y+3,30,10))
-                if ingredient=='cheese':
-                    for dx in (7,20):pygame.draw.circle(self.screen,(192,136,35),(int(x+dx),int(y+8)),2)
+                # Draw within the existing 30x16 projectile bounds.
+                if ingredient=='bread':
+                    pygame.draw.ellipse(self.screen,(137,79,35),(x,y+1,30,14))
+                    pygame.draw.ellipse(self.screen,(222,163,78),(x+1,y+2,28,11))
+                    for dx in (7,14,21):
+                        pygame.draw.line(self.screen,(115,66,30),(x+dx,y+5),(x+dx-3,y+10),2)
+                        pygame.draw.line(self.screen,(255,218,143),(x+dx+1,y+4),(x+dx-2,y+9),2)
+                elif ingredient=='cheese':
+                    self.rect((192,129,22),(x+7,y,16,16))
+                    self.rect((255,216,54),(x+7,y,15,14))
+                    pygame.draw.line(self.screen,(255,242,139),(x+8,y+1),(x+20,y+1))
+                    for dx,dy in ((11,5),(18,10)):
+                        pygame.draw.circle(self.screen,(218,161,25),(int(x+dx),int(y+dy)),2)
                 elif ingredient=='lettuce':
-                    pygame.draw.lines(self.screen,(154,192,89),False,[(x,y+8),(x+7,y+4),(x+15,y+10),(x+22,y+5),(x+30,y+8)],2)
+                    points=[(0,7),(3,3),(7,4),(10,0),(14,3),(18,1),(21,4),(26,2),(29,7),(26,10),(28,14),(22,13),(18,15),(14,12),(10,15),(6,12),(2,13)]
+                    pygame.draw.polygon(self.screen,(62,113,38),[(x+dx,y+dy) for dx,dy in points])
+                    pygame.draw.lines(self.screen,(154,199,79),False,[(x+2,y+7),(x+10,y+6),(x+19,y+8),(x+26,y+6)],2)
+                    for dx in (8,16,23):
+                        pygame.draw.line(self.screen,(116,167,57),(x+dx,y+7),(x+dx-2,y+3))
+                        pygame.draw.line(self.screen,(116,167,57),(x+dx,y+8),(x+dx+2,y+12))
+                elif ingredient=='meat':
+                    pygame.draw.ellipse(self.screen,(112,46,42),(x,y+1,30,14))
+                    pygame.draw.ellipse(self.screen,(190,89,77),(x+1,y+2,28,11))
+                    pygame.draw.lines(self.screen,(237,160,132),False,[(x+4,y+8),(x+9,y+5),(x+13,y+9),(x+19,y+6),(x+25,y+8)],2)
+                    for dx,dy in ((7,10),(16,4),(22,10)):
+                        pygame.draw.circle(self.screen,(137,56,49),(int(x+dx),int(y+dy)),1)
                 return
             pygame.draw.ellipse(self.screen,(231,176,91),(x,y,30,7))
             self.rect((99,145,62),(x+1,y+6,28,3));self.rect((170,66,48),(x+2,y+9,26,3))

@@ -1,0 +1,230 @@
+{
+  "input": {
+    "status": "absent",
+    "connected": false,
+    "release_required": false,
+    "pad_mode": false,
+    "password_index": 0
+  },
+  "password": "",
+  "screen": "training",
+  "selection": 0,
+  "menu": [],
+  "qa": true,
+  "qa_label": "AUTOMATED ACT2 FIXTURE",
+  "message": "",
+  "settings": {
+    "music": 0.7,
+    "effects": 0.7
+  },
+  "dialogue": 0,
+  "story": {
+    "count": 26,
+    "speaker": "DENNIS",
+    "text": "I was a boy, now I am…"
+  },
+  "world": {
+    "player": {
+      "x": 660,
+      "y": 386,
+      "hearts": 3,
+      "dayman": 0,
+      "invulnerable": 0,
+      "facing": 1,
+      "vy": 0,
+      "grounded": true,
+      "moving": false,
+      "swing": 0,
+      "beam_cooldown": 0
+    },
+    "flags": [],
+    "checkpoint": 80,
+    "dead": false,
+    "paused": false,
+    "targets": [
+      {
+        "id": 0,
+        "kind": "duncan",
+        "x": 443.3333333333314,
+        "y": 398,
+        "home": 450,
+        "alive": true,
+        "direction": 1,
+        "state": "recover",
+        "timer": 0.5333333333333328,
+        "animation_step": 127
+      },
+      {
+        "id": 1,
+        "kind": "gun",
+        "x": 826.0000000000014,
+        "y": 398,
+        "home": 850,
+        "alive": true,
+        "direction": -1,
+        "state": "recover",
+        "timer": 0.9666666666666672,
+        "animation_step": 127
+      },
+      {
+        "id": 2,
+        "kind": "z",
+        "x": 1274.000000000001,
+        "y": 398,
+        "home": 1290,
+        "alive": true,
+        "direction": 1,
+        "state": "patrol",
+        "timer": -1.1333333333333357,
+        "animation_step": 127
+      },
+      {
+        "id": 3,
+        "kind": "gun",
+        "x": 1790.7999999999956,
+        "y": 398,
+        "home": 1810,
+        "alive": true,
+        "direction": 1,
+        "state": "patrol",
+        "timer": -1.1333333333333357,
+        "animation_step": 127
+      },
+      {
+        "id": 4,
+        "kind": "duncan",
+        "x": 2404.000000000001,
+        "y": 398,
+        "home": 2420,
+        "alive": true,
+        "direction": 1,
+        "state": "patrol",
+        "timer": -1.1333333333333357,
+        "animation_step": 127
+      },
+      {
+        "id": 5,
+        "kind": "z",
+        "x": 2614.000000000001,
+        "y": 398,
+        "home": 2630,
+        "alive": true,
+        "direction": 1,
+        "state": "patrol",
+        "timer": -1.1333333333333357,
+        "animation_step": 127
+      },
+      {
+        "id": 6,
+        "kind": "gun",
+        "x": 3280.7999999999956,
+        "y": 398,
+        "home": 3300,
+        "alive": true,
+        "direction": 1,
+        "state": "patrol",
+        "timer": -1.1333333333333357,
+        "animation_step": 127
+      },
+      {
+        "id": 7,
+        "kind": "z",
+        "x": 3444.000000000001,
+        "y": 398,
+        "home": 3460,
+        "alive": true,
+        "direction": 1,
+        "state": "patrol",
+        "timer": -1.1333333333333357,
+        "animation_step": 127
+      },
+      {
+        "id": 50,
+        "kind": "chicken",
+        "x": 887.5,
+        "y": 374.0218492814573,
+        "home": 650,
+        "alive": true,
+        "direction": -1,
+        "state": "swoop",
+        "timer": 1.4833333333333365,
+        "animation_step": 127
+      },
+      {
+        "id": 51,
+        "kind": "chicken",
+        "x": 1550,
+        "y": 155,
+        "home": 1550,
+        "alive": true,
+        "direction": -1,
+        "state": "waiting",
+        "timer": -2.1333333333333306,
+        "animation_step": 127
+      },
+      {
+        "id": 52,
+        "kind": "chicken",
+        "x": 2450,
+        "y": 155,
+        "home": 2450,
+        "alive": true,
+        "direction": -1,
+        "state": "waiting",
+        "timer": -2.1333333333333306,
+        "animation_step": 127
+      },
+      {
+        "id": 53,
+        "kind": "chicken",
+        "x": 3150,
+        "y": 155,
+        "home": 3150,
+        "alive": true,
+        "direction": -1,
+        "state": "waiting",
+        "timer": -2.1333333333333306,
+        "animation_step": 127
+      }
+    ],
+    "beams": [],
+    "shots": [
+      {
+        "kind": "egg",
+        "x": 536.9999999999984,
+        "y": 402,
+        "dx": 160,
+        "life": 1.5000000000000018
+      },
+      {
+        "kind": "alcohol",
+        "x": 779.5000000000014,
+        "y": 410,
+        "dx": -150,
+        "life": 2.5500000000000007
+      }
+    ],
+    "steps": 128,
+    "act": "act2",
+    "boss_active": false,
+    "complete": false
+  },
+  "audio": {
+    "playing": "troll-toll",
+    "muted": false,
+    "error": "",
+    "music_busy": 1,
+    "sfx_busy": 0,
+    "gains": [
+      0.453125,
+      0.34375
+    ]
+  },
+  "fixture_id": 90010,
+  "loops": 1,
+  "frames": 1398,
+  "frame_ms_mean": 16.666666666666668,
+  "test_build": true,
+  "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
+  "pygame": "2.5.7"
+}

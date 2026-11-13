@@ -92,7 +92,7 @@ test('FINALE exact dialogue and approved credits survive retry completion and re
   'I fought the nightman lived as dayman',"Now I'm here to ask for your hand",'so if you want to marry man,',
   'will you marry me?',"Won't you come on stage and join me?",'In this thing called matrimony?',
   'Please say yes and do not bone me','please just marry','Me!',
-  'You said if I came to the show, you’d leave me alone. So, no….','…','So…see you tomorrow…?',
+  'You said if I came to the show, you’d leave me alone. So, no….','Well, technically I didn’t sign anything','So, I guess I’ll see you tomorrow?…',
   'I told you no one writes a musical for no reason!','Dee, I’m right here right now…','…but I’m about to go here!'];
  for(let i=0;i<lines.length;i++){
   await fixture(page,'finale-'+i);expect((await state(page)).story.text).toBe(lines[i]);
