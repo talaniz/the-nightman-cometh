@@ -347,7 +347,7 @@ class Renderer:
         # Grip coordinates follow the visible fist in the trimmed 40x64 cast art.
         hand_x,hand_y=((27,22),(29,9),(28,9),(28,-4))[frame%4]
         bat=self.art.asset('sprites/nail-bat.png',(43,13),trim=True)
-        angle=0
+        angle=55 if not p.grounded else 0
         # Rotate the texture AND its grip offset; place that grip on the hand.
         # Blitting a rotated texture by its corner makes the handle orbit/jitter.
         offset=(pygame.Vector2(7,7)-pygame.Vector2(bat.get_size())/2).rotate(-angle)
@@ -366,18 +366,11 @@ class Renderer:
         else:
             sprite,_=self.art.nightman(7,t['direction']<0)
         sprite=sprite.subsurface(sprite.get_bounding_rect(min_alpha=20)).copy()
-        direction=-t.get('direction',-1)
-        fall=min(1.,elapsed/.9)
-        angle=-direction*(25*min(1.,elapsed/.35)+65*max(0.,min(1.,(elapsed-.35)/.55)))
-        sprite=pygame.transform.rotate(sprite,angle)
-        if elapsed>=.9:
-            sprite.set_alpha(105 if int((elapsed-.9)/.2)%2 else 255)
-        center=t['x']-camera+15+direction*18*min(1.,elapsed/.4)
-        initial_bottom=t['y']+({'cricket':32,'frank':48,'nightman':56}[kind])
-        bottom=initial_bottom+(430-initial_bottom)*fall
-        self.screen.blit(sprite,(round(center-sprite.get_width()/2),round(bottom-sprite.get_height())))
-        if elapsed>=.9:
-            self.text('*  *',center-18,430-sprite.get_height()-18,GOLD,self.small)
+        # Hold the authored hurt pose in place; no sideways fall or slide.
+        sprite.set_alpha(105 if int(elapsed/.2)%2 else 255)
+        center=t['x']-camera+15
+        self.screen.blit(sprite,(round(center-sprite.get_width()/2),430-sprite.get_height()))
+        self.text('*  *',center-18,430-sprite.get_height()-18,GOLD,self.small)
 
     def enemy(self,t,camera):
         if t['kind']=='nightman':self.nightman(t,camera);return

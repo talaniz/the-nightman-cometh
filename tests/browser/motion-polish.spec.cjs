@@ -18,7 +18,7 @@ async function observe(page,mode){await page.evaluate(mode=>{
    key=(p.dayman?'dayman':'dennis')+'-'+(p.facing>0?'right':'left')+'-'+Math.floor(s.world.steps/6)%4;
   if(mode!=='run'&&b&&s.screen==='training'){
    const t=b.defeat_elapsed||0;
-   key=t<.35?'recoil':t<.9?'fall':Math.floor((t-.9)/.2)%2?'blink':'grounded';key=mode+'-'+key;
+   key=Math.floor(t/.2)%2?'blink':'hurt';key=mode+'-'+key;
   }
   if(key&&!window.__motionFrames[key])window.__motionFrames[key]={state:s,png:document.querySelector('#canvas').toDataURL('image/png')};
   requestAnimationFrame(tick);
@@ -36,8 +36,8 @@ test('MOTION authored run cycle defeats and directional shots',async({page})=>{
  for(const boss of ['cricket','frank','nightman']){
   await fixture(page,'motion-boss-'+boss);await observe(page,boss);await page.keyboard.press('j');
   await page.waitForFunction(()=>JSON.parse(window.__nightmanGame).screen==='dialogue',{},{timeout:12000});
-  const frames=await saveFrames(page);for(const stage of ['recoil','fall','grounded','blink'])expect(frames[boss+'-'+stage]).toBeTruthy();
-  expect(frames[boss+'-grounded'].state.world.complete).toBe(true);
+  const frames=await saveFrames(page);for(const stage of ['hurt','blink'])expect(frames[boss+'-'+stage]).toBeTruthy();
+  expect(frames[boss+'-hurt'].state.world.complete).toBe(true);
  }
  await fixture(page,'motion-shots');
  for(const [width,height] of [[1280,720],[1920,1080],[390,844]]){
