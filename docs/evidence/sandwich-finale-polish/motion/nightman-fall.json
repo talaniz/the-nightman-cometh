@@ -64,7 +64,7 @@
           "remaining": 0,
           "vy": 0,
           "animation_step": 49,
-          "defeat_elapsed": 0.43559999900000146
+          "defeat_elapsed": 0.37439999999999146
         }
       ],
       "beams": [],
@@ -87,8 +87,8 @@
     },
     "fixture_id": 22005,
     "loops": 1,
-    "frames": 326,
-    "frame_ms_mean": 70.90833330833335,
+    "frames": 322,
+    "frame_ms_mean": 74.66916661666684,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

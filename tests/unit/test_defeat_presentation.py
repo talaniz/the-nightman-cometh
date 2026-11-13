@@ -28,3 +28,21 @@ def test_final_hit_holds_boss_then_transitions_once_and_pause_freezes(level,stor
     writes=store.writes
     for _ in range(10):s.update(.1,{})
     assert s.dialogue==0 and store.writes==writes
+
+@pytest.mark.parametrize('kind',['cricket','frank','nightman'])
+@pytest.mark.parametrize('direction',[-1,1])
+def test_fallen_boss_visible_body_reaches_floor_despite_faint_padding(kind,direction):
+    import pygame
+    from game.render import Renderer
+    sprite=pygame.Surface((80,80),pygame.SRCALPHA)
+    sprite.fill((200,100,50,1))
+    pygame.draw.rect(sprite,(200,100,50,255),(10,12,55,58))
+    class Art:
+        def image(self,*args,**kwargs):return sprite.copy()
+        def sequence(self,*args,**kwargs):return sprite.copy()
+        def nightman(self,*args,**kwargs):return sprite.copy(),None
+    renderer=Renderer.__new__(Renderer)
+    renderer.screen=pygame.Surface((960,540),pygame.SRCALPHA)
+    renderer.art=Art();renderer.small=None;renderer.text=lambda *args:None
+    renderer.defeated_boss(dict(kind=kind,direction=direction,x=400,y=380,defeat_elapsed=1.1),0)
+    assert renderer.screen.get_bounding_rect(min_alpha=20).bottom==430

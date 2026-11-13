@@ -51,21 +51,21 @@
         {
           "id": 100,
           "kind": "frank",
-          "x": 4039.8333333333267,
+          "x": 4042.399999999994,
           "y": 382,
           "alive": false,
           "hp": 0,
           "direction": -1,
           "state": "defeated",
-          "timer": 9.083333333333288,
+          "timer": 9.19999999999996,
           "immune": 0.75,
-          "animation_step": 54,
-          "defeat_elapsed": 1.1575999969999997
+          "animation_step": 47,
+          "defeat_elapsed": 1.1048999980000034
         }
       ],
       "beams": [],
       "shots": [],
-      "steps": 55,
+      "steps": 48,
       "act": "act2",
       "boss_active": true,
       "complete": true
@@ -83,8 +83,8 @@
     },
     "fixture_id": 22004,
     "loops": 1,
-    "frames": 276,
-    "frame_ms_mean": 66.03333330833328,
+    "frames": 268,
+    "frame_ms_mean": 68.438333325,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

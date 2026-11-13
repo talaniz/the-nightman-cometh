@@ -365,7 +365,7 @@ class Renderer:
         elif kind=='frank':sprite=self.art.sequence('sprites/bridge.png',12,4,4,(76,62),t['direction']<0,trim_row=True)
         else:
             sprite,_=self.art.nightman(7,t['direction']<0)
-        sprite=sprite.subsurface(sprite.get_bounding_rect()).copy()
+        sprite=sprite.subsurface(sprite.get_bounding_rect(min_alpha=20)).copy()
         direction=-t.get('direction',-1)
         fall=min(1.,elapsed/.9)
         angle=-direction*(25*min(1.,elapsed/.35)+65*max(0.,min(1.,(elapsed-.35)/.55)))

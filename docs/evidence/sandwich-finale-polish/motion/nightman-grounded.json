@@ -64,7 +64,7 @@
           "remaining": 0,
           "vy": 0,
           "animation_step": 49,
-          "defeat_elapsed": 0.9187999980000142
+          "defeat_elapsed": 0.9229000000000014
         }
       ],
       "beams": [],
@@ -79,7 +79,7 @@
       "muted": false,
       "error": "",
       "music_busy": 1,
-      "sfx_busy": 1,
+      "sfx_busy": 0,
       "gains": [
         0.453125,
         0.34375
@@ -87,8 +87,8 @@
     },
     "fixture_id": 22005,
     "loops": 1,
-    "frames": 333,
-    "frame_ms_mean": 71.25916663333342,
+    "frames": 329,
+    "frame_ms_mean": 75.10166663333362,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

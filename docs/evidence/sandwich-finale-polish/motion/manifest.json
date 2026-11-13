@@ -1,11 +1,11 @@
 {
-  "captured_base_commit": "d26dcfa197cb3c3b56e4f5f0fda30f66e6b9647f",
-  "source_fingerprint": "37cf34b3ba2d55a438917b5e0dbe7d6ff4d8d9c9254e2a2efa854bae103a54ab",
+  "captured_base_commit": "346128f397288b397577bf106ec99f6c0789e3cd",
+  "source_fingerprint": "36f8950d5502b8b4ef714680da5e2d4dd2af8ffac7d37518c7d9e90fae6787a6",
   "revision_note": "Runtime captured from working tree; code/assets and evidence committed together. Fingerprint unchanged after capture.",
   "command": "playwright test tests/browser/motion-polish.spec.cjs --project=chromium --workers=1 --grep MOTION",
   "environment": "Pi Debian Chromium; isolated QA fixtures, no final-route qualification",
   "peak_c": 50.634,
-  "minimum_available_mib": 502,
+  "minimum_available_mib": 498,
   "captures": [
     {
       "image": "cricket-blink.png",
@@ -20,7 +20,7 @@
     {
       "image": "cricket-fall.png",
       "state": "cricket-fall.json",
-      "sha256": "196362ddc97c5d61c4c97bf2706a79daa108e6f99169e08f4cb378b49cf59723",
+      "sha256": "18b58385c522f9852ede3fd7efe53295797d6b1aa1a355d6c7bbfedda8fc74bd",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -40,7 +40,7 @@
     {
       "image": "cricket-recoil.png",
       "state": "cricket-recoil.json",
-      "sha256": "110d0de7269ea33ef5c1f33d1d72fc141b4768c5f5a40b3164848aa70e34c0c2",
+      "sha256": "4e6eeec804604289f0ec1abfc653b7e72e604eecf0c5e60efc5ff24eec0536be",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -50,7 +50,7 @@
     {
       "image": "dayman-left-0.png",
       "state": "dayman-left-0.json",
-      "sha256": "2e594dc5d4044b8d9d917a65c48e803037bb5a227a0312519dcfe22559357948",
+      "sha256": "0524927ffe112e756d06cfdc36769ed15fba6576f317d8b05c0f546d34b69af4",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -60,7 +60,7 @@
     {
       "image": "dayman-left-1.png",
       "state": "dayman-left-1.json",
-      "sha256": "8aff67de2e995fa3f5bd53c782868ab4302cf1d1d0b1724585980569029b0e7d",
+      "sha256": "8bf5a742a281042a04498542f3268dacd8ae17a5e7e0837cedea910f89cf62b9",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -70,7 +70,7 @@
     {
       "image": "dayman-left-2.png",
       "state": "dayman-left-2.json",
-      "sha256": "874e78d1aa04ce23957e49a060bab0555c42b0aaa09b740ff1c9a22ad6199d81",
+      "sha256": "e901f6ee9df2d1ad92f6e4f7d9191cecb64d68d41fb5deb9d753177188cea166",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -80,7 +80,7 @@
     {
       "image": "dayman-left-3.png",
       "state": "dayman-left-3.json",
-      "sha256": "9aeb431f2ffd04d12a9a559f69bd50c86a33e63813d1b1e33a5bd5698d3077c2",
+      "sha256": "e50336c69a205df1d125bc421d3e0a65ec5ba9f710b9d2dcca3e7ad01a520578",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -90,7 +90,7 @@
     {
       "image": "dayman-right-0.png",
       "state": "dayman-right-0.json",
-      "sha256": "6d8503638e3407ecd4403899b3867d8b29c2a55a7b0576c90ed30b9d5c023c1f",
+      "sha256": "6383b23f6befa7e2d595515e973690ca79fa27fc7ef37bdcf502dbdb455908b2",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -100,7 +100,7 @@
     {
       "image": "dayman-right-1.png",
       "state": "dayman-right-1.json",
-      "sha256": "64d7377006ed77c3704eb412707d19cb17a449166cb48d497e68f1bd327aeb5e",
+      "sha256": "3278cf9c3d7b8320016dab93d8a9a9474081ccb10f5494e74fe6a9c623018c54",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -110,7 +110,7 @@
     {
       "image": "dayman-right-2.png",
       "state": "dayman-right-2.json",
-      "sha256": "d0116d52adf9c5659f93e0c19916aaa9cc6f478aedcad2062272d501e0b068e0",
+      "sha256": "8a052be894aabc73e159793f3b6de3ee38a28eee85f4dc3367eee507929d433a",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -120,7 +120,7 @@
     {
       "image": "dayman-right-3.png",
       "state": "dayman-right-3.json",
-      "sha256": "03cbe68317c3b3c76ced916c897c83f5b075531d38935abb023e26f83f3ca6ed",
+      "sha256": "c325b37e6018976355a1c51c93082e06d9668f9a0f7603dd04252a5c3e82717f",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -130,7 +130,7 @@
     {
       "image": "dennis-left-0.png",
       "state": "dennis-left-0.json",
-      "sha256": "cb6eccaaa4e7dee8b3eb3d8bbe0eea34ad3dd4bd652c01a6644b5a10327968c0",
+      "sha256": "8f9f2612dec255fe663a58c581f70e2c752e49ce24ecdc9d3a7b0ac3954b3718",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -140,7 +140,7 @@
     {
       "image": "dennis-left-1.png",
       "state": "dennis-left-1.json",
-      "sha256": "a4b9478f446d16abac4a1f5e0b1ef9fdab9b9bb8f105dfa101d3b4414a21b989",
+      "sha256": "8ff554a373bac767a445d8db5deca514171b26ba60e62ea0678726135bdcfd6f",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -150,7 +150,7 @@
     {
       "image": "dennis-left-2.png",
       "state": "dennis-left-2.json",
-      "sha256": "4e542586c8099572db759cd09f0b1bdd30bc025479d8bdfe865b96813dc5a30d",
+      "sha256": "f2706b7c102efbc4ee697cc9ba58b82a6948e025a22d4e031defcdfba83c7edb",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -160,7 +160,7 @@
     {
       "image": "dennis-left-3.png",
       "state": "dennis-left-3.json",
-      "sha256": "7bcebe8f7ad3f6644aa8c91a407004e98ab934826cb7111cd91a14a73e7a2fa7",
+      "sha256": "b4111b2b73cec47478ff2af4baba29ed880b6837e276118228274a31fab1b3b1",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -170,7 +170,7 @@
     {
       "image": "dennis-right-0.png",
       "state": "dennis-right-0.json",
-      "sha256": "79adb8b8f8fad5128a5c80114e94aab695ccce83b3110f4bcfb680a6ddf10c6e",
+      "sha256": "8075d43c22cd2c4668ee34e20c77a67ff766c55cfbd893ca056943e46027f78d",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -180,7 +180,7 @@
     {
       "image": "dennis-right-1.png",
       "state": "dennis-right-1.json",
-      "sha256": "218a9f103d0adf874bf6eca67ce896a09780a2496df9aefaaceb282a02f87184",
+      "sha256": "7a1d895cc887a0d8dc39ff12bc1f9de8584b441da903b59d88cecbd76a684dc6",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -190,7 +190,7 @@
     {
       "image": "dennis-right-2.png",
       "state": "dennis-right-2.json",
-      "sha256": "9bdd99c02bf1c0ede928c238ae095c741b1c89c8aa25e25b025497b8cd510d71",
+      "sha256": "b6db26f07a7bc0eb02bdde84ee4c2e358eb2dc73e6be4f8bab68f3e7b2d61b4f",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -200,7 +200,7 @@
     {
       "image": "dennis-right-3.png",
       "state": "dennis-right-3.json",
-      "sha256": "9733331ca065db7a30ac081c6c5d19e92afaea05ad550a0fb17fc08077a81909",
+      "sha256": "2b521ab4dff0cea2724449a4d1a296a90132561176d33413ce21aa63c3f07d87",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -210,7 +210,7 @@
     {
       "image": "frank-blink.png",
       "state": "frank-blink.json",
-      "sha256": "09ad93376eb2fc109749ae6508a00063ceba24f9ac86803593b1e9ade178d671",
+      "sha256": "2e8bfec15df2f4a69ba814fd6a89f164290a3709f39ad28a1f8131c2c21f71ac",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -220,7 +220,7 @@
     {
       "image": "frank-fall.png",
       "state": "frank-fall.json",
-      "sha256": "20fc4d849ea2dcdc1c49bbef8e621f0d71c696e337a94e9560a4a882163f7a16",
+      "sha256": "ec8b49f16c742b6c4ba587e1926e2614876587f36d9594ae4efc26fb2d462a3f",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -230,7 +230,7 @@
     {
       "image": "frank-grounded.png",
       "state": "frank-grounded.json",
-      "sha256": "7059a709c42d968d1d11e86337940de01d62ac5b69b5fa00e6beb2034088270b",
+      "sha256": "e97d0f5b36d4463407a69afc180f970298e39157b9718f13bedd8d5c49269a7a",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -240,7 +240,7 @@
     {
       "image": "frank-recoil.png",
       "state": "frank-recoil.json",
-      "sha256": "e456874ccc41e08e6bfa8b8a2495ab19932d56d3fd66be447cf6a28dc42b259d",
+      "sha256": "fbdef2240d0a0b8ee9c987b68b9d3819a2f76ea4c4a112dc4c1b964e31ff0448",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -250,7 +250,7 @@
     {
       "image": "nightman-blink.png",
       "state": "nightman-blink.json",
-      "sha256": "4424c2844981e3febe48d17388265783a18b5da7bd96aa337d2c4bf9783c4653",
+      "sha256": "403968a72bd064f012e6db33288805a624e38ceed91bceb9e8b96a23e6eb4227",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -260,7 +260,7 @@
     {
       "image": "nightman-fall.png",
       "state": "nightman-fall.json",
-      "sha256": "ab28e15ee390383f1a381626567c64c4c426df705d1afd0d2f46cb5364276f10",
+      "sha256": "5c85de70015b992945a433842b4def6e3bc262d8f56e768cd88828cad54ae1d6",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -270,7 +270,7 @@
     {
       "image": "nightman-grounded.png",
       "state": "nightman-grounded.json",
-      "sha256": "688bb63213e3d4c8b6bacdf3cc69da1636398aadc1ea74d82a6786fe1af0bb9b",
+      "sha256": "a13e666faed61a9aef00566e45508ada7827d9b3e5b7e6831b4238e8867ed601",
       "viewport": {
         "width": 1280,
         "height": 720
@@ -280,7 +280,7 @@
     {
       "image": "nightman-recoil.png",
       "state": "nightman-recoil.json",
-      "sha256": "007c55d3e45fd367e26b59f4f9589678824db762ffc0e3a6ad6490f1d92a167a",
+      "sha256": "084162768e7cc677a343b8b4ed16457d00a484620acad1f95b454434f348406f",
       "viewport": {
         "width": 1280,
         "height": 720

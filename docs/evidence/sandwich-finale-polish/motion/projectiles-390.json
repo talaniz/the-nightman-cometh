@@ -110,8 +110,8 @@
     },
     "fixture_id": 22006,
     "loops": 1,
-    "frames": 442,
-    "frame_ms_mean": 82.03166664166633,
+    "frames": 437,
+    "frame_ms_mean": 80.10499995833361,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"

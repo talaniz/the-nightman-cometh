@@ -1,17 +1,17 @@
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:10:56] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:19] "GET / HTTP/1.1" 200 -
 
 Running 1 test using 1 worker
 
-(node:3524329) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:3527204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:04] "GET / HTTP/1.1" 200 -
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:05] "GET /boot-state.js HTTP/1.1" 200 -
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:05] "GET /gamepad.js HTTP/1.1" 200 -
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:05] "GET /loader.js HTTP/1.1" 200 -
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:05] "GET /style.css HTTP/1.1" 200 -
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:05] "GET /browserfs.min.js HTTP/1.1" 200 -
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:05] "GET /favicon.png HTTP/1.1" 200 -
-[WebServer] 127.0.0.1 - - [13/Nov/2026 10:11:22] "GET /nightman.tar.gz HTTP/1.1" 200 -
-  ✓  1 [chromium] › tests/browser/motion-polish.spec.cjs:27:1 › MOTION authored run cycle defeats and directional shots (1.3m)
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:31] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:31] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:31] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:31] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:31] "GET /gamepad.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:31] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:31] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 10:21:52] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/motion-polish.spec.cjs:27:1 › MOTION authored run cycle defeats and directional shots (1.5m)
 
-  1 passed (1.5m)
+  1 passed (1.7m)

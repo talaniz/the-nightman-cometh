@@ -31,10 +31,10 @@
     },
     "world": {
       "player": {
-        "x": 800.6666666666658,
+        "x": 796.9999999999992,
         "y": 386,
         "hearts": 3,
-        "dayman": 29.10000000000005,
+        "dayman": 29.016666666666723,
         "invulnerable": 0,
         "facing": 1,
         "vy": 0,
@@ -50,7 +50,7 @@
       "targets": [],
       "beams": [],
       "shots": [],
-      "steps": 54,
+      "steps": 59,
       "act": "act1",
       "boss_active": false,
       "complete": false
@@ -68,8 +68,8 @@
     },
     "fixture_id": 22002,
     "loops": 1,
-    "frames": 102,
-    "frame_ms_mean": 72.04117644117639,
+    "frames": 98,
+    "frame_ms_mean": 75.77142858163263,
     "test_build": true,
     "python": "3.12.12 (main, Feb 28 2026, 17:34:01) [Clang 19.0.0git (https:/github.com/llvm/llvm-project 7cfffe74eeb68fbb3fb9706ac7",
     "pygame": "2.5.7"
