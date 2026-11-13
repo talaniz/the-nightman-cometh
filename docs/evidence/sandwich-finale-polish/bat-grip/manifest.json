@@ -1,0 +1,91 @@
+{
+  "captured_base_commit": "d78c632d9ed4712100951bd9d418c50b6c9f67ab",
+  "source_fingerprint": "39be643842f859233cbe2725b26b45612d93f031f23e1a438481740f88369792",
+  "revision_note": "Working-tree runtime captured; code and evidence committed together. Fingerprint verified unchanged after capture.",
+  "command": "playwright test tests/browser/m8.spec.cjs --project=chromium --workers=1 --grep BAT_GRIP",
+  "environment": "Pi Debian Chromium fixture build",
+  "peak_c": 48.686,
+  "minimum_available_mib": 972,
+  "captures": [
+    {
+      "image": "bat-grip-left-0.png",
+      "state": "bat-grip-left-0.json",
+      "sha256": "405ab764b4f50f0ec042e6f7966531760116107c6ff796410de841cda1033d8f",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "bat-grip-left-1.png",
+      "state": "bat-grip-left-1.json",
+      "sha256": "483b4e65962cd5a50db653cfb64d4c7a7ca024a9b7eb856dc814335cf6c0a495",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "bat-grip-right-0.png",
+      "state": "bat-grip-right-0.json",
+      "sha256": "4fd45c86c818c4ca9eef101a3a74239df9f6378321ec3f6e7467b16ffff2e35d",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "bat-grip-right-1.png",
+      "state": "bat-grip-right-1.json",
+      "sha256": "31478c68b0a69938aa4c80dcb6471fd0932010eb1a5aac9666d08f7289f2a676",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "actual browser canvas"
+    },
+    {
+      "image": "m8-bat-grip-idle-1280.png",
+      "state": "m8-bat-grip-idle-1280.json",
+      "sha256": "39d6c9a5501921dc5f00a0cfe86f1f334f659b8d78f5f5a33599f19e3fb936ed",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "viewport screenshot"
+    },
+    {
+      "image": "m8-bat-grip-idle-1920.png",
+      "state": "m8-bat-grip-idle-1920.json",
+      "sha256": "8d7a23a28c6ada7f93079bb7d6b8e3a42af41d402c1ada738ca84156236e164a",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "kind": "viewport screenshot"
+    },
+    {
+      "image": "m8-bat-grip-idle-390.png",
+      "state": "m8-bat-grip-idle-390.json",
+      "sha256": "7871ec3bd56824be7f61f85a419190d0f5ae461194a15b265946328f04bae418",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "kind": "viewport screenshot"
+    },
+    {
+      "image": "m8-bat-grip-jump.png",
+      "state": "m8-bat-grip-jump.json",
+      "sha256": "baa49151dfbb517a74c8f0475ba20f6fb4b0d11c09f9ec297ef05bb8058bfa43",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "kind": "viewport screenshot"
+    }
+  ]
+}

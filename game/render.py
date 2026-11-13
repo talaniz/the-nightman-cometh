@@ -317,14 +317,20 @@ class Renderer:
         if p.invulnerable and int(p.invulnerable*12)%2:
             sprite=sprite.copy();sprite.fill((180,180,180,0),special_flags=pygame.BLEND_RGB_ADD)
         self.screen.blit(sprite,(int(p.x-camera-8),int(p.y-20)))
-        # Per-pose hand anchors keep the bat attached to the atlas animation.
-        hand_x,hand_y=((23,17),(29,3),(25,8),(29,-8))[frame%4]
-        bat_x=p.x-camera+hand_x if p.facing>0 else p.x-camera+24-hand_x-43
+        # Grip coordinates follow the visible fist in the trimmed 40x64 cast art.
+        hand_x,hand_y=((27,22),(29,9),(28,9),(28,-4))[frame%4]
         bat=self.art.asset('sprites/nail-bat.png',(43,13),trim=True)
-        if moving and p.grounded:
-            bat=pygame.transform.rotate(bat,(-12,10)[(steps//8)%2])
-        if p.facing<0:bat=pygame.transform.flip(bat,True,False)
-        self.screen.blit(bat,(int(bat_x),int(p.y+hand_y)))
+        angle=(-12,10)[(steps//8)%2] if moving and p.grounded else 0
+        # Rotate the texture AND its grip offset; place that grip on the hand.
+        # Blitting a rotated texture by its corner makes the handle orbit/jitter.
+        offset=(pygame.Vector2(7,7)-pygame.Vector2(bat.get_size())/2).rotate(-angle)
+        if angle:bat=pygame.transform.rotate(bat,angle)
+        grip=pygame.Vector2(bat.get_size())/2+offset
+        if p.facing<0:
+            bat=pygame.transform.flip(bat,True,False)
+            grip.x=bat.get_width()-grip.x
+            hand_x=24-hand_x
+        self.screen.blit(bat,(round(p.x-camera+hand_x-grip.x),round(p.y+hand_y-grip.y)))
 
     def enemy(self,t,camera):
         if t['kind']=='nightman':self.nightman(t,camera);return

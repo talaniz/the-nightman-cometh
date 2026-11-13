@@ -135,3 +135,33 @@ test('CAT_FOOD can appearance and unchanged collection',async({page})=>{
  await capture(page,'cat-food-collected');
  expect((await state(page)).screen).toBe('training');
 });
+
+test('BAT_GRIP running handle follows Dennis in both directions',async({page})=>{
+ await boot(page);await fixture(page,'act1-platform-first');
+ await page.evaluate(()=>{
+  window.__batFrames={};
+  function observe(){
+   const s=JSON.parse(window.__nightmanGame),p=s.world.player;
+   if(s.screen==='training'&&p.moving&&p.grounded&&!p.swing){
+    const key=(p.facing>0?'right':'left')+'-'+Math.floor(s.world.steps/8)%2;
+    if(!window.__batFrames[key])window.__batFrames[key]={state:s,png:document.querySelector('#canvas').toDataURL('image/png')};
+   }
+   if(window.__batObserving)requestAnimationFrame(observe);
+  }
+  window.__batObserving=true;requestAnimationFrame(observe);
+ });
+ for(const key of ['ArrowRight','ArrowLeft'])await page.keyboard.press(key,{delay:1000});
+ const frames=await page.evaluate(()=>{window.__batObserving=false;return window.__batFrames;});
+ expect(Object.keys(frames).sort()).toEqual(['left-0','left-1','right-0','right-1']);
+ const dir=process.env.NIGHTMAN_EVIDENCE;
+ if(dir){fs.mkdirSync(dir,{recursive:true});for(const [name,f] of Object.entries(frames)){
+  fs.writeFileSync(path.join(dir,'bat-grip-'+name+'.png'),Buffer.from(f.png.split(',')[1],'base64'));
+  fs.writeFileSync(path.join(dir,'bat-grip-'+name+'.json'),JSON.stringify({viewport:page.viewportSize(),kind:'actual browser canvas',state:f.state},null,2));
+ }}
+ for(const [width,height] of [[1280,720],[1920,1080],[390,844]]){
+  await page.setViewportSize({width,height});await capture(page,'bat-grip-idle-'+width);
+ }
+ await page.setViewportSize({width:1280,height:720});await page.keyboard.press('Space',{delay:80});await capture(page,'bat-grip-jump');
+ await page.keyboard.press('j');
+ expect((await state(page)).screen).toBe('training');
+});
