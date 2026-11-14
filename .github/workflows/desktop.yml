@@ -1,0 +1,77 @@
+name: Desktop test packages
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'game/**'
+      - 'tools/desktop/**'
+      - 'requirements-desktop.lock'
+      - '.github/workflows/desktop.yml'
+      - 'docs/desktop-testing.md'
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        include:
+          - os: windows-2022
+            label: windows-x64
+          - os: macos-15
+            label: macos-arm64
+          - os: macos-15-intel
+            label: macos-x86_64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements-desktop.lock
+      - run: python tools/desktop/build.py --output build/desktop
+      - name: Launch bundled executable from unrelated working directory
+        shell: bash
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os, subprocess, sys, tempfile
+          root=Path.cwd()
+          bundle=root/'build/desktop'
+          executable=bundle/('NightmanCometh.app/Contents/MacOS/NightmanCometh' if sys.platform=='darwin' else 'NightmanCometh/NightmanCometh.exe')
+          with tempfile.TemporaryDirectory() as unrelated:
+              subprocess.run([str(executable),'--verify-install',str(root/'build/install-evidence')], cwd=unrelated, check=True, timeout=90)
+          assert (root/'build/install-evidence/title.png').is_file()
+          PY
+      - name: Archive portable package
+        shell: bash
+        env:
+          PACKAGE_LABEL: ${{ matrix.label }}
+        run: |
+          python - <<'PY'
+          import hashlib, os, shutil, subprocess, sys
+          from pathlib import Path
+          target=Path('build')/('NightmanCometh-'+os.environ['PACKAGE_LABEL']+'.zip')
+          if sys.platform=='darwin':
+              # ditto preserves application symlinks and executable modes.
+              subprocess.run(['ditto','-c','-k','--sequesterRsrc','--keepParent','build/desktop',str(target)],check=True)
+          else:
+              shutil.make_archive(str(target.with_suffix('')),'zip','build/desktop')
+          target.with_suffix('.sha256').write_text(hashlib.sha256(target.read_bytes()).hexdigest()+'  '+target.name+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.label }}-test-package
+          retention-days: 14
+          path: |
+            build/NightmanCometh-*.zip
+            build/NightmanCometh-*.sha256
+            build/install-evidence/
+            build/desktop/build-manifest.json
+          if-no-files-found: warn
