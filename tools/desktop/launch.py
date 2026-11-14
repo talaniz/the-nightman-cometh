@@ -8,6 +8,18 @@ if not getattr(sys, 'frozen', False):
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 
+def verify_progress(storage):
+    from game.session import Session
+    from game.desktop import FileStorage
+    session = Session(storage)
+    if not session.progress.save(session.world):
+        raise RuntimeError('Save write failed')
+    restored = Session(FileStorage(storage.path))
+    if not restored.progress.saved or restored.progress.saved != session.progress.saved:
+        raise RuntimeError('Save did not survive restart')
+    return session
+
+
 def verify_install(destination):
     """Explicit installation diagnostic, never a gameplay/physical-audio acceptance."""
     import json
@@ -34,9 +46,7 @@ def verify_install(destination):
         mixer._sound(cue)
     with tempfile.TemporaryDirectory(prefix='nightman-install-') as directory:
         storage = FileStorage(Path(directory) / 'progress.json')
-        session = Session(storage)
-        session.progress.save(session.world)
-        assert FileStorage(storage.path).read() == storage.read()
+        session = verify_progress(storage)
         renderer.draw(session, audio)
         pygame.image.save(screen, str(destination / 'title.png'))
     (destination / 'installation.json').write_text(json.dumps({

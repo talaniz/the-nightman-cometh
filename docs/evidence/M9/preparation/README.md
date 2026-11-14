@@ -22,3 +22,12 @@ Follow-up:10 desktop boundary tests passed, including platform save paths and sh
 controller disconnect/release behavior. Production asset staging initially failed because
 the reused stage helper requires a new directory; fixed by staging into a child directory.
 Retest passed with no WAV source audio or QA fixture file in staging.
+
+Independent review found two accepted defects: pygame's actual controller method is
+`attached()`, not `get_attached()`; and a failed install-check save could compare None
+with None. Regression doubles now use the real Controller API as spec_set. Observed two
+failing reconnect/retained-frame assertions before the method correction; both pass after.
+Observed a failed assertion expecting the installation check to reject denied writes;
+check now requires successful save and equal nonempty restored Session progress. All12
+focused desktop tests pass. No previous installation persistence claim substitutes for
+rerunning this corrected check on the final target-platform packages.

@@ -33,12 +33,15 @@ def test_failed_atomic_replace_preserves_old_save(tmp_path, monkeypatch):
     assert len(list(tmp_path.iterdir())) == 1
 
 
-class Pad:
-    attached = True
-    def get_attached(self): return self.attached
-    def get_axis(self, index): return -32768 if index == 0 else 32767
-    def get_button(self, index): return index in (0, 6, 11)
-    def quit(self): pass
+def mapped_device():
+    # Constrain doubles to the real pinned pygame API, including Cython methods.
+    from pygame._sdl2.controller import Controller
+    from unittest.mock import Mock
+    device = Mock(spec_set=Controller)
+    device.attached.return_value = True
+    device.get_axis.side_effect = lambda index: -32768 if index == 0 else 32767
+    device.get_button.side_effect = lambda index: index in (0, 6, 11)
+    return device
 
 
 def native_pad():
@@ -46,7 +49,7 @@ def native_pad():
     pad.device = None
     pad.available = True
     pad.api = SimpleNamespace(get_count=lambda: 1, is_controller=lambda i: True,
-                              Controller=lambda i: Pad())
+                              Controller=lambda i: mapped_device())
     return pad
 
 
@@ -61,7 +64,7 @@ def test_native_standard_pad_maps_to_shared_actions():
 def test_disconnect_reported_before_replacement():
     pad = native_pad()
     pad.read()
-    pad.device.attached = False
+    pad.device.attached.return_value = False
     assert pad.read()['status'] == 'absent'
     assert pad.read()['status'] == 'connected'
 
@@ -98,3 +101,22 @@ def test_platform_save_directory(tmp_path, monkeypatch, platform, folder):
     monkeypatch.setattr(desktop.Path, 'home', lambda: tmp_path)
     monkeypatch.setenv('LOCALAPPDATA', str(tmp_path / 'Local'))
     assert desktop.save_path() == tmp_path / folder / 'NightmanCometh/progress.json'
+
+
+def test_native_pad_remains_connected_across_frames():
+    pad = native_pad()
+    assert pad.read()['status'] == 'connected'
+    device = pad.device
+    for _ in range(4):
+        assert pad.read()['status'] == 'connected'
+        assert pad.device is device
+    device.quit.assert_not_called()
+
+
+def test_installation_check_rejects_failed_save(tmp_path, monkeypatch):
+    from tools.desktop.launch import verify_progress
+    def fail(self, value):
+        raise OSError('write denied')
+    monkeypatch.setattr(FileStorage, 'write', fail)
+    with pytest.raises(RuntimeError, match='Save'):
+        verify_progress(FileStorage(tmp_path / 'progress.json'))

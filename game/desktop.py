@@ -66,7 +66,7 @@ class NativePad:
         if not self.available:
             return empty('unavailable')
         try:
-            if self.device is not None and not self.device.get_attached():
+            if self.device is not None and not self.device.attached():
                 self.device.quit()
                 self.device = None
                 return empty('absent')
