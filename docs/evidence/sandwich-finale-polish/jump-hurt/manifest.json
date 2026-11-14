@@ -1,0 +1,438 @@
+{
+  "captured_commit": "ebeb4208e49bb1343680690291e621b51797fb08",
+  "source_fingerprint": "4979e7a94d58d841a100462093e8d410373c395fcfd4a8d6b3ed6149eebff79d",
+  "run_url": "https://github.com/talaniz/the-nightman-cometh/actions/runs/43487331273",
+  "command": "node tools/verification/motion-independent.cjs",
+  "environment": "GitHub Ubuntu Chromium156; isolated fixtures, not qualifying full playthroughs",
+  "captures": [
+    {
+      "image": "alcohol.png",
+      "sha256": "149c19ac5f8fd18f0a9b03b99ee17111a7cde03606c32ade5612bc746494d084",
+      "image_size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "chimichanga.png",
+      "sha256": "7f87e0d4213960c277a6f6171451b54151f74c9c4f03e88bae907480a0898e41",
+      "image_size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "cricket-blink.png",
+      "sha256": "5069a4502a0792ec0cc4ae026b281a28f807717fd0196c994674d11f14f88dd5",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "cricket-hurt.png",
+      "sha256": "e631c6331748f52e26c76806e67b4f75ae5b88147265aaf14e6d004d738ad48c",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "cricket-story.png",
+      "sha256": "ae65c57dfc07501130467af80a761ed7182ad0097a7769b5d0e678d40ba39e28",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "crucifix.png",
+      "sha256": "5591254cbbeccd285e835f6610a668d7af227ddcc3497b0fefd9a7ebd75ccfed",
+      "image_size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "dayman-left-0.png",
+      "sha256": "f0cc899ca1547d45894e80c7a10318059612d3aa60d24dbc405427f6a9677f80",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dayman-left-1.png",
+      "sha256": "21eb3790519a6f0ace18b801294d60975ff34994d2e6f122eba873f6df445287",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dayman-left-2.png",
+      "sha256": "74e91afe7592382f7228b1b40d4e25d9cfd73cbf19e5161bc51b280e0811e826",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dayman-left-3.png",
+      "sha256": "eb5eb0c0f9090324e49e9c7eccf84d3276eca8c1a6cfa039b37ea458dbdfc3d8",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dayman-right-0.png",
+      "sha256": "e420d32244b62df93a6b3e3c862853c5ece20deaab310136df7d1bda9c660545",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dayman-right-1.png",
+      "sha256": "58e07e5c08ed0b1dbbf9db9ce6e89175ad8f9e219d47b3373c1d0f9bfc6b56f3",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dayman-right-2.png",
+      "sha256": "ee6a8f9f967a004466d39d9b73ecf003c0834f215be2c01f2681dd6870f8b495",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dayman-right-3.png",
+      "sha256": "fa3c6d498195cff54cab3af7c9c9a5a662da0e5bce82c3fdb6fdb30d2e2fa74e",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-left-0.png",
+      "sha256": "7e2e2f0981e90973549630d707e9d6ddd79a3b4c0db4d943d9f5e9e6e6125f7d",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-left-1.png",
+      "sha256": "46ac385a058a8a8be743336131107a24ead4e7a47a1750d40a9e2a26d5f2ea33",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-left-2.png",
+      "sha256": "5d918e6e1d00a9c7abf5d18a1b767865f68067c6e0692dddcd3ecc5569af748b",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-left-3.png",
+      "sha256": "552eb746fefb63f1001f98488afc8d81b38281bcd26da4d12566b4a0895d05da",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-right-0.png",
+      "sha256": "36f323ce07e3bbf5ff537e46bd248d93137b4b06aa6c8db3d3d901880e99da12",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-right-1.png",
+      "sha256": "05f552df84b18283bb85a66b4c2d69cdcebe2ebd53e40f43db2e007d6b293286",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-right-2.png",
+      "sha256": "b7d6e5e3b60781bd8e1a21ebcc3ae42cef4f309a0cdea7eaca33717fd6ceda06",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "dennis-right-3.png",
+      "sha256": "01e27f1e999988104f6ba5bedf4de35d370080cf49529ef16d39d367cd28953d",
+      "image_size": [
+        140,
+        100
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "frank-blink.png",
+      "sha256": "d0ac62c771dfe37ce1b6a4e25a32fd52c09ae197ac4f9ceea38e9d3f9f5c14fd",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "frank-hurt.png",
+      "sha256": "698a0732905fe38a63b72300911accc9012630909509a5932d88c10d0fc45e74",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "frank-story.png",
+      "sha256": "d92d4564d5c96de3b60ca5dd5ad5c3a85327a6e40abe17a2ccea0f777f676f7b",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "jump-dayman-left.png",
+      "sha256": "4b5382b682bc07b92f9a5db43eaf22ad1c66267559032b59cea6459b77f3dcd8",
+      "image_size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "jump-dayman-right.png",
+      "sha256": "22cea6692a7226d9ca400697a6bc130784185d907303ea65d905fb7e929f7361",
+      "image_size": [
+        1920,
+        1080
+      ],
+      "viewport": [
+        1920,
+        1080
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "jump-dennis-left.png",
+      "sha256": "dcad4aa6f3e69fbb048b5d94553201134bd277df77265669e29b510d8718db10",
+      "image_size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "jump-dennis-right.png",
+      "sha256": "a285677416c4250d0ddae1ed8fca34210a1bed6a0f18296d67cd7f560716df72",
+      "image_size": [
+        1280,
+        720
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "narrow-guidance.png",
+      "sha256": "1ac95b61c8a9c416def6ed763d7b4061fb28d8f6eb3364e521db46a1ae0b8b0a",
+      "image_size": [
+        390,
+        844
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "note": "viewport screenshot"
+    },
+    {
+      "image": "nightman-blink.png",
+      "sha256": "d2cb28997476eab2b5d7a6206883de4c97fa2ff4f4380c82850ad6f74366588c",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "nightman-hurt.png",
+      "sha256": "380e333e1d2e670857f91e2860ee65ce63e53341696ac85107659f027d8e123e",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    },
+    {
+      "image": "nightman-story.png",
+      "sha256": "6c87b1349268cb054d8d946105c045530168a86c69f2c747b920ac2f35076176",
+      "image_size": [
+        960,
+        540
+      ],
+      "viewport": [
+        1280,
+        720
+      ],
+      "note": "native canvas or actor crop"
+    }
+  ]
+}

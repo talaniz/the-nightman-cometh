@@ -1,0 +1,5 @@
+{
+  "generator": "built-in image_gen",
+  "layout": "4 columns x 2 rows; normal then Dayman",
+  "prompt": "Match existing cast and nail bat; full-body right-facing four-frame running cycle with visibly articulated shoulder, elbow, forearm and hand; bat gripped in same front hand at chest, forward waist, lowered hip, then raised forward. White/gold Dayman second row. Transparent background; equal cells, consistent scale and feet baseline; no text. Correction: change column3 in both rows so rear hand is empty and front hand carries bat at hip, preserving other cells."
+}

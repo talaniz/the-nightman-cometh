@@ -1,0 +1,17 @@
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:05] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:3499511) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:09] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:09] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:09] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:09] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:09] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:09] "GET /gamepad.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:10] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:32:25] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/m8.spec.cjs:123:1 › CAT_FOOD can appearance and unchanged collection (44.7s)
+
+  1 passed (49.3s)

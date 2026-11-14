@@ -19,7 +19,7 @@ def test_transformation_precedes_manually_advanced_proposal():
     assert "Won't you come on stage and join me?" in texts
     assert texts[-6:] == [
         'You said if I came to the show, you’d leave me alone. So, no….',
-        '…', 'So…see you tomorrow…?',
+        'Well, technically I didn’t sign anything', 'So, I guess I’ll see you tomorrow?…',
         'I told you no one writes a musical for no reason!',
         'Dee, I’m right here right now…',
         '…but I’m about to go here!',

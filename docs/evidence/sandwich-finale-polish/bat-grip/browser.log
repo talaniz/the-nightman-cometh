@@ -1,0 +1,17 @@
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:46] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:3505371) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:51] "GET / HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:51] "GET /boot-state.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:51] "GET /gamepad.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:51] "GET /style.css HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:51] "GET /browserfs.min.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:51] "GET /loader.js HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:50:52] "GET /favicon.png HTTP/1.1" 200 -
+[WebServer] 127.0.0.1 - - [13/Nov/2026 08:51:06] "GET /nightman.tar.gz HTTP/1.1" 200 -
+  ✓  1 [chromium] › tests/browser/m8.spec.cjs:139:1 › BAT_GRIP running handle follows Dennis in both directions (43.0s)
+
+  1 passed (48.5s)

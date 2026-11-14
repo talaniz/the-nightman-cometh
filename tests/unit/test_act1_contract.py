@@ -149,7 +149,7 @@ def test_corrupt_art_is_rejected_before_browser_build(tmp_path,monkeypatch):
     import pytest
     import tools.build_web as build
     monkeypatch.setattr(build,'ROOT',tmp_path)
-    for rel in ['sprites/cast.png','scenes/act1/opening.png','scenes/act1/kidnapping.png','backgrounds/act1/street.png','ui/kitten-mittens.png']:
+    for rel in ['sprites/dennis-run.png','sprites/cast.png','scenes/act1/opening.png','scenes/act1/kidnapping.png','backgrounds/act1/street.png','ui/kitten-mittens.png']:
         p=tmp_path/'assets'/rel;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(b'broken png')
     with pytest.raises(ValueError,match='Invalid art'):
         build.validate_art()

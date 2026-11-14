@@ -1,0 +1,14 @@
+{"time":"2026-11-13T18:57:04.425Z","name":"four authored running poses and attack recovery","label":"dennis","keys":["right-1","right-2","right-3","right-0","left-1","left-2","left-3","left-0"]}
+{"time":"2026-11-13T18:57:08.404Z","name":"four authored running poses and attack recovery","label":"dayman","keys":["right-1","right-2","right-3","right-0","left-1","left-2","left-3","left-0"]}
+{"time":"2026-11-13T18:57:08.888Z","name":"jump pose","label":"dennis","direction":"right"}
+{"time":"2026-11-13T18:57:09.320Z","name":"jump pose","label":"dennis","direction":"left"}
+{"time":"2026-11-13T18:57:09.847Z","name":"jump pose","label":"dayman","direction":"right"}
+{"time":"2026-11-13T18:57:10.286Z","name":"jump pose","label":"dayman","direction":"left"}
+{"time":"2026-11-13T18:57:14.527Z","name":"real final hit delayed frozen defeat then story","boss":"cricket","storyElapsed":3}
+{"time":"2026-11-13T18:57:16.587Z","name":"focus-loss event froze defeat"}
+{"time":"2026-11-13T18:57:19.600Z","name":"real final hit delayed frozen defeat then story","boss":"frank","storyElapsed":3}
+{"time":"2026-11-13T18:57:23.926Z","name":"real final hit delayed frozen defeat then story","boss":"nightman","storyElapsed":3}
+{"time":"2026-11-13T18:57:25.955Z","name":"live projectile observed","kind":"alcohol","dx":-150}
+{"time":"2026-11-13T18:57:32.822Z","name":"live projectile observed","kind":"crucifix","dx":-230}
+{"time":"2026-11-13T18:57:46.755Z","name":"live projectile observed","kind":"chimichanga","dx":-230}
+{"time":"2026-11-13T18:57:47.006Z","name":"PASSED","browser":"156.0.8078.4","faults":[]}
