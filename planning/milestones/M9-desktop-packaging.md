@@ -77,3 +77,13 @@ reading45.3C,1230MiB available; swap full, so no local browser/build launched.
 Preparation complete; baseline remote executions pending. Packaging and walkthroughs are
 not complete. Physical controller run, target-machine launch/listening and final recording
 inspection are open. Record actual outcomes here and on the single milestone PR.
+
+## Inspection addendum
+
+Native options capture exposed low-contrast keyboard hints over bright footlights.
+In-scope correction: opaque dark backing under existing menu hint, preserving wording,
+controls, artwork and panel layout. Regression: render menu over bright background and
+require an opaque dark hint backing; capture actual options/pause at current source.
+Packaging failure contract also requires intentionally missing/corrupt audio to fail
+installation verification rather than silently succeed. Runner probes restore the bytes
+before archiving. No successful-package or listening claim follows from negative probes.

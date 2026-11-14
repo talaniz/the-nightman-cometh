@@ -195,6 +195,7 @@ class Renderer:
                 if session.screen=='options' and i<2:choice+='   < '+str(round(session.progress.settings[['music','effects'][i]]*100))+'% >'
                 if i==session.selection:self.rect((64,61,67),(238,y-4,484,30))
                 self.text(('> ' if i==session.selection else '  ')+choice,255,y,GOLD if i==session.selection else CREAM)
+            self.rect(INK,(210,474,540,28))
             self.center('D-pad choose · Bottom confirm · Right back' if getattr(session,'input_state',{}).get('pad_mode') else 'UP / DOWN choose · ENTER confirm · ESC back',480,MUTED,self.small)
         elif session.screen=='password':
             self.panel('PASSWORD');self.center('PAINTDOG · TROLLTOLL · NIGHTMAN',210,MUTED,self.small)

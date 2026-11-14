@@ -49,6 +49,9 @@ def verify_install(destination):
         session = verify_progress(storage)
         renderer.draw(session, audio)
         pygame.image.save(screen, str(destination / 'title.png'))
+        session.enter_screen('options')
+        renderer.draw(session, audio)
+        pygame.image.save(screen, str(destination / 'options.png'))
     (destination / 'installation.json').write_text(json.dumps({
         'platform': sys.platform, 'architecture': platform.machine(),
         'python': platform.python_version(), 'pygame': pygame.version.ver,
@@ -60,7 +63,12 @@ def verify_install(destination):
 
 if __name__ == '__main__':
     if len(sys.argv) == 3 and sys.argv[1] == '--verify-install':
-        verify_install(sys.argv[2])
+        try:
+            verify_install(sys.argv[2])
+        except Exception as error:
+            if sys.stderr is not None:
+                print('Installation verification failed: ' + str(error), file=sys.stderr)
+            raise SystemExit(1)
     elif len(sys.argv) == 1:
         from game.main import main
         try:

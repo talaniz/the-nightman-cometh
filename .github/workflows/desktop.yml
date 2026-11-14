@@ -47,6 +47,21 @@ jobs:
           with tempfile.TemporaryDirectory() as unrelated:
               subprocess.run([str(executable),'--verify-install',str(root/'build/install-evidence')], cwd=unrelated, check=True, timeout=90)
           assert (root/'build/install-evidence/title.png').is_file()
+          # Verify missing/corrupt audio is detected; never archive damaged bytes.
+          audio=next(path for path in bundle.rglob('proposal.ogg') if not path.is_symlink())
+          original=audio.read_bytes()
+          for scenario in ('missing','corrupt'):
+              try:
+                  if scenario=='missing': audio.unlink()
+                  else: audio.write_bytes(b'not an audio file')
+                  with tempfile.TemporaryDirectory() as unrelated:
+                      result=subprocess.run([str(executable),'--verify-install',str(root/'build'/('negative-'+scenario))],cwd=unrelated,timeout=90)
+                      assert result.returncode!=0, scenario+' resource unexpectedly passed'
+              finally:
+                  audio.write_bytes(original)
+          with tempfile.TemporaryDirectory() as unrelated:
+              subprocess.run([str(executable),'--verify-install',str(root/'build/install-evidence')],cwd=unrelated,check=True,timeout=90)
+          (root/'build/install-evidence/resource-failures.txt').write_text('Missing and corrupt proposal audio rejected; original bytes restored.\n')
           PY
       - name: Archive portable package
         shell: bash
