@@ -1,0 +1,9 @@
+{
+  "runtime_fingerprint": "54660a5dd5a0b8bdbb4c1033a5e4a0aacf228570ae93f22348c5eff1d6f7918d",
+  "viewport": [
+    960,
+    540
+  ],
+  "state": "credits",
+  "driver": "SDL dummy; actual renderer; no listening claim"
+}

@@ -1,0 +1,3 @@
+# Desktop packaging only; browser runtime dependencies remain unchanged.
+pygame-ce==2.5.8
+pyinstaller==6.22.3

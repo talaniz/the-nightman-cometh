@@ -16,13 +16,15 @@ from tools.audio.audition_app.director import Director
 
 WEB=sys.platform=='emscripten'
 if WEB:from platform import window
+else:from game.desktop import FileStorage, NativePad
 
 class Storage:
-    def __init__(self):self.raw=None
-    def read(self):return window.localStorage.getItem('nightman.progress.v1') if WEB else self.raw
+    def __init__(self):
+        self.native = None if WEB else FileStorage()
+    def read(self):return window.localStorage.getItem('nightman.progress.v1') if WEB else self.native.read()
     def write(self,value):
         if WEB:window.localStorage.setItem('nightman.progress.v1',value)
-        else:self.raw=value
+        else:self.native.write(value)
 
 def initialize_display():
     # Browser Gamepad access belongs to our guarded adapter, not SDL joystick.
@@ -33,11 +35,12 @@ def initialize_display():
 async def main():
     screen=initialize_display();pygame.display.set_caption('The Nightman Cometh')
     renderer=Renderer(screen);session=Session(Storage());held=set();pending=set();inputs=Controls();session.input_state=inputs.snapshot()
-    root=Path('audio') if Path('audio/manifest.json').is_file() else Path(__file__).resolve().parents[1]/'assets/audio/production'
+    root=Path('audio') if WEB and Path('audio/manifest.json').is_file() else Path(__file__).resolve().parents[1]/'assets/audio/production'
     manifest=json.loads((root/'manifest.json').read_text());mixer=Mixer(manifest,root);audio=Director(gameplay_manifest(manifest),mixer)
     audio.volumes(music=session.progress.settings['music'],sfx=session.progress.settings['effects']);audio.unlock()
+    native_pad=None if WEB else NativePad()
     previous=time.monotonic();previous_screen='title';frames=[];frame_count=0
-    fixture_path=Path('test-fixtures.json');test_mode=fixture_path.is_file();fixture_id=None
+    fixture_path=Path('test-fixtures.json');test_mode=WEB and fixture_path.is_file();fixture_id=None
     while True:
         now=time.monotonic();dt=min(.1,now-previous);previous=now;frames.append(dt*1000);frames=frames[-120:]
         context=(session.screen,session.dialogue)
@@ -63,7 +66,7 @@ async def main():
                 continue
             action=keymap.get(key)
             if action:inputs.key_down(action)
-        pad=json.loads(str(window.nightmanReadPad())) if WEB else {'status':'absent'}
+        pad=json.loads(str(window.nightmanReadPad())) if WEB else native_pad.read(pygame.key.get_focused())
         if pad.get('interrupted'):
             held.clear();inputs.keys.clear();inputs.blocked_keys.clear();inputs.quarantine();pending.clear();session.blur()
         focused=pad.get('focused',True)
@@ -120,6 +123,6 @@ async def main():
                    'fixture_id':fixture_id,'loops':1,'frames':frame_count,'frame_ms_mean':sum(frames)/len(frames),'test_build':test_mode,
                    'python':sys.version,'pygame':pygame.version.ver}
             window.__nightmanGame=json.dumps(state)
-        await asyncio.sleep(0)
+        await asyncio.sleep(0 if WEB else 1/120)
 
 if __name__=='__main__':asyncio.run(main())
