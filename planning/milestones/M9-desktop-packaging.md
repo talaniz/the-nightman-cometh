@@ -87,3 +87,10 @@ require an opaque dark hint backing; capture actual options/pause at current sou
 Packaging failure contract also requires intentionally missing/corrupt audio to fail
 installation verification rather than silently succeed. Runner probes restore the bytes
 before archiving. No successful-package or listening claim follows from negative probes.
+
+Current browser capture `normal-complete.png` also exposed the same low-contrast hint
+on credits, whose rendering uses a separate path. Extend the same dark backing to
+credits only; preserve all text, music and layout. Regression parameterizes bright
+background checks for options and credits. Observed credits pixel `(255,240,190)`
+instead of INK `(15,18,32)` before fix. Renew packages and ordinary browser candidate
+because this changes the runtime fingerprint; prior runs remain historical evidence.

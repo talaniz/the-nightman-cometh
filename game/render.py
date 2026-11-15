@@ -565,4 +565,5 @@ class Renderer:
                 self.center(line,218+i*28,CREAM,self.small)
             for i,choice in enumerate(session.menu()):
                 self.center(('> ' if i==session.selection else '')+choice,365+i*36,GOLD if i==session.selection else CREAM)
+            self.rect(INK,(210,484,540,28))
             self.center('D-pad choose · Bottom confirm · Right title' if getattr(session,'input_state',{}).get('pad_mode') else 'UP / DOWN choose · ENTER confirm · ESC title',490,CREAM,self.small)
