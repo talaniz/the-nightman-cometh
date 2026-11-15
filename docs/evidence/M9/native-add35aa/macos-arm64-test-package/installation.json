@@ -1,0 +1,9 @@
+{
+  "platform": "darwin",
+  "architecture": "arm64",
+  "python": "3.11.9",
+  "pygame": "2.5.8",
+  "decoded_cues": 24,
+  "save_restart": true,
+  "limits": "Installation diagnostic only; no full route, physical audio or USB test."
+}

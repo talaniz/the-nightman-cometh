@@ -38,8 +38,9 @@ No merge, public release, paid signing service or production deployment authoriz
 A. Baseline ordinary walkthrough inspection. Existing commands:
 `NIGHTMAN_BUILD=<frozen-build> npx playwright test --project=chromium --grep FULL_KEYBOARD`.
 Use existing remote workflow, frozen artifact manifest and screenshot evidence.
-Merged-head broad run 43653641924 and recording run 43654287539 dispatched at base;
-results pending, not passes. Recording uses candidate artifact from run43487934311,
+Merged-head broad run43653641924 and recording run43654287539 passed at the baseline.
+They are historical evidence, not current-candidate qualification. Recording used
+candidate artifact from run43487934311,
 verified against source fingerprint before playback. Record source/asset hashes.
 
 B. Desktop boundary fixes (game/main.py, new game/desktop.py and focused tests).
@@ -74,9 +75,34 @@ reading45.3C,1230MiB available; swap full, so no local browser/build launched.
 
 ## Current state / next action
 
-Preparation complete; baseline remote executions pending. Packaging and walkthroughs are
-not complete. Physical controller run, target-machine launch/listening and final recording
-inspection are open. Record actual outcomes here and on the single milestone PR.
+PR25 remains draft. Runtime head add35aa1af49fcb47c4cd1dedb36b974d247c8a6 has four
+per-commit code-review sign-offs. Corrected native package run43657884551 passed all
+three targets, including missing/corrupt resource probes; inspected target captures
+and archive SHA256 checks passed. Local private candidates are preserved under
+ignored `build/desktop-candidates/add35aa`, served through the existing SSH preview
+at `/desktop-add35aa/`. They are unsigned test candidates, not a release.
+
+Current full browser run43657884482 passed319 unit/audio tests,36 focused browser
+checks and normal/recovery full routes in Chromium and Firefox. Independent current
+run43659758840 also passed;44 fresh captures inspected by the independent reviewer.
+Current ordinary artifact fingerprint and every file hash were verified locally.
+Frozen private browser preview: `/browser-add35aa/`. Prior e7cfee7 run43655723059 passed
+318 unit/audio tests,36 focused browser checks and four ordinary full keyboard routes
+(normal/recovery in Chromium/Firefox). Independent browser run43657609032 passed,
+but credits contrast correction invalidates those as current-candidate qualification.
+Independent native credits interactions and current six package captures were rechecked.
+
+Baseline recording43654287539 is282.2seconds with video/stereo audio; samples across
+its full duration were visually inspected and audio measured non-silent. It is historical,
+not the requested final post-acceptance recording. Physical USB, target-machine GUI/
+listening, final same-artifact qualifying runs and final recording remain open. No USB
+controller attached on the Pi; user participation requested, no response yet. Do not
+claim three qualifying runs, full listening acceptance or readiness to merge.
+
+Next: publish inspected evidence in one documentation-only commit,
+obtain its distinct code review and all final-head revalidations. Final source/asset
+changes require renewed qualifying runs. Keep PR draft while hardware/final evidence
+is missing. No merge or public release authorization applies to PR25.
 
 ## Inspection addendum
 

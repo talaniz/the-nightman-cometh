@@ -1,0 +1,9 @@
+{
+  "pygame": "2.5.8",
+  "opening_panels": 10,
+  "menu_settings_save_restart": true,
+  "normal_act1_move_jump_bat": true,
+  "focus_loss_pause_resume": true,
+  "audio_error": "",
+  "limits": "Linux source SDL dummy; synthetic keyboard events; no physical focus or audio, target OS or USB acceptance"
+}

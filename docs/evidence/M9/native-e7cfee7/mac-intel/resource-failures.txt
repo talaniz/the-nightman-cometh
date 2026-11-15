@@ -1,0 +1,1 @@
+Missing and corrupt proposal audio rejected; original bytes restored.

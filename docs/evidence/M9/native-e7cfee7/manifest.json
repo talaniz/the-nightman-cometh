@@ -1,0 +1,39 @@
+{
+  "runtime_head": "e7cfee7e7c3f5d5e8797f68a8cc9e5dc8af4560a",
+  "workflow_run": 43655723064,
+  "viewport": "960x540 native SDL window",
+  "screenshots": {
+    "windows/options.png": "91d2790702d2019400dc2e3f79181433f78fc6b75be471f2c9b1f73262150c73",
+    "windows/title.png": "f900fe1635253f83d46920b642fe50bf045370d55d5224570671cae3223fb56c",
+    "mac-arm/options.png": "3eacff73e2a4ad1942074924957a5abb3549e09045961aeb46e88a4ce5bcbe33",
+    "mac-arm/title.png": "79d2a5d6a7b317d8ca8a4ea286e66857e92913e85760b2c47aea2c050f01eafa",
+    "mac-intel/options.png": "3eacff73e2a4ad1942074924957a5abb3549e09045961aeb46e88a4ce5bcbe33",
+    "mac-intel/title.png": "79d2a5d6a7b317d8ca8a4ea286e66857e92913e85760b2c47aea2c050f01eafa"
+  },
+  "packages": {
+    "windows": {
+      "source_sha": "19358eee226a77db6835187951a9505061ad4149",
+      "source_fingerprint": "782b2a656e0440f2c79a2e1893d97f1239053930163a56b54df742967c4e47b3",
+      "platform": "win32",
+      "architecture": "AMD64",
+      "signed_for_distribution": false,
+      "archive_sha256": "f95089c6c4822c247822db0ec2c95098bafd0edb4dc0edc2c835aa76412b8a88"
+    },
+    "mac-arm": {
+      "source_sha": "19358eee226a77db6835187951a9505061ad4149",
+      "source_fingerprint": "179a9dc9aa165cb2db10f7f8a9d6bb07f9cdd5f05433fe4aba9cbe667120a089",
+      "platform": "darwin",
+      "architecture": "arm64",
+      "signed_for_distribution": false,
+      "archive_sha256": "2106430ba629b12578bb0dcb4b5929703bdebd3ba40ef2dcc04e14413bbe724c"
+    },
+    "mac-intel": {
+      "source_sha": "19358eee226a77db6835187951a9505061ad4149",
+      "source_fingerprint": "179a9dc9aa165cb2db10f7f8a9d6bb07f9cdd5f05433fe4aba9cbe667120a089",
+      "platform": "darwin",
+      "architecture": "x86_64",
+      "signed_for_distribution": false,
+      "archive_sha256": "7afa0f64713fc132e704e6cfa30381c585788b444943362a750d787e7c8ca94d"
+    }
+  }
+}

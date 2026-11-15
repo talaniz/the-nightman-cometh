@@ -1,0 +1,40 @@
+{
+  "runtime_head": "add35aa1af49fcb47c4cd1dedb36b974d247c8a6",
+  "workflow": 43657884551,
+  "viewport": [
+    960,
+    540
+  ],
+  "platforms": {
+    "macos-arm64-test-package": {
+      "archive": "NightmanCometh-macos-arm64.zip",
+      "sha256": "c2b91515d6b947f79c80136e8e079177c2b1073d128ff86be86c0ed24947ca1a",
+      "build_sha": "79a614551eb0a187e54ef6b5f111883e648ec3c0",
+      "host_fingerprint": "54660a5dd5a0b8bdbb4c1033a5e4a0aacf228570ae93f22348c5eff1d6f7918d",
+      "captures": {
+        "title.png": "79d2a5d6a7b317d8ca8a4ea286e66857e92913e85760b2c47aea2c050f01eafa",
+        "options.png": "3eacff73e2a4ad1942074924957a5abb3549e09045961aeb46e88a4ce5bcbe33"
+      }
+    },
+    "macos-x86_64-test-package": {
+      "archive": "NightmanCometh-macos-x86_64.zip",
+      "sha256": "5f41f3ab63cbea1ea4370e2b8a531734577b1505cc43afcd820e026dc1a88ccb",
+      "build_sha": "79a614551eb0a187e54ef6b5f111883e648ec3c0",
+      "host_fingerprint": "54660a5dd5a0b8bdbb4c1033a5e4a0aacf228570ae93f22348c5eff1d6f7918d",
+      "captures": {
+        "title.png": "79d2a5d6a7b317d8ca8a4ea286e66857e92913e85760b2c47aea2c050f01eafa",
+        "options.png": "3eacff73e2a4ad1942074924957a5abb3549e09045961aeb46e88a4ce5bcbe33"
+      }
+    },
+    "windows-x64-test-package": {
+      "archive": "NightmanCometh-windows-x64.zip",
+      "sha256": "5a2ce3907045ce34882d8105954743324880cce971e4c094e6e0f98ad8336c80",
+      "build_sha": "79a614551eb0a187e54ef6b5f111883e648ec3c0",
+      "host_fingerprint": "86401204f6c6cb17bb66a83d3329c5014cd6b84a0b68102923bbb18300a3253b",
+      "captures": {
+        "title.png": "f900fe1635253f83d46920b642fe50bf045370d55d5224570671cae3223fb56c",
+        "options.png": "91d2790702d2019400dc2e3f79181433f78fc6b75be471f2c9b1f73262150c73"
+      }
+    }
+  }
+}
